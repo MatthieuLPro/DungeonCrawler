@@ -459,7 +459,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   horizontalScrollSpeed: 2
   verticalScrollSpeed: 2
-  trackingGameObject: {fileID: 907208281}
+  trackingGameObject: {fileID: 1072176390}
   _enabledCameraScroll: 1
   _enabledTopScroll: 0
   _enabledBottomScroll: 0
@@ -712,12 +712,12 @@ PrefabInstance:
     - target: {fileID: 2489743975892422141, guid: 50d311d22108aae0fbec4a7c6667245f,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 100
+      value: 150
       objectReference: {fileID: 0}
     - target: {fileID: 2489743975892422141, guid: 50d311d22108aae0fbec4a7c6667245f,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -30
+      value: -40
       objectReference: {fileID: 0}
     - target: {fileID: 2489743975892422141, guid: 50d311d22108aae0fbec4a7c6667245f,
         type: 3}
@@ -905,7 +905,7 @@ PrefabInstance:
     - target: {fileID: 7379087308721768308, guid: c2b94519b4d069a8db61580f6cdb2260,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 60
+      value: 140
       objectReference: {fileID: 0}
     - target: {fileID: 7379087308721768308, guid: c2b94519b4d069a8db61580f6cdb2260,
         type: 3}

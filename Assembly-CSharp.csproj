@@ -67,19 +67,19 @@
      <Compile Include="Assets\Scripts\Trap.cs" />
      <Compile Include="Assets\Scripts\Trap_mana.cs" />
  <Reference Include="Unity.TextMeshPro.Editor">
- <HintPath>/home/matthieul/DungeonCrawler/DungeonCrawler/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
+ <HintPath>/home/matthieul/DungeonCrawlerGit/DungeonCrawler/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
  </Reference>
  <Reference Include="Unity.PackageManagerUI.Editor">
- <HintPath>/home/matthieul/DungeonCrawler/DungeonCrawler/Library/ScriptAssemblies/Unity.PackageManagerUI.Editor.dll</HintPath>
+ <HintPath>/home/matthieul/DungeonCrawlerGit/DungeonCrawler/Library/ScriptAssemblies/Unity.PackageManagerUI.Editor.dll</HintPath>
  </Reference>
  <Reference Include="Unity.CollabProxy.Editor">
- <HintPath>/home/matthieul/DungeonCrawler/DungeonCrawler/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
+ <HintPath>/home/matthieul/DungeonCrawlerGit/DungeonCrawler/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
  </Reference>
  <Reference Include="Unity.TextMeshPro">
- <HintPath>/home/matthieul/DungeonCrawler/DungeonCrawler/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
+ <HintPath>/home/matthieul/DungeonCrawlerGit/DungeonCrawler/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
  </Reference>
  <Reference Include="Unity.Analytics.DataPrivacy">
- <HintPath>/home/matthieul/DungeonCrawler/DungeonCrawler/Library/ScriptAssemblies/Unity.Analytics.DataPrivacy.dll</HintPath>
+ <HintPath>/home/matthieul/DungeonCrawlerGit/DungeonCrawler/Library/ScriptAssemblies/Unity.Analytics.DataPrivacy.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.AIModule">
  <HintPath>/opt/Unity3D/Editor/Data/Managed/UnityEngine/UnityEngine.AIModule.dll</HintPath>
@@ -286,19 +286,19 @@
  <HintPath>/opt/Unity3D/Editor/Data/UnityExtensions/Unity/UnitySpatialTracking/RuntimeEditor/UnityEngine.SpatialTracking.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.Advertisements.Editor">
- <HintPath>/home/matthieul/DungeonCrawler/DungeonCrawler/Library/PackageCache/com.unity.ads@2.3.1/Runtime/UnityEngine.Advertisements.Editor.dll</HintPath>
+ <HintPath>/home/matthieul/DungeonCrawlerGit/DungeonCrawler/Library/PackageCache/com.unity.ads@2.3.1/Runtime/UnityEngine.Advertisements.Editor.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.Advertisements">
- <HintPath>/home/matthieul/DungeonCrawler/DungeonCrawler/Library/PackageCache/com.unity.ads@2.3.1/Runtime/UnityEngine.Advertisements.dll</HintPath>
+ <HintPath>/home/matthieul/DungeonCrawlerGit/DungeonCrawler/Library/PackageCache/com.unity.ads@2.3.1/Runtime/UnityEngine.Advertisements.dll</HintPath>
  </Reference>
  <Reference Include="Unity.Analytics.Editor">
- <HintPath>/home/matthieul/DungeonCrawler/DungeonCrawler/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.Editor.dll</HintPath>
+ <HintPath>/home/matthieul/DungeonCrawlerGit/DungeonCrawler/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.Editor.dll</HintPath>
  </Reference>
  <Reference Include="Unity.Analytics.StandardEvents">
- <HintPath>/home/matthieul/DungeonCrawler/DungeonCrawler/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.StandardEvents.dll</HintPath>
+ <HintPath>/home/matthieul/DungeonCrawlerGit/DungeonCrawler/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.StandardEvents.dll</HintPath>
  </Reference>
  <Reference Include="Unity.Analytics.Tracker">
- <HintPath>/home/matthieul/DungeonCrawler/DungeonCrawler/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.Tracker.dll</HintPath>
+ <HintPath>/home/matthieul/DungeonCrawlerGit/DungeonCrawler/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.Tracker.dll</HintPath>
  </Reference>
  <Reference Include="netstandard">
  <HintPath>/opt/Unity3D/Editor/Data/NetStandard/ref/2.0.0/netstandard.dll</HintPath>
