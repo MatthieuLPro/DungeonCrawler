@@ -25,6 +25,10 @@ public class EnemyController : MovingObject
         MainController();
     }
 
+    public Vector3 GetPosition(){
+        return (transform.position);
+    }
+
     private void EnemyDirection()
     {
         if (_movementTimer <= _movementLength)
@@ -107,7 +111,6 @@ public class EnemyController : MovingObject
         {
             Vector3 knockBackDir = (player.GetPosition() - transform.position).normalized;
             player.DamageKnockBack(knockBackDir, 1f, _damagePower);
-        }         
+        }
     }
-    
 }

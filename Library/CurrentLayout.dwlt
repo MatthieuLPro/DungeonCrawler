@@ -116,7 +116,7 @@ MonoBehaviour:
   m_MinSize: {x: 917, y: 348}
   m_MaxSize: {x: 22012, y: 10024}
   vertical: 0
-  controlID: 88
+  controlID: 130
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -167,7 +167,7 @@ MonoBehaviour:
   m_MinSize: {x: 204, y: 348}
   m_MaxSize: {x: 4004, y: 8048}
   vertical: 1
-  controlID: 89
+  controlID: 131
 --- !u!114 &8
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -320,8 +320,8 @@ MonoBehaviour:
     m_VAllowExceedBaseRangeMin: 1
     m_VAllowExceedBaseRangeMax: 1
     m_ScaleWithWindow: 0
-    m_HSlider: 1
-    m_VSlider: 1
+    m_HSlider: 0
+    m_VSlider: 0
     m_IgnoreScrollWheelUntilClicked: 0
     m_EnableMouseInput: 1
     m_EnableSliderZoomHorizontal: 0
@@ -334,18 +334,18 @@ MonoBehaviour:
       y: 17
       width: 861
       height: 522
-    m_Scale: {x: 1.2656298, y: 1.2656298}
-    m_Translation: {x: 413.7885, y: 301.5794}
+    m_Scale: {x: 1, y: 1}
+    m_Translation: {x: 430.5, y: 261}
     m_MarginLeft: 0
     m_MarginRight: 0
     m_MarginTop: 0
     m_MarginBottom: 0
     m_LastShownAreaInsideMargins:
       serializedVersion: 2
-      x: -326.94278
-      y: -238.28407
-      width: 680.29376
-      height: 412.4429
+      x: -430.5
+      y: -261
+      width: 861
+      height: 522
     m_MinimalGUI: 1
   m_defaultScale: 1
   m_TargetTexture: {fileID: 0}
@@ -384,8 +384,8 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: a8fbffff
-      m_LastClickedID: -1112
+      m_SelectedIDs: fc150000
+      m_LastClickedID: 5628
       m_ExpandedIDs: d4fbffff18160000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
@@ -441,9 +441,9 @@ MonoBehaviour:
   m_isRotationLocked: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 0.38042662, y: -0.1710448, z: -0.008751749}
+    m_Target: {x: -0.00044810027, y: -0.06386696, z: 0}
     speed: 2
-    m_Value: {x: 0.38042662, y: -0.1710448, z: -0.008751749}
+    m_Value: {x: -0.00044810027, y: -0.06386696, z: 0}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -475,9 +475,9 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: 0, y: 0, z: 0, w: 1}
   m_Size:
-    m_Target: 1.4261662
+    m_Target: 0.2187698
     speed: 2
-    m_Value: 1.4261662
+    m_Value: 0.2187698
   m_Ortho:
     m_Target: 1
     speed: 2
@@ -670,9 +670,6 @@ MonoBehaviour:
   - m_Target: {fileID: 1107979853140389958, guid: c5c4b2577b355ec088c22346780637a1,
       type: 2}
     m_ScrollPosition: {x: 0, y: 0}
-  - m_Target: {fileID: 1102423802906761832, guid: c5c4b2577b355ec088c22346780637a1,
-      type: 2}
-    m_ScrollPosition: {x: 0, y: 0}
   stateMachineGraph: {fileID: 0}
   stateMachineGraphGUI: {fileID: 0}
   blendTreeGraph: {fileID: 0}
@@ -712,7 +709,7 @@ MonoBehaviour:
   m_PersistentViewDataDictionary: {fileID: 0}
   m_LockTracker:
     m_IsLocked: 0
-  m_LastSelectedObjectID: 5624
+  m_LastSelectedObjectID: 5628
 --- !u!114 &18
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -751,19 +748,19 @@ MonoBehaviour:
     m_ShowAllHits: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Prefabs
+    - Assets/Scripts
   m_ViewMode: 1
   m_StartGridSize: 16
   m_LastFolders:
-  - Assets/Prefabs
+  - Assets/Scripts
   m_LastFoldersGridSize: 16
-  m_LastProjectPath: /home/matthieul/DungeonCrawler/DungeonCrawler
+  m_LastProjectPath: /home/matthieul/DungeonCrawlerGit/DungeonCrawler
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 44150000
-    m_LastClickedID: 5444
+    m_SelectedIDs: de0a0000
+    m_LastClickedID: 2782
     m_ExpandedIDs: 000000009209000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
@@ -817,8 +814,8 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_ListAreaState:
-    m_SelectedInstanceIDs: 
-    m_LastClickedInstanceID: 0
+    m_SelectedInstanceIDs: fc150000
+    m_LastClickedInstanceID: 5628
     m_HadKeyboardFocusLastEvent: 1
     m_ExpandedInstanceIDs: 56280000620a0000000000006e0e00007c0e0000
     m_RenameOverlay:
