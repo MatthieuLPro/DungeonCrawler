@@ -5,21 +5,18 @@ using UnityEngine;
 public class KnockBack : MonoBehaviour
 {
     [SerializeField]
-    private float thrust = 5;
+    private float thrust = 0.2f;
+
+    [SerializeField]
+    private int _damagePower = 1;
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if(other.gameObject.CompareTag("Enemy"))
+        EnemyController enemy = other.GetComponent<EnemyController>();
+        if(enemy != null)
         {
-            Rigidbody2D enemy = other.GetComponent<Rigidbody2D>();
-            if (enemy != null)
-            {
-                enemy.isKinematic = false;
-                Vector2 difference = enemy.transform.position - transform.position;
-                difference = difference.normalized * thrust;
-                enemy.AddForce(difference);
-                enemy.isKinematic = true;
-            }
-        }
+            Vector3 knockBackDir = (enemy.GetPosition() - transform.position).normalized;
+            enemy.DamageKnockBack(knockBackDir, thrust, _damagePower);
+        }  
     }
 }

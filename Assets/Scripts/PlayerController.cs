@@ -62,15 +62,9 @@ public class PlayerController : MovingObject
         anime.SetFloat("DirectionY", animDirectionY);
     }
 
-    private void DamageFlash()
+    /*private void DamageFlash()
     {
 
-    }
-
-    /*public void DamageKnockBack(Vector3 knockBackDir, float knockBackDistance, int damage)
-    {
-        transform.position += knockBackDir * knockBackDistance;
-        HeartsHealthUI.heartsHealthSystemStatic.Damage(damage);
     }*/
 
     public void DamageMana(Vector3 knockBackDir, float knockBackDistance, int damage)
