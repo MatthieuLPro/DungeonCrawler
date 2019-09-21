@@ -138,6 +138,21 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1128720064}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &643268780
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 643268773}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76c0321389a4ed7ef8a76e6b7fb78c8d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 5
+  mana: 5
+  gold: 0
 --- !u!1 &842595418
 GameObject:
   m_ObjectHideFlags: 0
@@ -312,14 +327,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f20eccaca5b080a09ba0f0f4069b3e26, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0
+  speed: 0.5
   changePos: {x: 0, y: 0, z: 0}
   currentState: 0
   anime: {fileID: 0}
-  _movementLength: 50
-  _damagePower: 1
   _enableDiagonal: 0
   _enableHunt: 1
+  _movementLength: 50
+  _damagePower: 1
   _chaseRadius: 0
 --- !u!95 &907208283
 Animator:
@@ -331,7 +346,7 @@ Animator:
   m_GameObject: {fileID: 907208281}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: c5c4b2577b355ec088c22346780637a1, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0

@@ -13,7 +13,11 @@ public abstract class MovingObject : MonoBehaviour
 
     [HideInInspector]
     public Vector3     changePos;
+
+    [HideInInspector]
     public ObjectState currentState;
+
+    [HideInInspector]
     public Animator    anime;
 
     private Rigidbody2D   rb2d;
@@ -25,10 +29,19 @@ public abstract class MovingObject : MonoBehaviour
         rb2d =         GetComponent<Rigidbody2D>();
     }
 
-    protected void SmoothTransition()
+    protected virtual void MainController()
+    {
+        if (changePos != Vector3.zero && currentState != ObjectState.attack)
+            MoveObject();
+        else
+            AnimationIdle();
+    }
+
+    protected void MoveObject()
     {
         changePos.Normalize();
         rb2d.MovePosition(transform.position + changePos * speed * Time.deltaTime);
+        AnimationMovement();
     }
 
     protected void AnimationIdle()

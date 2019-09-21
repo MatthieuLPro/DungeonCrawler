@@ -26,10 +26,7 @@ public class PlayerController : MovingObject
         if (Input.GetButtonDown("Attack") && currentState != ObjectState.attack)
             StartCoroutine(MainAttack());
         else if (changePos != Vector3.zero && currentState != ObjectState.attack)
-        {
-            SmoothTransition();
-            AnimationMovement();
-        }
+            MoveObject();
         else
             AnimationIdle();
     }
@@ -60,24 +57,5 @@ public class PlayerController : MovingObject
 
         anime.SetFloat("DirectionX", animDirectionX);
         anime.SetFloat("DirectionY", animDirectionY);
-    }
-
-    /*private void DamageFlash()
-    {
-
-    }*/
-
-    public void DamageMana(Vector3 knockBackDir, float knockBackDistance, int damage)
-    {
-        transform.position += knockBackDir * knockBackDistance;
-        ManaUI.manaSystemStatic.ChangeMana(damage * -1);
-    }
-
-    public void Heal(int heal){
-        HeartsHealthUI.heartsHealthSystemStatic.Heal(heal);
-    }
-    
-    public void HealMana(int heal){
-        ManaUI.manaSystemStatic.ChangeMana(heal);
     }
 }

@@ -9,7 +9,7 @@ public class Heart : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        PlayerController player = other.GetComponent<PlayerController>();
+        Player player = other.GetComponent<Player>();
         if(player != null)
         {
             player.Heal(heal);

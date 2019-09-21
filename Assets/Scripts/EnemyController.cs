@@ -4,13 +4,15 @@ using UnityEngine;
 
 public class EnemyController : MovingObject
 {
-    [SerializeField]
-    private int _movementLength = 50,
-                _damagePower    = 1;
-
+    // AI
     [SerializeField]
     private bool _enableDiagonal    = true,
                  _enableHunt        = false;
+
+    // Characteristics
+    [SerializeField]
+    private int _movementLength = 50,
+                _damagePower    = 1;
 
     [SerializeField]
     private float _chaseRadius = 1.0f;
@@ -26,9 +28,6 @@ public class EnemyController : MovingObject
     {
         EnemyDirection();
         MainController();
-        Debug.Log("x: " + transform.position.x);
-        Debug.Log("y: " + transform.position.y);
-        Debug.Log("velocity: " + GetComponent<Rigidbody2D>().velocity);
     }
 
     public Vector3 GetPosition(){
@@ -60,17 +59,6 @@ public class EnemyController : MovingObject
             if (_movementLength <= 5) _movementLength = _movementLimit;
             ChangeDirectionXorY();
         }
-    }
-
-    private void MainController()
-    {
-        if (changePos != Vector3.zero && currentState != ObjectState.attack)
-        {
-            SmoothTransition();
-            AnimationMovement();
-        }
-        else
-            AnimationIdle();
     }
 
     private void ChangeDirection()

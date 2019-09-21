@@ -9,10 +9,10 @@ public class Trap_mana : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        PlayerController player = other.GetComponent<PlayerController>();
+        Player player = other.GetComponent<Player>();
         if(player != null)
         {
-            Vector3 knockBackDir = (player.GetPosition() - transform.position).normalized;
+            Vector3 knockBackDir = (other.GetComponent<PlayerController>().GetPosition() - transform.position).normalized;
             player.DamageMana(knockBackDir, 1f, damage);
         }     
     }

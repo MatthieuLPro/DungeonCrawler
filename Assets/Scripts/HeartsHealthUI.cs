@@ -53,7 +53,7 @@ public class HeartsHealthUI : MonoBehaviour
 
     private void HeartPositionAndSize(GameObject heart, Vector2 anchoredPosition)
     {
-        heart.transform.parent = transform;
+        heart.transform.SetParent(transform);
         heart.transform.localPosition = Vector3.zero;
         heart.GetComponent<RectTransform>().anchoredPosition = anchoredPosition;
         heart.GetComponent<RectTransform>().sizeDelta = new Vector2(10, 10);
