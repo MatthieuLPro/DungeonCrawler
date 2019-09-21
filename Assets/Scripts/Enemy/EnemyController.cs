@@ -11,8 +11,7 @@ public class EnemyController : MovingObject
 
     // Characteristics
     [SerializeField]
-    private int _movementLength = 50,
-                _damagePower    = 1;
+    private int _movementLength = 50;
 
     [SerializeField]
     private float _chaseRadius = 1.0f;

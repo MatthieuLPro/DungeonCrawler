@@ -8,7 +8,7 @@ public class HeartsHealthUI : MonoBehaviour
     public static HeartsHealthSystem heartsHealthSystemStatic;
 
     [SerializeField]
-    private Sprite heartSpriteFull, heartSpriteMid, heartSpriteEmpty;
+    private Sprite heartSpriteFull = null, heartSpriteMid = null, heartSpriteEmpty = null;
 
     private List<HeartImage> heartImageList;
     private HeartsHealthSystem heartsHealthSystem;

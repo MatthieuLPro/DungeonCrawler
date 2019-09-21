@@ -21,7 +21,7 @@ public class PlayerController : MovingObject
         changePos.y = Input.GetAxisRaw("Vertical");
     }
 
-    private void MainController()
+    public override void MainController()
     {
         if (Input.GetButtonDown("Attack") && currentState != ObjectState.attack)
             StartCoroutine(MainAttack());

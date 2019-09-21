@@ -29,7 +29,7 @@ public abstract class MovingObject : MonoBehaviour
         rb2d =         GetComponent<Rigidbody2D>();
     }
 
-    protected virtual void MainController()
+    public virtual void MainController()
     {
         if (changePos != Vector3.zero && currentState != ObjectState.attack)
             MoveObject();

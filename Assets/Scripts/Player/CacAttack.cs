@@ -7,8 +7,7 @@ public class CacAttack : MonoBehaviour
     [SerializeField]
     private float thrust = 0.2f;
 
-    [SerializeField]
-    private int _damagePower = 1;
+    // Should add DamagePower
 
     private void OnTriggerEnter2D(Collider2D other)
     {   
