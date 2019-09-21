@@ -37,6 +37,10 @@ public abstract class MovingObject : MonoBehaviour
             AnimationIdle();
     }
 
+    public Vector3 GetPosition(){
+        return (transform.position);
+    }
+
     protected void MoveObject()
     {
         changePos.Normalize();
@@ -44,8 +48,7 @@ public abstract class MovingObject : MonoBehaviour
         AnimationMovement();
     }
 
-    protected void AnimationIdle()
-    {
+    protected void AnimationIdle(){
         anime.SetBool("Moving", false);
     }
 

@@ -10,10 +10,6 @@ public class PlayerController : MovingObject
         MainController();
     }
 
-    public Vector3 GetPosition(){
-        return (transform.position);
-    }
-
     private void PlayerDirection()
     {
         changePos = Vector3.zero;
