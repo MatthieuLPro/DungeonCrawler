@@ -26,6 +26,9 @@ public class EnemyController : MovingObject
     {
         EnemyDirection();
         MainController();
+        Debug.Log("x: " + transform.position.x);
+        Debug.Log("y: " + transform.position.y);
+        Debug.Log("velocity: " + GetComponent<Rigidbody2D>().velocity);
     }
 
     public Vector3 GetPosition(){
