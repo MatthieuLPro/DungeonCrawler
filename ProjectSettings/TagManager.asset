@@ -6,6 +6,7 @@ TagManager:
   tags:
   - CameraBorder
   - Enemy
+  - ItemDestructible
   layers:
   - Default
   - TransparentFX
