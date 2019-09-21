@@ -291,6 +291,7 @@ GameObject:
   - component: {fileID: 907208287}
   - component: {fileID: 907208286}
   - component: {fileID: 907208282}
+  - component: {fileID: 907208288}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemy
@@ -310,14 +311,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f20eccaca5b080a09ba0f0f4069b3e26, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0
+  speed: 0.2
   changePos: {x: 0, y: 0, z: 0}
   currentState: 0
   anime: {fileID: 0}
   _movementLength: 50
   _damagePower: 1
   _enableDiagonal: 0
-  _enableHunt: 0
+  _enableHunt: 1
+  _chaseRadius: 0.5
 --- !u!95 &907208283
 Animator:
   serializedVersion: 3
@@ -446,6 +448,21 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!114 &907208288
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 907208281}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 17d58d1285f399cf5adc146c3459cc1d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 5
+  enemyName: Jack
+  baseAttack: 2
 --- !u!1 &922417055 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5456299737305526489, guid: 88cf9e71b5e6d186195098230c89d76f,

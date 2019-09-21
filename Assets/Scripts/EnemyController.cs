@@ -9,8 +9,11 @@ public class EnemyController : MovingObject
                 _damagePower    = 1;
 
     [SerializeField]
-    private bool _enableDiagonal = true,
-                 _enableHunt   = false;
+    private bool _enableDiagonal    = true,
+                 _enableHunt        = false;
+
+    [SerializeField]
+    private float _chaseRadius = 1.0f;
 
     private int _movementTimer = 0;
     private int _movementLimit;
@@ -88,6 +91,13 @@ public class EnemyController : MovingObject
         GameObject player   = GameObject.FindWithTag("Player");
         Transform target    = player.transform;
         Vector2 size        = player.GetComponent<BoxCollider2D>().size;
+
+        if (Vector3.Distance(target.position, transform.position) < _chaseRadius)
+        {
+            changePos.x = 0;
+            changePos.y = 0;
+            return;
+        }
 
         if (transform.position.x > target.position.x + size.y / 2)
             changePos.x = -1.0f;

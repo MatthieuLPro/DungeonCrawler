@@ -53,19 +53,21 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Scripts\CacAttack.cs" />
      <Compile Include="Assets\Scripts\Camera.cs" />
      <Compile Include="Assets\Scripts\DestructibleItem.cs" />
+     <Compile Include="Assets\Scripts\Enemy.cs" />
      <Compile Include="Assets\Scripts\EnemyController.cs" />
      <Compile Include="Assets\Scripts\Heal_mana.cs" />
      <Compile Include="Assets\Scripts\Heart.cs" />
      <Compile Include="Assets\Scripts\HeartsHealthSystem.cs" />
      <Compile Include="Assets\Scripts\HeartsHealthUI.cs" />
-     <Compile Include="Assets\Scripts\KnockBack.cs" />
      <Compile Include="Assets\Scripts\ManaSystem.cs" />
      <Compile Include="Assets\Scripts\ManaUI.cs" />
      <Compile Include="Assets\Scripts\MovingObject.cs" />
      <Compile Include="Assets\Scripts\PlayerController.cs" />
      <Compile Include="Assets\Scripts\PlayerHit.cs" />
+     <Compile Include="Assets\Scripts\Skeleton.cs" />
      <Compile Include="Assets\Scripts\Trap.cs" />
      <Compile Include="Assets\Scripts\Trap_mana.cs" />
  <Reference Include="Unity.TextMeshPro.Editor">
