@@ -12,11 +12,17 @@ public class KnockBack : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        EnemyController enemy = other.GetComponent<EnemyController>();
-        if(enemy != null)
+        if (other.CompareTag("Enemy"))
         {
-            Vector3 knockBackDir = (enemy.GetPosition() - transform.position).normalized;
-            enemy.DamageKnockBack(knockBackDir, thrust, _damagePower);
+            Rigidbody2D enemy = other.GetComponent<Rigidbody2D>();
+            if(enemy != null)
+            {
+                /*enemy.isKinematic = false;
+                Vector2 difference = enemy.transform.position - transform.position;
+                difference = difference.normalized * thrust;
+                enemy.AddForce(difference * 1000f, ForceMode2D.Impulse);
+                enemy.isKinematic = true;*/
+            }
         }  
     }
 }

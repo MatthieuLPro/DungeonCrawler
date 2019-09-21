@@ -45,12 +45,10 @@ public abstract class MovingObject : MonoBehaviour
 
     public void DamageKnockBack(Vector3 knockBackDir, float knockBackDistance, int damage)
     {
-        // transform.position += knockBackDir * knockBackDistance;
-        Vector2 velocity = new Vector2(500000f, 500000f);
-        Debug.Log(rb2d.gameObject.transform.position);
-        rb2d.MovePosition(rb2d.position + velocity * Time.fixedDeltaTime);
-        Debug.Log(rb2d.position + velocity * Time.fixedDeltaTime);
-        Debug.Log(rb2d.gameObject.transform.position);
-        // HeartsHealthUI.heartsHealthSystemStatic.Damage(damage);
+        /*rb2d.isKinematic = false;
+        Vector2 difference = rb2d.transform.position - transform.position;
+        difference = difference.normalize * thrust;
+        rb2d.AddForce(difference, ForceMode2D.Impulse);
+        rb2d.isKinematic = true;*/
     }
 }

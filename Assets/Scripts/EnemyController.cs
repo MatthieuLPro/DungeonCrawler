@@ -103,14 +103,4 @@ public class EnemyController : MovingObject
         else
             changePos.y = 0.0f;
     }
-
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-        PlayerController player = other.GetComponent<PlayerController>();
-        if(player != null)
-        {
-            Vector3 knockBackDir = (player.GetPosition() - transform.position).normalized;
-            player.DamageKnockBack(knockBackDir, 1f, _damagePower);
-        }
-    }
 }

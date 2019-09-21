@@ -13,6 +13,7 @@ public class Trap : MonoBehaviour
         if(player != null)
         {
             Vector3 knockBackDir = (player.GetPosition() - transform.position).normalized;
+            // Need to readapt knockback for player
             player.DamageKnockBack(knockBackDir, 1f, damage);
         }     
     }
