@@ -42,13 +42,4 @@ public abstract class MovingObject : MonoBehaviour
         anime.SetFloat("DirectionY", changePos.y);
         anime.SetBool("Moving", true);
     }
-
-    public void DamageKnockBack(Vector3 knockBackDir, float knockBackDistance, int damage)
-    {
-        /*rb2d.isKinematic = false;
-        Vector2 difference = rb2d.transform.position - transform.position;
-        difference = difference.normalize * thrust;
-        rb2d.AddForce(difference, ForceMode2D.Impulse);
-        rb2d.isKinematic = true;*/
-    }
 }

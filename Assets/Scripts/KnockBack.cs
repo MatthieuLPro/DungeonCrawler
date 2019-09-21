@@ -11,17 +11,23 @@ public class KnockBack : MonoBehaviour
     private int _damagePower = 1;
 
     private void OnTriggerEnter2D(Collider2D other)
-    {
-        if (other.CompareTag("Enemy"))
+    {   
+        if(other.CompareTag("ItemDestructible")){
+            other.GetComponent<DestructibleItem>().Smash();
+        }
+        else if (other.CompareTag("Enemy"))
         {
-            Rigidbody2D enemy = other.GetComponent<Rigidbody2D>();
-            if(enemy != null)
+            GameObject enemy = other.gameObject;
+            Rigidbody2D rb2d = enemy.GetComponent<Rigidbody2D>();
+            if(rb2d != null)
             {
-                /*enemy.isKinematic = false;
+                rb2d.isKinematic = false;
                 Vector2 difference = enemy.transform.position - transform.position;
                 difference = difference.normalized * thrust;
-                enemy.AddForce(difference * 1000f, ForceMode2D.Impulse);
-                enemy.isKinematic = true;*/
+                Debug.Log("hey");
+                //enemy.MovePosition(other.gameObject.transform.position + difference * Time.deltaTime);
+                rb2d.AddForce(difference * 1000, ForceMode2D.Impulse);
+                rb2d.isKinematic = true;
             }
         }  
     }
