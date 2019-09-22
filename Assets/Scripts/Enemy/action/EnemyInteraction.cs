@@ -19,9 +19,7 @@ public class EnemyInteraction : MonoBehaviour
         
         Vector2 difference = player.transform.position - transform.position;
         difference = difference.normalized * _thrust;
-
-        player.GetComponent<PlayerController>().enabled = false;
-        player.GetComponent<MovingObject>().enabled = false;
+        ChangePlayerState(player);
         player.AddForce(difference, ForceMode2D.Impulse);
         StartCoroutine((KnockCo(player)));
     }
@@ -31,7 +29,28 @@ public class EnemyInteraction : MonoBehaviour
         yield return new WaitForSeconds(_knockTime);
 
         player.velocity = Vector2.zero;
-        player.GetComponent<PlayerController>().enabled = true;
-        player.GetComponent<MovingObject>().enabled = true;
+        ChangePlayerState(player);
+    }
+
+    private void ChangePlayerState(Rigidbody2D player)
+    {
+        if (player.GetComponent<PlayerController>().enabled == true)
+        {
+            player.GetComponent<MovingObject>().currentState = ObjectState.knockBack;
+
+            player.GetComponent<PlayerController>().enabled = false;
+            player.GetComponent<MovingObject>().enabled = false;
+
+            player.GetComponent<Animator>().SetBool("Moving", false);
+            player.GetComponent<Animator>().SetBool("KnockBacking", true);
+        }
+        else
+        {
+            player.GetComponent<PlayerController>().enabled = true;
+            player.GetComponent<MovingObject>().enabled = true;
+
+            player.GetComponent<Animator>().SetBool("KnockBacking", false);
+            player.GetComponent<MovingObject>().currentState = ObjectState.idle;
+        }
     }
 }

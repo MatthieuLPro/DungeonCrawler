@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public enum ObjectState{
+    idle,
     walk,
-    attack
+    attack,
+    knockBack
 }
 
 public abstract class MovingObject : MonoBehaviour
@@ -24,7 +26,7 @@ public abstract class MovingObject : MonoBehaviour
 
     protected virtual void Start()
     {
-        currentState = ObjectState.walk;
+        currentState = ObjectState.idle;
         anime =        GetComponent<Animator>();
         rb2d =         GetComponent<Rigidbody2D>();
     }
@@ -50,6 +52,7 @@ public abstract class MovingObject : MonoBehaviour
 
     protected void AnimationIdle(){
         anime.SetBool("Moving", false);
+        currentState = ObjectState.idle;
     }
 
     protected void AnimationMovement()
@@ -57,5 +60,6 @@ public abstract class MovingObject : MonoBehaviour
         anime.SetFloat("DirectionX", changePos.x);
         anime.SetFloat("DirectionY", changePos.y);
         anime.SetBool("Moving", true);
+        currentState = ObjectState.walk;
     }
 }

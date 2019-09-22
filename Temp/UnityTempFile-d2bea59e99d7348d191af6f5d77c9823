@@ -301,6 +301,7 @@
 /define:CSHARP_7_OR_LATER
 /define:CSHARP_7_3_OR_NEWER
 "Assets/Scripts/Camera/Camera.cs"
+"Assets/Scripts/DebugMachine.cs"
 "Assets/Scripts/Enemy/action/EnemyController.cs"
 "Assets/Scripts/Enemy/action/EnemyInteraction.cs"
 "Assets/Scripts/Enemy/Enemy.cs"

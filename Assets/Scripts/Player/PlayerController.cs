@@ -37,7 +37,7 @@ public class PlayerController : MovingObject
         anime.SetBool("Attacking", false);
         yield return new WaitForSeconds(.44f);
 
-        currentState = ObjectState.walk;
+        currentState = ObjectState.idle;
     }
 
     private void DiagonalAttack()
