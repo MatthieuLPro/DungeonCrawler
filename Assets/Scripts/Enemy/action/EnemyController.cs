@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemyController : MovingObject
 {
-    // AI
+    // Behaviour
     [SerializeField]
     private bool _enableDiagonal    = true,
                  _enableHunt        = false;

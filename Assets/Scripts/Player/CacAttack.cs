@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class CacAttack : MonoBehaviour
 {
-    [SerializeField]
-    private float thrust = 0.2f;
+    //[SerializeField]
+    //private float thrust = 0.2f;
 
     // Should add DamagePower
 
@@ -13,7 +13,7 @@ public class CacAttack : MonoBehaviour
     {   
         if(other.CompareTag("ItemDestructible"))
             other.GetComponent<DestructibleItem>().Smash();
-        else if (other.CompareTag("Enemy"))
-            other.GetComponent<KnockBack>().MoveAfterAttack(thrust);
+        //else if (other.CompareTag("Enemy"))
+        //    other.GetComponent<KnockBack>().MoveAfterAttack(thrust);
     }
 }
