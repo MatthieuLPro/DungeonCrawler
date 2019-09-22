@@ -7,6 +7,14 @@ public class EnemyInteraction : MonoBehaviour
     [SerializeField]
     private float _knockTime    = 1f,
                   _thrust       = 1f;
+    
+    [SerializeField]
+    private int _damage = 1;
+
+    [SerializeField]
+    // 0 => Deal life damage
+    // 1 => Deal mana damage
+    private int _typeDamage = 0;
 
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -20,6 +28,7 @@ public class EnemyInteraction : MonoBehaviour
         Vector2 difference = player.transform.position - transform.position;
         difference = difference.normalized * _thrust;
         ChangePlayerState(player);
+        ChangePlayerLifeOrMana(player);
         player.AddForce(difference, ForceMode2D.Impulse);
         StartCoroutine((KnockCo(player)));
     }
@@ -52,5 +61,13 @@ public class EnemyInteraction : MonoBehaviour
             player.GetComponent<Animator>().SetBool("KnockBacking", false);
             player.GetComponent<MovingObject>().currentState = ObjectState.idle;
         }
+    }
+
+    private void ChangePlayerLifeOrMana(Rigidbody2D player)
+    {
+        if (_typeDamage == 0)
+            player.GetComponent<Player>().LooseLife(_damage);
+        else
+            player.GetComponent<Player>().LooseMana(_damage);
     }
 }

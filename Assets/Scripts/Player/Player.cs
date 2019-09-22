@@ -8,17 +8,20 @@ public class Player : MonoBehaviour
     public int mana = 5;
     public int gold = 0;
 
-    public void DamageMana(Vector3 knockBackDir, float knockBackDistance, int damage)
-    {
-        transform.position += knockBackDir * knockBackDistance;
-        ManaUI.manaSystemStatic.ChangeMana(damage * -1);
-    }
 
-    public void Heal(int heal){
+    public void GetLife(int heal){
         HeartsHealthUI.heartsHealthSystemStatic.Heal(heal);
     }
-    
-    public void HealMana(int heal){
+
+    public void LooseLife(int damage){
+        HeartsHealthUI.heartsHealthSystemStatic.Damage(damage);
+    }
+
+    public void GetMana(int heal){
         ManaUI.manaSystemStatic.ChangeMana(heal);
+    }
+
+    public void LooseMana(int damage){
+        ManaUI.manaSystemStatic.ChangeMana(damage * -1);
     }
 }

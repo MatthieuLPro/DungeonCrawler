@@ -12,7 +12,7 @@ public class Heal_mana : MonoBehaviour
         Player player = other.GetComponent<Player>();
         if(player != null)
         {
-            player.HealMana(_heal);
+            player.GetMana(_heal);
             Destroy(gameObject);
         }     
     }

@@ -59,8 +59,7 @@
      <Compile Include="Assets\Scripts\Enemy\action\EnemyInteraction.cs" />
      <Compile Include="Assets\Scripts\Enemy\Enemy.cs" />
      <Compile Include="Assets\Scripts\Enemy\enemy_list\Skeleton.cs" />
-     <Compile Include="Assets\Scripts\Enemy\trap\Trap.cs" />
-     <Compile Include="Assets\Scripts\Enemy\trap\Trap_mana.cs" />
+     <Compile Include="Assets\Scripts\Enemy\enemy_list\Trap.cs" />
      <Compile Include="Assets\Scripts\General\MovingObject.cs" />
      <Compile Include="Assets\Scripts\Item\DestructibleItem.cs" />
      <Compile Include="Assets\Scripts\Item\Heal_mana.cs" />
