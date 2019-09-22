@@ -6,7 +6,8 @@ public enum ObjectState{
     idle,
     walk,
     attack,
-    knockBack
+    knockBack,
+    carry
 }
 
 public abstract class MovingObject : MonoBehaviour
@@ -52,7 +53,8 @@ public abstract class MovingObject : MonoBehaviour
 
     protected void AnimationIdle(){
         anime.SetBool("Moving", false);
-        currentState = ObjectState.idle;
+        if (currentState != ObjectState.carry)
+            currentState = ObjectState.idle;
     }
 
     protected void AnimationMovement()
@@ -60,6 +62,9 @@ public abstract class MovingObject : MonoBehaviour
         anime.SetFloat("DirectionX", changePos.x);
         anime.SetFloat("DirectionY", changePos.y);
         anime.SetBool("Moving", true);
+        if (currentState == ObjectState.carry)
+            return;
+
         currentState = ObjectState.walk;
     }
 }

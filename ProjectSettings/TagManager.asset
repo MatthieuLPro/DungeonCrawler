@@ -8,6 +8,7 @@ TagManager:
   - Enemy
   - ItemDestructible
   - Trap
+  - Pot
   layers:
   - Default
   - TransparentFX

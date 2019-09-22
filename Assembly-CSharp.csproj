@@ -64,8 +64,10 @@
      <Compile Include="Assets\Scripts\Item\DestructibleItem.cs" />
      <Compile Include="Assets\Scripts\Item\Heal_mana.cs" />
      <Compile Include="Assets\Scripts\Item\Heart.cs" />
+     <Compile Include="Assets\Scripts\Item\Pot.cs" />
      <Compile Include="Assets\Scripts\Player\Action\CacAttack.cs" />
      <Compile Include="Assets\Scripts\Player\Action\PlayerController.cs" />
+     <Compile Include="Assets\Scripts\Player\Action\PlayerInteraction.cs" />
      <Compile Include="Assets\Scripts\Player\Player.cs" />
      <Compile Include="Assets\Scripts\UI\System\HeartsHealthSystem.cs" />
      <Compile Include="Assets\Scripts\UI\System\ManaSystem.cs" />

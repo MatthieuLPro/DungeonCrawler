@@ -8,7 +8,6 @@ public class Player : MonoBehaviour
     public int mana = 5;
     public int gold = 0;
 
-
     public void GetLife(int heal){
         HeartsHealthUI.heartsHealthSystemStatic.Heal(heal);
     }
