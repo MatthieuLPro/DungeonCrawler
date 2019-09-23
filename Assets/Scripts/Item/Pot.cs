@@ -25,15 +25,14 @@ public class Pot : MonoBehaviour
 
         _open = true;
         GetComponent<SpriteRenderer>().sprite = _spriteEmpty;
-        while(gameObject.GetComponent<BoxCollider2D>() != null)
-            Destroy(gameObject.GetComponent<BoxCollider2D>());
-        //foreach (var box in gameObject.GetComponents<BoxCollider2D>())
-        //    Destroy(box);
+        foreach (var box in gameObject.GetComponents<BoxCollider2D>())
+            Destroy(box);
     }
 
-    public void GetThePot()
+    public void GetThePot(GameObject player)
     {
-        Instantiate(_myPrefab, new Vector3(0, 0, 0), Quaternion.identity);
+        Vector3 potCoord = player.transform.position + new Vector3(0, 0.1f, 0);
+        Instantiate(_myPrefab, potCoord, Quaternion.identity);
     }
 
 }

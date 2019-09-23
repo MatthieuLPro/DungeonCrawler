@@ -63,7 +63,7 @@ public class PlayerController : MovingObject
         anime.SetBool("Carrying", true);
         currentState = ObjectState.carry;
 
-        myObject.GetComponent<Pot>().GetThePot();
+        myObject.GetComponent<Pot>().GetThePot(this.gameObject);
     }
 
     private IEnumerator ThrowObject()

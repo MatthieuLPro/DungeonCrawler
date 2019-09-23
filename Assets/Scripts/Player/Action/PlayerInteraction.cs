@@ -11,10 +11,9 @@ public class PlayerInteraction : MonoBehaviour
     {
         if (Input.GetButtonDown("Carry") && _playerInRange == true)
         {
-            Debug.Log(interactObject);
+            GameObject temp = interactObject;
             interactObject.GetComponent<Pot>().OpenThePot();
-            Debug.Log(interactObject);
-            GetComponent<PlayerController>().CarryObject(interactObject);
+            GetComponent<PlayerController>().CarryObject(temp);
         }
     }
     

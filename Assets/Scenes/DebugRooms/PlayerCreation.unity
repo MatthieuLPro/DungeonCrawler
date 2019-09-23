@@ -1160,6 +1160,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _spriteEmpty: {fileID: 21300002, guid: 70d99650a693faa9aa4322130d1156e6, type: 3}
+  _myPrefab: {fileID: 7730699900740749454, guid: 451ab8254094accaf86f47babc0dd9c9,
+    type: 3}
 --- !u!1 &1225215370 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100000, guid: 20f81c72b8bb44943a5d779446e59c74,
