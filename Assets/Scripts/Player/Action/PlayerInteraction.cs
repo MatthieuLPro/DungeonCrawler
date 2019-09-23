@@ -11,10 +11,10 @@ public class PlayerInteraction : MonoBehaviour
     {
         if (Input.GetButtonDown("Carry") && _playerInRange == true)
         {
+            Debug.Log(interactObject);
             interactObject.GetComponent<Pot>().OpenThePot();
-            GetComponent<Animator>().SetBool("Moving", false);
-            GetComponent<Animator>().SetBool("Carrying", true);
-            GetComponent<MovingObject>().currentState = ObjectState.carry;
+            Debug.Log(interactObject);
+            GetComponent<PlayerController>().CarryObject(interactObject);
         }
     }
     

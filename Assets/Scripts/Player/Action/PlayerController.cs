@@ -19,6 +19,8 @@ public class PlayerController : MovingObject
 
     public override void MainController()
     {
+        if ((Input.GetButtonDown("Attack") || Input.GetButtonDown("Carry")) && currentState == ObjectState.carry)
+            StartCoroutine(ThrowObject());
         if (Input.GetButtonDown("Attack") && currentState != ObjectState.attack)
             StartCoroutine(MainAttack());
         else if (changePos != Vector3.zero && currentState != ObjectState.attack)
@@ -53,5 +55,22 @@ public class PlayerController : MovingObject
 
         anime.SetFloat("DirectionX", animDirectionX);
         anime.SetFloat("DirectionY", animDirectionY);
+    }
+
+    public void CarryObject(GameObject myObject)
+    {
+        anime.SetBool("Moving", false);
+        anime.SetBool("Carrying", true);
+        currentState = ObjectState.carry;
+
+        myObject.GetComponent<Pot>().GetThePot();
+    }
+
+    private IEnumerator ThrowObject()
+    {
+        yield return new WaitForSeconds(.2f);
+
+        anime.SetBool("Carrying", false);
+        currentState = ObjectState.idle;
     }
 }
