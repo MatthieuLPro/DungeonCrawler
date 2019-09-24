@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PlayerController : MovingObject
 {
+    public bool isWalking;
+
     void FixedUpdate()
     {
         PlayerDirection();
@@ -15,6 +17,7 @@ public class PlayerController : MovingObject
         changePos = Vector3.zero;
         changePos.x = Input.GetAxisRaw("Horizontal");
         changePos.y = Input.GetAxisRaw("Vertical");
+        isWalking = (changePos.x != 0 || changePos.y != 0);
     }
 
     public override void MainController()

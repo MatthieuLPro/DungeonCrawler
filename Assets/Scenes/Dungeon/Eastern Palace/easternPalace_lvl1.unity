@@ -8371,6 +8371,12 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 730841622}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &512714571 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5456299736217595387, guid: 88cf9e71b5e6d186195098230c89d76f,
+    type: 3}
+  m_PrefabInstance: {fileID: 730841622}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &602616186
 GameObject:
   m_ObjectHideFlags: 0
@@ -28138,6 +28144,10 @@ MonoBehaviour:
   _xMaxLimit: 1000
   _yMinLimit: -1000
   _yMaxLimit: 1000
+  _cameraHeight: 0
+  _cameraWidth: 0
+  target: {fileID: 512714571}
+  smoothTime: 0.3
 --- !u!20 &2027663929
 Camera:
   m_ObjectHideFlags: 0
@@ -28163,7 +28173,7 @@ Camera:
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 60
-  orthographic: 0
+  orthographic: 1
   orthographic size: 5
   m_Depth: 0
   m_CullingMask:
@@ -28308,6 +28318,26 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Enabled
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2516413664801164286, guid: 778d1ec68cd445b439b1883d2403f5ed,
+        type: 3}
+      propertyPath: m_Points.Array.data[0].x
+      value: -3.4826639
+      objectReference: {fileID: 0}
+    - target: {fileID: 2516413664801164286, guid: 778d1ec68cd445b439b1883d2403f5ed,
+        type: 3}
+      propertyPath: m_Points.Array.data[0].y
+      value: 8.962499
+      objectReference: {fileID: 0}
+    - target: {fileID: 2516413664801164286, guid: 778d1ec68cd445b439b1883d2403f5ed,
+        type: 3}
+      propertyPath: m_Points.Array.data[1].x
+      value: 23.487305
+      objectReference: {fileID: 0}
+    - target: {fileID: 2516413664801164286, guid: 778d1ec68cd445b439b1883d2403f5ed,
+        type: 3}
+      propertyPath: m_Points.Array.data[1].y
+      value: 9.046329
       objectReference: {fileID: 0}
     - target: {fileID: 2111984599079715748, guid: 778d1ec68cd445b439b1883d2403f5ed,
         type: 3}
