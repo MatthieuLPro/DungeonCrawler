@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4561985329801132622}
   - component: {fileID: 73796212622368085}
+  - component: {fileID: 8536632543139224555}
   m_Layer: 0
   m_Name: ItemPotHold
   m_TagString: Untagged
@@ -79,3 +80,17 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &8536632543139224555
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7730699900740749454}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba624d2e47a7cd0138ec253180c41dc2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _carrier: {fileID: 5456299736217595384, guid: 88cf9e71b5e6d186195098230c89d76f,
+    type: 3}

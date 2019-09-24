@@ -32,7 +32,8 @@ public class Pot : MonoBehaviour
     public void GetThePot(GameObject player)
     {
         Vector3 potCoord = player.transform.position + new Vector3(0, 0.1f, 0);
-        Instantiate(_myPrefab, potCoord, Quaternion.identity);
+        GameObject newPrefab = Instantiate(_myPrefab, potCoord, Quaternion.identity);
+        newPrefab.GetComponent<CarryItem>().SetCarrier(player);
     }
 
 }
