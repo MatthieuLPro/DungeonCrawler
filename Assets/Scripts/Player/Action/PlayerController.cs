@@ -19,7 +19,8 @@ public class PlayerController : MovingObject
 
     public override void MainController()
     {
-        if ((Input.GetButtonDown("Attack") || Input.GetButtonDown("Carry")) && currentState == ObjectState.carry)
+        if ((Input.GetButtonDown("Attack") || Input.GetButtonDown("Carry")) &&
+             currentState == ObjectState.carry)
             StartCoroutine(ThrowObject());
         if (Input.GetButtonDown("Attack") && currentState != ObjectState.attack)
             StartCoroutine(MainAttack());
@@ -68,9 +69,7 @@ public class PlayerController : MovingObject
 
     private IEnumerator ThrowObject()
     {
-        yield return new WaitForSeconds(.2f);
-
-        anime.SetBool("Carrying", false);
         currentState = ObjectState.idle;
+        yield return new WaitForSeconds(0.5f);
     }
 }

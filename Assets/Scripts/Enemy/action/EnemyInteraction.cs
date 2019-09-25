@@ -5,7 +5,7 @@ using UnityEngine;
 public class EnemyInteraction : MonoBehaviour
 {
     [SerializeField]
-    private float _knockTime    = 1f,
+    private float _knockTime    = 0.3f,
                   _thrust       = 1f;
     
     [SerializeField]
