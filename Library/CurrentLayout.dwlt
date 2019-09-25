@@ -116,7 +116,7 @@ MonoBehaviour:
   m_MinSize: {x: 917, y: 348}
   m_MaxSize: {x: 22012, y: 10024}
   vertical: 0
-  controlID: 29
+  controlID: 151
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -167,7 +167,7 @@ MonoBehaviour:
   m_MinSize: {x: 204, y: 348}
   m_MaxSize: {x: 4004, y: 8048}
   vertical: 1
-  controlID: 52
+  controlID: 56
 --- !u!114 &8
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -443,7 +443,7 @@ MonoBehaviour:
   m_Position:
     m_Target: {x: -0.20422904, y: -0.5104369, z: -0.016579647}
     speed: 2
-    m_Value: {x: 0, y: -1.2, z: 0}
+    m_Value: {x: -0.20422904, y: -0.5104369, z: -0.016579647}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -477,7 +477,7 @@ MonoBehaviour:
   m_Size:
     m_Target: 2.119254
     speed: 2
-    m_Value: 0.49828917
+    m_Value: 2.119254
   m_Ortho:
     m_Target: 1
     speed: 2
@@ -827,9 +827,9 @@ MonoBehaviour:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 96160000
-    m_LastClickedID: 5782
-    m_ExpandedIDs: 00000000a2090000f40a000000ca9a3b
+    m_SelectedIDs: 9c160000
+    m_LastClickedID: 5788
+    m_ExpandedIDs: 00000000a809000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -857,7 +857,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000a2090000f40a0000
+    m_ExpandedIDs: 00000000a8090000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -884,7 +884,7 @@ MonoBehaviour:
   m_ListAreaState:
     m_SelectedInstanceIDs: 
     m_LastClickedInstanceID: 0
-    m_HadKeyboardFocusLastEvent: 1
+    m_HadKeyboardFocusLastEvent: 0
     m_ExpandedInstanceIDs: 56280000620a00006e0e00007c0e000000000000e0430000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
@@ -901,7 +901,7 @@ MonoBehaviour:
       m_IsRenaming: 0
       m_OriginalEventType: 11
       m_IsRenamingFilename: 1
-      m_ClientGUIView: {fileID: 10}
+      m_ClientGUIView: {fileID: 0}
     m_CreateAssetUtility:
       m_EndAction: {fileID: 0}
       m_InstanceID: 0

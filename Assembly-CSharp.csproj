@@ -61,6 +61,7 @@
      <Compile Include="Assets\Scripts\Enemy\enemy_list\Skeleton.cs" />
      <Compile Include="Assets\Scripts\Enemy\enemy_list\Trap.cs" />
      <Compile Include="Assets\Scripts\General\MovingObject.cs" />
+     <Compile Include="Assets\Scripts\Item\CarryItem.cs" />
      <Compile Include="Assets\Scripts\Item\DestructibleItem.cs" />
      <Compile Include="Assets\Scripts\Item\Heal_mana.cs" />
      <Compile Include="Assets\Scripts\Item\Heart.cs" />
