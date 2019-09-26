@@ -37,7 +37,7 @@ public class CarryObject : MonoBehaviour
     {
         Vector3 ObjectCoord = player.transform.position + new Vector3(0, 0.1f, 0);
         GameObject newPrefab = Instantiate(_myPrefab, ObjectCoord, Quaternion.identity);
-        newPrefab.GetComponent<CarryItem>().SetCarrier(player);
+        newPrefab.GetComponent<HoldThrowObject>().SetCarrier(player);
     }
 
     private void GenerateCollectible()

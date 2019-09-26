@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CarryItem : MonoBehaviour
+public class HoldThrowObject : MonoBehaviour
 {
     private GameObject  _carrier = null;
     private Animator    _anime;
