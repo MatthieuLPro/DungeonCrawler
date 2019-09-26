@@ -11,7 +11,7 @@ public class CacAttack : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {   
-        if(other.CompareTag("ItemDestructible"))
+        if(ObjectIsDestructible(other.gameObject) == true)
             other.GetComponent<DestructibleItem>().Smash();
         else if (other.CompareTag("Enemy"))
         {
@@ -59,5 +59,18 @@ public class CacAttack : MonoBehaviour
             //enemy.GetComponent<Animator>().SetBool("KnockBacking", false);
             enemy.GetComponent<MovingObject>().currentState = ObjectState.idle;
         }
+    }
+
+    private bool ObjectIsDestructible(GameObject objectToCheck)
+    {
+        if (objectToCheck.CompareTag("ObjectDestructible"))
+            return true;
+        
+        foreach (Transform child in objectToCheck.transform)
+        {
+            if (child.CompareTag("ObjectDestructible"))
+                return true;
+        }
+        return false;
     }
 }
