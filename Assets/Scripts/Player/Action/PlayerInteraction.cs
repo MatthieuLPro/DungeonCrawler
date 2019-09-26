@@ -12,7 +12,7 @@ public class PlayerInteraction : MonoBehaviour
         if (Input.GetButtonDown("Carry") && _playerInRange == true)
         {
             GameObject temp = interactObject;
-            interactObject.GetComponent<Pot>().OpenThePot();
+            interactObject.GetComponent<CarryObject>().OpenTheObject();
             GetComponent<PlayerController>().CarryObject(temp);
         }
     }
@@ -22,7 +22,7 @@ public class PlayerInteraction : MonoBehaviour
         if (GetComponent<Animator>().GetBool("Carrying") == true)
             return;
 
-        if (RigidBodyVerification(other) == false)
+        if (ObjectVerification(other) == false)
             return;
         
         interactObject = other.gameObject;
@@ -31,7 +31,7 @@ public class PlayerInteraction : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D other)
     {
-        if (RigidBodyVerification(other) == false)
+        if (ObjectVerification(other) == false)
             return;
         
         interactObject = null;
@@ -39,13 +39,9 @@ public class PlayerInteraction : MonoBehaviour
         
     }
 
-    private bool RigidBodyVerification(Collider2D other)
+    private bool ObjectVerification(Collider2D other)
     {
-        if (!other.CompareTag("Pot"))
-            return false;
-
-        Rigidbody2D pot = other.GetComponent<Rigidbody2D>();
-        if (pot != null)
+        if (!other.CompareTag("ObjectCarry") || other == null)
             return false;
         
         return true;
