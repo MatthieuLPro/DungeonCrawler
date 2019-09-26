@@ -19,6 +19,9 @@ public class PlayerInteraction : MonoBehaviour
     
     private void OnTriggerEnter2D(Collider2D other)
     {
+        if (GetComponent<Animator>().GetBool("Carrying") == true)
+            return;
+
         if (RigidBodyVerification(other) == false)
             return;
         

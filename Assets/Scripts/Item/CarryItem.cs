@@ -6,10 +6,11 @@ public class CarryItem : MonoBehaviour
 {
     private GameObject  _carrier = null;
     private Animator    _anime;
-    private float       _speed = 1.0f;
+    private float       _speed = 2.0f;
     private Vector3     _direction;
 
-    public void SetCarrier(GameObject carrier){
+    public void SetCarrier(GameObject carrier)
+    {
         _carrier = carrier;
         _anime = _carrier.GetComponent<Animator>();
     }
@@ -35,13 +36,14 @@ public class CarryItem : MonoBehaviour
     private IEnumerator ThrowItem()
     {
         _anime.SetBool("Carrying", false);
-        yield return new WaitForSeconds(1.0f);
+        yield return new WaitForSeconds(0.4f);
 
         Destroy(gameObject);
     }
 
     private void Throw()
     {
+        gameObject.AddComponent<BoxCollider2D>();
         gameObject.GetComponent<Rigidbody2D>().MovePosition(transform.position + _direction * _speed * Time.deltaTime);
         if (_speed > 0)
             _speed -= 0.01f;
