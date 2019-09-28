@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5456299736111474689}
   - component: {fileID: 5456299736111474690}
+  - component: {fileID: 6707404119121326244}
   m_Layer: 0
   m_Name: HitBoxTop
   m_TagString: Untagged
@@ -65,6 +66,20 @@ PolygonCollider2D:
       - {x: -0.07623647, y: -0.032567486}
       - {x: 0.12412377, y: -0.031796943}
       - {x: 0.12244336, y: -0.0008639917}
+--- !u!114 &6707404119121326244
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5456299736111474688}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 65197115baecd7d109d3be2a8f7314cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _knockTime: 0.25
+  _thrust: 1
 --- !u!1 &5456299736217595384
 GameObject:
   m_ObjectHideFlags: 0
@@ -79,6 +94,8 @@ GameObject:
   - component: {fileID: 5456299736217595382}
   - component: {fileID: 5456299736217595381}
   - component: {fileID: 5456299736217595385}
+  - component: {fileID: 8745972031723384951}
+  - component: {fileID: 5284741816673358575}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -231,9 +248,42 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 1
+  _flashColor: {r: 1, g: 1, b: 1, a: 0}
+  _regularColor: {r: 1, g: 1, b: 1, a: 1}
+  _flashDuration: 0.04
+  _nbFlash: 8
+  _hurtBox: {fileID: 5456299736217595382}
+  _sprite: {fileID: 5456299736217595386}
   changePos: {x: 0, y: 0, z: 0}
   currentState: 0
   anime: {fileID: 0}
+--- !u!114 &8745972031723384951
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5456299736217595384}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c31c18bc4552447887ead20c45d4797, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &5284741816673358575
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5456299736217595384}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76c0321389a4ed7ef8a76e6b7fb78c8d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 5
+  mana: 5
+  gold: 0
 --- !u!1 &5456299736453510584
 GameObject:
   m_ObjectHideFlags: 0
@@ -244,6 +294,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5456299736453510585}
   - component: {fileID: 5456299736453510586}
+  - component: {fileID: 6472245862298064932}
   m_Layer: 0
   m_Name: HitBoxBot
   m_TagString: Untagged
@@ -300,6 +351,20 @@ PolygonCollider2D:
       - {x: 0.12871407, y: -0.15385617}
       - {x: 0.16809131, y: -0.0361489}
       - {x: 0.08554642, y: 0.013469288}
+--- !u!114 &6472245862298064932
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5456299736453510584}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 65197115baecd7d109d3be2a8f7314cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _knockTime: 0.25
+  _thrust: 1
 --- !u!1 &5456299736535720899
 GameObject:
   m_ObjectHideFlags: 0
@@ -310,6 +375,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5456299736535720924}
   - component: {fileID: 5456299736535720925}
+  - component: {fileID: 4565779193540849057}
   m_Layer: 0
   m_Name: HitBoxLeft
   m_TagString: Untagged
@@ -366,6 +432,20 @@ PolygonCollider2D:
       - {x: 0.026666319, y: -0.065097794}
       - {x: 0.023645446, y: -0.04550425}
       - {x: 0.00012783706, y: 0.05716095}
+--- !u!114 &4565779193540849057
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5456299736535720899}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 65197115baecd7d109d3be2a8f7314cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _knockTime: 0.25
+  _thrust: 1
 --- !u!1 &5456299737305526489
 GameObject:
   m_ObjectHideFlags: 0
@@ -376,6 +456,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5456299737305526490}
   - component: {fileID: 5456299737305526491}
+  - component: {fileID: 2309820290759006412}
   m_Layer: 0
   m_Name: HitBotRight
   m_TagString: Untagged
@@ -431,3 +512,17 @@ PolygonCollider2D:
       - {x: 0.15811324, y: 0.029188357}
       - {x: 0.121447116, y: 0.101376355}
       - {x: 0.048171565, y: 0.13333145}
+--- !u!114 &2309820290759006412
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5456299737305526489}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 65197115baecd7d109d3be2a8f7314cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _knockTime: 0.25
+  _thrust: 1

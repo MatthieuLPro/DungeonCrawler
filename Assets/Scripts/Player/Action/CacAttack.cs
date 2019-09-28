@@ -5,6 +5,7 @@ using UnityEngine;
 public class CacAttack : MonoBehaviour
 {
     // _KnockTime has to be < MainAttack Time
+    [Header("Attack parameters")]
     [SerializeField]
     private float _knockTime    = 0.25f,
                   _thrust       = 1f;

@@ -4,12 +4,13 @@ using UnityEngine;
 
 public class EnemyController : MovingObject
 {
-    // Behaviour
+    [Header("Enemy AI")]
     [SerializeField]
-    private bool _enableDiagonal    = true,
-                 _enableHunt        = false;
+    private bool _enableDiagonal = true;
+    [SerializeField]
+    private bool _enableHunt = false;
 
-    // Characteristics
+    [Header("Enemy Movement parameters")]
     [SerializeField]
     private int _movementLength = 50;
 

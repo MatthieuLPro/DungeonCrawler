@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class EnemyInteraction : MonoBehaviour
 {
+    [Header("Enemy Attack parameters")]
     [SerializeField]
-    private float _knockTime    = 0.3f,
-                  _thrust       = 1f;
-    
+    private float _knockTime    = 0.3f;
+    [SerializeField]
+    private float _thrust       = 1f;    
     [SerializeField]
     private int _damage = 1;
-
     [SerializeField]
     // 0 => Deal life damage
     // 1 => Deal mana damage
@@ -35,6 +35,7 @@ public class EnemyInteraction : MonoBehaviour
 
     private IEnumerator KnockCo(Rigidbody2D player)
     {
+        StartCoroutine(player.GetComponent<PlayerController>().FlashCo());
         yield return new WaitForSeconds(_knockTime);
 
         player.velocity = Vector2.zero;

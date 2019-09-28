@@ -6,9 +6,10 @@ TagManager:
   tags:
   - CameraBorder
   - Enemy
-  - ItemDestructible
   - Trap
   - Pot
+  - ObjectCarry
+  - ObjectDestructible
   layers:
   - Default
   - TransparentFX

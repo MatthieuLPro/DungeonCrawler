@@ -12,7 +12,16 @@ public enum ObjectState{
 
 public abstract class MovingObject : MonoBehaviour
 {
+    [Header("General Movement parameters")]
     public float   speed;
+
+    [Header("General Knockback parameters")]
+    public Color _flashColor;
+    public Color _regularColor;
+    public float _flashDuration;
+    public int _nbFlash;
+    public BoxCollider2D _hurtBox;
+    public SpriteRenderer _sprite;
 
     [HideInInspector]
     public Vector3     changePos;
@@ -23,13 +32,13 @@ public abstract class MovingObject : MonoBehaviour
     [HideInInspector]
     public Animator    anime;
 
-    private Rigidbody2D   rb2d;
+    private Rigidbody2D   _rb2d;
 
     protected virtual void Start()
     {
         currentState = ObjectState.idle;
         anime =        GetComponent<Animator>();
-        rb2d =         GetComponent<Rigidbody2D>();
+        _rb2d =         GetComponent<Rigidbody2D>();
     }
 
     public virtual void MainController()
@@ -47,7 +56,7 @@ public abstract class MovingObject : MonoBehaviour
     protected void MoveObject()
     {
         changePos.Normalize();
-        rb2d.MovePosition(transform.position + changePos * speed * Time.deltaTime);
+        _rb2d.MovePosition(transform.position + changePos * speed * Time.deltaTime);
         AnimationMovement();
     }
 
@@ -66,5 +75,20 @@ public abstract class MovingObject : MonoBehaviour
             return;
 
         currentState = ObjectState.walk;
+    }
+
+    public IEnumerator FlashCo()
+    {
+        int temp = 0;
+        _hurtBox.enabled = false;
+        while(temp < _nbFlash)
+        {
+            _sprite.color = _flashColor;
+            yield return new WaitForSeconds(_flashDuration);
+            _sprite.color = _regularColor;
+            yield return new WaitForSeconds(_flashDuration);
+            temp++;
+        }
+        _hurtBox.enabled = true;
     }
 }

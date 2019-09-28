@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    [Header("Player parameters")]
     public int health = 5;
     public int mana = 5;
     public int gold = 0;
