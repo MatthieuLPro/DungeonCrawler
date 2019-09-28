@@ -20,8 +20,7 @@ public class HeartsHealthSystem
         }
     }
 
-    public List<Heart> GetHeartList()
-    {
+    public List<Heart> GetHeartList(){
         return heartList;
     }
 
@@ -66,6 +65,14 @@ public class HeartsHealthSystem
                 return (i);
         }
         return (0);
+    }
+
+    public bool HeartEmpty()
+    {
+        if (heartList[0].GetValue() == 0)
+            return true;
+
+        return false;
     }
 
     public class Heart

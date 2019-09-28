@@ -24,4 +24,8 @@ public class Player : MonoBehaviour
     public void LooseMana(int damage){
         ManaUI.manaSystemStatic.ChangeMana(damage * -1);
     }
+
+    public void IsDead(){
+        Destroy(GetComponent<PlayerController>());
+    }
 }

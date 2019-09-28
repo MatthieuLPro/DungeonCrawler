@@ -7,8 +7,17 @@ public class HeartsHealthUI : MonoBehaviour
 {
     public static HeartsHealthSystem heartsHealthSystemStatic;
 
+    [Header("Heart Sprites")]    
     [SerializeField]
-    private Sprite heartSpriteFull = null, heartSpriteMid = null, heartSpriteEmpty = null;
+    private Sprite heartSpriteFull = null;
+    [SerializeField]
+    private Sprite heartSpriteMid = null;
+    [SerializeField]
+    private Sprite heartSpriteEmpty = null;
+
+    [Header("Attached player")]
+    [SerializeField]
+    private GameObject player = null;
 
     private List<HeartImage> heartImageList;
     private HeartsHealthSystem heartsHealthSystem;
@@ -19,7 +28,7 @@ public class HeartsHealthUI : MonoBehaviour
 
     private void Start()
     {
-        HeartsHealthSystem heartsHealthSystem = new HeartsHealthSystem(3);
+        HeartsHealthSystem heartsHealthSystem = new HeartsHealthSystem(player.GetComponent<Player>().health);
         SetHeartsHealthSystem(heartsHealthSystem);
     }
 
@@ -67,6 +76,9 @@ public class HeartsHealthUI : MonoBehaviour
             HeartsHealthSystem.Heart heart = heartsHealthSystem.GetHeartList()[i];
             heartImage.SetValue(heart.GetValue());
         }
+
+        if (heartsHealthSystem.HeartEmpty() == true)
+            player.GetComponent<Player>().IsDead();
     }
 
     public class HeartImage
