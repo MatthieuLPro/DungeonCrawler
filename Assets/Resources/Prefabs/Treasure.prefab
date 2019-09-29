@@ -147,3 +147,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _open: {fileID: 21300058, guid: def82005d35b9c4e58c40e5e6a69fe31, type: 3}
+  loot: 0
+  _rubyGreen: {fileID: 21300018, guid: def82005d35b9c4e58c40e5e6a69fe31, type: 3}
+  _rubyBlue: {fileID: 21300024, guid: def82005d35b9c4e58c40e5e6a69fe31, type: 3}
+  _rubyRed: {fileID: 21300030, guid: def82005d35b9c4e58c40e5e6a69fe31, type: 3}
+  _rubyFift: {fileID: 21300050, guid: def82005d35b9c4e58c40e5e6a69fe31, type: 3}
+  _rubyHund: {fileID: 21300052, guid: def82005d35b9c4e58c40e5e6a69fe31, type: 3}
+  _rubyThreeHund: {fileID: 21300054, guid: def82005d35b9c4e58c40e5e6a69fe31, type: 3}
+  _smallKey: {fileID: 21300046, guid: def82005d35b9c4e58c40e5e6a69fe31, type: 3}
+  _bigKey: {fileID: 21300048, guid: def82005d35b9c4e58c40e5e6a69fe31, type: 3}
