@@ -10,23 +10,32 @@ public class CacAttack : MonoBehaviour
     private float _knockTime    = 0.25f,
                   _thrust       = 1f;
 
+    private bool _isColliding = false;
+    private bool _coIsRunning = false;
+
     private void OnTriggerEnter2D(Collider2D other)
     {   
+        Debug.Log("EnterTrigger");
+        if (_isColliding)
+            return;
+
+        _isColliding = true;
         if(ObjectIsDestructible(other.gameObject) == true)
             other.GetComponent<DestructibleItem>().Smash();
         else if (other.CompareTag("Enemy"))
         {
             Rigidbody2D enemy = other.GetComponent<Rigidbody2D>();
 
-            if (enemy == null)
+            if (enemy == null || _coIsRunning)
                 return;
 
+            _coIsRunning = true;
             Vector2 difference = enemy.transform.position - transform.position;
             difference = difference.normalized * _thrust;
             ChangeEnemyState(enemy);
             //ChangeEnemyLifeOrMana(enemy);
             enemy.AddForce(difference, ForceMode2D.Impulse);
-            StartCoroutine((KnockCo(enemy)));
+                StartCoroutine((KnockCo(enemy)));
         }
     }
 
@@ -36,6 +45,9 @@ public class CacAttack : MonoBehaviour
 
         enemy.velocity = Vector2.zero;
         ChangeEnemyState(enemy);
+        _isColliding = false;
+        _coIsRunning = false;
+        Debug.Log("Exit CoRoutine");
     }
 
     private void ChangeEnemyState(Rigidbody2D enemy)
@@ -49,7 +61,6 @@ public class CacAttack : MonoBehaviour
             enemy.GetComponent<MovingObject>().enabled = false;
 
             enemy.GetComponent<Animator>().SetBool("Moving", false);
-            //enemy.GetComponent<Animator>().SetBool("KnockBacking", true);
         }
         else
         {
@@ -57,7 +68,6 @@ public class CacAttack : MonoBehaviour
             enemy.GetComponent<EnemyInteraction>().enabled = true;
             enemy.GetComponent<MovingObject>().enabled = true;
 
-            //enemy.GetComponent<Animator>().SetBool("KnockBacking", false);
             enemy.GetComponent<MovingObject>().currentState = ObjectState.idle;
         }
     }

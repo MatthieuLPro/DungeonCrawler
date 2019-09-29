@@ -32,13 +32,14 @@ public abstract class MovingObject : MonoBehaviour
     [HideInInspector]
     public Animator    anime;
 
-    private Rigidbody2D   _rb2d;
+    [HideInInspector]
+    public Rigidbody2D   _rb2d;
 
     protected virtual void Start()
     {
         currentState = ObjectState.idle;
-        anime =        GetComponent<Animator>();
-        _rb2d =         GetComponent<Rigidbody2D>();
+        anime = GetComponent<Animator>();
+        _rb2d = GetComponent<Rigidbody2D>();
     }
 
     public virtual void MainController()

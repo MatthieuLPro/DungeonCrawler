@@ -164,6 +164,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 0.5
+  _flashColor: {r: 1, g: 0, b: 0.13828564, a: 1}
+  _regularColor: {r: 1, g: 1, b: 1, a: 0}
+  _flashDuration: 0.04
+  _nbFlash: 8
+  _hurtBox: {fileID: 5251591165870172414}
+  _sprite: {fileID: 5251591165870172412}
   changePos: {x: 0, y: 0, z: 0}
   currentState: 0
   anime: {fileID: 0}
