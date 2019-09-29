@@ -28,7 +28,7 @@ public class HeartsHealthUI : MonoBehaviour
 
     private void Start()
     {
-        HeartsHealthSystem heartsHealthSystem = new HeartsHealthSystem(player.GetComponent<Player>().health);
+        HeartsHealthSystem heartsHealthSystem = new HeartsHealthSystem(player.GetComponent<Player>().healthInit);
         SetHeartsHealthSystem(heartsHealthSystem);
     }
 

@@ -10,10 +10,10 @@ public class HeartsHealthSystem
 
     private List<Heart> heartList;
 
-    public HeartsHealthSystem(int heartAmount)
+    public HeartsHealthSystem(int heartInit)
     {
         heartList = new List<Heart>();
-        for(int i = 0; i < heartAmount; i++)
+        for(int i = 0; i < heartInit; i++)
         {
             Heart heart = new Heart(2);
             heartList.Add(heart);

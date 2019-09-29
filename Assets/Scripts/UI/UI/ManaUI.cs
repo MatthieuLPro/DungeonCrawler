@@ -13,9 +13,14 @@ public class ManaUI : MonoBehaviour
     private GameObject _manaBar;
     private ManaSystem _manaSystem;
 
+    [Header("Attached player")]
+    [SerializeField]
+    private GameObject player = null;
+
+
     private void Start(){
         _manaBar    = new GameObject("manaBar", typeof(Image));
-        _manaSystem = new ManaSystem();
+        _manaSystem = new ManaSystem(player.GetComponent<Player>().manaInit);
         ManaDisplay();
     }
 

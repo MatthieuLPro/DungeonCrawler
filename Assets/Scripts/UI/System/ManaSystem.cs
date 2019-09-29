@@ -10,8 +10,8 @@ public class ManaSystem
 
     private Mana _mana;
 
-    public ManaSystem(){
-        _mana = new Mana(34);
+    public ManaSystem(int manaInit){
+        _mana = new Mana(manaInit);
     }
 
     public int GetMana(){
