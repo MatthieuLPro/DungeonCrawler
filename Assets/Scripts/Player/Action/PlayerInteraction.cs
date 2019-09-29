@@ -12,8 +12,13 @@ public class PlayerInteraction : MonoBehaviour
         if (Input.GetButtonDown("Carry") && _playerInRange == true)
         {
             GameObject temp = interactObject;
-            interactObject.GetComponent<CarryObject>().OpenTheObject();
-            GetComponent<PlayerController>().CarryObject(temp);
+            if (temp.CompareTag("ObjectCarry"))
+            {
+                interactObject.GetComponent<CarryObject>().RaiseTheObject();
+                GetComponent<PlayerController>().CarryObject(temp);
+            }
+            else if (temp.CompareTag("ObjectOpen"))
+                interactObject.GetComponent<OpenObject>().OpenTheObject();
         }
     }
     
@@ -41,9 +46,12 @@ public class PlayerInteraction : MonoBehaviour
 
     private bool ObjectVerification(Collider2D other)
     {
-        if (!other.CompareTag("ObjectCarry") || other == null)
+        if (other == null)
             return false;
-        
+
+        if ((!other.CompareTag("ObjectCarry") && !other.CompareTag("ObjectOpen")))
+            return false;        
+
         return true;
     }
 }

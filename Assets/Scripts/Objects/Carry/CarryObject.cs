@@ -19,7 +19,7 @@ public class CarryObject : MonoBehaviour
         _item   = Random.Range(0, 4);
     }
 
-    public void OpenTheObject()
+    public void RaiseTheObject()
     {
         if (_open == true)
             return;
@@ -45,9 +45,9 @@ public class CarryObject : MonoBehaviour
         GameObject collectible = null;
 
         if (_item == 2 )
-            collectible = Resources.Load("Prefabs/CollectibleHealLife") as GameObject;
+            collectible = Resources.Load("Prefabs/Collectible/CollectibleHealLife") as GameObject;
         else if (_item == 3)
-            collectible = Resources.Load("Prefabs/CollectibleHealMana") as GameObject;
+            collectible = Resources.Load("Prefabs/Collectible/CollectibleHealMana") as GameObject;
         else
             return;
 
