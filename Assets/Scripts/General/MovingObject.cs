@@ -16,12 +16,16 @@ public abstract class MovingObject : MonoBehaviour
     public float   speed;
 
     [Header("General Knockback parameters")]
-    public Color _flashColor;
-    public Color _regularColor;
-    public float _flashDuration;
-    public int _nbFlash;
-    public BoxCollider2D _hurtBox;
-    public SpriteRenderer _sprite;
+    [SerializeField]
+    private Color _flashColor;
+    [SerializeField]
+    private Color _regularColor;
+    [SerializeField]
+    private float _flashDuration = .02f;
+    [SerializeField]
+    private BoxCollider2D _hurtBox;
+    [SerializeField]
+    private SpriteRenderer _sprite;
 
     [HideInInspector]
     public Vector3     changePos;
@@ -78,11 +82,12 @@ public abstract class MovingObject : MonoBehaviour
         currentState = ObjectState.walk;
     }
 
-    public IEnumerator FlashCo()
+    public IEnumerator FlashCo(float knockTime)
     {
+        Debug.Log("Time begin - FlashCo: " + Time.time);
         int temp = 0;
         _hurtBox.enabled = false;
-        while(temp < _nbFlash)
+        while(temp < knockTime)
         {
             _sprite.color = _flashColor;
             yield return new WaitForSeconds(_flashDuration);
@@ -91,5 +96,6 @@ public abstract class MovingObject : MonoBehaviour
             temp++;
         }
         _hurtBox.enabled = true;
+        Debug.Log("Time end - FlashCo: " + Time.time);
     }
 }

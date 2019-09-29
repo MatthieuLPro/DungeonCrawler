@@ -5,23 +5,31 @@ using UnityEngine;
 public class CacAttack : MonoBehaviour
 {
     // _KnockTime has to be < MainAttack Time
+    // damage if _damage is negative / heal if _damage is positive
     [Header("Attack parameters")]
     [SerializeField]
-    private float _knockTime    = 0.25f,
-                  _thrust       = 1f;
+    private float _knockTime = 0.2f;
+    [SerializeField]
+    private float  _thrust = 2f;
+    [SerializeField]
+    private int  _damage = -1;
 
     private bool _isColliding = false;
     private bool _coIsRunning = false;
 
+    // Need to check if isColliding & CoisRunning are usefull
     private void OnTriggerEnter2D(Collider2D other)
     {   
-        Debug.Log("EnterTrigger");
+        Debug.Log("Time begin - OnTrigger: " + Time.time);
         if (_isColliding)
             return;
 
         _isColliding = true;
         if(ObjectIsDestructible(other.gameObject) == true)
-            other.GetComponent<DestructibleItem>().Smash();
+        {
+            other.GetComponent<DestructibleObject>().Smash();
+            _isColliding = false;
+        }
         else if (other.CompareTag("Enemy"))
         {
             Rigidbody2D enemy = other.GetComponent<Rigidbody2D>();
@@ -35,19 +43,23 @@ public class CacAttack : MonoBehaviour
             ChangeEnemyState(enemy);
             //ChangeEnemyLifeOrMana(enemy);
             enemy.AddForce(difference, ForceMode2D.Impulse);
-                StartCoroutine((KnockCo(enemy)));
+            StartCoroutine((KnockCo(enemy)));
         }
+        Debug.Log("Time end - OnTrigger: " + Time.time);
     }
 
     private IEnumerator KnockCo(Rigidbody2D enemy)
     {
+        Debug.Log("Time begin - KnockCo: " + Time.time);
+        StartCoroutine(enemy.GetComponent<EnemyController>().FlashCo(_knockTime));
         yield return new WaitForSeconds(_knockTime);
 
         enemy.velocity = Vector2.zero;
         ChangeEnemyState(enemy);
         _isColliding = false;
         _coIsRunning = false;
-        Debug.Log("Exit CoRoutine");
+        enemy.GetComponent<Enemy>().ChangeHealth(_damage);
+        Debug.Log("Time end - KnockCo: " + Time.time);
     }
 
     private void ChangeEnemyState(Rigidbody2D enemy)

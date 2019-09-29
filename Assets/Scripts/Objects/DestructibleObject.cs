@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DestructibleItem : MonoBehaviour
+public class DestructibleObject : MonoBehaviour
 {
     private Animator animator;
 
@@ -12,6 +12,8 @@ public class DestructibleItem : MonoBehaviour
 
     public void Smash(){
         animator.SetBool("destroying", true);
-        Destroy(GetComponent<BoxCollider2D>());
+        foreach(BoxCollider2D box in gameObject.GetComponents<BoxCollider2D>()){
+            Destroy(box);
+        }
     }
 }
