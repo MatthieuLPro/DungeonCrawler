@@ -556,6 +556,11 @@ PrefabInstance:
       propertyPath: _thrust
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 5456299736217595386, guid: 88cf9e71b5e6d186195098230c89d76f,
+        type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5456299736217595385, guid: 88cf9e71b5e6d186195098230c89d76f,
         type: 3}
       propertyPath: _regularColor.r

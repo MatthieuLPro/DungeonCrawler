@@ -84,7 +84,6 @@ public abstract class MovingObject : MonoBehaviour
 
     public IEnumerator FlashCo(float knockTime)
     {
-        Debug.Log("Time begin - FlashCo: " + Time.time);
         int temp = 0;
         _hurtBox.enabled = false;
         while(temp < knockTime)
@@ -96,6 +95,5 @@ public abstract class MovingObject : MonoBehaviour
             temp++;
         }
         _hurtBox.enabled = true;
-        Debug.Log("Time end - FlashCo: " + Time.time);
     }
 }

@@ -20,7 +20,6 @@ public class CacAttack : MonoBehaviour
     // Need to check if isColliding & CoisRunning are usefull
     private void OnTriggerEnter2D(Collider2D other)
     {   
-        Debug.Log("Time begin - OnTrigger: " + Time.time);
         if (_isColliding)
             return;
 
@@ -45,12 +44,10 @@ public class CacAttack : MonoBehaviour
             enemy.AddForce(difference, ForceMode2D.Impulse);
             StartCoroutine((KnockCo(enemy)));
         }
-        Debug.Log("Time end - OnTrigger: " + Time.time);
     }
 
     private IEnumerator KnockCo(Rigidbody2D enemy)
     {
-        Debug.Log("Time begin - KnockCo: " + Time.time);
         StartCoroutine(enemy.GetComponent<EnemyController>().FlashCo(_knockTime));
         yield return new WaitForSeconds(_knockTime);
 
@@ -59,7 +56,6 @@ public class CacAttack : MonoBehaviour
         _isColliding = false;
         _coIsRunning = false;
         enemy.GetComponent<Enemy>().ChangeHealth(_damage);
-        Debug.Log("Time end - KnockCo: " + Time.time);
     }
 
     private void ChangeEnemyState(Rigidbody2D enemy)

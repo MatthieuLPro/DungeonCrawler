@@ -16,6 +16,14 @@ public class Enemy : MonoBehaviour
     public void IsDead()
     {
         if (health <= 0)
-            Destroy(gameObject);
+            StartCoroutine(AnimationDeath());
+    }
+
+    private IEnumerator AnimationDeath()
+    {
+        GetComponent<Animator>().SetBool("Ko", true);
+        yield return new WaitForSeconds(.59f);
+
+        Destroy(gameObject); 
     }
 }
