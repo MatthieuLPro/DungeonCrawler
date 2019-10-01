@@ -29,11 +29,11 @@ public class InteractionDoor : MonoBehaviour
     {
         if (!other.CompareTag("Player"))
             return;
-        
-        if (openMethod == 1 && playerHasKey(other.gameObject))
+
+        if (openMethod == 1 && other.gameObject.GetComponent<Player>().HasKey())
             OpenDoor();
             
-        if (openMethod == 3 && playerHasBigKey(other.gameObject))
+        if (openMethod == 3 && other.gameObject.GetComponent<Player>().HasBigKey())
             OpenDoor();
     }
 
@@ -51,21 +51,5 @@ public class InteractionDoor : MonoBehaviour
         foreach (var box in GetComponents<BoxCollider2D>())
             box.enabled = true;
         open = false;
-    }
-
-    private bool playerHasKey(GameObject player)
-    {
-        if (player.GetComponent<Player>().keys <= 0)
-            return false;
-
-        player.GetComponent<Player>().keys--;   
-        return (true);
-    }
-
-    private bool playerHasBigKey(GameObject player)
-    {
-        if (player.GetComponent<Player>().bigKey)
-            return true;
-        return false;
     }
 }

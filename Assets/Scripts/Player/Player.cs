@@ -42,4 +42,20 @@ public class Player : MonoBehaviour
     public void GetBigKey(){
         bigKey = true;
     }
+
+    public bool HasKey()
+    {
+        if (keys <= 0)
+            return (false);
+
+        keys--;
+        return (true);
+    }
+
+    public bool HasBigKey()
+    {
+        if (bigKey == false)
+            return (false);
+        return (true);
+    }
 }

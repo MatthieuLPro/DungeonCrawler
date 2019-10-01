@@ -9,6 +9,8 @@ public class OpenObject : MonoBehaviour
     private Sprite _open = null;
     [SerializeField]
     private int loot = 0;
+    [SerializeField]
+    private int _openMethod = 0;
     
     [Header("Loot Sprites")]
     [SerializeField]
@@ -50,6 +52,13 @@ public class OpenObject : MonoBehaviour
         If loot = 0 => Random value between [1;6]
     */
 
+    /*
+        _openMethod values:
+            - 0 : Can open
+            - 1 : Normal key
+            - 2 : Big Key
+    */
+
     private void Start(){
         _spriteRend = GetComponent<SpriteRenderer>();
         if (loot == 0)
@@ -57,6 +66,11 @@ public class OpenObject : MonoBehaviour
     }
 
     public void OpenTheObject(GameObject opener){
+        if (_openMethod == 2  && !opener.GetComponent<Player>().HasBigKey())
+            return;
+        else if (_openMethod == 1  && !opener.GetComponent<Player>().HasKey())
+            return;
+
         _spriteRend.sprite = _open;
         foreach(BoxCollider2D box in gameObject.GetComponents<BoxCollider2D>())
         {
