@@ -11,6 +11,9 @@ TagManager:
   - ObjectCarry
   - ObjectDestructible
   - ObjectOpen
+  - BlocRed
+  - BlocBlue
+  - GlobeSwitch
   layers:
   - Default
   - TransparentFX

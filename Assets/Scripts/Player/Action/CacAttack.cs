@@ -44,6 +44,9 @@ public class CacAttack : MonoBehaviour
             enemy.AddForce(difference, ForceMode2D.Impulse);
             StartCoroutine((KnockCo(enemy)));
         }
+        else if (other.CompareTag("GlobeSwitch")){
+            StartCoroutine((SwitchCo(other)));
+        }
     }
 
     private IEnumerator KnockCo(Rigidbody2D enemy)
@@ -56,6 +59,15 @@ public class CacAttack : MonoBehaviour
         _isColliding = false;
         _coIsRunning = false;
         enemy.GetComponent<Enemy>().ChangeHealth(_damage);
+    }
+
+    private IEnumerator SwitchCo(Collider2D globe)
+    {
+        globe.GetComponent<SwitchGlobe>().ToggleSwitchBlocks();
+
+        yield return new WaitForSeconds(0.2f);
+        _isColliding = false;
+
     }
 
     private void ChangeEnemyState(Rigidbody2D enemy)
