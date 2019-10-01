@@ -14,7 +14,7 @@ public class InteractionDoor : MonoBehaviour
 
     private SpriteRenderer _spriteRend;
 
-    // _openMethod = 0 (open) / = 1 (close key) / = 2 (close interrupteur)
+    // _openMethod = 0 (open) / = 1 (close key) / = 2 (close interrupteur) / = 3 (close Big Key)
     void Start()
     {
         _spriteRend = GetComponent<SpriteRenderer>();
@@ -31,6 +31,9 @@ public class InteractionDoor : MonoBehaviour
             return;
         
         if (openMethod == 1 && playerHasKey(other.gameObject))
+            OpenDoor();
+            
+        if (openMethod == 3 && playerHasBigKey(other.gameObject))
             OpenDoor();
     }
 
@@ -57,5 +60,12 @@ public class InteractionDoor : MonoBehaviour
 
         player.GetComponent<Player>().keys--;   
         return (true);
+    }
+
+    private bool playerHasBigKey(GameObject player)
+    {
+        if (player.GetComponent<Player>().bigKey)
+            return true;
+        return false;
     }
 }
