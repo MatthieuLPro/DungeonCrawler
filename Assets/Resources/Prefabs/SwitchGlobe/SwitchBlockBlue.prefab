@@ -119,3 +119,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 70443055c7270def8af463354800970b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _downSprite: {fileID: 21300008, guid: 2614102cded19dca7aec69c00ea81f94, type: 3}
+  _upSprite: {fileID: 21300012, guid: 2614102cded19dca7aec69c00ea81f94, type: 3}

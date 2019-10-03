@@ -20,10 +20,11 @@ public class CacAttack : MonoBehaviour
     // Need to check if isColliding & CoisRunning are usefull
     private void OnTriggerEnter2D(Collider2D other)
     {   
+        Debug.Log("Enter is colliding: " + _isColliding);
         if (_isColliding)
             return;
 
-        _isColliding = true;
+       _isColliding = true;
         if(ObjectIsDestructible(other.gameObject) == true)
         {
             other.GetComponent<DestructibleObject>().Smash();
@@ -65,9 +66,8 @@ public class CacAttack : MonoBehaviour
     {
         globe.GetComponent<SwitchGlobe>().ToggleSwitchBlocks();
 
-        yield return new WaitForSeconds(0.2f);
+        yield return new WaitForSeconds(0.06f);
         _isColliding = false;
-
     }
 
     private void ChangeEnemyState(Rigidbody2D enemy)

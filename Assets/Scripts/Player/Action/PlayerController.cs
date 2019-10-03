@@ -33,6 +33,7 @@ public class PlayerController : MovingObject
     private IEnumerator MainAttack()
     {
         DiagonalAttack();
+        RefreshAttackCollider();
         anime.SetBool("Attacking", true);
         currentState = ObjectState.attack;
         GetComponent<PlayerAudio>().CallAudio("attack");
@@ -72,5 +73,16 @@ public class PlayerController : MovingObject
     {
         currentState = ObjectState.idle;
         yield return new WaitForSeconds(0.5f);
+    }
+
+    private void RefreshAttackCollider()
+    {
+        foreach (Transform child in transform){
+            child.GetComponent<PolygonCollider2D>().enabled = false;
+        }
+
+        foreach (Transform child in transform){
+            child.GetComponent<PolygonCollider2D>().enabled = true;
+        }
     }
 }

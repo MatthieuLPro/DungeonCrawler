@@ -17,17 +17,13 @@ public class SwitchGlobe : MonoBehaviour
     public void ToggleSwitchBlocks()
     {
         if (_color)
-        {
             GetComponent<SpriteRenderer>().sprite = _blueSprite;
-            SwitchBlocks("BlocBlue", false);
-            SwitchBlocks("BlocRed", true);
-        }
         else
-        {
             GetComponent<SpriteRenderer>().sprite = _redSprite;
-            SwitchBlocks("BlocBlue", true);
-            SwitchBlocks("BlocRed", false);
-        }
+
+        SwitchBlocks("BlocBlue", !_color);
+        SwitchBlocks("BlocRed", _color);
+        GetComponent<AudioSource>().Play();
         _color = !_color;
     }
 

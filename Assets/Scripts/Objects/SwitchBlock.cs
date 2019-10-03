@@ -4,17 +4,27 @@ using UnityEngine;
 
 public class SwitchBlock : MonoBehaviour
 {
-    private BoxCollider2D box;
+    [Header("Block Sprites")]
+    [SerializeField]
+    private Sprite _downSprite = null;
+    [SerializeField]
+    private Sprite _upSprite = null;
+
+    private BoxCollider2D _box = null;
+    private SpriteRenderer _spriteRend = null;
 
     private void Start(){
-        box = GetComponent<BoxCollider2D>();
+        _box = GetComponent<BoxCollider2D>();
+        _spriteRend = GetComponent<SpriteRenderer>();
     }
 
     public void ChangeSprite(bool down)
     {
         if (down)
-            box.enabled = false;
+            _spriteRend.sprite = _downSprite;
         else
-            box.enabled = true;
+            _spriteRend.sprite = _upSprite;
+
+        _box.enabled = !down;
     }
 }
