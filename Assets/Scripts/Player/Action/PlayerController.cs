@@ -35,6 +35,7 @@ public class PlayerController : MovingObject
         DiagonalAttack();
         anime.SetBool("Attacking", true);
         currentState = ObjectState.attack;
+        GetComponent<PlayerAudio>().CallAudio("attack");
         yield return null;
 
         anime.SetBool("Attacking", false);

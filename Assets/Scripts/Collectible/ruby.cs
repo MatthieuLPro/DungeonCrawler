@@ -4,11 +4,15 @@ using UnityEngine;
 
 public class ruby : MonoBehaviour
 {
+    [Header("Ruby value")]
     [SerializeField]
     private int value = 1;
 
+    private AudioSource audio = null;
+
     private void Start(){
         SetRubyValue();
+        audio = GetComponent<AudioSource>();
     }
 
     private void SetRubyValue()
@@ -30,5 +34,13 @@ public class ruby : MonoBehaviour
             player.GetRuby(value);
             Destroy(gameObject);
         }     
+    }
+
+    private IEnumerator GetRubyCo()
+    {
+        audio.Play();
+        yield return new WaitForSeconds(0.2f);
+        
+        Destroy(gameObject);
     }
 }

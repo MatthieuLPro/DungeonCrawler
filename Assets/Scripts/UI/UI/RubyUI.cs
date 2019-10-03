@@ -9,6 +9,7 @@ public class RubyUI : MonoBehaviour
 
     private int _ruby;
     private RubySystem _rubySystem;
+    private AudioSource _audio = null;
 
     [Header("Attached player")]
     [SerializeField]
@@ -18,6 +19,7 @@ public class RubyUI : MonoBehaviour
     private void Start()
     {
         _rubySystem = new RubySystem(player.GetComponent<Player>().rubyInit);
+        _audio = GetComponent<AudioSource>();
         InitRubyUI();
     }
 
@@ -42,18 +44,20 @@ public class RubyUI : MonoBehaviour
         {
             while(_ruby < systemValue)
             {
+                _audio.Play();
                 _ruby++;
                 GetComponent<Text>().text = _ruby.ToString();
-                yield return new WaitForSeconds(0.05f);
+                yield return new WaitForSeconds(0.07f);
             }
         }
         else
         {
             while(_ruby > systemValue)
             {
+                _audio.Play();
                 _ruby--;
                 GetComponent<Text>().text = _ruby.ToString();
-                yield return new WaitForSeconds(0.05f);
+                yield return new WaitForSeconds(0.07f);
 
             }
         }
