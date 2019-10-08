@@ -20,7 +20,6 @@ public class CacAttack : MonoBehaviour
     // Need to check if isColliding & CoisRunning are usefull
     private void OnTriggerEnter2D(Collider2D other)
     {   
-        Debug.Log("Enter is colliding: " + _isColliding);
         if (_isColliding)
             return;
 
