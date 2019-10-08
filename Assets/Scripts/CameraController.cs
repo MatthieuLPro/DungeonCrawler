@@ -4,9 +4,6 @@ using UnityEngine;
 
 public class CameraController : MonoBehaviour
 {
-    public float horizontalScrollSpeed;
-    public float verticalScrollSpeed;
-
     public GameObject trackingGameObject;
 
     [SerializeField]
@@ -15,25 +12,18 @@ public class CameraController : MonoBehaviour
                  _enabledLeftScroll;
 
     [SerializeField]
-    private Vector3 _offset;
-
-    [SerializeField]
     private float _xMinLimit, _xMaxLimit,
                   _yMinLimit, _yMaxLimit;
 
     private BoxCollider2D _boxCollider2D;
-
     private Camera _Camera;
-
-    private float _lastYCameraPosition;
-    private float _lastXCameraPosition;
 
     [SerializeField]
     private float _cameraHeight;
     [SerializeField]
     private float _cameraWidth;
 
-    private enum EcameraScrollDirection 
+    public enum EcameraScrollDirection
     {
         top,
         bottom,
@@ -42,21 +32,26 @@ public class CameraController : MonoBehaviour
     };
 
     public Transform target;
-    public float smoothTime = 0.3F;
-    private Vector3 velocity = Vector3.zero;
+    public float smoothing = 0.3f;
 
     void Start()
     {
         _enabledCameraScroll = true;
-        _boxCollider2D       = gameObject.GetComponent<BoxCollider2D>();
-        _Camera              = gameObject.GetComponent<Camera>();
+        _boxCollider2D = gameObject.GetComponent<BoxCollider2D>();
+        _Camera = gameObject.GetComponent<Camera>();
 
         _InitializeCamera();
-        
+
     }
 
-    void FixedUpdate(){
+    void LateUpdate()
+    {
         _UpdateCameraPosition(false);
+    }
+
+    public void enabledCameraScroll(bool _isEnabled)
+    {
+        _enabledCameraScroll = _isEnabled;
     }
 
     private void _InitializeCamera()
@@ -75,19 +70,23 @@ public class CameraController : MonoBehaviour
         PlayerController playerController = trackingGameObject.GetComponent<PlayerController>();
         if (_forceUpdate || (_enabledCameraScroll && playerController.isWalking))
         {
-            
             float xPosition = Mathf.Clamp(trackingGameObject.transform.position.x, _xMinLimit, _xMaxLimit);
             float yPosition = Mathf.Clamp(trackingGameObject.transform.position.y, _yMinLimit, _yMaxLimit);
-            /*Vector3 _CameraPosition = new Vector3(xPosition, yPosition, transform.position.z);
-
-            transform.position = _CameraPosition;*/
-            Vector3 targetPosition = trackingGameObject.transform.TransformPoint(new Vector3(xPosition, yPosition, transform.position.z));
-            transform.position = Vector3.SmoothDamp(transform.position, targetPosition, ref velocity, smoothTime);
-
+            _MoveCameraToPosition(xPosition, yPosition);
         }
+        
+            
+
     }
 
-    private void _CameraScrollTo(EcameraScrollDirection _direction)
+
+    private void _MoveCameraToPosition(float _XPosition, float _YPosition)
+    {
+        Vector3 targetPosition = new Vector3(_XPosition, _YPosition, transform.position.z);
+        transform.position = Vector3.Lerp(transform.position, targetPosition, smoothing * Time.deltaTime);
+    }
+
+    public void _CameraScrollTo(EcameraScrollDirection _direction)
     {
         float xPosition = transform.position.x;
         float yPosition = transform.position.y;
@@ -106,14 +105,14 @@ public class CameraController : MonoBehaviour
                 xPosition += _cameraWidth;
                 break;
         }
-        transform.position = new Vector3(xPosition, yPosition, transform.position.z);
+        _MoveCameraToPosition(xPosition, yPosition);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
         GameObject collisionObject = collision.gameObject;
 
-        if (collisionObject == trackingGameObject)    
+        if (collisionObject == trackingGameObject)
             Physics2D.IgnoreCollision(_boxCollider2D, collision.collider);
         else if (collisionObject.tag == "CameraBorder")
         {
@@ -159,5 +158,5 @@ public class CameraController : MonoBehaviour
         }
     }
 
-    
+
 }
