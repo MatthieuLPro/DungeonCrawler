@@ -865,6 +865,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: -2
       objectReference: {fileID: 0}
+    - target: {fileID: 2027663928, guid: 20f81c72b8bb44943a5d779446e59c74, type: 3}
+      propertyPath: trackingGameObject
+      value: 
+      objectReference: {fileID: 539973516}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 20f81c72b8bb44943a5d779446e59c74, type: 3}
 --- !u!1001 &1032089132
@@ -1222,19 +1226,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d986b66dbcda7148b513239e3224225, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  horizontalScrollSpeed: 2
-  verticalScrollSpeed: 2
   trackingGameObject: {fileID: 539973516}
   _enabledCameraScroll: 1
   _enabledTopScroll: 0
   _enabledBottomScroll: 0
   _enabledRightScroll: 0
   _enabledLeftScroll: 0
-  _offset: {x: 0, y: 0, z: 0}
   _xMinLimit: -1000
   _xMaxLimit: 1000
   _yMinLimit: -1000
   _yMaxLimit: 1000
+  _cameraHeight: 0
+  _cameraWidth: 0
+  target: {fileID: 0}
+  smoothing: 0.3
 --- !u!1001 &1302243325
 PrefabInstance:
   m_ObjectHideFlags: 0

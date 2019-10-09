@@ -54,7 +54,7 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\Scripts\Audio\PlayerAudio.cs" />
-     <Compile Include="Assets\Scripts\Camera\Camera.cs" />
+     <Compile Include="Assets\Scripts\CameraController.cs" />
      <Compile Include="Assets\Scripts\Collectible\Heal_mana.cs" />
      <Compile Include="Assets\Scripts\Collectible\Heart.cs" />
      <Compile Include="Assets\Scripts\Collectible\ruby.cs" />
