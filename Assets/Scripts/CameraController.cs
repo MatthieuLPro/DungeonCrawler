@@ -31,7 +31,6 @@ public class CameraController : MonoBehaviour
         right
     };
 
-    public Transform target;
     public float smoothing = 0.3f;
 
     void Start()
@@ -67,16 +66,12 @@ public class CameraController : MonoBehaviour
 
     private void _UpdateCameraPosition(bool _forceUpdate)
     {
-        PlayerController playerController = trackingGameObject.GetComponent<PlayerController>();
-        if (_forceUpdate || (_enabledCameraScroll && playerController.isWalking))
+        if (_forceUpdate || (_enabledCameraScroll))
         {
             float xPosition = Mathf.Clamp(trackingGameObject.transform.position.x, _xMinLimit, _xMaxLimit);
             float yPosition = Mathf.Clamp(trackingGameObject.transform.position.y, _yMinLimit, _yMaxLimit);
             _MoveCameraToPosition(xPosition, yPosition);
-        }
-        
-            
-
+        }  
     }
 
 

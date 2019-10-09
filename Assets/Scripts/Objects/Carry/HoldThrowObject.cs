@@ -23,7 +23,7 @@ public class HoldThrowObject : MonoBehaviour
             return;
         }
 
-        if (Input.GetButtonDown("Attack") || Input.GetButtonDown("Carry"))
+        if (InputManager.YButton() || InputManager.BButton())
         {
             _direction = new Vector3(_anime.GetFloat("DirectionX"), _anime.GetFloat("DirectionY"), 0);
             _direction.Normalize();
