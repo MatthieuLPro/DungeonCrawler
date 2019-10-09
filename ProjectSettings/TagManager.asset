@@ -23,10 +23,10 @@ TagManager:
   - UI
   - 
   - 
-  - 
-  - 
-  - 
-  - 
+  - Level_0
+  - Level_1
+  - Level_2
+  - Transition
   - 
   - 
   - 
@@ -48,6 +48,15 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Background
+    uniqueID: 1665817279
+    locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Foreground-Block
+    uniqueID: 3601779773
+    locked: 0
+  - name: Foreground
+    uniqueID: 2883311029
     locked: 0
