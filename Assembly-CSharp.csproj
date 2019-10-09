@@ -53,7 +53,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Scripts\Audio\PlayerAudio.cs" />
      <Compile Include="Assets\Scripts\Camera\Camera.cs" />
+     <Compile Include="Assets\Scripts\Collectible\Heal_mana.cs" />
+     <Compile Include="Assets\Scripts\Collectible\Heart.cs" />
+     <Compile Include="Assets\Scripts\Collectible\ruby.cs" />
      <Compile Include="Assets\Scripts\DebugMachine.cs" />
      <Compile Include="Assets\Scripts\Enemy\action\EnemyController.cs" />
      <Compile Include="Assets\Scripts\Enemy\action\EnemyInteraction.cs" />
@@ -61,19 +65,26 @@
      <Compile Include="Assets\Scripts\Enemy\enemy_list\Skeleton.cs" />
      <Compile Include="Assets\Scripts\Enemy\enemy_list\Trap.cs" />
      <Compile Include="Assets\Scripts\General\MovingObject.cs" />
-     <Compile Include="Assets\Scripts\Item\CarryItem.cs" />
-     <Compile Include="Assets\Scripts\Item\DestructibleItem.cs" />
-     <Compile Include="Assets\Scripts\Item\Heal_mana.cs" />
-     <Compile Include="Assets\Scripts\Item\Heart.cs" />
-     <Compile Include="Assets\Scripts\Item\Pot.cs" />
+     <Compile Include="Assets\Scripts\Objects\Carry\CarryObject.cs" />
+     <Compile Include="Assets\Scripts\Objects\Carry\HoldThrowObject.cs" />
+     <Compile Include="Assets\Scripts\Objects\DestructibleObject.cs" />
+     <Compile Include="Assets\Scripts\Objects\Door\InteractionDoor.cs" />
+     <Compile Include="Assets\Scripts\Objects\Door\SwitchDoor.cs" />
+     <Compile Include="Assets\Scripts\Objects\OpenObject.cs" />
+     <Compile Include="Assets\Scripts\Objects\SwitchBlock.cs" />
+     <Compile Include="Assets\Scripts\Objects\SwitchGlobe.cs" />
+     <Compile Include="Assets\Scripts\Objects\Teleport.cs" />
+     <Compile Include="Assets\Scripts\Objects\Torch.cs" />
      <Compile Include="Assets\Scripts\Player\Action\CacAttack.cs" />
      <Compile Include="Assets\Scripts\Player\Action\PlayerController.cs" />
      <Compile Include="Assets\Scripts\Player\Action\PlayerInteraction.cs" />
      <Compile Include="Assets\Scripts\Player\Player.cs" />
      <Compile Include="Assets\Scripts\UI\System\HeartsHealthSystem.cs" />
      <Compile Include="Assets\Scripts\UI\System\ManaSystem.cs" />
+     <Compile Include="Assets\Scripts\UI\System\RubySystem.cs" />
      <Compile Include="Assets\Scripts\UI\UI\HeartsHealthUI.cs" />
      <Compile Include="Assets\Scripts\UI\UI\ManaUI.cs" />
+     <Compile Include="Assets\Scripts\UI\UI\RubyUI.cs" />
  <Reference Include="Unity.TextMeshPro.Editor">
  <HintPath>/home/matthieul/DungeonCrawlerGit/DungeonCrawler/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
  </Reference>
