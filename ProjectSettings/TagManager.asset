@@ -51,6 +51,15 @@ TagManager:
   - name: Background
     uniqueID: 1665817279
     locked: 0
+  - name: Ground
+    uniqueID: 487259711
+    locked: 0
+  - name: Overground
+    uniqueID: 1714945579
+    locked: 0
+  - name: Wall
+    uniqueID: 1617425133
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0

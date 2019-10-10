@@ -115,7 +115,7 @@ Transform:
   m_GameObject: {fileID: 5456299736217595384}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 5, y: 5, z: 1}
   m_Children:
   - {fileID: 5456299736453510585}
   - {fileID: 5456299736535720924}
@@ -250,7 +250,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac12d76f17dd0264291b84ca570d0365, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 1
+  speed: 10
   _flashColor: {r: 1, g: 1, b: 1, a: 0}
   _regularColor: {r: 1, g: 1, b: 1, a: 1}
   _flashDuration: 0.04
@@ -260,6 +260,7 @@ MonoBehaviour:
   currentState: 0
   anime: {fileID: 0}
   _rb2d: {fileID: 0}
+  isWalking: 0
 --- !u!114 &8745972031723384951
 MonoBehaviour:
   m_ObjectHideFlags: 0
