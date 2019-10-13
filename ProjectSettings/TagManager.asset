@@ -57,7 +57,7 @@ TagManager:
   - name: Overground-1
     uniqueID: 3510525627
     locked: 0
-  - name: Wall-ground-1
+  - name: Wall-1
     uniqueID: 1877208881
     locked: 0
   - name: Ground
@@ -69,12 +69,18 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: Wall-ground
+  - name: Wall
     uniqueID: 1617425133
     locked: 0
   - name: Ground+1
     uniqueID: 1150578599
     locked: 0
-  - name: Wall-ground-+1
+  - name: Overground+1
+    uniqueID: 3103089687
+    locked: 0
+  - name: Wall+1
     uniqueID: 1095262077
+    locked: 0
+  - name: Foreground
+    uniqueID: 2296236633
     locked: 0
