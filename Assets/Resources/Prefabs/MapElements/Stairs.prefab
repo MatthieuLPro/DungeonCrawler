@@ -100,8 +100,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 768c4090dc1b0c5cbaf39e7016c46baf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  layoutUp: Wall-ground
-  layoutDown: Wall-ground-1
+  layoutUp: Wall
+  layoutDown: Wall-1
 --- !u!1 &2565743418825096476
 GameObject:
   m_ObjectHideFlags: 0
