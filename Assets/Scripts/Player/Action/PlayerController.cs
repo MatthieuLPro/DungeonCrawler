@@ -14,18 +14,22 @@ public class PlayerController : MovingObject
 
     private void PlayerDirection()
     {
+        Vector3 inputMainPosition = InputManager.MainJoystick();
         changePos = Vector3.zero;
-        changePos.x = Input.GetAxisRaw("Horizontal");
-        changePos.y = Input.GetAxisRaw("Vertical");
+        changePos.x = inputMainPosition.x;
+        changePos.y = inputMainPosition.y;
         isWalking = (changePos.x != 0 || changePos.y != 0);
     }
 
     public override void MainController()
     {
-        if ((Input.GetButtonDown("Attack") || Input.GetButtonDown("Carry")) &&
+  
+            
+
+        if ((InputManager.YButton() || InputManager.BButton()) &&
              currentState == ObjectState.carry)
             StartCoroutine(ThrowObject());
-        if (Input.GetButtonDown("Attack") && currentState != ObjectState.attack)
+        if (InputManager.YButton() && currentState != ObjectState.attack)
             StartCoroutine(MainAttack());
         else if (changePos != Vector3.zero && currentState != ObjectState.attack)
             MoveObject();
