@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 2027663928}
   m_Layer: 0
   m_Name: MainCameraVariant
-  m_TagString: Untagged
+  m_TagString: MainCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -147,5 +147,4 @@ MonoBehaviour:
   _yMaxLimit: 1000
   _cameraHeight: 0
   _cameraWidth: 0
-  target: {fileID: 0}
   smoothing: 10

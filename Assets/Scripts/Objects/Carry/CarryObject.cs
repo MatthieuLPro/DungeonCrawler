@@ -4,19 +4,34 @@ using UnityEngine;
 
 public class CarryObject : MonoBehaviour
 {
+    [Header("CarryObject Settings")]
+    [SerializeField]
+    private int _item = 0;
+    [SerializeField]
+    private bool hideTrigger = false;
+
     [SerializeField]
     private Sprite _spriteEmpty = null;
 
     [SerializeField]
     private GameObject _myPrefab = null;
 
-    // _item => 0 = Rien / 1 = Ruby / 2 = Coeur / 3 = Mana
-    private int _item;
+    /* _item => 
+        0  = Rien
+        1  = Green Ruby
+        2  = Heart
+        3  = Mana
+        4  = Blue Ruby 
+        5  = Red Ruby 
+        10 = key
+    */
     private bool _open;
 
-    private void Start(){
+    private void Start()
+    {
         _open   = false;
-        _item   = Random.Range(0, 4);
+        if (_item == 0)
+            _item = Random.Range(0, 4);
     }
 
     public void RaiseTheObject()
@@ -28,9 +43,12 @@ public class CarryObject : MonoBehaviour
         if (GetComponent<Animator>() != null)
             Destroy(GetComponent<Animator>());
         GetComponent<SpriteRenderer>().sprite = _spriteEmpty;
-        GenerateCollectible();
         foreach (var box in gameObject.GetComponents<BoxCollider2D>())
             Destroy(box);
+        if (hideTrigger)
+            Destroy(gameObject);
+        else
+            GenerateCollectible();
     }
 
     public void GetTheObject(GameObject player)
@@ -44,10 +62,18 @@ public class CarryObject : MonoBehaviour
     {
         GameObject collectible = null;
 
-        if (_item == 2 )
+        if (_item == 1)
+            collectible = Resources.Load("Prefabs/Collectible/CollectibleHealLife") as GameObject;
+        else if (_item == 2 )
             collectible = Resources.Load("Prefabs/Collectible/CollectibleHealLife") as GameObject;
         else if (_item == 3)
-            collectible = Resources.Load("Prefabs/Collectible/CollectibleHealMana") as GameObject;
+            collectible = Resources.Load("Prefabs/Collectible/ruby_green") as GameObject;
+        else if (_item == 4)
+            collectible = Resources.Load("Prefabs/Collectible/ruby_blue") as GameObject;
+        else if (_item == 5)
+            collectible = Resources.Load("Prefabs/Collectible/ruby_red") as GameObject;
+        else if (_item == 10)
+            collectible = Resources.Load("Prefabs/Collectible/small_key") as GameObject;
         else
             return;
 

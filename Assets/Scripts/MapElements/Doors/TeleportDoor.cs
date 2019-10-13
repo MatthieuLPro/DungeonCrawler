@@ -10,6 +10,15 @@ public class TeleportDoor : MonoBehaviour
             return;
 
         other.GetComponent<Transform>().position = other.GetComponent<Transform>().position + FindTeleportPlace();
+        GameObject[] cameras = GameObject.FindGameObjectsWithTag("MainCamera");
+        foreach (GameObject camera in cameras)
+        {
+            if (camera.GetComponent<CameraController>().trackingGameObject == other.gameObject)
+            {
+                camera.GetComponent<Transform>().position = other.GetComponent<Transform>().position;
+                camera.GetComponent<Transform>().position += new Vector3 (0, 0, -1f);
+            }
+        }
     }
 
     private Vector3 FindTeleportPlace()

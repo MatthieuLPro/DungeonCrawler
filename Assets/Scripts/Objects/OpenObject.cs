@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class OpenObject : MonoBehaviour
 {
-    [Header("Treasure Parameters")]
+    [Header("Treasure Settings")]
     [SerializeField]
     private Sprite _open = null;
     [SerializeField]

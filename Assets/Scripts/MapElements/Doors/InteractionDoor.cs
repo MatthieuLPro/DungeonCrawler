@@ -16,7 +16,7 @@ public class InteractionDoor : MonoBehaviour
     private SpriteRenderer _spriteRend;
 
     // teleportDirection = 0 => Up / 1 => Right / 2 => Down / 3 => Left
-    // _openMethod = 0 (open) / = 1 (close key) / = 2 (close interrupteur) / = 3 (close Big Key)
+    // _openMethod = 0 (open) / = 1 (close key) / = 2 (close interrupteur) / = 3 (close Big Key) / = 4 (close enemis)
     void Start()
     {
         _spriteRend = GetComponent<SpriteRenderer>();
