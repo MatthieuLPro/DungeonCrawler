@@ -441,7 +441,7 @@ InputManager:
     m_Name: K_MainHorizontal
     descriptiveName: 
     descriptiveNegativeName: 
-    negativeButton: q
+    negativeButton: a
     positiveButton: d
     altNegativeButton: left
     altPositiveButton: right
@@ -458,7 +458,7 @@ InputManager:
     descriptiveName: 
     descriptiveNegativeName: 
     negativeButton: s
-    positiveButton: z
+    positiveButton: w
     altNegativeButton: down
     altPositiveButton: up
     gravity: 1000

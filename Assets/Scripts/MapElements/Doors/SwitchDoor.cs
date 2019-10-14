@@ -6,19 +6,28 @@ public class SwitchDoor : MonoBehaviour
 {
     [Header("Select the door to open")]
     [SerializeField]
-    private GameObject _door = null;
+    private GameObject[] _doors = null;
 
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (!other.CompareTag("Player"))
             return;
         
-        if (_door.GetComponent<InteractionDoor>().openMethod != 2)
-            return;
-
-        if (_door.GetComponent<InteractionDoor>().open == false)
-            _door.GetComponent<InteractionDoor>().OpenDoor();
-        else
-            _door.GetComponent<InteractionDoor>().CloseDoor();
+        for(var i = 0; i < _doors.Length; i++)
+        {
+            if (_doors[i].GetComponent<InteractionDoor>().openMethod != 2)
+                return;
+            
+            if (_doors[i].GetComponent<InteractionDoor>().open == false)
+            {
+                Debug.Log("Exit 1");
+                _doors[i].GetComponent<InteractionDoor>().OpenDoor();
+            }
+            else
+            {
+                Debug.Log("Exit 2");
+                _doors[i].GetComponent<InteractionDoor>().CloseDoor();
+            }
+        }
     }
 }
