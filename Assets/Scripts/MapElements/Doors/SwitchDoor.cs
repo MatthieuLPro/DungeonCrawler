@@ -19,15 +19,9 @@ public class SwitchDoor : MonoBehaviour
                 return;
             
             if (_doors[i].GetComponent<InteractionDoor>().open == false)
-            {
-                Debug.Log("Exit 1");
                 _doors[i].GetComponent<InteractionDoor>().OpenDoor();
-            }
             else
-            {
-                Debug.Log("Exit 2");
                 _doors[i].GetComponent<InteractionDoor>().CloseDoor();
-            }
         }
     }
 }

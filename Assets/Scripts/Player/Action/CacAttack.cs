@@ -51,7 +51,7 @@ public class CacAttack : MonoBehaviour
 
     private IEnumerator KnockCo(Rigidbody2D enemy)
     {
-        StartCoroutine(enemy.GetComponent<EnemyController>().FlashCo(_knockTime));
+        //StartCoroutine(enemy.GetComponent<EnemyDirection>().FlashCo(_knockTime));
         yield return new WaitForSeconds(_knockTime);
 
         enemy.velocity = Vector2.zero;
@@ -71,11 +71,11 @@ public class CacAttack : MonoBehaviour
 
     private void ChangeEnemyState(Rigidbody2D enemy)
     {
-        if (enemy.GetComponent<EnemyController>().enabled == true)
+        if (enemy.GetComponent<EnemyDirection>().enabled == true)
         {
             enemy.GetComponent<MovingObject>().currentState = ObjectState.knockBack;
 
-            enemy.GetComponent<EnemyController>().enabled = false;
+            enemy.GetComponent<EnemyDirection>().enabled = false;
             enemy.GetComponent<EnemyInteraction>().enabled = false;
             enemy.GetComponent<MovingObject>().enabled = false;
 
@@ -83,7 +83,7 @@ public class CacAttack : MonoBehaviour
         }
         else
         {
-            enemy.GetComponent<EnemyController>().enabled = true;
+            enemy.GetComponent<EnemyDirection>().enabled = true;
             enemy.GetComponent<EnemyInteraction>().enabled = true;
             enemy.GetComponent<MovingObject>().enabled = true;
 

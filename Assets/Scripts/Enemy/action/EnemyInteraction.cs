@@ -4,17 +4,17 @@ using UnityEngine;
 
 public class EnemyInteraction : MonoBehaviour
 {
-    [Header("Enemy Attack parameters")]
-    [SerializeField]
-    private float _knockTime    = 0.3f;
-    [SerializeField]
-    private float _thrust       = 1f;    
+    [Header("Attack parameters")]
     [SerializeField]
     private int _damage = 1;
     [SerializeField]
     // 0 => Deal life damage
     // 1 => Deal mana damage
     private int _typeDamage = 0;
+    [SerializeField]
+    private float _thrust       = 1f;    
+    [SerializeField]
+    private float _knockTime    = 0.3f;
 
     private void OnTriggerEnter2D(Collider2D other)
     {

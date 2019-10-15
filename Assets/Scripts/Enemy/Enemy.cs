@@ -4,18 +4,26 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    [Header("Enemy parameters")]
-    public int health;
-    public string enemyName;
+    [Header("Main Settings")]
+    [SerializeField]
+    private int  _health     = 0;
+    [SerializeField]
+    private int  _mana       = 0;
+    public bool isInvincible = false;
 
-    public void ChangeHealth(int value){
-        health += value;
+    public void ChangeHealth(int value)
+    {
+        _health += value;
         IsDead();
+    }
+
+    public void ChangeMana(int value){
+        _mana += value;
     }
 
     public void IsDead()
     {
-        if (health <= 0)
+        if (_health <= 0)
             StartCoroutine(AnimationDeath());
     }
 
