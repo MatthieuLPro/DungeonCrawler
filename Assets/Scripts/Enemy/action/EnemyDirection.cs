@@ -12,6 +12,8 @@ public class EnemyDirection : EnemyMovement
     [SerializeField]
     private int _movementSequence = 50;
     [SerializeField]
+    private float _movementAngle = 0.25f;
+    [SerializeField]
     private float _chaseRadius = 1.0f;
 
     [Header("AI Behaviour Settings")]
@@ -19,6 +21,16 @@ public class EnemyDirection : EnemyMovement
     private bool _enableHunt = false;
     [SerializeField]
     private bool _changeDirectionOnCollision = false;
+    [SerializeField]
+    private bool _randomDirection = false;
+    [SerializeField]
+    private bool _onlyTop = false;
+    [SerializeField]
+    private bool _onlyRight = false;
+    [SerializeField]
+    private bool _onlyDown = false;
+    [SerializeField]
+    private bool _onlyLeft = false;
 
     private int _movementTimer = 0;
     private int _movementLimit;
@@ -33,8 +45,16 @@ public class EnemyDirection : EnemyMovement
     {
         if (_enableHunt || _changeDirectionOnCollision)
             AIdirection();
-        else
+        else if (_randomDirection)
             RandomDirection();
+        else if (_onlyTop)
+            changePos.y = 1;
+        else if (_onlyRight)
+            changePos.x = 1;
+        else if (_onlyDown)
+            changePos.y = -1;
+        else if (_onlyLeft)
+            changePos.x = -1;
         MainController();
     }
 
@@ -107,17 +127,17 @@ public class EnemyDirection : EnemyMovement
         if (changePos.x == 0)
         {
             if (GetRandomBool())
-                changePos.x = 0.25f;
+                changePos.x = _movementAngle;
             else
-                changePos.x = -0.25f;
+                changePos.x = -1 * _movementAngle;
         }
         else
             changePos.x = -1 * changePos.x;
         
         if (GetRandomBool())
-            changePos.y = 0.25f;
+            changePos.y = _movementAngle;
         else
-            changePos.y = -0.25f;
+            changePos.y = -1 * _movementAngle;
     }
 
     private bool GetRandomBool()
