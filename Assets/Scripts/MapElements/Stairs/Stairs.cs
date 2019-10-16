@@ -5,6 +5,8 @@ using UnityEngine;
 public class Stairs : MonoBehaviour
 {
     [Header("Settings Stairs")]
-    public string layoutUp = "";
-    public string layoutDown = "";
+    public string layoutUp      = "";
+    public string layoutDown    = "";
+    public int    layerUp       = 0;
+    public int    layerDown     = 0;
 }

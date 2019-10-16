@@ -16,6 +16,6 @@ public class DownOut : MonoBehaviour
 
         player.GetComponent<PlayerController>().speed = 10;
         player.GetComponent<SpriteRenderer>().sortingLayerName = transform.parent.GetComponent<Stairs>().layoutDown;
-        player.layer -= 1;
+        player.layer = transform.parent.GetComponent<Stairs>().layerDown;
     }
 }

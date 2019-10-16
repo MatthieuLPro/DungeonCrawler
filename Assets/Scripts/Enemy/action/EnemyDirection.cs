@@ -22,7 +22,6 @@ public class EnemyDirection : EnemyMovement
 
     private int _movementTimer = 0;
     private int _movementLimit;
-    private Vector2 myDirection = new Vector2(0, 0);
 
     private void Awake(){
         _movementLimit = _movementSequence;
@@ -32,7 +31,6 @@ public class EnemyDirection : EnemyMovement
 
     private void FixedUpdate()
     {
-        checkCollisions(transform.parent.GetComponent<BoxCollider2D>(), myDirection, 0.5f);
         if (_enableHunt || _changeDirectionOnCollision)
             AIdirection();
         else
@@ -40,29 +38,20 @@ public class EnemyDirection : EnemyMovement
         MainController();
     }
 
-    private bool checkCollisions(Collider2D moveCollider, Vector2 direction, float distance)
+    private void OnTriggerEnter2D(Collider2D other)
     {
-        if (moveCollider != null)
-        {
-            RaycastHit2D[] hits = new RaycastHit2D[10];
-            ContactFilter2D filter = new ContactFilter2D() { }; 
+        if (_changeDirectionOnCollision)
+            RandomDiagonal();
 
-            int numHits = moveCollider.Cast(direction, filter, hits, distance);
+        StartCoroutine(RefreshBoxCo());
+    }
 
-            for(int i = 0; i < numHits; i++)
-            {
-                if (!hits[i].collider.isTrigger)
-                {
-                    if (_changeDirectionOnCollision)
-                        RandomDiagonal();
-                    Debug.Log("Contact");
-                    return true;
-                }
-            }
-        }
+    private IEnumerator RefreshBoxCo()
+    {
+        GetComponent<BoxCollider2D>().enabled = false;
+        yield return new WaitForSeconds(0.1f);
 
-        Debug.Log("Exit 2");
-        return false;
+        GetComponent<BoxCollider2D>().enabled = true;
     }
 
     // Object has a behaviour
@@ -115,26 +104,28 @@ public class EnemyDirection : EnemyMovement
     // Random diagonal direction
     public void RandomDiagonal()
     {
-        var x = Random.Range(0, 2);
-        var y = Random.Range(0, 2);
-
-        float xAngle = -0.25f;
-        float yAngle = -0.25f;
-
-        if (x == 1 && xAngle != 0.25f)
-            xAngle = 0.25f;
+        if (changePos.x == 0)
+        {
+            if (GetRandomBool())
+                changePos.x = 0.25f;
+            else
+                changePos.x = -0.25f;
+        }
         else
-            xAngle = -0.25f;
-            
-        if (y == 1 && yAngle != 0.25f)
-            yAngle = 0.25f;
+            changePos.x = -1 * changePos.x;
+        
+        if (GetRandomBool())
+            changePos.y = 0.25f;
         else
-            yAngle = -0.25f;
+            changePos.y = -0.25f;
+    }
 
-        changePos.x = xAngle;
-        changePos.y = yAngle;
-        myDirection.x = xAngle;
-        myDirection.y = yAngle;
+    private bool GetRandomBool()
+    {
+        if (Random.Range(0, 2) == 1)
+            return (true);
+
+        return (false);
     }
 
     // AI functions
