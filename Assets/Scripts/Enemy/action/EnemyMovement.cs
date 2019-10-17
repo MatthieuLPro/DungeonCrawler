@@ -15,6 +15,12 @@ public abstract class EnemyMovement : MonoBehaviour
     [Header("Speed Settings")]
     public float   speed;
 
+    [Header("Movement Frequence")]
+    [SerializeField]
+    private float _waitTime = 0;
+    [SerializeField]
+    private float _moveTime = 0;
+
     [HideInInspector]
     public Vector3     changePos;
 
@@ -28,6 +34,10 @@ public abstract class EnemyMovement : MonoBehaviour
     public Rigidbody2D   rb2d;
 
     private GameObject _parent;
+
+    private bool _coWaitIsRunning = false;
+    private bool _coMoveIsRunning = false;
+    private bool _isWaiting       = false;
     
     protected virtual void Start()
     {
@@ -40,7 +50,16 @@ public abstract class EnemyMovement : MonoBehaviour
     public virtual void MainController()
     {
         if (changePos != Vector3.zero && currentState != EnemyState.attack)
-            MoveObject();
+            if(_waitTime == 0)
+                MoveObject();
+            else if(_isWaiting && !_coWaitIsRunning)
+                StartCoroutine(WaitCo());
+            else if (_isWaiting && !_coWaitIsRunning)
+                MoveObject();
+            else if(!_coMoveIsRunning && !_coWaitIsRunning)
+                StartCoroutine(WaitCo());
+            else
+                StartCoroutine(MoveCo());
         else
             AnimationIdle();
     }
@@ -50,6 +69,24 @@ public abstract class EnemyMovement : MonoBehaviour
         changePos.Normalize();
         rb2d.MovePosition(transform.position + changePos * speed * Time.deltaTime);
         AnimationMovement();
+    }
+
+    private IEnumerator WaitCo()
+    {
+        _coWaitIsRunning = true;
+            
+        yield return new WaitForSeconds(_waitTime);
+
+        _coWaitIsRunning = false;
+    }
+
+    private IEnumerator MoveCo()
+    {
+        _coMoveIsRunning = true;
+            
+        yield return new WaitForSeconds(_moveTime);
+
+        _coMoveIsRunning = false;
     }
 
     protected void AnimationIdle(){
