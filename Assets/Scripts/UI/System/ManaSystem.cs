@@ -28,7 +28,9 @@ public class ManaSystem
         while(point > 0)
         {
             if (upOrDown == 0)
+            {
                 if (DecreaseMana()) break;
+            }
             else
                 if (IncreaseMana()) break;
             point--;
@@ -37,6 +39,7 @@ public class ManaSystem
         if (OnIncrease != null) OnIncrease(this, EventArgs.Empty);
     }
 
+    // If a bug appear for mana : add Debug.Log before return false
     private bool DecreaseMana()
     {
         _mana.DecreaseByOne();

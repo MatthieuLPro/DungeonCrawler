@@ -8,13 +8,17 @@ public class EnemyInteraction : MonoBehaviour
     [SerializeField]
     private int _damage = 1;
     [SerializeField]
-    // 0 => Deal life damage
-    // 1 => Deal mana damage
     private int _typeDamage = 0;
     [SerializeField]
     private float _thrust       = 1f;    
     [SerializeField]
     private float _knockTime    = 0.3f;
+
+    /*
+        TypeDamage:
+            0 => Life
+            1 => Mana
+    */
 
     private void OnTriggerEnter2D(Collider2D other)
     {

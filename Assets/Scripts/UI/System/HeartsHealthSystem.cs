@@ -77,26 +77,26 @@ public class HeartsHealthSystem
 
     public class Heart
     {
-        private int value;
+        private int _value;
 
         public Heart(int value){
-            this.value = value;
+            this._value = value;
         }
 
         public int GetValue(){
-            return this.value;
+            return this._value;
         }
 
         public void SetValue(int value){
-            this.value = value;
+            this._value = value;
         }
 
         public void GetSingularDamage(){
-            this.value--;
+            this._value--;
         }
 
         public void GetSingularHeal(){
-            this.value++;
+            this._value++;
         }
     }
 }

@@ -23,21 +23,22 @@ public class TeleportDoor : MonoBehaviour
 
     private Vector3 FindTeleportPlace()
     {
-        Vector3 newPosition = new Vector3(0, 0, 0);
+        Vector3 newPosition     = new Vector3(0, 0, 0);
+        float teleportDistance  = transform.parent.GetComponent<InteractionDoor>().teleportDistance;
 
         switch(transform.parent.GetComponent<InteractionDoor>().teleportDirection)
         {
             case 0:
-                newPosition += new Vector3(0, 6.2f, 0);
+                newPosition += new Vector3(0, teleportDistance, 0);
                 break;
             case 1:
-                newPosition += new Vector3(6.2f, 0, 0);
+                newPosition += new Vector3(teleportDistance, 0, 0);
                 break;
             case 2:
-                newPosition += new Vector3(0, -6.2f, 0);
+                newPosition += new Vector3(0, teleportDistance, 0);
                 break;
             default:
-                newPosition += new Vector3(-6.2f, 0, 0);
+                newPosition += new Vector3(teleportDistance, 0, 0);
                 break;
         }
 

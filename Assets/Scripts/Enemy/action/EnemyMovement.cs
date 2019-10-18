@@ -54,12 +54,10 @@ public abstract class EnemyMovement : MonoBehaviour
                 MoveObject();
             else if(_isWaiting && !_coWaitIsRunning)
                 StartCoroutine(WaitCo());
-            else if (_isWaiting && !_coWaitIsRunning)
-                MoveObject();
-            else if(!_coMoveIsRunning && !_coWaitIsRunning)
-                StartCoroutine(WaitCo());
-            else
+            else if (!_isWaiting && !_coMoveIsRunning)
                 StartCoroutine(MoveCo());
+            else if(!_isWaiting && _coMoveIsRunning)
+                MoveObject();
         else
             AnimationIdle();
     }
@@ -78,6 +76,7 @@ public abstract class EnemyMovement : MonoBehaviour
         yield return new WaitForSeconds(_waitTime);
 
         _coWaitIsRunning = false;
+        _isWaiting       = false;
     }
 
     private IEnumerator MoveCo()
@@ -87,6 +86,7 @@ public abstract class EnemyMovement : MonoBehaviour
         yield return new WaitForSeconds(_moveTime);
 
         _coMoveIsRunning = false;
+        _isWaiting       = true;
     }
 
     protected void AnimationIdle(){

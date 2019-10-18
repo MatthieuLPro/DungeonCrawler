@@ -11,10 +11,10 @@ public class DownOut : MonoBehaviour
 
         GameObject player = other.gameObject;
 
-        if(player.GetComponent<PlayerController>().speed >= 6)
+        if(player.GetComponent<PlayerController>().speed >= 5)
             return;
 
-        player.GetComponent<PlayerController>().speed = 6;
+        player.GetComponent<PlayerController>().speed = 5;
         player.GetComponent<SpriteRenderer>().sortingLayerName = transform.parent.GetComponent<Stairs>().layoutDown;
         player.layer = transform.parent.GetComponent<Stairs>().layerDown;
     }

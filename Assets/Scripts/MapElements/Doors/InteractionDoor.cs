@@ -4,19 +4,37 @@ using UnityEngine;
 
 public class InteractionDoor : MonoBehaviour
 {
-    [Header("Door Settings")]
-    public int openMethod = 0;
+    [Header("Open Settings")]
     public bool open = true;
+    public int openMethod = 0;
+
+    [Header("Teleport Settings")]
+    public int teleportDirection = 0;
+    public float teleportDistance = 7.0f;
+
+    [Header("Door Sprites")]
     [SerializeField]
     private Sprite _openSprite = null;
     [SerializeField]
     private Sprite _closeSprite = null;
-    public int teleportDirection = 0;
 
     private SpriteRenderer _spriteRend;
 
-    // teleportDirection = 0 => Up / 1 => Right / 2 => Down / 3 => Left
-    // _openMethod = 0 (open) / = 1 (close key) / = 2 (close interrupteur) / = 3 (close Big Key) / = 4 (close enemis)
+    /* TeleportDirection:
+            0 => Up
+            1 => Right
+            2 => Down
+            3 => Left
+    */
+    
+    /* OpenMethod:
+            0 => Open
+            1 => Small Key
+            2 => Interruptor
+            3 => Big Key
+            4 => Enemys
+    */
+
     void Start()
     {
         _spriteRend = GetComponent<SpriteRenderer>();
