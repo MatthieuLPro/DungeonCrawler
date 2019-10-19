@@ -31,17 +31,21 @@ public class CacAttack : MonoBehaviour
         }
         else if (other.CompareTag("Enemy"))
         {
-            Rigidbody2D enemy = other.GetComponent<Rigidbody2D>();
+            GameObject enemy = other.transform.parent.gameObject;
+            Rigidbody2D enemyRb2d = enemy.GetComponent<Rigidbody2D>();
 
-            if (enemy == null || _coIsRunning)
+            if (enemy == null || enemyRb2d == null || _coIsRunning)
+                return;
+
+            if(enemy.GetComponent<Enemy>().isInvincible)
                 return;
 
             _coIsRunning = true;
             Vector2 difference = enemy.transform.position - transform.position;
             difference = difference.normalized * _thrust;
             ChangeEnemyState(enemy);
-            //ChangeEnemyLifeOrMana(enemy);
-            enemy.AddForce(difference, ForceMode2D.Impulse);
+            enemy.GetComponent<Enemy>().ChangeHealth(-1);
+            enemyRb2d.AddForce(difference, ForceMode2D.Impulse);
             StartCoroutine((KnockCo(enemy)));
         }
         else if (other.CompareTag("GlobeSwitch")){
@@ -49,12 +53,12 @@ public class CacAttack : MonoBehaviour
         }
     }
 
-    private IEnumerator KnockCo(Rigidbody2D enemy)
+    private IEnumerator KnockCo(GameObject enemy)
     {
         //StartCoroutine(enemy.GetComponent<EnemyDirection>().FlashCo(_knockTime));
         yield return new WaitForSeconds(_knockTime);
 
-        enemy.velocity = Vector2.zero;
+        enemy.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
         ChangeEnemyState(enemy);
         _isColliding = false;
         _coIsRunning = false;
@@ -69,25 +73,27 @@ public class CacAttack : MonoBehaviour
         _isColliding = false;
     }
 
-    private void ChangeEnemyState(Rigidbody2D enemy)
+    private void ChangeEnemyState(GameObject enemy)
     {
-        if (enemy.GetComponent<EnemyDirection>().enabled == true)
+        GameObject movement     = enemy.transform.GetChild(0).gameObject;
+        GameObject interaction  = enemy.transform.GetChild(1).gameObject;
+        if (movement.GetComponent<EnemyDirection>().enabled == true)
         {
-            enemy.GetComponent<MovingObject>().currentState = ObjectState.knockBack;
+            movement.GetComponent<EnemyMovement>().currentState = EnemyState.knockBack;
 
-            enemy.GetComponent<EnemyDirection>().enabled = false;
-            enemy.GetComponent<EnemyInteraction>().enabled = false;
-            enemy.GetComponent<MovingObject>().enabled = false;
+            movement.GetComponent<EnemyDirection>().enabled = false;
+            interaction.GetComponent<EnemyInteraction>().enabled = false;
+            movement.GetComponent<EnemyMovement>().enabled = false;
 
             enemy.GetComponent<Animator>().SetBool("Moving", false);
         }
         else
         {
-            enemy.GetComponent<EnemyDirection>().enabled = true;
-            enemy.GetComponent<EnemyInteraction>().enabled = true;
-            enemy.GetComponent<MovingObject>().enabled = true;
+            movement.GetComponent<EnemyDirection>().enabled = true;
+            interaction.GetComponent<EnemyInteraction>().enabled = true;
+            movement.GetComponent<EnemyMovement>().enabled = true;
 
-            enemy.GetComponent<MovingObject>().currentState = ObjectState.idle;
+            movement.GetComponent<EnemyMovement>().currentState = EnemyState.idle;
         }
     }
 

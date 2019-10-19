@@ -212,7 +212,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _damage: 1
   _typeDamage: 0
-  _thrust: 1
+  _thrust: 5
   _knockTime: 0.3
 --- !u!61 &530417119357442694
 BoxCollider2D:
@@ -285,6 +285,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 4
+  _waitTime: 0
+  _moveTime: 0
   changePos: {x: 0, y: 0, z: 0}
   currentState: 0
   anime: {fileID: 0}
@@ -293,6 +295,7 @@ MonoBehaviour:
   _movementSequence: 0
   _movementAngle: 0.25
   _chaseRadius: 1
+  _chaseLength: 0
   _enableHunt: 0
   _changeDirectionOnCollision: 0
   _randomDirection: 0

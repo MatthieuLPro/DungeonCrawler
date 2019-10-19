@@ -11,21 +11,42 @@ public class Enemy : MonoBehaviour
     private int  _mana       = 0;
     public bool isInvincible = false;
 
-    public void ChangeHealth(int value)
-    {
-        _health += value;
+    private int _actualHealth;
+    private int _actualMana;
+
+    void Start(){
+        _actualHealth = _health;
+        _actualMana = _mana;
+    }
+
+    /* ************************************************ */
+    /* Change enemy values */
+    /* ************************************************ */
+    public void ChangeHealth(int value){
+        if (_actualHealth + value > _health)
+            _actualHealth = _health;
+        else
+            _actualHealth += value;
         IsDead();
     }
 
     public void ChangeMana(int value){
-        _mana += value;
+        if(_actualMana + value > _mana)
+            _actualMana = _mana;
+        else if (_actualMana + value < 0)
+            _actualMana = 0;
+        else
+            _actualMana += value;
     }
 
-    public void IsDead()
-    {
-        if (_health <= 0)
+    public void IsDead(){
+        if (_actualHealth <= 0)
             StartCoroutine(AnimationDeath());
     }
+
+    /* ************************************************ */
+    /* Coroutines */
+    /* ************************************************ */
 
     private IEnumerator AnimationDeath()
     {

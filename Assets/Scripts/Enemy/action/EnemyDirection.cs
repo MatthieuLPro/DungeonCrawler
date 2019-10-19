@@ -14,7 +14,9 @@ public class EnemyDirection : EnemyMovement
     [SerializeField]
     private float _movementAngle = 0.25f;
     [SerializeField]
-    private float _chaseRadius = 1.0f;
+    private float _chaseRadius = 0.0f;
+    [SerializeField]
+    private float _chaseLength = 0.0f;
 
     [Header("AI Behaviour Settings")]
     [SerializeField]
@@ -156,7 +158,8 @@ public class EnemyDirection : EnemyMovement
         Transform target    = player.transform;
         Vector2 size        = player.GetComponent<BoxCollider2D>().size;
 
-        if (Vector3.Distance(target.position, transform.position) < _chaseRadius)
+        if (Vector3.Distance(target.position, transform.position) < _chaseRadius ||
+            Vector3.Distance(target.position, transform.position) > _chaseLength || _chaseLength == 0)
         {
             changePos.x = 0;
             changePos.y = 0;

@@ -76,7 +76,6 @@ public class BallTunnel : MonoBehaviour
                                                     randomBall == 0 ? _spawnPos1[Random.Range(0, 3)] : _spawnPos2[Random.Range(0, 2)],
                                                     Quaternion.identity);
         InstantiatePrefab.transform.SetParent(transform);
-
         yield return new WaitForSeconds(_launchTime);
         _coIsRunning = false;
     }
