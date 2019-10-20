@@ -24,21 +24,35 @@ public class CacAttack : MonoBehaviour
             return;
 
        _isColliding = true;
-        if(ObjectIsDestructible(other.gameObject) == true)
-        {
+        if(ObjectIsDestructible(other.gameObject) == true){
             other.GetComponent<DestructibleObject>().Smash();
             _isColliding = false;
         }
-        else if (other.CompareTag("Enemy"))
-        {
-            GameObject enemy = other.transform.parent.gameObject;
+        else if (other.CompareTag("Enemy")){
+            Debug.Log("other: " + other);
+            Debug.Log("other.transform: " + other.transform);
+            Debug.Log("other.transform.parent: " + other.transform.parent);
+            Debug.Log("other.transform.parent.gameObject: " + other.transform.parent.gameObject);
+                GameObject enemy = null;
+            if (other.transform.parent == null)
+                enemy = other.gameObject;
+            else
+                enemy = other.transform.parent.gameObject;
+
+            if (enemy == null)
+                enemy = other.GetComponent<GameObject>();
+
             Rigidbody2D enemyRb2d = enemy.GetComponent<Rigidbody2D>();
 
-            if (enemy == null || enemyRb2d == null || _coIsRunning)
+            if (enemy == null || enemyRb2d == null || _coIsRunning){
+                _isColliding = false;
                 return;
+            }
 
-            if(enemy.GetComponent<Enemy>().isInvincible)
+            if (enemy.GetComponent<Enemy>().isInvincible){
+                _isColliding = false;
                 return;
+            }
 
             _coIsRunning = true;
             Vector2 difference = enemy.transform.position - transform.position;
@@ -53,8 +67,7 @@ public class CacAttack : MonoBehaviour
         }
     }
 
-    private IEnumerator KnockCo(GameObject enemy)
-    {
+    private IEnumerator KnockCo(GameObject enemy){
         //StartCoroutine(enemy.GetComponent<EnemyDirection>().FlashCo(_knockTime));
         yield return new WaitForSeconds(_knockTime);
 
@@ -65,20 +78,17 @@ public class CacAttack : MonoBehaviour
         enemy.GetComponent<Enemy>().ChangeHealth(_damage);
     }
 
-    private IEnumerator SwitchCo(Collider2D globe)
-    {
+    private IEnumerator SwitchCo(Collider2D globe){
         globe.GetComponent<SwitchGlobe>().ToggleSwitchBlocks();
 
         yield return new WaitForSeconds(0.06f);
         _isColliding = false;
     }
 
-    private void ChangeEnemyState(GameObject enemy)
-    {
+    private void ChangeEnemyState(GameObject enemy){
         GameObject movement     = enemy.transform.GetChild(0).gameObject;
         GameObject interaction  = enemy.transform.GetChild(1).gameObject;
-        if (movement.GetComponent<EnemyDirection>().enabled == true)
-        {
+        if (movement.GetComponent<EnemyDirection>().enabled == true){
             movement.GetComponent<EnemyMovement>().currentState = EnemyState.knockBack;
 
             movement.GetComponent<EnemyDirection>().enabled = false;
@@ -87,8 +97,7 @@ public class CacAttack : MonoBehaviour
 
             enemy.GetComponent<Animator>().SetBool("Moving", false);
         }
-        else
-        {
+        else{
             movement.GetComponent<EnemyDirection>().enabled = true;
             interaction.GetComponent<EnemyInteraction>().enabled = true;
             movement.GetComponent<EnemyMovement>().enabled = true;
@@ -97,13 +106,11 @@ public class CacAttack : MonoBehaviour
         }
     }
 
-    private bool ObjectIsDestructible(GameObject objectToCheck)
-    {
+    private bool ObjectIsDestructible(GameObject objectToCheck){
         if (objectToCheck.CompareTag("ObjectDestructible"))
             return true;
         
-        foreach (Transform child in objectToCheck.transform)
-        {
+        foreach (Transform child in objectToCheck.transform){
             if (child.CompareTag("ObjectDestructible"))
                 return true;
         }

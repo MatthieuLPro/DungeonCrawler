@@ -43,8 +43,7 @@ public class EnemyDirection : EnemyMovement
             RandomDiagonal();
     }
 
-    private void FixedUpdate()
-    {
+    private void FixedUpdate(){
         if (_enableHunt || _changeDirectionOnCollision)
             AIdirection();
         else if (_randomDirection)
@@ -60,16 +59,14 @@ public class EnemyDirection : EnemyMovement
         MainController();
     }
 
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-        if (_changeDirectionOnCollision)
+    private void OnTriggerEnter2D(Collider2D other){
+        if (_changeDirectionOnCollision){
             RandomDiagonal();
-
-        StartCoroutine(RefreshBoxCo());
+            StartCoroutine(RefreshBoxCo());
+        }
     }
 
-    private IEnumerator RefreshBoxCo()
-    {
+    private IEnumerator RefreshBoxCo(){
         GetComponent<BoxCollider2D>().enabled = false;
         yield return new WaitForSeconds(0.1f);
 
@@ -77,13 +74,11 @@ public class EnemyDirection : EnemyMovement
     }
 
     // Object has a behaviour
-    private void AIdirection()
-    {
+    private void AIdirection(){
         if (!CheckSequence())
             return;
 
-        if (_enableHunt)
-        {
+        if (_enableHunt){
             if (_movementSequence > 5) _movementSequence = 2;
             HuntPlayer();
         }
@@ -92,8 +87,7 @@ public class EnemyDirection : EnemyMovement
     }
 
     // Object moves randomly
-    private void RandomDirection()
-    {
+    private void RandomDirection(){
         if (!CheckSequence())
             return;
 
@@ -108,14 +102,12 @@ public class EnemyDirection : EnemyMovement
 
     // Directions Sub functions
     // Random direction on X & Y
-    private void RandomAllDirections()
-    {
+    private void RandomAllDirections(){
         changePos.x = Random.Range(-1.0f, 1.0f);
         changePos.y = Random.Range(-1.0f, 1.0f);
     }
     // Random direction on X OR Y
-    private void RandomOneDirection()
-    {
+    private void RandomOneDirection(){
         float direction = Random.Range(-1.0f, 1.1f);
 
         if (direction > 0)
@@ -124,10 +116,8 @@ public class EnemyDirection : EnemyMovement
             changePos.y = Random.Range(-1.0f, 1.0f);
     }
     // Random diagonal direction
-    public void RandomDiagonal()
-    {
-        if (changePos.x == 0)
-        {
+    public void RandomDiagonal(){
+        if (changePos.x == 0){
             if (GetRandomBool())
                 changePos.x = _movementAngle;
             else
@@ -142,8 +132,7 @@ public class EnemyDirection : EnemyMovement
             changePos.y = -1 * _movementAngle;
     }
 
-    private bool GetRandomBool()
-    {
+    private bool GetRandomBool(){
         if (Random.Range(0, 2) == 1)
             return (true);
 
@@ -152,15 +141,13 @@ public class EnemyDirection : EnemyMovement
 
     // AI functions
     // New direction depending of player
-    private void HuntPlayer()
-    {
+    private void HuntPlayer(){
         GameObject player   = GameObject.FindWithTag("Player");
         Transform target    = player.transform;
         Vector2 size        = player.GetComponent<BoxCollider2D>().size;
 
         if (Vector3.Distance(target.position, transform.position) < _chaseRadius ||
-            Vector3.Distance(target.position, transform.position) > _chaseLength || _chaseLength == 0)
-        {
+            Vector3.Distance(target.position, transform.position) > _chaseLength || _chaseLength == 0){
             changePos.x = 0;
             changePos.y = 0;
             return;
@@ -181,16 +168,15 @@ public class EnemyDirection : EnemyMovement
             changePos.y = 0.0f;
     }
 
-    private bool CheckSequence()
-    {
+    private bool CheckSequence(){
         if (_movementSequence == 0)
             return false;
 
-        if (_movementTimer <= _movementSequence)
-        {
+        if (_movementTimer <= _movementSequence){
             _movementTimer++;
             return false;
         }
+
         _movementTimer = 0;
         changePos = Vector3.zero;
         return true;
