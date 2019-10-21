@@ -24,29 +24,36 @@ public class EnemyInteraction : MonoBehaviour
     {
         if (!other.CompareTag("Player"))
             return;
-
+        
         Rigidbody2D player = other.GetComponent<Rigidbody2D>();
         if (player == null)
             return;
-        
+
+        if(GetComponent<BoxCollider2D>().enabled)
+            EnemyHitPlayer(player);
+        else
+            transform.GetChild(0).transform.GetComponent<EnemyMovement>()._isWakeUpTransition = true;
+    }
+
+    
+    /* ************************************************ */
+    /* Main functions */
+    /* ************************************************ */
+    // Enemy touches the player
+    private void EnemyHitPlayer(Rigidbody2D player){
         Vector2 difference = player.transform.position - transform.position;
-        difference = difference.normalized * _thrust;
+
         ChangePlayerState(player);
         ChangePlayerLifeOrMana(player);
-        player.AddForce(difference, ForceMode2D.Impulse);
+
+        player.AddForce(difference.normalized * _thrust, ForceMode2D.Impulse);
         StartCoroutine((KnockCo(player)));
     }
 
-    private IEnumerator KnockCo(Rigidbody2D player)
-    {
-        StartCoroutine(player.GetComponent<PlayerController>().FlashCo(_knockTime));
-        player.GetComponent<PlayerAudio>().CallAudio("hurt");
-        yield return new WaitForSeconds(_knockTime);
-
-        player.velocity = Vector2.zero;
-        ChangePlayerState(player);
-    }
-
+    /* ************************************************ */
+    /* Change player state functions */
+    /* ************************************************ */
+    // Changer player animation
     private void ChangePlayerState(Rigidbody2D player)
     {
         if (player.GetComponent<PlayerController>().enabled == true)
@@ -69,11 +76,25 @@ public class EnemyInteraction : MonoBehaviour
         }
     }
 
+    // Changer player variables (life and mana) 
     private void ChangePlayerLifeOrMana(Rigidbody2D player)
     {
         if (_typeDamage == 0)
             player.GetComponent<Player>().LooseLife(_damage);
         else
             player.GetComponent<Player>().LooseMana(_damage);
+    }
+
+    /* ************************************************ */
+    /* Coroutines */
+    /* ************************************************ */
+    // Knock out player
+    private IEnumerator KnockCo(Rigidbody2D player){
+        StartCoroutine(player.GetComponent<PlayerController>().FlashCo(_knockTime));
+        player.GetComponent<PlayerAudio>().CallAudio("hurt");
+        yield return new WaitForSeconds(_knockTime);
+
+        player.velocity = Vector2.zero;
+        ChangePlayerState(player);
     }
 }

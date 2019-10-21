@@ -43,8 +43,14 @@ public abstract class EnemyMovement : MonoBehaviour
 
     private bool _coWaitIsRunning = false;
     private bool _coMoveIsRunning = false;
-    private bool _isWaiting       = false;
+
+    public  bool _isWakeUpTransition    = false;
+    private bool _isWakeDownTransition  = false;
+    private bool _isWaiting             = false;
     
+    /* ************************************************ */
+    /* Main functions */
+    /* ************************************************ */
     protected virtual void Start(){
         currentState    = EnemyState.idle;
         _parent         = transform.parent.gameObject;
@@ -55,19 +61,20 @@ public abstract class EnemyMovement : MonoBehaviour
     public virtual void MainController(){
         if (changePos != Vector3.zero && currentState != EnemyState.attack)
         {
-            if(_waitTime == 0)
+            Debug.Log("Condition move: " + (_waitTime == 0 || (!_isWaiting && _coMoveIsRunning && (!_isWakeUpTransition && !_isWakeDownTransition))));
+            if(_waitTime == 0 || (!_isWaiting && _coMoveIsRunning && (!_isWakeUpTransition && !_isWakeDownTransition)))
                 MoveObject();
+            else if (_isWakeUpTransition)
+                StartCoroutine(WakeUpCo());
+            else if (_isWakeDownTransition)
+                StartCoroutine(WakeDownCo());
             else if(_isWaiting && !_coWaitIsRunning)
                 StartCoroutine(WaitCo());
             else if (!_isWaiting && !_coMoveIsRunning)
                 StartCoroutine(MoveCo());
-            else if(!_isWaiting && _coMoveIsRunning)
-                MoveObject();
         }
         else
-        {
             AnimationIdle();
-        }
     }
     
     protected void MoveObject(){
@@ -109,6 +116,12 @@ public abstract class EnemyMovement : MonoBehaviour
 
         _coWaitIsRunning = false;
         _isWaiting       = false;
+
+        if (_wakeSystem){
+            GetComponent<Transform>().parent.GetComponent<BoxCollider2D>().enabled    = true;
+            GetComponent<Transform>().parent.GetComponent<CircleCollider2D>().enabled = false;
+        }
+
     }
 
     private IEnumerator MoveCo(){
@@ -118,20 +131,30 @@ public abstract class EnemyMovement : MonoBehaviour
 
         _coMoveIsRunning = false;
         _isWaiting       = true;
+
+        if (_wakeSystem){
+            GetComponent<Transform>().parent.GetComponent<BoxCollider2D>().enabled    = false;
+            GetComponent<Transform>().parent.GetComponent<CircleCollider2D>().enabled = true;
+            _isWakeDownTransition = true;
+        }
     }
 
     /* For Wake up mode */
     private IEnumerator WakeUpCo(){
         anime.SetBool("WakeUp", true);
+        _isWakeUpTransition = true;
         yield return new WaitForSeconds(_wakeTime);
 
         anime.SetBool("WakeUp", false);
+        _isWakeUpTransition = false;
     }
     
     private IEnumerator WakeDownCo(){
         anime.SetBool("WakeDown", true);
+        _isWakeDownTransition = true;
         yield return new WaitForSeconds(_wakeTime);
 
         anime.SetBool("WakeDown", false);
-    }
+        _isWakeDownTransition = false;
+    }    
 }

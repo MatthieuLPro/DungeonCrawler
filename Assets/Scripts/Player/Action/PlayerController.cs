@@ -23,9 +23,6 @@ public class PlayerController : MovingObject
 
     public override void MainController()
     {
-  
-            
-
         if ((InputManager.YButton() || InputManager.BButton()) &&
              currentState == ObjectState.carry)
             StartCoroutine(ThrowObject());

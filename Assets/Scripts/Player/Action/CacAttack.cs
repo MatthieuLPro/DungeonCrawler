@@ -20,41 +20,26 @@ public class CacAttack : MonoBehaviour
     // Need to check if isColliding & CoisRunning are usefull
     private void OnTriggerEnter2D(Collider2D other)
     {   
-        if (_isColliding)
-            return;
 
-       _isColliding = true;
         if(ObjectIsDestructible(other.gameObject) == true){
             other.GetComponent<DestructibleObject>().Smash();
-            _isColliding = false;
         }
         else if (other.CompareTag("Enemy")){
-            Debug.Log("other: " + other);
-            Debug.Log("other.transform: " + other.transform);
-            Debug.Log("other.transform.parent: " + other.transform.parent);
-            Debug.Log("other.transform.parent.gameObject: " + other.transform.parent.gameObject);
-                GameObject enemy = null;
-            if (other.transform.parent == null)
-                enemy = other.gameObject;
-            else
-                enemy = other.transform.parent.gameObject;
+            GameObject enemy = other.gameObject;
 
             if (enemy == null)
                 enemy = other.GetComponent<GameObject>();
 
             Rigidbody2D enemyRb2d = enemy.GetComponent<Rigidbody2D>();
 
-            if (enemy == null || enemyRb2d == null || _coIsRunning){
-                _isColliding = false;
+            if (enemy == null || enemyRb2d == null) {
                 return;
             }
 
             if (enemy.GetComponent<Enemy>().isInvincible){
-                _isColliding = false;
                 return;
             }
 
-            _coIsRunning = true;
             Vector2 difference = enemy.transform.position - transform.position;
             difference = difference.normalized * _thrust;
             ChangeEnemyState(enemy);
@@ -73,7 +58,6 @@ public class CacAttack : MonoBehaviour
 
         enemy.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
         ChangeEnemyState(enemy);
-        _isColliding = false;
         _coIsRunning = false;
         enemy.GetComponent<Enemy>().ChangeHealth(_damage);
     }
@@ -82,24 +66,22 @@ public class CacAttack : MonoBehaviour
         globe.GetComponent<SwitchGlobe>().ToggleSwitchBlocks();
 
         yield return new WaitForSeconds(0.06f);
-        _isColliding = false;
     }
 
     private void ChangeEnemyState(GameObject enemy){
         GameObject movement     = enemy.transform.GetChild(0).gameObject;
-        GameObject interaction  = enemy.transform.GetChild(1).gameObject;
         if (movement.GetComponent<EnemyDirection>().enabled == true){
             movement.GetComponent<EnemyMovement>().currentState = EnemyState.knockBack;
 
             movement.GetComponent<EnemyDirection>().enabled = false;
-            interaction.GetComponent<EnemyInteraction>().enabled = false;
+            enemy.GetComponent<EnemyInteraction>().enabled = false;
             movement.GetComponent<EnemyMovement>().enabled = false;
 
             enemy.GetComponent<Animator>().SetBool("Moving", false);
         }
         else{
             movement.GetComponent<EnemyDirection>().enabled = true;
-            interaction.GetComponent<EnemyInteraction>().enabled = true;
+            enemy.GetComponent<EnemyInteraction>().enabled = true;
             movement.GetComponent<EnemyMovement>().enabled = true;
 
             movement.GetComponent<EnemyMovement>().currentState = EnemyState.idle;
