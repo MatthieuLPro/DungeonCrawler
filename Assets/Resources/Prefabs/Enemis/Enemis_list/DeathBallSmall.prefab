@@ -29,7 +29,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 459380086280618048}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.52, y: 58.84, z: -0.42913207}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 5, y: 5, z: 1}
   m_Children:
   - {fileID: 459380087339730453}
@@ -287,22 +287,25 @@ MonoBehaviour:
   speed: 4
   _waitTime: 0
   _moveTime: 0
+  _wakeSystem: 0
+  _wakeTime: 0
   changePos: {x: 0, y: 0, z: 0}
   currentState: 0
   anime: {fileID: 0}
   rb2d: {fileID: 0}
+  _isWakeUpTransition: 0
   _enableDiagonal: 0
+  _onlyTop: 0
+  _onlyRight: 0
+  _onlyDown: 1
+  _onlyLeft: 0
   _movementSequence: 0
   _movementAngle: 0.25
   _chaseRadius: 1
   _chaseLength: 0
   _enableHunt: 0
-  _changeDirectionOnCollision: 0
   _randomDirection: 0
-  _onlyTop: 0
-  _onlyRight: 0
-  _onlyDown: 1
-  _onlyLeft: 0
+  _randomDiagonalDirection: 0
 --- !u!61 &7622534574165286683
 BoxCollider2D:
   m_ObjectHideFlags: 0
