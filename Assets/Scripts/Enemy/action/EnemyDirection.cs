@@ -74,11 +74,16 @@ public class EnemyDirection : EnemyMovement
     /* ************************************************ */
     // Object has a behaviour
     private void AIdirection(){
-        if (!CheckSequence())
-            return;
+        if (!_enableDiagonal)
+        {
+            if (!CheckSequence())
+                return;
+
+            if (_movementSequence <= 5)
+                _movementSequence = _movementLimit;
+        }
 
         if (_enableHunt){
-            if (_movementSequence > 5) _movementSequence = 2;
             HuntDirection();
         }
         else if (_randomDiagonalDirection)
@@ -92,7 +97,6 @@ public class EnemyDirection : EnemyMovement
     private void HuntDirection(){
         GameObject player   = GameObject.FindWithTag("Player");
         Transform target    = player.transform;
-        Vector2 size        = player.GetComponent<BoxCollider2D>().size;
 
         if (Vector3.Distance(target.position, transform.position) < _chaseRadius ||
             Vector3.Distance(target.position, transform.position) > _chaseLength || _chaseLength == 0){
@@ -101,12 +105,36 @@ public class EnemyDirection : EnemyMovement
             return;
         }
 
+        // Diagonal behaviour
+        if(_enableDiagonal)
+        {
+            HuntVerticalDirection(player);
+            HuntHorizontalDirection(player);
+        }
+        else
+        {
+            if(GetRandomBool())
+                HuntVerticalDirection(player);
+            else
+                HuntHorizontalDirection(player);
+        }
+    }
+
+    private void HuntHorizontalDirection(GameObject player){
+        Transform target = player.transform;
+        Vector2 size     = player.GetComponent<BoxCollider2D>().size;
+
         if (transform.position.x > target.position.x + size.y / 2)
             changePos.x = -1.0f;
         else if (transform.position.x < target.position.x - size.y / 2)
             changePos.x = 1.0f;
         else
             changePos.x = 0.0f;
+    }
+
+    private void HuntVerticalDirection(GameObject player){
+        Transform target = player.transform;
+        Vector2 size     = player.GetComponent<BoxCollider2D>().size;
 
         if (transform.position.y > target.position.y + size.x / 2)
             changePos.y = -1.0f;

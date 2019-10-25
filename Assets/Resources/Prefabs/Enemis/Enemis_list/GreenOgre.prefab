@@ -252,12 +252,12 @@ MonoBehaviour:
   _isWaiting: 0
   _isWakeUpTransition: 0
   _isWakeDownTransition: 0
-  _enableDiagonal: 1
+  _enableDiagonal: 0
   _onlyTop: 0
   _onlyRight: 0
   _onlyDown: 0
   _onlyLeft: 0
-  _movementSequence: 100
+  _movementSequence: 20
   _movementAngle: 0
   _chaseRadius: 0
   _chaseLength: 5
