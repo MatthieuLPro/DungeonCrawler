@@ -10,7 +10,7 @@ public class BallTunnel : MonoBehaviour
     [SerializeField]
     private float _length = 2;
     [SerializeField]
-    private int _launchTime = 2;
+    private float _launchTime = 2;
     [SerializeField]
     private bool _differentTypes    = false;
     [SerializeField]
@@ -149,6 +149,17 @@ public class BallTunnel : MonoBehaviour
         return InstantiatePrefab;
     }
 
+    // Get sorting layer name depending of level
+    private string GetSortingLayer()
+    {
+        if (gameObject.layer == 20)
+            return "Wall-1";
+        else if(gameObject.layer == 22)
+            return "Wall";
+        
+        return "Wall+1";
+    }
+
     /* ************************************************ */
     /* Coroutines */
     /* ************************************************ */
@@ -159,6 +170,8 @@ public class BallTunnel : MonoBehaviour
         GameObject InstantiatePrefab = InstantiateNewBall();
 
         InstantiatePrefab.transform.SetParent(transform);
+        InstantiatePrefab.layer = gameObject.layer;
+        InstantiatePrefab.GetComponent<SpriteRenderer>().sortingLayerName = GetSortingLayer();
         yield return new WaitForSeconds(_launchTime);
         _coIsRunning = false;
     }
