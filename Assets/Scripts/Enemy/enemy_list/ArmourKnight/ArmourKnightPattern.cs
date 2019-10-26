@@ -5,26 +5,46 @@ using UnityEngine;
 public class ArmourKnightPattern : MonoBehaviour
 {
     [Header("Speed Settings")]
-    public float   speed = .0f;
+    public float speed = .0f;
 
     [Header("Phase Frequence Settings")]
     [SerializeField]
-    private float _wakingTime = .0f;
+    private float _wakingTime       = .0f;
     [SerializeField]
-    private float _pattern1Phase1Time = .0f;
+    private float _phaseTime        = .0f;
     [SerializeField]
-    private float _pattern1Phase2Time   = .0f;
-        
+    private float _transitionTime   = .0f;
+
+    [Header("Wake up Phase Settings")]
+    [SerializeField]
+    private float _shakeValue = 0.04f;
+
+    [Header("Circle Phase Settings")]
+    [SerializeField]
+    private float _rotateSpeed = 5f;
+    [SerializeField]
+    private float _radius = 0.1f;
+    [SerializeField]
+    private float _angle = .0f;
+
+    [Header("Transition Circle Phase Settings")]
+    [SerializeField]
+    private Vector3 _initCirclePos;
+
+    [Header("Transition Line Phase Settings")]
+    [SerializeField]
+    private Vector3 _initLinePos;
+
     private GameObject      _parent;
     private Animator        _animator;
     private Rigidbody2D     _rb2d;
 
     private bool    _coWakingUp     = true;
     private bool    _coIsWorking    = false;
-    private int     _phase          = 0;
+    private int     _phase          = 1;
 
-    // Phase 0 => Circle
-    // Phase 1 => Line
+    // Phase 1 => Circle
+    // Phase 2 => Line
     
     /* ************************************************ */
     /* Main functions */
@@ -48,37 +68,61 @@ public class ArmourKnightPattern : MonoBehaviour
 
         if (_animator.GetBool("Moving"))
         {
-            if (_animator.GetInteger("Pattern") == 0)
+            if (_animator.GetInteger("Pattern") == 1)
                 FirstPattern();
-            else
+            else if (_animator.GetInteger("Pattern") == 2)
                 SecondPattern();
         }
         else
             Debug.Log("Idle Time");
     }
-
+    
+    /* ************************************************ */
+    /* Pattern functions */
+    /* ************************************************ */
     private void WakeUpPattern()
     {
-        Debug.Log("Wake Up Pattern");
-    }
+        Vector3 shakePosition = new Vector3(_parent.transform.position.y + _shakeValue,
+                                            _parent.transform.position.y,
+                                            _parent.transform.position.z);
 
+        _shakeValue *= -1;
+        _parent.transform.position = shakePosition;
+    }
     private void FirstPattern()
     {
-        if (_phase == 0 && !_coIsWorking)
+        if (_phase == 1)
         {
-            Debug.Log("Start Phase 1 time");
-            StartCoroutine(Phase1Co());
+            // Transition To Phase 1
+            if (!_coIsWorking)
+                StartCoroutine(TransitionAndPhaseCo(2, _transitionTime));
+            else
+                TransitionPhaseCircleMovement();
         }
-        else if (_phase == 1 && !_coIsWorking)
+        else if (_phase == 2)
         {
-            Debug.Log("Start Phase 2 time");
-            StartCoroutine(Phase2Co());
+            // Phase 1
+            if (!_coIsWorking)
+                StartCoroutine(TransitionAndPhaseCo(3, _phaseTime));
+            else
+                CirclePhaseMovement();
         }
-
-        if (_phase == 0)
-            Debug.Log("Behaviour phase 1");
-        else if (_phase == 1)
-            Debug.Log("Behaviour phase 2");
+        else if (_phase == 3)
+        {
+            // Transition to Phase 2
+            /*if (!_coIsWorking)
+                StartCoroutine(TransitionAndPhaseCo(4, _transitionTime));
+            else*/
+            TransitionPhaseLineMovement(_initLinePos);
+        }
+        else if (_phase == 4)
+        {
+            // Phase 2
+            if (!_coIsWorking)
+                StartCoroutine(TransitionAndPhaseCo(1, _phaseTime));
+            else
+                LinePhaseMovement();
+        }
     }
 
     private void SecondPattern()
@@ -86,36 +130,58 @@ public class ArmourKnightPattern : MonoBehaviour
         Debug.Log("Second Pattern");
     }
 
-    /*public virtual void MainController()
+    /* ************************************************ */
+    /* Phase functions */
+    /* ************************************************ */
+    // Transition to Circle phase
+    private void TransitionPhaseCircleMovement()
     {
-        if (_wakeSystem)
-        {
-            if (_isWakeUpTransition || _isWakeDownTransition || _isWaiting)
-            {
-                return;
-            }
-            else if(_moveTime > 0 && !_coMoveIsRunning)
-                StartCoroutine(MoveCo());
-            else 
-                ClassicMovement();
-        }
-        else if (changePos != Vector3.zero && currentState != EnemyState.attack)
-        {
-            if (_waitTime > 0)
-                OochingMovement();
-            else
-                ClassicMovement();
-        }
-        else
-            AnimationIdle();
+        Debug.Log("Transition to Circle Line");
     }
-    
-    private void MoveObject()
+
+    // Circle movement
+    private void CirclePhaseMovement()
     {
-        changePos.Normalize();
-        rb2d.MovePosition(transform.position + changePos * speed * Time.deltaTime);
-        AnimationMovement();
-    }*/
+        _angle += _rotateSpeed * Time.deltaTime;
+
+        var offset = new Vector3(Mathf.Sin(_angle) * _radius, Mathf.Cos(_angle) * _radius, _parent.transform.position.z);
+        _parent.transform.position = _parent.transform.position + offset;
+    }
+
+    // Transition to Line phase
+    private void TransitionPhaseLineMovement(Vector3 targetPos)
+    {
+        Vector3 newPosition = new Vector3(0, 0, 0);
+        if (_parent.transform.position.x > targetPos.x)
+            newPosition.x = -1.0f;
+        else if (_parent.transform.position.x < targetPos.x)
+            newPosition.x = 1.0f;
+        else
+            newPosition.x = 0.0f;
+
+         if (_parent.transform.position.y > targetPos.y)
+            newPosition.y = -1.0f;
+        else if (_parent.transform.position.y < targetPos.y)
+            newPosition.y = 1.0f;
+        else
+            newPosition.y = 0.0f;
+
+        _rb2d.MovePosition(_parent.transform.position + newPosition * speed * Time.deltaTime);
+
+        if ((_parent.transform.position.x < targetPos.x + 0.1f) && (_parent.transform.position.x > targetPos.x - 0.1f) &&
+            (_parent.transform.position.y < targetPos.y + 0.1f) && (_parent.transform.position.y > targetPos.y - 0.1f))
+        {
+            _phase = 4;
+        }
+
+    }
+
+    // Line movement
+    private void LinePhaseMovement()
+    {
+        _rb2d.MovePosition(_parent.transform.position + new Vector3(0, -1.0f, 0) * speed * Time.deltaTime);
+    }
+
 
     /* ************************************************ */
     /* Coroutines */
@@ -130,21 +196,14 @@ public class ArmourKnightPattern : MonoBehaviour
         _coWakingUp = false;
     }
 
-    // Circle Pattern
-    private IEnumerator Phase1Co()
-    {
-        _coIsWorking = true;
-        yield return new WaitForSeconds(_pattern1Phase1Time);
-        
-        _coIsWorking = false;
-    }
 
-    // Line Pattern
-    private IEnumerator Phase2Co()
+    // Transition to Phase and phase wait CoRoutine
+    private IEnumerator TransitionAndPhaseCo(int nextPhase, float waitTime)
     {
         _coIsWorking = true;
-        yield return new WaitForSeconds(_pattern1Phase2Time);
+        yield return new WaitForSeconds(waitTime);
         
-        _coIsWorking = false;
+        _phase          = nextPhase;
+        _coIsWorking    = false;
     }
 }

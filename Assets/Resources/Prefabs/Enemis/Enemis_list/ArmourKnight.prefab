@@ -43,10 +43,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0208d31fe3e1a3d98b9053973a29d72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0
-  _wakingTime: 0
-  _pattern1Phase1Time: 0
-  _pattern1Phase2Time: 0
+  speed: 2
+  _wakingTime: 1.5
+  _pattern1Phase1Time: 3
+  _pattern1Phase2Time: 3
 --- !u!1 &7481884795174520995
 GameObject:
   m_ObjectHideFlags: 0
