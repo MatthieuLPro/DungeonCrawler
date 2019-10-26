@@ -12,11 +12,16 @@ public class BallTunnel : MonoBehaviour
     [SerializeField]
     private float _launchTime = 2;
     [SerializeField]
+    private float _firstLaunchOffset = 0;
+    [SerializeField]
+    private float _prefabSpeed = 4;
+    [SerializeField]
     private bool _differentTypes    = false;
     [SerializeField]
     private bool _randomSpawn       = false;
 
-    private bool _coIsRunning = false;
+    private bool _coIsRunning       = false;
+    private bool _coLaunchIsRunning = false;
     private Vector3[] _spawnPos1 = new [] { Vector3.zero, Vector3.zero, Vector3.zero };
     private Vector3[] _spawnPos2 = new [] { Vector3.zero, Vector3.zero };
     private GameObject _prefab1 = null;
@@ -35,11 +40,13 @@ public class BallTunnel : MonoBehaviour
 
         if(_differentTypes)
             _prefab2 = Resources.Load("Prefabs/Enemis/Enemis_list/DeathBallBig") as GameObject;
+        
+        StartCoroutine(FirstLaunchCo());
     }
     
     private void Update()
     {
-        if (!_coIsRunning)
+        if (!_coIsRunning && !_coLaunchIsRunning)
             StartCoroutine(NewBallCo());
     }
 
@@ -149,6 +156,27 @@ public class BallTunnel : MonoBehaviour
         return InstantiatePrefab;
     }
 
+    // Set prefab direction movement
+    private void SetPrefabParams(GameObject prefabMovement)
+    {
+        prefabMovement.GetComponent<EnemyDirection>().speed = _prefabSpeed;
+
+        if (_isHorizontal)
+        {
+            if (_length > 0)
+                prefabMovement.GetComponent<EnemyDirection>().onlyRight = true;
+            else
+                prefabMovement.GetComponent<EnemyDirection>().onlyLeft = true;
+        }
+        else
+        {
+            if (_length > 0)
+                prefabMovement.GetComponent<EnemyDirection>().onlyTop = true;
+            else
+                prefabMovement.GetComponent<EnemyDirection>().onlyDown = true;                
+        }
+    }
+
     // Get sorting layer name depending of level
     private string GetSortingLayer()
     {
@@ -163,15 +191,25 @@ public class BallTunnel : MonoBehaviour
     /* ************************************************ */
     /* Coroutines */
     /* ************************************************ */
+    // Offset time to launch first ball
+    private IEnumerator FirstLaunchCo()
+    {
+        _coLaunchIsRunning = true;
+
+        yield return new WaitForSeconds(_firstLaunchOffset);
+        _coLaunchIsRunning = false;
+    }
+
     // Generate new ball and wait
     private IEnumerator NewBallCo()
     {
         _coIsRunning = true;
-        GameObject InstantiatePrefab = InstantiateNewBall();
+        GameObject instantiatePrefab = InstantiateNewBall();
 
-        InstantiatePrefab.transform.SetParent(transform);
-        InstantiatePrefab.layer = gameObject.layer;
-        InstantiatePrefab.GetComponent<SpriteRenderer>().sortingLayerName = GetSortingLayer();
+        instantiatePrefab.transform.SetParent(transform);
+        instantiatePrefab.layer = gameObject.layer;
+        instantiatePrefab.GetComponent<SpriteRenderer>().sortingLayerName = GetSortingLayer();
+        SetPrefabParams(instantiatePrefab.transform.GetChild(0).gameObject);
         yield return new WaitForSeconds(_launchTime);
         _coIsRunning = false;
     }

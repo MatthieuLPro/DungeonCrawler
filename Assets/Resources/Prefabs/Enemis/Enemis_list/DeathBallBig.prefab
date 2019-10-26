@@ -127,11 +127,13 @@ MonoBehaviour:
   currentState: 0
   anime: {fileID: 0}
   rb2d: {fileID: 0}
+  _isWaiting: 0
   _isWakeUpTransition: 0
+  _isWakeDownTransition: 0
   _enableDiagonal: 0
   _onlyTop: 0
   _onlyRight: 0
-  _onlyDown: 1
+  _onlyDown: 0
   _onlyLeft: 0
   _movementSequence: 0
   _movementAngle: 0.25

@@ -7,14 +7,10 @@ public class EnemyDirection : EnemyMovement
     [Header("Direction Type Settings")]
     [SerializeField]
     private bool _enableDiagonal    = false;
-    [SerializeField]
-    private bool _onlyTop           = false;
-    [SerializeField]
-    private bool _onlyRight         = false;
-    [SerializeField]
-    private bool _onlyDown          = false;
-    [SerializeField]
-    private bool _onlyLeft          = false;
+    public bool onlyTop             = false;
+    public bool onlyRight           = false;
+    public bool onlyDown            = false;
+    public bool onlyLeft            = false;
 
     [Header("Movement Settings")]
     [SerializeField]
@@ -51,13 +47,13 @@ public class EnemyDirection : EnemyMovement
             AIdirection();
         else if (_randomDirection)
             RandomDirection();
-        else if (_onlyTop)
+        else if (onlyTop)
             changePos.y = 1;
-        else if (_onlyRight)
+        else if (onlyRight)
             changePos.x = 1;
-        else if (_onlyDown)
+        else if (onlyDown)
             changePos.y = -1;
-        else if (_onlyLeft)
+        else if (onlyLeft)
             changePos.x = -1;
         MainController();
     }
