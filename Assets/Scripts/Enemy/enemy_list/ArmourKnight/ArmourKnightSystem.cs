@@ -14,13 +14,23 @@ public class ArmourKnightSystem : MonoBehaviour
     private float _phaseTime        = .0f;
     [SerializeField]
     private float _transitionTime   = .0f;
+    [SerializeField]
+    private float _endPhaseTime     = .0f;
 
     private bool _coIsWorking;
-
+    private bool _coCounterIsWorking;
+    
+    [HideInInspector]
+    public bool coEndPhaseWorking;
+    [HideInInspector]
     public int phase          = 0;
 
-    void Start(){
-        _coIsWorking    = false;
+    void Start()
+    {
+        _coIsWorking        = false;
+        _coCounterIsWorking = false;
+
+        coEndPhaseWorking  = false;
     }    
 
     void Update()
@@ -28,17 +38,22 @@ public class ArmourKnightSystem : MonoBehaviour
         if (phase == 1)
         {
             if(KnightsTransitionReady() && !_coIsWorking)
-                StartCoroutine(TransitionAndPhaseCo(phase + 1, _phaseTime));
+                StartCoroutine(TransitionAndPhaseCo(phase + 1, _transitionTime));
         }
         else if (phase == 2)
         {
             if (!_coIsWorking)
+            {
                 StartCoroutine(TransitionAndPhaseCo(phase + 1, _phaseTime));
+                StartCoroutine(PhaseCounterCo(_phaseTime));
+            }
+            if (!_coCounterIsWorking)
+                StartCoroutine(EndPhaseCo());
         }
         else if (phase == 3)
         {
             if(KnightsTransitionReady() && !_coIsWorking)
-                StartCoroutine(TransitionAndPhaseCo(phase + 1, _phaseTime));
+                StartCoroutine(TransitionAndPhaseCo(phase + 1, _transitionTime));
         }
         else if (phase == 4)
         {
@@ -72,5 +87,23 @@ public class ArmourKnightSystem : MonoBehaviour
 
         phase          = nextPhase;
         _coIsWorking    = false;
+    }
+
+    // Phase Counter before trigger ending CoRoutine
+    private IEnumerator PhaseCounterCo(float waitTime)
+    {
+        _coCounterIsWorking = true;
+        yield return new WaitForSeconds(waitTime - _endPhaseTime);
+        
+        _coCounterIsWorking = false;
+    }
+
+    // End Phase CoRoutine
+    private IEnumerator EndPhaseCo()
+    {
+        coEndPhaseWorking = true;
+        yield return new WaitForSeconds(_endPhaseTime);
+        
+        coEndPhaseWorking = false;
     }
 }

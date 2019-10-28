@@ -36,7 +36,9 @@ public class ArmourKnightPattern : MonoBehaviour
     private Animator        _animator;
     private Rigidbody2D     _rb2d;
 
-    private float _angle = .0f;
+    private float _angleCos     = .0f;
+    private float _angleSin     = .0f;
+    private float _radiusTemp   = .0f;
     private bool _coWakingUp;
     
     [HideInInspector]
@@ -56,14 +58,7 @@ public class ArmourKnightPattern : MonoBehaviour
         _rb2d           = _parent.GetComponent<Rigidbody2D>();
         ready           = false;
         _coWakingUp     = true;
-
-        _angle = Mathf.Acos((_initCirclePos.x - _center.x) / _radius);
-
-        Debug.Log("(DEBUT) Angle of : " + _parent.gameObject.name + "\n" +
-                  "_initCirclePos.x - _center.x = " + (_initCirclePos.x - _center.x) + "\n" + 
-                  "(_initCirclePos.x - _center.x) / _radius = " + ((_initCirclePos.x - _center.x) / _radius) + "\n" +
-                  "_angle(radian) = " + _angle + "\n" +
-                  "_angle(degree) = " + (_angle * 180 / Mathf.PI));
+        _radiusTemp     = _radius;
 
         StartCoroutine(WakingUpCo());
     }
@@ -123,14 +118,12 @@ public class ArmourKnightPattern : MonoBehaviour
     // Circle movement
     private void CirclePhaseMovement()
     {
-        _angle += _rotateSpeed * Time.deltaTime;
+        _angleCos += _rotateSpeed * Time.deltaTime;
 
-        Debug.Log("(AFTER) Angle of : " + _parent.gameObject.name + "\n" +
-                  "_angle = " + _angle + "\n" +
-                  "_angle(degree) = " + (_angle * 180 / Mathf.PI));
+        if(_system.GetComponent<ArmourKnightSystem>().coEndPhaseWorking)
+            CirclePhaseEndVariation();
 
-
-        var offset = new Vector3(Mathf.Sin(_angle) * _radius, Mathf.Cos(_angle) * _radius, _parent.transform.position.z);
+        var offset = new Vector3(Mathf.Cos(_angleCos) * _radiusTemp, Mathf.Sin(_angleCos) * _radiusTemp, _parent.transform.position.z);
 
         _parent.transform.position = _center + offset;
     }
@@ -164,8 +157,30 @@ public class ArmourKnightPattern : MonoBehaviour
             (_parent.transform.position.y < targetPos.y + 0.1f) && (_parent.transform.position.y > targetPos.y - 0.1f) &&
              !ready)
         {
+            _radiusTemp = _radius;
+            InitAngle();
             ready = true;
         }
+    }
+
+    /* ************************************************ */
+    /* Other functions */
+    /* ************************************************ */
+    // Init angle for intial circle movement
+    private void InitAngle()
+    {
+        _angleCos = Mathf.Acos((_initCirclePos.x - _center.x) / _radius);
+        _angleSin = Mathf.Asin((_initCirclePos.y - _center.y) / _radius);
+
+        if (_angleSin < 0)
+            _angleCos *= -1; 
+    }
+
+    // Change movement behaviour at the end of Circle phase
+    private void CirclePhaseEndVariation()
+    {
+        if (_radiusTemp > 2.5f)
+            _radiusTemp -= 0.1f;
     }
 
     /* ************************************************ */
