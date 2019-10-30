@@ -55,6 +55,11 @@ public class EnemyDirection : EnemyMovement
             changePos.y = -1;
         else if (onlyLeft)
             changePos.x = -1;
+        else
+        {
+            changePos.x = 0;
+            changePos.y = 0;
+        }
         MainController();
     }
 
@@ -94,11 +99,14 @@ public class EnemyDirection : EnemyMovement
         GameObject player   = GameObject.FindWithTag("Player");
         Transform target    = player.transform;
 
-        if (Vector3.Distance(target.position, transform.position) < _chaseRadius ||
-            Vector3.Distance(target.position, transform.position) > _chaseLength || _chaseLength == 0){
-            changePos.x = 0;
-            changePos.y = 0;
-            return;
+        if (_chaseRadius > 0 && _chaseLength > 0)
+        {
+            if (Vector3.Distance(target.position, transform.position) < _chaseRadius ||
+                Vector3.Distance(target.position, transform.position) > _chaseLength || _chaseLength == 0){
+                changePos.x = 0;
+                changePos.y = 0;
+                return;
+            }
         }
 
         // Diagonal behaviour
