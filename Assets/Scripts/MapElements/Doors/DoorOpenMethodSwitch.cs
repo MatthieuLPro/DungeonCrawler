@@ -2,12 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SwitchDoor : MonoBehaviour
+public class DoorOpenMethodSwitch : MonoBehaviour
 {
     [Header("Select the door to open")]
     [SerializeField]
     private GameObject[] _doors = null;
 
+    /* ************************************************ */
+    /* Toggle multiple when hero enter in switch collider */
+    /* ************************************************ */
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (!other.CompareTag("Player"))
@@ -15,13 +18,12 @@ public class SwitchDoor : MonoBehaviour
         
         for(var i = 0; i < _doors.Length; i++)
         {
-            if (_doors[i].GetComponent<InteractionDoor>().openMethod != 2)
-                return;
+            Door TargetDoor = _doors[i].GetComponent<Door>();
             
-            if (_doors[i].GetComponent<InteractionDoor>().open == false)
-                _doors[i].GetComponent<InteractionDoor>().OpenDoor();
+            if (TargetDoor.open)
+                TargetDoor.CloseDoor();
             else
-                _doors[i].GetComponent<InteractionDoor>().CloseDoor();
+                TargetDoor.OpenDoor();
         }
     }
 }

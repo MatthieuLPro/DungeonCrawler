@@ -2,15 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class InteractionDoor : MonoBehaviour
+public class Door : MonoBehaviour
 {
     [Header("Open Settings")]
     public bool open = true;
     public int openMethod = 0;
-
-    [Header("Teleport Settings")]
-    public int teleportDirection = 0;
-    public float teleportDistance = 7.0f;
 
     [Header("Door Sprites")]
     [SerializeField]
@@ -27,7 +23,7 @@ public class InteractionDoor : MonoBehaviour
             3 => Left
     */
     
-    /* OpenMethod:
+    /* OpenStat:
             0 => Open
             1 => Small Key
             2 => Interruptor
@@ -35,7 +31,10 @@ public class InteractionDoor : MonoBehaviour
             4 => Enemys
     */
 
-    void Start()
+    /* ************************************************ */
+    /* Main functions */
+    /* ************************************************ */
+    void Awake()
     {
         _spriteRend = GetComponent<SpriteRenderer>();
 
@@ -45,18 +44,9 @@ public class InteractionDoor : MonoBehaviour
             OpenDoor();
     }
 
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-        if (!other.CompareTag("Player"))
-            return;
-
-        if (openMethod == 1 && other.gameObject.GetComponent<Player>().HasKey())
-            OpenDoor();
-            
-        if (openMethod == 3 && other.gameObject.GetComponent<Player>().HasBigKey())
-            OpenDoor();
-    }
-
+    /* ************************************************ */
+    /* Open Close unique door */
+    /* ************************************************ */
     public void OpenDoor()
     {
         _spriteRend.sprite = _openSprite;

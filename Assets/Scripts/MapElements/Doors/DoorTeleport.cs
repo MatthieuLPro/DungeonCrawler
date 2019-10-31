@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TeleportDoor : MonoBehaviour
+public class DoorTeleport : MonoBehaviour
 {
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -11,12 +11,13 @@ public class TeleportDoor : MonoBehaviour
 
         other.GetComponent<Transform>().position = other.GetComponent<Transform>().position + FindTeleportPlace();
         GameObject[] cameras = GameObject.FindGameObjectsWithTag("MainCamera");
-        foreach (GameObject camera in cameras)
+
+        for(var i = 0; i < cameras.Length; i++)
         {
-            if (camera.GetComponent<CameraController>().trackingGameObject == other.gameObject)
+            if (camera[i].GetComponent<CameraController>().trackingGameObject == other.gameObject)
             {
-                camera.GetComponent<Transform>().position = other.GetComponent<Transform>().position;
-                camera.GetComponent<Transform>().position += new Vector3 (0, 0, -1f);
+                camera[i].GetComponent<Transform>().position = other.GetComponent<Transform>().position;
+                camera[i].GetComponent<Transform>().position += new Vector3 (0, 0, -1f);
             }
         }
     }
