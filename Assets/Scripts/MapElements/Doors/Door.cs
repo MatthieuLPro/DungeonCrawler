@@ -5,23 +5,16 @@ using UnityEngine;
 public class Door : MonoBehaviour
 {
     [Header("Open Settings")]
-    public bool open = true;
-    public int openMethod = 0;
+    public int  openMethod = 0;
 
     [Header("Door Sprites")]
     [SerializeField]
     private Sprite _openSprite = null;
     [SerializeField]
     private Sprite _closeSprite = null;
-
-    private SpriteRenderer _spriteRend;
-
-    /* TeleportDirection:
-            0 => Up
-            1 => Right
-            2 => Down
-            3 => Left
-    */
+    
+    [HideInInspector]
+    public bool open;
     
     /* OpenStat:
             0 => Open
@@ -36,8 +29,6 @@ public class Door : MonoBehaviour
     /* ************************************************ */
     void Awake()
     {
-        _spriteRend = GetComponent<SpriteRenderer>();
-
         if (openMethod > 0)
             open = false;
         else
@@ -49,17 +40,15 @@ public class Door : MonoBehaviour
     /* ************************************************ */
     public void OpenDoor()
     {
-        _spriteRend.sprite = _openSprite;
-        foreach (var box in GetComponents<BoxCollider2D>())
-            box.enabled = false;
+        GetComponent<BoxCollider2D>().enabled = false;
+        GetComponent<SpriteRenderer>().sprite = _openSprite;
         open = true;
     }
 
     public void CloseDoor()
     {
-        _spriteRend.sprite = _closeSprite;
-        foreach (var box in GetComponents<BoxCollider2D>())
-            box.enabled = true;
+        GetComponent<BoxCollider2D>().enabled = true;
+        GetComponent<SpriteRenderer>().sprite = _closeSprite;
         open = false;
     }
 }

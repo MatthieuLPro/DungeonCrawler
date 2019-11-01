@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class DoorTeleport : MonoBehaviour
 {
+    [Header("Teleport Settings")]
+    private float _teleportDistance;
+
     private void OnTriggerEnter2D(Collider2D other)
     {
         if(!other.CompareTag("Player"))
@@ -14,10 +17,10 @@ public class DoorTeleport : MonoBehaviour
 
         for(var i = 0; i < cameras.Length; i++)
         {
-            if (camera[i].GetComponent<CameraController>().trackingGameObject == other.gameObject)
+            if (cameras[i].GetComponent<CameraController>().trackingGameObject == other.gameObject)
             {
-                camera[i].GetComponent<Transform>().position = other.GetComponent<Transform>().position;
-                camera[i].GetComponent<Transform>().position += new Vector3 (0, 0, -1f);
+                cameras[i].GetComponent<Transform>().position = other.GetComponent<Transform>().position;
+                cameras[i].GetComponent<Transform>().position += new Vector3 (0, 0, -1f);
             }
         }
     }
@@ -25,21 +28,20 @@ public class DoorTeleport : MonoBehaviour
     private Vector3 FindTeleportPlace()
     {
         Vector3 newPosition     = new Vector3(0, 0, 0);
-        float teleportDistance  = transform.parent.GetComponent<InteractionDoor>().teleportDistance;
 
-        switch(transform.parent.GetComponent<InteractionDoor>().teleportDirection)
+        switch(_teleportDistance)
         {
             case 0:
-                newPosition += new Vector3(0, teleportDistance, 0);
+                newPosition += new Vector3(0, _teleportDistance, 0);
                 break;
             case 1:
-                newPosition += new Vector3(teleportDistance, 0, 0);
+                newPosition += new Vector3(_teleportDistance, 0, 0);
                 break;
             case 2:
-                newPosition += new Vector3(0, teleportDistance, 0);
+                newPosition += new Vector3(0, _teleportDistance, 0);
                 break;
             default:
-                newPosition += new Vector3(teleportDistance, 0, 0);
+                newPosition += new Vector3(_teleportDistance, 0, 0);
                 break;
         }
 

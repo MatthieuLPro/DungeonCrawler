@@ -2,29 +2,35 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DoorOpenMethodEnemis : MonoBehaviour
+public class DoorsManager : MonoBehaviour
 {
-    [Header("Select the door to open")]
+    [Header("Add doors to manage")]
     [SerializeField]
-    private GameObject[] _doors = null;
+    private GameObject[] _doors;
     
-    [Header("Select the enemis to kill")]
-    [SerializeField]
-    private GameObject[] _enemis = null;
+    [Header("Open Settings")]
+    private int _openMethod = 0;
 
+    void Start()
+    {
+        if (_openMethod > 0)
+            CloseMultipleDoors();
+        else
+            OpenMultipleDoors();
+    }
 
     /* ************************************************ */
     /* Open close multiple doors */
     /* ************************************************ */
     /* Open multiple doors */
-    private void OpenMultipleDoors()
+    public void OpenMultipleDoors()
     {
         for(var i = 0; i < _doors.Length; i++)
             _doors[i].GetComponent<Door>().OpenDoor();
     }
 
     /* Close multiple doors */
-    private void CloseMultipleDoors()
+    public void CloseMultipleDoors()
     {
         for(var i = 0; i < _doors.Length; i++)
             _doors[i].GetComponent<Door>().CloseDoor();

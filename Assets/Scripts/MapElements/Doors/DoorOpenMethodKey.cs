@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DoorOpenMethodKey : Door
+public class DoorOpenMethodKey : MonoBehaviour
+{
 {   
     /* OpenMethodKey:
             1 => Small Key
@@ -17,10 +18,9 @@ public class DoorOpenMethodKey : Door
         if (!other.CompareTag("Player"))
             return;
 
-        Player  player      = other.gameObject.GetComponent<Player>();
-        Door    TargetDoor  = GetComponent<Door>();
+        Player player = other.gameObject.GetComponent<Player>();
 
-        if ((TargetDoor.openMethod == 1 && player.HasKey()) || (TargetDoor.openMethod == 3 && player.HasBigKey()))
-            TargetDoor.OpenDoor();
+        if ((GetComponent<Door>().openMethod == 1 && player.HasKey()) || (GetComponent<Door>().openMethod == 3 && player.HasBigKey()))
+            GetComponent<Door>().OpenDoor();
     }
 }
