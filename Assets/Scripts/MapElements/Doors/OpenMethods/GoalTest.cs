@@ -9,7 +9,6 @@ public class GoalTest : MonoBehaviour
     public bool successCb;
     public Action[] rewardCbList;
 
-    // Start is called before the first frame update
     void Start()
     {
         successCb = false;
@@ -20,7 +19,6 @@ public class GoalTest : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (successCb)

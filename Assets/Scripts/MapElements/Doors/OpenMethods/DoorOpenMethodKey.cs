@@ -17,10 +17,7 @@ public class DoorOpenMethodKey : MonoBehaviour
         if (!other.CompareTag("Player"))
             return;
 
-        Player player = other.gameObject.GetComponent<Player>();
-        Door   door   = transform.parent.GetComponent<Door>();
-
-        if ((door.openMethod == 1 && player.HasKey()) || (door.openMethod == 3 && player.HasBigKey()))
-            door.OpenDoor();
+        GameObject.FindGameObjectsWithTag("RoomManager").getChild(1).PlayerHasSmallKey();
+        // Find object Room Manager and launch verification
     }
 }
