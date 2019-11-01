@@ -2,21 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DoorsManager : MonoBehaviour
+public class DoorManager : MonoBehaviour
 {
     [Header("Add doors to manage")]
     [SerializeField]
     private GameObject[] _doors;
     
-    [Header("Open Settings")]
-    private int _openMethod = 0;
-
     void Start()
     {
-        if (_openMethod > 0)
-            CloseMultipleDoors();
-        else
-            OpenMultipleDoors();
+        //if (transform.GetChild(0).GetComponent<DoorOpenMethodEnemis>().VerificationEnemis())
+        //    OpenMultipleDoors();
     }
 
     /* ************************************************ */

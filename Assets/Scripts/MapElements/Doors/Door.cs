@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Door : MonoBehaviour
 {
+    
     [Header("Open Settings")]
     public int  openMethod = 0;
 
@@ -38,6 +39,7 @@ public class Door : MonoBehaviour
     /* ************************************************ */
     /* Open Close unique door */
     /* ************************************************ */
+    /* Open door */
     public void OpenDoor()
     {
         GetComponent<BoxCollider2D>().enabled = false;
@@ -45,6 +47,7 @@ public class Door : MonoBehaviour
         open = true;
     }
 
+    /* Close door */
     public void CloseDoor()
     {
         GetComponent<BoxCollider2D>().enabled = true;

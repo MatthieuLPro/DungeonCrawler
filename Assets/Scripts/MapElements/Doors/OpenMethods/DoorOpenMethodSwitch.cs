@@ -12,7 +12,7 @@ public class DoorOpenMethodSwitch : MonoBehaviour
         if (!other.CompareTag("Player"))
             return;
 
-        transform.parent.GetComponent<DoorsManager>().OpenMultipleDoors();
+        //transform.parent.GetComponent<DoorsManager>().OpenMultipleDoors();
         Destroy(gameObject);        
     }
 }

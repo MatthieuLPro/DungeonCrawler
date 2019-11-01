@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class DoorOpenMethodKey : MonoBehaviour
 {
-{   
     /* OpenMethodKey:
             1 => Small Key
             3 => Big Key
@@ -19,8 +18,9 @@ public class DoorOpenMethodKey : MonoBehaviour
             return;
 
         Player player = other.gameObject.GetComponent<Player>();
+        Door   door   = transform.parent.GetComponent<Door>();
 
-        if ((GetComponent<Door>().openMethod == 1 && player.HasKey()) || (GetComponent<Door>().openMethod == 3 && player.HasBigKey()))
-            GetComponent<Door>().OpenDoor();
+        if ((door.openMethod == 1 && player.HasKey()) || (door.openMethod == 3 && player.HasBigKey()))
+            door.OpenDoor();
     }
 }
