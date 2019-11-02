@@ -10,6 +10,9 @@ public class RoomReward : MonoBehaviour
     /* Open door */
     public void OpenDoor(GameObject door)
     {
+        if (!door.GetComponent<BoxCollider2D>().enabled)
+            return;
+
         door.GetComponent<BoxCollider2D>().enabled = false;
         door.GetComponent<SpriteRenderer>().sprite = door.GetComponent<Door>().openSprite;
     }
@@ -17,6 +20,9 @@ public class RoomReward : MonoBehaviour
     /* Close door */
     public void CloseDoor(GameObject door)
     {
+        if (door.GetComponent<BoxCollider2D>().enabled)
+            return;
+
         door.GetComponent<BoxCollider2D>().enabled = true;
         door.GetComponent<SpriteRenderer>().sprite = door.GetComponent<Door>().closeSprite;
     }
@@ -31,5 +37,15 @@ public class RoomReward : MonoBehaviour
         enemy.transform.GetChild(1).gameObject.SetActive(true);
         enemy.GetComponent<SpriteRenderer>().enabled = true;
         enemy.GetComponent<BoxCollider2D>().enabled = true;
+    }
+    
+    /* ************************************************ */
+    /* Treasures Consequences */
+    /* ************************************************ */
+    /* Treasure appear */
+    /* TO DO */
+    public void TreasureAppear(GameObject treasure)
+    {
+        return;
     }
 }

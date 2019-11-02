@@ -9,8 +9,6 @@ public class RoomManager : MonoBehaviour
     public GameObject[] doors;
     public GameObject[] enemis;
     public GameObject[] switches;
-    public GameObject[] ColorSwitches;
-    public GameObject[] ColorBlocks;
 
     private Predicate<GameObject>[] _verificationCbList;
     private Action<GameObject>[]    _rewardCbList;
@@ -23,7 +21,7 @@ public class RoomManager : MonoBehaviour
     void Start()
     {
         _verificationCbList = new Predicate<GameObject>[5];
-        _rewardCbList       = new Action<GameObject>[2];
+        _rewardCbList       = new Action<GameObject>[3];
 
         _roomVerification = transform.GetChild(0).gameObject.GetComponent<RoomVerification>();
         _roomReward       = transform.GetChild(1).gameObject.GetComponent<RoomReward>();
@@ -36,8 +34,10 @@ public class RoomManager : MonoBehaviour
 
     void Update()
     {
-        if (_VerifyAllObjects(switches, _verificationCbList[3]))
+        if (_VerifyAllObjects(switches, _verificationCbList[4]))
             _RewardAllObjects(doors, _rewardCbList[0]);
+        else
+            _RewardAllObjects(doors, _rewardCbList[1]);
     }
 
     /* ************************************************ */
@@ -96,7 +96,7 @@ public class RoomManager : MonoBehaviour
         /* if all Floor switches are true */
         _SubVerification(3, _roomVerification.FloorSwitch);
 
-        /* if all switches are true */
+        /* if all Floor toggles are true */
         _SubVerification(4, _roomVerification.FloorToggle);
     }
     
@@ -122,5 +122,39 @@ public class RoomManager : MonoBehaviour
     /* Sub 1 Action (Reward) */
     private void _SubReward(int index, Action<GameObject> callback){
         _rewardCbList[index] = callback;
+    }
+
+    /* ************************************************ */
+    /* Template Cases */
+    /* ************************************************ */
+    /* Enemis Case */
+    /* Enemis Appear if player enter in area */
+    private void _EnemisAppearInRoom()
+    {
+        if (switches[0].GetComponent<BoxCollider2D>().enabled)
+        {
+            if (VerifyOneObject(switches[0], 3))
+                _RewardAllObjects(enemis, _rewardCbList[2]);
+        }
+    }
+
+    /* Doors Case */
+    /* Doors open if all switches are ON */
+    private void _DoorOpenWithSwitches()
+    {
+        if (switches[0].GetComponent<BoxCollider2D>().enabled)
+        {
+            if (_VerifyAllObjects(switches, _verificationCbList[3]))
+                _RewardAllObjects(doors, _rewardCbList[0]);
+        }
+    }
+    
+    /* Doors open if all toggles are ON */
+    private void _DoorOpenWithToggles()
+    {
+        if (_VerifyAllObjects(switches, _verificationCbList[4]))
+            _RewardAllObjects(doors, _rewardCbList[0]);
+        else
+            _RewardAllObjects(doors, _rewardCbList[1]);
     }
 }

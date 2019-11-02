@@ -13,7 +13,7 @@ public class RoomVerification : MonoBehaviour
     }
 
     /* ************************************************ */
-    /* Switch condition */
+    /* Floor Switch condition */
     /* ************************************************ */
     /* Switch */
     public bool FloorSwitch(GameObject switchObject){
