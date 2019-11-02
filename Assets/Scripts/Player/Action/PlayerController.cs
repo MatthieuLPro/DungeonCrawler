@@ -31,7 +31,7 @@ public class PlayerController : MovingObject
         else if (changePos != Vector3.zero && currentState != ObjectState.attack)
             MoveObject();
         else
-            AnimationIdle();
+            AnimationIdle(); 
     }
 
     private IEnumerator MainAttack()
