@@ -11,10 +11,11 @@ TagManager:
   - ObjectCarry
   - ObjectDestructible
   - ObjectOpen
-  - BlocRed
-  - BlocBlue
-  - GlobeSwitch
   - RoomManager
+  - Sword
+  - BlocBlue
+  - BlocRed
+  - GlobeSwitch
   layers:
   - Default
   - TransparentFX

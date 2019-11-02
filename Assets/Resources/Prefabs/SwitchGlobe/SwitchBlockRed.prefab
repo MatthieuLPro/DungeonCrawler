@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 1043862246610810461}
   - component: {fileID: 1043862246610810458}
   - component: {fileID: 1043862246610810459}
-  m_Layer: 0
+  m_Layer: 21
   m_Name: SwitchBlockRed
-  m_TagString: BlocRed
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -27,8 +27,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1043862246610810456}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.5632577, y: 0.38447464, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 5, y: 5, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -67,10 +67,10 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 1714945579
+  m_SortingLayer: -1
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300006, guid: 2614102cded19dca7aec69c00ea81f94, type: 3}
+  m_Sprite: {fileID: 21300010, guid: 2614102cded19dca7aec69c00ea81f94, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -119,5 +119,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 70443055c7270def8af463354800970b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _downSprite: {fileID: 21300006, guid: 2614102cded19dca7aec69c00ea81f94, type: 3}
-  _upSprite: {fileID: 21300010, guid: 2614102cded19dca7aec69c00ea81f94, type: 3}
+  color: 1
+  downSprite: {fileID: 21300006, guid: 2614102cded19dca7aec69c00ea81f94, type: 3}
+  upSprite: {fileID: 21300010, guid: 2614102cded19dca7aec69c00ea81f94, type: 3}

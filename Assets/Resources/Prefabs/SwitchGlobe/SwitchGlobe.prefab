@@ -13,10 +13,10 @@ GameObject:
   - component: {fileID: 6565666793944802207}
   - component: {fileID: 6565666793944802200}
   - component: {fileID: 7535952293682504343}
-  - component: {fileID: 6565666793944802201}
-  m_Layer: 0
+  - component: {fileID: 1539208946943771319}
+  m_Layer: 21
   m_Name: SwitchGlobe
-  m_TagString: GlobeSwitch
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -29,8 +29,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6565666793944802202}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.3436185, y: 0.50156116, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 5, y: 5, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -69,8 +69,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 1714945579
+  m_SortingLayer: -1
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300002, guid: 2614102cded19dca7aec69c00ea81f94, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -231,7 +231,7 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &6565666793944802201
+--- !u!114 &1539208946943771319
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -240,9 +240,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 6565666793944802202}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2290238a539164e1897bd0b185ecaf97, type: 3}
+  m_Script: {fileID: 11500000, guid: a89746eb7551e1b65b20f17f9a1091c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _color: 0
-  _redSprite: {fileID: 21300002, guid: 2614102cded19dca7aec69c00ea81f94, type: 3}
-  _blueSprite: {fileID: 21300004, guid: 2614102cded19dca7aec69c00ea81f94, type: 3}
+  color: 1
+  redSprite: {fileID: 21300002, guid: 2614102cded19dca7aec69c00ea81f94, type: 3}
+  blueSprite: {fileID: 21300004, guid: 2614102cded19dca7aec69c00ea81f94, type: 3}

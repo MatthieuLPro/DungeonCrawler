@@ -5,7 +5,7 @@ using UnityEngine;
 public class RoomReward : MonoBehaviour
 {    
     /* ************************************************ */
-    /* Doors success */
+    /* Doors Consequences */
     /* ************************************************ */
     /* Open door */
     public void OpenDoor(GameObject door)
@@ -19,5 +19,17 @@ public class RoomReward : MonoBehaviour
     {
         door.GetComponent<BoxCollider2D>().enabled = true;
         door.GetComponent<SpriteRenderer>().sprite = door.GetComponent<Door>().closeSprite;
+    }
+    
+    /* ************************************************ */
+    /* Enemis Consequences */
+    /* ************************************************ */
+    /* Enemy appear */
+    public void EnemyAppear(GameObject enemy)
+    {        
+        enemy.transform.GetChild(0).gameObject.SetActive(true);
+        enemy.transform.GetChild(1).gameObject.SetActive(true);
+        enemy.GetComponent<SpriteRenderer>().enabled = true;
+        enemy.GetComponent<BoxCollider2D>().enabled = true;
     }
 }
