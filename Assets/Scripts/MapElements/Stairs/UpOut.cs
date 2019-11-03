@@ -11,10 +11,10 @@ public class UpOut : MonoBehaviour
 
         GameObject player = other.gameObject;
 
-        if(player.GetComponent<PlayerController>().speed >= 5)
+        if(player.GetComponent<PlayerController>().maxSpeedTemp >= player.GetComponent<PlayerController>().maxSpeed)
             return;
 
-        player.GetComponent<PlayerController>().speed = 5;
+        player.GetComponent<PlayerController>().maxSpeedTemp = player.GetComponent<PlayerController>().maxSpeed;
         player.GetComponent<SpriteRenderer>().sortingLayerName = transform.parent.GetComponent<Stairs>().layoutUp;
         player.layer = transform.parent.GetComponent<Stairs>().layerUp;
     }

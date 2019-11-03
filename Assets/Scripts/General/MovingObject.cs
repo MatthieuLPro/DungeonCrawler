@@ -13,7 +13,13 @@ public enum ObjectState{
 public abstract class MovingObject : MonoBehaviour
 {
     [Header("General Movement parameters")]
-    public float   speed;
+    public float   acceleration;
+    public float   decceleration;
+    public float   maxSpeed;
+    public bool    hasManyForce;
+
+    [HideInInspector]
+    public float maxSpeedTemp;
 
     [Header("General Knockback parameters")]
     [SerializeField]
@@ -44,12 +50,13 @@ public abstract class MovingObject : MonoBehaviour
         currentState = ObjectState.idle;
         anime = GetComponent<Animator>();
         _rb2d = GetComponent<Rigidbody2D>();
+        maxSpeedTemp = maxSpeed;
     }
 
     public virtual void MainController()
     {
         if (changePos != Vector3.zero && currentState != ObjectState.attack)
-            MoveObject();
+            MoveObject();  
         else
             AnimationIdle();
     }
@@ -61,8 +68,22 @@ public abstract class MovingObject : MonoBehaviour
     protected void MoveObject()
     {
         changePos.Normalize();
-        _rb2d.MovePosition(transform.position + changePos * speed * Time.deltaTime);
+        if(_rb2d.velocity.magnitude > maxSpeedTemp)
+            _rb2d.velocity = _rb2d.velocity.normalized * maxSpeedTemp;
+        else
+            _rb2d.AddForce(changePos * acceleration, ForceMode2D.Impulse);
         AnimationMovement();
+    }
+
+    protected void Decceleration()
+    {
+        if (_rb2d.velocity == Vector2.zero)
+            return;
+
+        if ( _rb2d.velocity.x >= -decceleration && _rb2d.velocity.x <= decceleration && _rb2d.velocity.y >= -decceleration && _rb2d.velocity.y <= decceleration)
+            _rb2d.velocity = Vector2.zero;
+
+        _rb2d.velocity = _rb2d.velocity.normalized * decceleration;
     }
 
     protected void AnimationIdle(){

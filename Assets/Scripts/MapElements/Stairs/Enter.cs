@@ -10,7 +10,7 @@ public class Enter : MonoBehaviour
             return;
 
         GameObject player = other.gameObject;
-        player.GetComponent<PlayerController>().speed = 2;
+        player.GetComponent<PlayerController>().maxSpeedTemp = player.GetComponent<PlayerController>().maxSpeed / 2;
         player.GetComponent<SpriteRenderer>().sortingLayerName = transform.parent.GetComponent<Stairs>().layoutUp;
     }
 }

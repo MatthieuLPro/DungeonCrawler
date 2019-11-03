@@ -23,15 +23,18 @@ public class PlayerController : MovingObject
 
     public override void MainController()
     {
-        if ((InputManager.YButton() || InputManager.BButton()) &&
-             currentState == ObjectState.carry)
+        if ((InputManager.YButton() || InputManager.BButton()) && currentState == ObjectState.carry)
             StartCoroutine(ThrowObject());
         if (InputManager.YButton() && currentState != ObjectState.attack)
             StartCoroutine(MainAttack());
         else if (changePos != Vector3.zero && currentState != ObjectState.attack)
             MoveObject();
         else
+        {
+            if (!hasManyForce)
+                Decceleration();
             AnimationIdle(); 
+        }
     }
 
     private IEnumerator MainAttack()

@@ -257,7 +257,22 @@ PrefabInstance:
     - target: {fileID: 5456299736217595385, guid: 88cf9e71b5e6d186195098230c89d76f,
         type: 3}
       propertyPath: speed
-      value: 2
+      value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 5456299736217595385, guid: 88cf9e71b5e6d186195098230c89d76f,
+        type: 3}
+      propertyPath: maxSpeed
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5456299736217595385, guid: 88cf9e71b5e6d186195098230c89d76f,
+        type: 3}
+      propertyPath: acceleration
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5456299736217595385, guid: 88cf9e71b5e6d186195098230c89d76f,
+        type: 3}
+      propertyPath: decceleration
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 88cf9e71b5e6d186195098230c89d76f, type: 3}
@@ -1453,8 +1468,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1145305241}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 6.14, z: 0}
-  m_LocalScale: {x: 3, y: 1, z: 1}
+  m_LocalPosition: {x: -0.024, y: 4.921, z: 0}
+  m_LocalScale: {x: 19.868292, y: 3.439072, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 12
@@ -1471,7 +1486,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32eb072451aa45aaab622248740814b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _thrust: 10
+  _thrust: 8
   _vectorDirection: {x: 1, y: 0, z: 0}
 --- !u!1 &1152865110
 GameObject:
