@@ -83,17 +83,13 @@ public class TestMovement : MonoBehaviour
     /* Movement acceleration */
     private void Acceleration()
     {
+        if (((newDirection.x == -oldDirection.x) && newDirection.x != 0) || ((newDirection.y == -oldDirection.y) && newDirection.y != 0))
+            _rb2d.velocity = Vector2.zero;
+
         if(_rb2d.velocity.magnitude > maxSpeedTemp)
             _rb2d.velocity = _rb2d.velocity.normalized * maxSpeedTemp;
         else
-        {
-            if (newDirection.x == -oldDirection.x)
-                _rb2d.AddForce(new Vector2(newDirection.x * (acceleration * 2.0f), newDirection.y * acceleration), ForceMode2D.Impulse);
-            else if (newDirection.y == -oldDirection.y)
-                _rb2d.AddForce(new Vector2(newDirection.x * acceleration, newDirection.y * (acceleration * 2.0f)), ForceMode2D.Impulse);
-            else
-                _rb2d.AddForce(newDirection * acceleration, ForceMode2D.Impulse);
-        }
+            _rb2d.AddForce(newDirection * acceleration, ForceMode2D.Impulse);
     }
 
     /* Movement decceleration */
@@ -107,7 +103,6 @@ public class TestMovement : MonoBehaviour
 
         _rb2d.velocity = _rb2d.velocity.normalized * decceleration;
     }
-
     
     /* ************************************************ */
     /* Animations */

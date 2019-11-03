@@ -10,18 +10,29 @@ public class SpeedWalk : MonoBehaviour
     [SerializeField]
     private Vector3 _vectorDirection;
 
-    private void OnTriggerEnter2D(Collider2D other){
-        if (!other.GetComponent<PlayerController>().hasManyForce)
-        {
-            other.GetComponent<PlayerController>().hasManyForce = true;
-            other.GetComponent<PlayerController>().maxSpeedTemp += _thrust;
-        }
-        other.GetComponent<Rigidbody2D>().AddForce(_vectorDirection * _thrust, ForceMode2D.Impulse);
+    private Rigidbody2D _rb2d;
+
+    private fixedUpdate()
+    {
+        if (_rb2d)
+            AddAcceleration();
     }
 
-    private void OnTriggerExit2D(Collider2D other){
-        other.GetComponent<PlayerController>().hasManyForce = false;
-        other.GetComponent<PlayerController>().maxSpeedTemp = other.GetComponent<PlayerController>().maxSpeed;
-        other.GetComponent<Rigidbody2D>().velocity = Vector3.zero;
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        _rb2d = other.GetComponent<Rigidbody2D>();
+        other.GetComponent<TestMovement>().hasManyForce = true;
+        other.GetComponent<TestMovement>().maxSpeedTemp += _thrust;
+        other.GetComponent<TestMovement>().AddAcceleration(_vectorDirection, _thrust);
+    }
+
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        other.GetComponent<TestMovement>().hasManyForce = false;
+        other.GetComponent<TestMovement>().maxSpeedTemp = other.GetComponent<TestMovement>().maxSpeed;
+    }
+
+    public void AddAcceleration(){
+        _rb2d.AddForce(forceDir * thrust, ForceMode2D.Impulse);
     }
 }

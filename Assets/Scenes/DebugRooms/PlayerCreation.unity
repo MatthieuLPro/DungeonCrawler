@@ -370,8 +370,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d523f060575a868fa7539724aa099be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  acceleration: 1
-  decceleration: 1
+  acceleration: 5
+  decceleration: 3
   maxSpeed: 5
   hasManyForce: 0
   maxSpeedTemp: 0
@@ -420,8 +420,8 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
+  m_LinearDrag: 30
+  m_AngularDrag: 0
   m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
