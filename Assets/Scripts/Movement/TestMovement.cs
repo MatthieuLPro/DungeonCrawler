@@ -13,25 +13,35 @@ public class TestMovement : MonoBehaviour
     public float   acceleration;
     public float   decceleration;
     public float   maxSpeed;
-    public bool    hasManyForce;
 
+    /* Temp values */
+    [HideInInspector]
+    public float accelerationTemp;
     [HideInInspector]
     public float maxSpeedTemp;
 
+    /* Directions */
     [HideInInspector]
-    public Vector3     newDirection;
-    public Vector3     oldDirection;
+    public  Vector3    newDirection;
+    private Vector3    _oldDirection;
 
+    /* State machine */
     [HideInInspector]
     public TestObjectState currentState;
 
+    /* Object components */
     [HideInInspector]
     public Animator anime;
-
     [HideInInspector]
     public Rigidbody2D   _rb2d;
 
-    public bool isWalking;
+    /* If other force than movement is on the object */
+    [HideInInspector]
+    public bool hasManyForce;
+
+    /* Type of floor */
+    [HideInInspector]
+    public bool iceFloor;
 
     /* ************************************************ */
     /* Main functions */
@@ -42,6 +52,7 @@ public class TestMovement : MonoBehaviour
         anime = GetComponent<Animator>();
         _rb2d = GetComponent<Rigidbody2D>();
         maxSpeedTemp = maxSpeed;
+        accelerationTemp = acceleration;
     }
 
     void FixedUpdate()
@@ -57,12 +68,10 @@ public class TestMovement : MonoBehaviour
     private void PlayerDirection()
     {
         Vector3 inputMainPosition = InputManager.MainJoystick();
-        oldDirection = newDirection;
-        newDirection = Vector3.zero;
-        newDirection.x = inputMainPosition.x;
-        newDirection.y = inputMainPosition.y;
+
+        _oldDirection = newDirection;
+        newDirection = inputMainPosition;
         newDirection.Normalize();
-        isWalking = (newDirection.x != 0 || newDirection.y != 0);
     }
 
     /* Move or idle depend of vector newDirection */
@@ -83,13 +92,16 @@ public class TestMovement : MonoBehaviour
     /* Movement acceleration */
     private void Acceleration()
     {
-        if (((newDirection.x == -oldDirection.x) && newDirection.x != 0) || ((newDirection.y == -oldDirection.y) && newDirection.y != 0))
-            _rb2d.velocity = Vector2.zero;
+        if (!hasManyForce && !iceFloor)
+        {
+            if (((newDirection.x == -_oldDirection.x) && newDirection.x != 0) || ((newDirection.y == -_oldDirection.y) && newDirection.y != 0))
+                _rb2d.velocity = Vector2.zero;
+        }
 
         if(_rb2d.velocity.magnitude > maxSpeedTemp)
             _rb2d.velocity = _rb2d.velocity.normalized * maxSpeedTemp;
         else
-            _rb2d.AddForce(newDirection * acceleration, ForceMode2D.Impulse);
+            _rb2d.AddForce(newDirection * accelerationTemp, ForceMode2D.Impulse);
     }
 
     /* Movement decceleration */
@@ -98,8 +110,11 @@ public class TestMovement : MonoBehaviour
         if (_rb2d.velocity == Vector2.zero)
             return;
 
-        if ( _rb2d.velocity.x >= -decceleration && _rb2d.velocity.x <= decceleration && _rb2d.velocity.y >= -decceleration && _rb2d.velocity.y <= decceleration)
-            _rb2d.velocity = Vector2.zero;
+        if (!iceFloor)
+        {
+            if ( _rb2d.velocity.x >= -decceleration && _rb2d.velocity.x <= decceleration && _rb2d.velocity.y >= -decceleration && _rb2d.velocity.y <= decceleration)
+                _rb2d.velocity = Vector2.zero;
+        }
 
         _rb2d.velocity = _rb2d.velocity.normalized * decceleration;
     }
