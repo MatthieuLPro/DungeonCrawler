@@ -12,12 +12,8 @@ public class FloorSpeedWalk : MonoBehaviour
 
     private Rigidbody2D _rb2d = null;
 
-    private void FixedUpdate()
-    {
-        if (!_rb2d)
-            return;
-
-        AddAcceleration();
+    private void Awake(){
+        _forceDir.Normalize();
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -25,6 +21,7 @@ public class FloorSpeedWalk : MonoBehaviour
         _rb2d = other.GetComponent<Rigidbody2D>();
         other.GetComponent<TestMovement>().hasManyForce = true;
         other.GetComponent<TestMovement>().maxSpeedTemp += _thrust;
+        other.GetComponent<TestMovement>().otherForce = _forceDir * _thrust;
     }
 
     private void OnTriggerExit2D(Collider2D other)
@@ -32,9 +29,6 @@ public class FloorSpeedWalk : MonoBehaviour
         _rb2d = null;
         other.GetComponent<TestMovement>().hasManyForce = false;
         other.GetComponent<TestMovement>().maxSpeedTemp = other.GetComponent<TestMovement>().maxSpeed;
-    }
-
-    public void AddAcceleration(){
-        _rb2d.AddForce(_forceDir * _thrust, ForceMode2D.Impulse);
+        other.GetComponent<TestMovement>().otherForce = Vector3.zero;
     }
 }

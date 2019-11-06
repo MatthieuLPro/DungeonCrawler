@@ -35,13 +35,19 @@ public class TestMovement : MonoBehaviour
     [HideInInspector]
     public Rigidbody2D   _rb2d;
 
-    /* If other force than movement is on the object */
+    /* Other force than movement on the object */
     [HideInInspector]
     public bool hasManyForce;
+    [HideInInspector]
+    public Vector3 otherForce;
 
     /* Type of floor */
     [HideInInspector]
     public bool iceFloor;
+
+    /* Other */
+    [HideInInspector]
+    public bool blockMovement;
 
     /* ************************************************ */
     /* Main functions */
@@ -49,14 +55,19 @@ public class TestMovement : MonoBehaviour
     void Start()
     {
         currentState = TestObjectState.idle;
+
         anime = GetComponent<Animator>();
         _rb2d = GetComponent<Rigidbody2D>();
+
         maxSpeedTemp = maxSpeed;
         accelerationTemp = acceleration;
     }
 
     void FixedUpdate()
     {
+        if (blockMovement)
+            return;
+
         PlayerDirection();
         PlayerMovement();
     }
@@ -69,8 +80,9 @@ public class TestMovement : MonoBehaviour
     {
         Vector3 inputMainPosition = InputManager.MainJoystick();
 
-        _oldDirection = newDirection;
-        newDirection = inputMainPosition;
+        _oldDirection   = newDirection;
+        newDirection    = inputMainPosition;
+
         newDirection.Normalize();
     }
 
@@ -82,10 +94,15 @@ public class TestMovement : MonoBehaviour
             Acceleration();
             AnimationMovement();
         }
+        else if (hasManyForce)
+        {
+            Acceleration();
+            AnimationIdle();
+        }
         else
         {
             Decceleration();
-            AnimationIdle(); 
+            AnimationIdle();
         }
     }
 
@@ -101,7 +118,7 @@ public class TestMovement : MonoBehaviour
         if(_rb2d.velocity.magnitude > maxSpeedTemp)
             _rb2d.velocity = _rb2d.velocity.normalized * maxSpeedTemp;
         else
-            _rb2d.AddForce(newDirection * accelerationTemp, ForceMode2D.Impulse);
+            _rb2d.AddForce(newDirection * accelerationTemp + otherForce, ForceMode2D.Impulse);
     }
 
     /* Movement decceleration */
