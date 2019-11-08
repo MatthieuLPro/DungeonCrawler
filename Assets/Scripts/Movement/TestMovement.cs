@@ -18,6 +18,8 @@ public class TestMovement : MonoBehaviour
     [HideInInspector]
     public float accelerationTemp;
     [HideInInspector]
+    public float deccelerationTemp;
+    [HideInInspector]
     public float maxSpeedTemp;
 
     /* Directions */
@@ -33,7 +35,7 @@ public class TestMovement : MonoBehaviour
     [HideInInspector]
     public Animator anime;
     [HideInInspector]
-    public Rigidbody2D   _rb2d;
+    public Rigidbody2D _rb2d;
 
     /* Other force than movement on the object */
     [HideInInspector]
@@ -59,8 +61,16 @@ public class TestMovement : MonoBehaviour
         anime = GetComponent<Animator>();
         _rb2d = GetComponent<Rigidbody2D>();
 
-        maxSpeedTemp = maxSpeed;
-        accelerationTemp = acceleration;
+        maxSpeedTemp        = maxSpeed;
+        accelerationTemp    = acceleration;
+
+        /* Decceleration in [0,1] */
+        if (decceleration > 1)
+            decceleration = 1;
+        if (decceleration < 0)
+            decceleration = 0;
+
+        deccelerationTemp   = decceleration;
     }
 
     void FixedUpdate()
@@ -129,11 +139,11 @@ public class TestMovement : MonoBehaviour
 
         if (!iceFloor)
         {
-            if ( _rb2d.velocity.x >= -decceleration && _rb2d.velocity.x <= decceleration && _rb2d.velocity.y >= -decceleration && _rb2d.velocity.y <= decceleration)
+            if ( _rb2d.velocity.x >= -deccelerationTemp && _rb2d.velocity.x <= deccelerationTemp && _rb2d.velocity.y >= -deccelerationTemp && _rb2d.velocity.y <= deccelerationTemp)
                 _rb2d.velocity = Vector2.zero;
         }
 
-        _rb2d.velocity = _rb2d.velocity.normalized * decceleration;
+        _rb2d.velocity = _rb2d.velocity * deccelerationTemp;
     }
     
     /* ************************************************ */

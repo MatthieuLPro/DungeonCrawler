@@ -8,9 +8,11 @@ public class FloorIce : MonoBehaviour
     {
         TestMovement objectMovement = other.GetComponent<TestMovement>();
 
-        objectMovement.iceFloor = true;
-        objectMovement.accelerationTemp = .1f;
-        objectMovement.maxSpeedTemp = 100;
+        objectMovement.iceFloor             = true;
+        objectMovement.accelerationTemp     = .1f;
+        objectMovement.deccelerationTemp    = .99f;
+        objectMovement.maxSpeedTemp         *= 3;
+
         other.GetComponent<Rigidbody2D>().angularDrag = .05f;
     }
 
@@ -18,9 +20,10 @@ public class FloorIce : MonoBehaviour
     {
         TestMovement objectMovement = other.GetComponent<TestMovement>();
 
-        objectMovement.iceFloor = false;
-        objectMovement.accelerationTemp = objectMovement.acceleration;
-        objectMovement.maxSpeedTemp = objectMovement.maxSpeed;
+        objectMovement.iceFloor             = false;
+        objectMovement.accelerationTemp     = objectMovement.acceleration;
+        objectMovement.deccelerationTemp    = objectMovement.decceleration;
+        objectMovement.maxSpeedTemp         = objectMovement.maxSpeed;
         other.GetComponent<Rigidbody2D>().angularDrag = 0;
     }
 }
