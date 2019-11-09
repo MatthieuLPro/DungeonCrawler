@@ -7,12 +7,11 @@ public class TestPlayer : MonoBehaviour
     private PolygonCollider2D[] _collidersAttacks;
     private Animator _anime;
     private int _currentColliderIndex;
-    private bool _isAttacking;
 
-    void Start(){
+    void Start()
+    {
         _currentColliderIndex = 0;
         _anime                = GetComponent<Animator>();
-        _isAttacking          = false;
     }
 
     // Set Collider for attack Animation
@@ -34,7 +33,6 @@ public class TestPlayer : MonoBehaviour
 
         SetColliderToNull();
 
-        Debug.Log("(x,y) = (" + x + ", " + y + ")");
         if (x == 0)
             if (y > 0)
                 attackDirection = "AttackTopTest";

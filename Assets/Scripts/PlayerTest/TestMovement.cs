@@ -5,6 +5,7 @@ using UnityEngine;
 public enum TestObjectState {
     idle,
     walk,
+    knock,
     attack
 }
 

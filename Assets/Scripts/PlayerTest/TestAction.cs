@@ -11,9 +11,9 @@ public class TestAction : MonoBehaviour
 
     void Start()
     {
-        _parent               = transform.parent.gameObject;
-        _movement             = _parent.transform.Find("MovementTest").GetComponent<TestMovement>();
-        _anime                = _parent.GetComponent<Animator>();
+        _parent         = transform.parent.gameObject;
+        _movement       = _parent.transform.Find("MovementTest").GetComponent<TestMovement>();
+        _anime          = _parent.GetComponent<Animator>();
     }
 
     void FixedUpdate()
@@ -30,7 +30,7 @@ public class TestAction : MonoBehaviour
         yield return null;
 
         _anime.SetBool("Attacking", false);
-        yield return new WaitForSeconds(.44f);
+        yield return new WaitForSeconds(_anime.GetCurrentAnimatorClipInfo(0)[0].clip.length - .3f);
 
         _movement.blockMovement = false;
     }
