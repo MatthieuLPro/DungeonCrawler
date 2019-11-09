@@ -18,17 +18,27 @@ public class FloorSpeedWalk : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
+        if (!other.transform.Find("MovementTest"))
+            return;
+
+        TestMovement objectMovement = other.transform.Find("MovementTest").GetComponent<TestMovement>();
+
         _rb2d = other.GetComponent<Rigidbody2D>();
-        other.GetComponent<TestMovement>().hasManyForce = true;
-        other.GetComponent<TestMovement>().maxSpeedTemp += _thrust;
-        other.GetComponent<TestMovement>().otherForce = _forceDir * _thrust;
+        objectMovement.hasManyForce = true;
+        objectMovement.maxSpeedTemp += _thrust;
+        objectMovement.otherForce = _forceDir * _thrust;
     }
 
     private void OnTriggerExit2D(Collider2D other)
     {
+        if (!other.transform.Find("MovementTest"))
+            return;
+
+        TestMovement objectMovement = other.transform.Find("MovementTest").GetComponent<TestMovement>();
+
         _rb2d = null;
-        other.GetComponent<TestMovement>().hasManyForce = false;
-        other.GetComponent<TestMovement>().maxSpeedTemp = other.GetComponent<TestMovement>().maxSpeed;
-        other.GetComponent<TestMovement>().otherForce = Vector3.zero;
+        objectMovement.hasManyForce = false;
+        objectMovement.maxSpeedTemp = objectMovement.maxSpeed;
+        objectMovement.otherForce = Vector3.zero;
     }
 }

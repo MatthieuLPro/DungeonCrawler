@@ -6,7 +6,10 @@ public class FloorIce : MonoBehaviour
 {
     private void OnTriggerEnter2D(Collider2D other)
     {
-        TestMovement objectMovement = other.GetComponent<TestMovement>();
+        if (!other.transform.Find("MovementTest"))
+            return;
+
+        TestMovement objectMovement = other.transform.Find("MovementTest").GetComponent<TestMovement>();
 
         objectMovement.iceFloor             = true;
         objectMovement.accelerationTemp     = .1f;
@@ -17,8 +20,11 @@ public class FloorIce : MonoBehaviour
     }
 
     private void OnTriggerExit2D(Collider2D other)
-    {
-        TestMovement objectMovement = other.GetComponent<TestMovement>();
+    {        
+        if (!other.transform.Find("MovementTest"))
+            return;
+
+        TestMovement objectMovement = other.transform.Find("MovementTest").GetComponent<TestMovement>();
 
         objectMovement.iceFloor             = false;
         objectMovement.accelerationTemp     = objectMovement.acceleration;

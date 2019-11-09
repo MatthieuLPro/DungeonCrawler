@@ -2,9 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum TestObjectState{
+public enum TestObjectState {
     idle,
-    walk
+    walk,
+    attack
 }
 
 public class TestMovement : MonoBehaviour
@@ -32,10 +33,9 @@ public class TestMovement : MonoBehaviour
     public TestObjectState currentState;
 
     /* Object components */
-    [HideInInspector]
-    public Animator anime;
-    [HideInInspector]
-    public Rigidbody2D _rb2d;
+    private GameObject  _parent;
+    private Animator    _anime;
+    private Rigidbody2D _rb2d;
 
     /* Other force than movement on the object */
     [HideInInspector]
@@ -58,8 +58,9 @@ public class TestMovement : MonoBehaviour
     {
         currentState = TestObjectState.idle;
 
-        anime = GetComponent<Animator>();
-        _rb2d = GetComponent<Rigidbody2D>();
+        _parent = transform.parent.gameObject;
+        _anime  = _parent.GetComponent<Animator>();
+        _rb2d   = _parent.GetComponent<Rigidbody2D>();
 
         maxSpeedTemp        = maxSpeed;
         accelerationTemp    = acceleration;
@@ -151,16 +152,16 @@ public class TestMovement : MonoBehaviour
     /* ************************************************ */
     /* Idle */
     private void AnimationIdle(){
-        anime.SetBool("Moving", false);
+        _anime.SetBool("Moving", false);
         currentState = TestObjectState.idle;
     }
 
     /* Movement */
     private void AnimationMovement()
     {
-        anime.SetFloat("DirectionX", newDirection.x);
-        anime.SetFloat("DirectionY", newDirection.y);
-        anime.SetBool("Moving", true);
+        _anime.SetFloat("DirectionX", newDirection.x);
+        _anime.SetFloat("DirectionY", newDirection.y);
+        _anime.SetBool("Moving", true);
         currentState = TestObjectState.walk;
     }
 }
