@@ -18,6 +18,9 @@ public class TestPlayer : MonoBehaviour
     // Set Collider for attack Animation
     public void SetColliderForSprite(int spriteNum)
     {
+        if (spriteNum >= _collidersAttacks.Length)
+            return;
+
         _collidersAttacks[_currentColliderIndex].enabled    = false;
         _currentColliderIndex                               = spriteNum;
         _collidersAttacks[_currentColliderIndex].enabled    = true;
@@ -25,16 +28,13 @@ public class TestPlayer : MonoBehaviour
 
     private void SetColliderToAnimation()
     {
-        if (_isAttacking)
-            return;
-
         float   x               = _anime.GetFloat("DirectionX");
         float   y               = _anime.GetFloat("DirectionY");
         string  attackDirection = "";
 
         SetColliderToNull();
-        _isAttacking = true;
 
+        Debug.Log("(x,y) = (" + x + ", " + y + ")");
         if (x == 0)
             if (y > 0)
                 attackDirection = "AttackTopTest";
@@ -42,26 +42,14 @@ public class TestPlayer : MonoBehaviour
                 attackDirection = "AttackBotTest";
         else if (x > 0)
             if (y < 0)
-            {
-                Debug.Log("Exit 1");
                 attackDirection = "AttackBotTest";
-            }
             else
-            {
-                Debug.Log("Exit 2");
                 attackDirection = "AttackRightTest";
-            }
         else
             if (y < 0)
-            {
-                Debug.Log("Exit 3");
                 attackDirection = "AttackBotTest";
-            }
             else
-            {
-                Debug.Log("Exit 4");
                 attackDirection = "AttackLeftTest";
-            }
 
         _collidersAttacks = gameObject.transform.Find("ActionTest").transform.Find(attackDirection).GetComponents<PolygonCollider2D>();
     }
