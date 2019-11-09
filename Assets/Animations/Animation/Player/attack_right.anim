@@ -152,7 +152,7 @@ AnimationClip:
   m_Events:
   - time: 0
     functionName: SetColliderToAnimation
-    data: AttackRightTest
+    data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0
