@@ -16,6 +16,7 @@ TagManager:
   - BlocBlue
   - BlocRed
   - GlobeSwitch
+  - PlayerAttack
   layers:
   - Default
   - TransparentFX
