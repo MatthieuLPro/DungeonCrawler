@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TestPlayer : MonoBehaviour
+public class TestColliderManager : MonoBehaviour
 {
     private PolygonCollider2D[] _collidersAttacks;
     private Animator _anime;

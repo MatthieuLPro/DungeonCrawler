@@ -9,6 +9,9 @@ public class TestAction : MonoBehaviour
     private TestMovement    _movement;
     private Animator        _anime;
 
+    /* ************************************************ */
+    /* Main functions */
+    /* ************************************************ */
     void Start()
     {
         _parent         = transform.parent.gameObject;
@@ -22,6 +25,10 @@ public class TestAction : MonoBehaviour
             StartCoroutine(MainAttack());
     }
 
+    /* ************************************************ */
+    /* Coroutines */
+    /* ************************************************ */
+    /* Main Attack */
     private IEnumerator MainAttack()
     {
         _anime.SetBool("Attacking", true);

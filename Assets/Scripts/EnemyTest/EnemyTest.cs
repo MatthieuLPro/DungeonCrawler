@@ -5,4 +5,5 @@ using UnityEngine;
 public class EnemyTest : MonoBehaviour
 {
     public float strength;
+    public float knockBackTime;
 }
