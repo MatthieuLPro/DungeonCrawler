@@ -86,6 +86,7 @@ public class TestInteraction : MonoBehaviour
     /* KnockBack */
     private IEnumerator KnockCo(GameObject enemy)
     {
+        // Get Direction of knockback
         Vector2 directionKnock  = _parent.transform.position - enemy.transform.position;
         
         KnockToggleParam();

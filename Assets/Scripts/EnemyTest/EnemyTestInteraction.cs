@@ -8,7 +8,7 @@ public class EnemyTestInteraction : MonoBehaviour
     [SerializeField]
     private bool _isInvincible;
     [SerializeField]
-    private float invincibleTime = 5;
+    private float invincibleTime = .5f;
 
     /* Parent components */
     private GameObject      _parent;
@@ -77,26 +77,28 @@ public class EnemyTestInteraction : MonoBehaviour
     private IEnumerator KnockCo(GameObject player)
     {
         Vector2 directionKnock  = _parent.transform.position - player.transform.position;
+        float strength          = player.transform.parent.GetComponent<TestAction>().strength;
+        float knockTime         = player.transform.parent.GetComponent<TestAction>().knockBackTime;
         
         KnockToggleParam();
         
         // Application de la nouvelle force
-        //_rb2d.AddForce(directionKnock * enemy.GetComponent<EnemyTest>().strength, ForceMode2D.Impulse);
-        _rb2d.AddForce(directionKnock * 2, ForceMode2D.Impulse);
+        _rb2d.AddForce(directionKnock * strength, ForceMode2D.Impulse);
 
-        //yield return new WaitForSeconds(enemy.GetComponent<EnemyTest>().knockBackTime);
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(knockTime);
 
         KnockToggleParam();
     }
 
     /* Invincible (post knockback) */
-    private IEnumerator InvincibleCo(GameObject enemy)
+    private IEnumerator InvincibleCo(GameObject player)
     {
+        float knockTime = player.transform.parent.GetComponent<TestAction>().knockBackTime;
+
         // Impossible de rentrer a nouveau en contact avec un enemy
         InvincibleParam();
 
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(knockTime);
 
         float time         = .0f;
         Color regularColor = _sprite.color;
@@ -105,6 +107,7 @@ public class EnemyTestInteraction : MonoBehaviour
         {
             _sprite.color = new Color(1f,1f,1f,0f);
             yield return new WaitForSeconds(0.02f);
+
             _sprite.color = regularColor;
             yield return new WaitForSeconds(0.02f);
 

@@ -49,7 +49,6 @@ public class TestMovement : MonoBehaviour
     public bool iceFloor;
 
     /* Other */
-    [HideInInspector]
     public bool blockMovement;
 
     /* ************************************************ */
