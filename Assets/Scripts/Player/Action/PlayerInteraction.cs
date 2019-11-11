@@ -14,8 +14,8 @@ public class PlayerInteraction : MonoBehaviour
             GameObject temp = interactObject;
             if (temp.CompareTag("ObjectCarry"))
             {
-                interactObject.GetComponent<CarryObject>().RaiseTheObject();
-                GetComponent<PlayerController>().CarryObject(temp);
+                //interactObject.GetComponent<CarryObjectManager>().CarryObject(this.gameObject);
+                //GetComponent<PlayerController>().CarryObject(temp);
             }
             else if (temp.CompareTag("ObjectOpen"))
                 interactObject.GetComponent<OpenObject>().OpenTheObject(gameObject);

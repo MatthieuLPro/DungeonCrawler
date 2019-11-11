@@ -9,24 +9,50 @@ public class TestAction : MonoBehaviour
     public float knockBackTime;
 
     /* Parent components */
-    private GameObject      _parent;
-    private TestMovement    _movement;
-    private Animator        _anime;
+    private GameObject              _parent;
+    private TestMovement            _movement;
+    private TestInteractionFront    _interactionFront;
+    private Animator                _anime;
 
     /* ************************************************ */
     /* Main functions */
     /* ************************************************ */
     void Start()
     {
-        _parent         = transform.parent.gameObject;
-        _movement       = _parent.transform.Find("MovementTest").GetComponent<TestMovement>();
-        _anime          = _parent.GetComponent<Animator>();
+        _parent             = transform.parent.gameObject;
+        _movement           = _parent.transform.Find("MovementTest").GetComponent<TestMovement>();
+        _interactionFront   = _parent.transform.Find("InteractionTest").transform.Find("Front").GetComponent<TestInteractionFront>();
+        _anime              = _parent.GetComponent<Animator>();
     }
 
     void FixedUpdate()
     {
-        if (InputManager.YButton() && _movement.currentState != TestObjectState.knock)
-            StartCoroutine(MainAttack());
+        // Action Button
+        if (InputManager.YButton())
+        {
+            /* Priority Order */
+            /*
+                => Throw object if have object
+                => Carry object if object in front
+                => Attack
+            */
+            if (transform.Find("Pot") || transform.Find("Bush"))
+                ThrowCarryObject();
+            if (_interactionFront.objectCarry != null)
+                _interactionFront.InteractionWithObjectCarry();
+            else if (_movement.currentState != TestObjectState.knock)
+                StartCoroutine(MainAttack());
+
+        }
+    }
+
+    /* ************************************************ */
+    /* Functions */
+    /* ************************************************ */
+    /* Throw object */
+    private void ThrowCarryObject()
+    {
+
     }
 
     /* ************************************************ */

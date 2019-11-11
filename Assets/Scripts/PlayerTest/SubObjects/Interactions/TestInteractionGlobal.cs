@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TestInteraction : MonoBehaviour
+public class TestInteractionGlobal : MonoBehaviour
 {
     [Header("Interaction parameters")]
     [SerializeField]
@@ -27,7 +27,7 @@ public class TestInteraction : MonoBehaviour
     /* ************************************************ */
     void Start()
     {
-        _parent         = transform.parent.gameObject;
+        _parent         = transform.parent.transform.parent.gameObject;
 
         _movement       = _parent.transform.Find("MovementTest").GetComponent<TestMovement>();
         _anime          = _parent.GetComponent<Animator>();
@@ -40,14 +40,24 @@ public class TestInteraction : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (!other.CompareTag("Enemy"))
+        if (other.CompareTag("Enemy"))
+        {
+            InteractionWithEnemy(other.gameObject);
             return;
+        }
+    }
 
+    /* ************************************************ */
+    /* Functions */
+    /* ************************************************ */
+    /* Tag: Enemy */
+    private void InteractionWithEnemy(GameObject enemy)
+    {
         if (_isKnock || _isInvincible)
             return;
 
-        StartCoroutine(KnockCo(other.gameObject));
-        StartCoroutine(InvincibleCo(other.gameObject));
+        StartCoroutine(KnockCo(enemy));
+        StartCoroutine(InvincibleCo(enemy));
     }
 
     /* ************************************************ */
@@ -74,7 +84,7 @@ public class TestInteraction : MonoBehaviour
         AnimationKnockBack();
     }
 
-    private void InvincibleParam()
+    private void InvincibleToggleParam()
     {
         _isInvincible     = !_isInvincible;
         _collider.enabled = !_collider.enabled;
@@ -103,7 +113,7 @@ public class TestInteraction : MonoBehaviour
     private IEnumerator InvincibleCo(GameObject enemy)
     {
         // Impossible de rentrer a nouveau en contact avec un enemy
-        InvincibleParam();
+        InvincibleToggleParam();
 
         yield return new WaitForSeconds(enemy.GetComponent<EnemyTest>().knockBackTime);
 
@@ -122,7 +132,7 @@ public class TestInteraction : MonoBehaviour
 
         _sprite.color = regularColor;
 
-        InvincibleParam();
+        InvincibleToggleParam();
     }
 
     /* ************************************************ */
