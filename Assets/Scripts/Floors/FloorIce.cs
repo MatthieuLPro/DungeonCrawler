@@ -2,34 +2,25 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FloorIce : MonoBehaviour
+public class FloorIce : Floor
 {
-    private void OnTriggerEnter2D(Collider2D other)
+    protected override void newMovement(TestMovement objectMovement)
     {
-        if (!other.transform.Find("MovementTest"))
-            return;
-
-        TestMovement objectMovement = other.transform.Find("MovementTest").GetComponent<TestMovement>();
-
         objectMovement.iceFloor             = true;
         objectMovement.accelerationTemp     = .1f;
         objectMovement.deccelerationTemp    = .99f;
         objectMovement.maxSpeedTemp         *= 3;
 
-        other.GetComponent<Rigidbody2D>().angularDrag = .05f;
+        objectMovement.gameObject.transform.parent.GetComponent<Rigidbody2D>().angularDrag = .05f;
     }
 
-    private void OnTriggerExit2D(Collider2D other)
-    {        
-        if (!other.transform.Find("MovementTest"))
-            return;
-
-        TestMovement objectMovement = other.transform.Find("MovementTest").GetComponent<TestMovement>();
-
+    protected override void oldMovement(TestMovement objectMovement)
+    {
         objectMovement.iceFloor             = false;
         objectMovement.accelerationTemp     = objectMovement.acceleration;
         objectMovement.deccelerationTemp    = objectMovement.decceleration;
         objectMovement.maxSpeedTemp         = objectMovement.maxSpeed;
-        other.GetComponent<Rigidbody2D>().angularDrag = 0;
+
+        objectMovement.gameObject.transform.parent.GetComponent<Rigidbody2D>().angularDrag = 0;
     }
 }
