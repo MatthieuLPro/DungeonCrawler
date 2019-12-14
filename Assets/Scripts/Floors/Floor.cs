@@ -22,11 +22,6 @@ abstract public class Floor : MonoBehaviour
         oldMovement(objectMovement);
     }
 
-    protected virtual void newMovement(TestMovement objectMovement) {
-        return;
-    }
-
-    protected virtual void oldMovement(TestMovement objectMovement) {
-        return;
-    }
+    protected abstract void newMovement(TestMovement objectMovement);
+    protected abstract void oldMovement(TestMovement objectMovement);
 }
