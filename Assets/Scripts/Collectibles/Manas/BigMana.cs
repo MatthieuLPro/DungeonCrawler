@@ -1,4 +1,4 @@
-﻿public class BigMana : Mana
+﻿public class BigMana : Manas
 {
     void Awake() {
         heal = 99;

@@ -1,4 +1,4 @@
-﻿public class MediumHeart : Heart
+﻿public class MediumHeart : Hearts
 {
     void Awake(){
         heal = 6;

@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class GreenRuby : Ruby
+public class GreenRuby : Rubies
 {
     private void Awake()
     {

@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-abstract public class Mana : MonoBehaviour
+abstract public class Manas : MonoBehaviour
 {
     public int heal = 0;
 

@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using UnityEngine;
 
-abstract public class Ruby : MonoBehaviour
+abstract public class Rubies : MonoBehaviour
 {
     public int          value;
     private AudioSource _audio = null;

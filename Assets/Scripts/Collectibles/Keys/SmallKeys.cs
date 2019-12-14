@@ -1,15 +1,13 @@
 ﻿using UnityEngine;
 
-abstract public class Heart : MonoBehaviour
+public class SmallKeys : MonoBehaviour
 {
-    public int heal = 0;
-
     private void OnTriggerEnter2D(Collider2D other)
     {
         Player player = other.GetComponent<Player>();
         if(player != null)
         {
-            player.GetLife(heal);
+            player.GetSmallKey();
             Destroy(gameObject);
         }     
     }
