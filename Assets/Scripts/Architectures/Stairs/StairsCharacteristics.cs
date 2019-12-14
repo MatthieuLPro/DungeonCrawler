@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Stairs : MonoBehaviour
+public class StairsCharacteristics : MonoBehaviour
 {
     [Header("Settings Stairs")]
     public string layoutUp      = "";
