@@ -1,18 +1,13 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class Heal_mana : MonoBehaviour
+public class SmallKey : MonoBehaviour
 {
-    [SerializeField]
-    private int _heal = 10;
-
     private void OnTriggerEnter2D(Collider2D other)
     {
         Player player = other.GetComponent<Player>();
         if(player != null)
         {
-            player.GetMana(_heal);
+            player.GetSmallKey();
             Destroy(gameObject);
         }     
     }

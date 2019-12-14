@@ -1,8 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-public class FloorGlue : Floor
+﻿public class FloorGlue : Floor
 {
     protected override void newMovement(TestMovement objectMovement)
     {

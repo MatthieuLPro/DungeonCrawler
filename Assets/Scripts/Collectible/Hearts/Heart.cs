@@ -1,11 +1,8 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class Heart : MonoBehaviour
+abstract public class Heart : MonoBehaviour
 {
-    [SerializeField]
-    private int heal = 1;
+    public int heal = 0;
 
     private void OnTriggerEnter2D(Collider2D other)
     {

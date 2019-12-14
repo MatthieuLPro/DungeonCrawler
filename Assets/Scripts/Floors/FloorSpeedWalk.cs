@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class FloorSpeedWalk : Floor
 {
@@ -9,8 +7,6 @@ public class FloorSpeedWalk : Floor
     private float _thrust = 4.0f;
     [SerializeField]
     private Vector3 _forceDir;
-
-    private Rigidbody2D _rb2d = null;
 
     private void Awake(){
         _forceDir.Normalize();
