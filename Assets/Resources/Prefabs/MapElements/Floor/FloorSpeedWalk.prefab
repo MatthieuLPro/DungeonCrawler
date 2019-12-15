@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8805577618824712564}
   - component: {fileID: 8805577618824712563}
   m_Layer: 21
-  m_Name: "Floor\x01SpeedWalk"
+  m_Name: FloorSpeedWalk
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
