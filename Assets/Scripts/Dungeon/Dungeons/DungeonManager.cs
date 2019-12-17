@@ -34,6 +34,9 @@ public class DungeonManager : MonoBehaviour
 
     void Update()
     {
+        if (ColorSwitches.Length == 0)
+            return;
+
         if (_VerifyAllObjectsSame(ColorSwitches, _verificationCbList[0]) != -1)
         {
             int i = _VerifyAllObjectsSame(ColorSwitches, _verificationCbList[0]);

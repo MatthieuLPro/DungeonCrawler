@@ -62,8 +62,8 @@ public class TestMovement : MonoBehaviour
         _anime  = _parent.GetComponent<Animator>();
         _rb2d   = _parent.GetComponent<Rigidbody2D>();
 
-        maxSpeedTemp        = maxSpeed;
-        accelerationTemp    = acceleration;
+        maxSpeedTemp     = maxSpeed;
+        accelerationTemp = acceleration;
 
         /* Decceleration in [0,1] */
         if (decceleration > 1)
@@ -71,7 +71,7 @@ public class TestMovement : MonoBehaviour
         if (decceleration < 0)
             decceleration = 0;
 
-        deccelerationTemp   = decceleration;
+        deccelerationTemp = decceleration;
     }
 
     void FixedUpdate()
@@ -91,8 +91,8 @@ public class TestMovement : MonoBehaviour
     {
         Vector3 inputMainPosition = InputManager.MainJoystick();
 
-        _oldDirection   = newDirection;
-        newDirection    = inputMainPosition;
+        _oldDirection = newDirection;
+        newDirection  = inputMainPosition;
 
         newDirection.Normalize();
     }

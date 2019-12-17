@@ -7,7 +7,7 @@ public class TestInteractionFront : MonoBehaviour
     /* Parent components */
     private GameObject      _parent;
     private TestMovement    _movement;
-    private TestAction      _action;
+    //private TestAction      _action;
     private Animator        _anime;
     private Rigidbody2D     _rb2d;
     private SpriteRenderer  _sprite;
@@ -27,7 +27,7 @@ public class TestInteractionFront : MonoBehaviour
         _parent         = transform.parent.transform.parent.gameObject;
 
         _movement       = _parent.transform.Find("MovementTest").GetComponent<TestMovement>();
-        _action         = _parent.transform.Find("ActionTest").GetComponent<TestAction>();
+        //_action         = _parent.transform.Find("ActionTest").GetComponent<TestAction>();
         _anime          = _parent.GetComponent<Animator>();
         _rb2d           = _parent.GetComponent<Rigidbody2D>();
         _sprite         = _parent.GetComponent<SpriteRenderer>();
