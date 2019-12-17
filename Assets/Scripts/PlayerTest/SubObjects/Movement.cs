@@ -9,7 +9,7 @@ public enum TestObjectState {
     attack
 }
 
-public class TestMovement : MonoBehaviour
+public class Movement : MonoBehaviour
 {
     [Header("General Movement parameters")]
     public float   acceleration;

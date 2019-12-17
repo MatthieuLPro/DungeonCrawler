@@ -10,7 +10,7 @@ public class TestAction : MonoBehaviour
 
     /* Parent components */
     private GameObject              _parent;
-    private TestMovement            _movement;
+    private Movement                _movement;
     private TestInteractionFront    _interactionFront;
     private Animator                _anime;
 
@@ -20,7 +20,7 @@ public class TestAction : MonoBehaviour
     void Start()
     {
         _parent             = transform.parent.gameObject;
-        _movement           = _parent.transform.Find("MovementTest").GetComponent<TestMovement>();
+        _movement           = _parent.transform.Find("Movement").GetComponent<Movement>();
         _interactionFront   = _parent.transform.Find("InteractionTest").transform.Find("Front").GetComponent<TestInteractionFront>();
         _anime              = _parent.GetComponent<Animator>();
     }

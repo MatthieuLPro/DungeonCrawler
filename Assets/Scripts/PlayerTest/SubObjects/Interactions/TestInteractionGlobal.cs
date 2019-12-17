@@ -12,7 +12,7 @@ public class TestInteractionGlobal : MonoBehaviour
 
     /* Parent components */
     private GameObject      _parent;
-    private TestMovement    _movement;
+    private Movement        _movement;
     private Animator        _anime;
     private Rigidbody2D     _rb2d;
     private SpriteRenderer  _sprite;
@@ -29,7 +29,7 @@ public class TestInteractionGlobal : MonoBehaviour
     {
         _parent         = transform.parent.transform.parent.gameObject;
 
-        _movement       = _parent.transform.Find("MovementTest").GetComponent<TestMovement>();
+        _movement       = _parent.transform.GetChild(0).GetComponent<Movement>();
         _anime          = _parent.GetComponent<Animator>();
         _rb2d           = _parent.GetComponent<Rigidbody2D>();
         _sprite         = _parent.GetComponent<SpriteRenderer>();
