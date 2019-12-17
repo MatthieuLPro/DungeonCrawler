@@ -2,7 +2,7 @@
 
 public class FloorIce : Floor
 {
-    protected override void newMovement(TestMovement objectMovement)
+    protected override void newMovement(Movement objectMovement)
     {
         objectMovement.iceFloor             = true;
         objectMovement.accelerationTemp     = .1f;
@@ -12,7 +12,7 @@ public class FloorIce : Floor
         objectMovement.gameObject.transform.parent.GetComponent<Rigidbody2D>().angularDrag = .05f;
     }
 
-    protected override void oldMovement(TestMovement objectMovement)
+    protected override void oldMovement(Movement objectMovement)
     {
         objectMovement.iceFloor             = false;
         objectMovement.accelerationTemp     = objectMovement.acceleration;

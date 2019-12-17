@@ -4,22 +4,22 @@ abstract public class Floor : MonoBehaviour
 {
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (!other.transform.Find("MovementTest"))
+        if (!other.transform.Find("Movement"))
             return;
 
-        TestMovement objectMovement = other.transform.Find("MovementTest").GetComponent<TestMovement>();
+        Movement objectMovement = other.transform.GetChild(0).GetComponent<Movement>();
         newMovement(objectMovement);
     }
 
     private void OnTriggerExit2D(Collider2D other)
     {
-        if (!other.transform.Find("MovementTest"))
+        if (!other.transform.Find("Movement"))
             return;
 
-        TestMovement objectMovement = other.transform.Find("MovementTest").GetComponent<TestMovement>();
+        Movement objectMovement = other.transform.GetChild(0).GetComponent<Movement>();
         oldMovement(objectMovement);
     }
 
-    protected abstract void newMovement(TestMovement objectMovement);
-    protected abstract void oldMovement(TestMovement objectMovement);
+    protected abstract void newMovement(Movement objectMovement);
+    protected abstract void oldMovement(Movement objectMovement);
 }

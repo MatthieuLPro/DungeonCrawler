@@ -12,14 +12,14 @@ public class FloorSpeedWalk : Floor
         _forceDir.Normalize();
     }
 
-    protected override void newMovement(TestMovement objectMovement)
+    protected override void newMovement(Movement objectMovement)
     {
         objectMovement.hasManyForce = true;
         objectMovement.maxSpeedTemp += _thrust;
         objectMovement.otherForce = _forceDir * _thrust;
     }
 
-    protected override void oldMovement(TestMovement objectMovement)
+    protected override void oldMovement(Movement objectMovement)
     {
         objectMovement.hasManyForce = false;
         objectMovement.maxSpeedTemp = objectMovement.maxSpeed;
