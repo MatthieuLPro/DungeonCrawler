@@ -7,7 +7,7 @@ abstract public class Stairs : MonoBehaviour
         if(!other.CompareTag("Player"))
             return;
 
-        GameObject player = other.gameObject;
+        GameObject player = other.transform.GetChild(0).gameObject;
 
         StairsInteraction(player);
     }
