@@ -28,7 +28,7 @@ public class TestAction : MonoBehaviour
     void FixedUpdate()
     {
         // Action Button
-        if (InputManager.YButton())
+        if (InputManagerPlayer1.YButton())
         {
             /* Priority Order */
             /*

@@ -2,21 +2,21 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class InputManager : MonoBehaviour
+public class InputManagerPlayer3 : MonoBehaviour
 {
     public static float MainHorizontal()
     {
         float r = 0.0f;
-        r += Input.GetAxis("J_MainHorizontal");
-        r += Input.GetAxis("K_MainHorizontal");
+        r += Input.GetAxis("P3_joystick_horizontal");
+        r += Input.GetAxis("P3_key_horizontal");
         return Mathf.Clamp(r, -1.0f, 1.0f);
     }
 
     public static float MainVertical()
     {
         float r = 0.0f;
-        r += Input.GetAxis("J_MainVertical");
-        r += Input.GetAxis("K_MainVertical");
+        r += Input.GetAxis("P3_joystick_vertical");
+        r += Input.GetAxis("P3_key_vertical");
         return Mathf.Clamp(r, -1.0f, 1.0f);
     }
 
