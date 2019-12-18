@@ -25,7 +25,7 @@ public class DialogueManager : MonoBehaviour
     {
         if (_isTalking)
         {
-            if (InputManager.AButton())
+            if (InputManagerPlayer1.AButton())
                 DisplayNextSentence();
         }
     }

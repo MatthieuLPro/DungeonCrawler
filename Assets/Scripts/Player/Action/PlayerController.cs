@@ -14,7 +14,7 @@ public class PlayerController : MovingObject
 
     private void PlayerDirection()
     {
-        Vector3 inputMainPosition = InputManager.MainJoystick();
+        Vector3 inputMainPosition = InputManagerPlayer1.MainJoystick();
         changePos = Vector3.zero;
         changePos.x = inputMainPosition.x;
         changePos.y = inputMainPosition.y;
@@ -23,9 +23,9 @@ public class PlayerController : MovingObject
 
     public override void MainController()
     {
-        if ((InputManager.YButton() || InputManager.BButton()) && currentState == ObjectState.carry)
+        if ((InputManagerPlayer1.YButton() || InputManagerPlayer1.BButton()) && currentState == ObjectState.carry)
             StartCoroutine(ThrowObject());
-        if (InputManager.YButton() && currentState != ObjectState.attack)
+        if (InputManagerPlayer1.YButton() && currentState != ObjectState.attack)
             StartCoroutine(MainAttack());
         else if (changePos != Vector3.zero && currentState != ObjectState.attack)
             MoveObject();

@@ -9,7 +9,7 @@ public class PlayerInteraction : MonoBehaviour
 
     private void Update()
     {
-        if (InputManager.BButton() && _playerInRange == true)
+        if (InputManagerPlayer1.BButton() && _playerInRange == true)
         {
             GameObject temp = interactObject;
             if (temp.CompareTag("ObjectCarry"))
