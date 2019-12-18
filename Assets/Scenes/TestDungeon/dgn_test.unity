@@ -12220,7 +12220,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &601682816
 Transform:
   m_ObjectHideFlags: 0
@@ -13610,7 +13610,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1145913717
 Transform:
   m_ObjectHideFlags: 0
@@ -23517,7 +23517,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1619302215
 Transform:
   m_ObjectHideFlags: 0
@@ -23821,10 +23821,6 @@ MonoBehaviour:
   _enabledBottomScroll: 0
   _enabledRightScroll: 0
   _enabledLeftScroll: 0
-  _xMinLimit: -1000
-  _xMaxLimit: 1000
-  _yMinLimit: -1000
-  _yMaxLimit: 1000
   _cameraHeight: 0
   _cameraWidth: 0
   smoothing: 10
@@ -24103,10 +24099,6 @@ MonoBehaviour:
   _enabledBottomScroll: 0
   _enabledRightScroll: 0
   _enabledLeftScroll: 0
-  _xMinLimit: -1000
-  _xMaxLimit: 1000
-  _yMinLimit: -1000
-  _yMaxLimit: 1000
   _cameraHeight: 0
   _cameraWidth: 0
   smoothing: 10
@@ -25628,10 +25620,6 @@ MonoBehaviour:
   _enabledBottomScroll: 0
   _enabledRightScroll: 0
   _enabledLeftScroll: 0
-  _xMinLimit: -1000
-  _xMaxLimit: 1000
-  _yMinLimit: -1000
-  _yMaxLimit: 1000
   _cameraHeight: 0
   _cameraWidth: 0
   smoothing: 10
@@ -26600,6 +26588,7 @@ GameObject:
   - component: {fileID: 8344224969875362228}
   - component: {fileID: 8344224969875362227}
   - component: {fileID: 8344224969875362226}
+  - component: {fileID: 8344224969875362232}
   m_Layer: 25
   m_Name: Controller
   m_TagString: Player
@@ -26750,6 +26739,20 @@ Transform:
   m_Father: {fileID: 944223673}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8344224969875362232
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8344224969875362225}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 649b7130c7a25a93e8eb59b033bb07c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  roomLimitsMax: {x: 0, y: 0}
+  roomLimitsMin: {x: 0, y: 0}
 --- !u!1 &8344224971451597184
 GameObject:
   m_ObjectHideFlags: 0
@@ -26878,10 +26881,6 @@ MonoBehaviour:
   _enabledBottomScroll: 0
   _enabledRightScroll: 0
   _enabledLeftScroll: 0
-  _xMinLimit: -1000
-  _xMaxLimit: 1000
-  _yMinLimit: -1000
-  _yMaxLimit: 1000
   _cameraHeight: 0
   _cameraWidth: 0
   smoothing: 10
@@ -26912,7 +26911,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 4.4426394
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2

@@ -11,9 +11,12 @@ public class CameraController : MonoBehaviour
                  _enabledBottomScroll, _enabledRightScroll,
                  _enabledLeftScroll;
 
-    [SerializeField]
-    private float _xMinLimit, _xMaxLimit,
-                  _yMinLimit, _yMaxLimit;
+    private Vector2 _minPosition;
+    private Vector2 _maxPosition;
+
+    //[SerializeField]
+    //private float _xMinLimit, _xMaxLimit,
+    //              _yMinLimit, _yMaxLimit;
 
     private BoxCollider2D _boxCollider2D;
     private Camera _Camera;
@@ -38,6 +41,9 @@ public class CameraController : MonoBehaviour
         _enabledCameraScroll = true;
         _boxCollider2D = gameObject.GetComponent<BoxCollider2D>();
         _Camera = gameObject.GetComponent<Camera>();
+
+        _minPosition = trackingGameObject.GetComponent<roomInformation>().roomLimitsMin;
+        _maxPosition = trackingGameObject.GetComponent<roomInformation>().roomLimitsMax;
 
         _InitializeCamera();
 
@@ -68,8 +74,10 @@ public class CameraController : MonoBehaviour
     {
         if (_forceUpdate || (_enabledCameraScroll))
         {
-            float xPosition = Mathf.Clamp(trackingGameObject.transform.position.x, _xMinLimit, _xMaxLimit);
-            float yPosition = Mathf.Clamp(trackingGameObject.transform.position.y, _yMinLimit, _yMaxLimit);
+            //float xPosition = Mathf.Clamp(trackingGameObject.transform.position.x, _xMinLimit, _xMaxLimit);
+            //float yPosition = Mathf.Clamp(trackingGameObject.transform.position.y, _yMinLimit, _yMaxLimit);
+            float xPosition = Mathf.Clamp(trackingGameObject.transform.position.x, _minPosition.x, _maxPosition.x);
+            float yPosition = Mathf.Clamp(trackingGameObject.transform.position.y, _minPosition.y, _maxPosition.y);
             _MoveCameraToPosition(xPosition, yPosition);
         }  
     }
@@ -103,6 +111,7 @@ public class CameraController : MonoBehaviour
         _MoveCameraToPosition(xPosition, yPosition);
     }
 
+/*
     private void OnCollisionEnter2D(Collision2D collision)
     {
         GameObject collisionObject = collision.gameObject;
@@ -152,6 +161,5 @@ public class CameraController : MonoBehaviour
             }
         }
     }
-
-
+*/
 }
