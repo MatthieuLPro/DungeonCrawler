@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Teleport : MonoBehaviour
+public class Teleporter : MonoBehaviour
 {
     [Header("Set Teleport Arrival")]
     [SerializeField]
