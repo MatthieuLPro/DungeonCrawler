@@ -12,35 +12,45 @@ public class Profile : MonoBehaviour
             - personnage joué
             - skin utilisé
     */ 
-    public string nickName;
     public enum Character {
         character_1,
         character_2,
         character_3
     };
 
+    public string       nickName;
+    public Character    characterChoosen;
+
+    //Init empty profile object when enter in game 
     void Start()
     {
-        //Load value from a file
+        nickName         = "";
+        characterChoosen = Character.character_1;
     }
 
-    void createProfile()
+    //Create a profile from user input with normal values and save in JSON
+    void createProfile(string newNickName)
     {
-        //Create a profile and save it in a file
+        nickName = newNickName;
+        //Save in JSON files
     }
 
-    void createTempProfile()
+    //Update normal values and save in JSON
+    void updateProfile(string newNickName)
     {
-        //Create a temporary profile with temporary data
+        nickName = newNickName;
+        //Save in JSON files
     }
 
-    void updateProfile()
+    //Update temp values from user input
+    void updateTempProfile(Character playerValue)
     {
-        //Update a profile and save it in a file
+        characterChoosen = playerValue;
     }
 
-    void updateTempProfile()
+    // Load all normal values from JSON
+    void loadProfile(string nickNameLoad)
     {
-        //Update a temporary profile with temporary data
+        nickName = nickNameLoad;
     }
 }
