@@ -8,11 +8,23 @@ public class TeleporterBlock : MonoBehaviour
     [SerializeField]
     private GameObject _teleportArrival = null;
 
+    [Header("Min & max position for camera")]
+    public Vector2 minPosition;
+    public Vector2 maxPosition;
+
+
     private void OnTriggerEnter2D(Collider2D other)
     {
         if(!other.CompareTag("Player"))
             return;
 
-        other.GetComponent<Transform>().position = _teleportArrival.GetComponent<Transform>().position;
+        GameObject player               = other.gameObject;
+        RoomInformation roomInfo        = player.GetComponent<RoomInformation>();
+        CameraController camController  = player.transform.parent.transform.Find("Camera").GetComponent<CameraController>();
+
+        player.GetComponent<Transform>().position = _teleportArrival.GetComponent<Transform>().position;
+        roomInfo.updateRoomLimits(minPosition, maxPosition);
+        camController.updateMinMaxLimits();
+
     }
 }
