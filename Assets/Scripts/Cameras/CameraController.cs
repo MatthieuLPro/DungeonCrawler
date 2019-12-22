@@ -11,8 +11,9 @@ public class CameraController : MonoBehaviour
                  _enabledBottomScroll, _enabledRightScroll,
                  _enabledLeftScroll;
 
-    private Vector2 _minPosition;
-    private Vector2 _maxPosition;
+    [HideInInspector]
+    public Vector2 minPosition;
+    public Vector2 maxPosition;
 
     //[SerializeField]
     //private float _xMinLimit, _xMaxLimit,
@@ -26,6 +27,8 @@ public class CameraController : MonoBehaviour
     [SerializeField]
     private float _cameraWidth;
 
+    private RoomInformation _RoomInfo;
+
     public enum EcameraScrollDirection
     {
         top,
@@ -38,12 +41,13 @@ public class CameraController : MonoBehaviour
 
     void Start()
     {
-        _enabledCameraScroll = true;
-        _boxCollider2D = gameObject.GetComponent<BoxCollider2D>();
-        _Camera = gameObject.GetComponent<Camera>();
+        _enabledCameraScroll    = true;
+        _boxCollider2D          = gameObject.GetComponent<BoxCollider2D>();
+        _Camera                 = gameObject.GetComponent<Camera>();
+        _RoomInfo               = trackingGameObject.GetComponent<RoomInformation>();
 
-        _minPosition = trackingGameObject.GetComponent<roomInformation>().roomLimitsMin;
-        _maxPosition = trackingGameObject.GetComponent<roomInformation>().roomLimitsMax;
+        minPosition = _RoomInfo.getRoomLimits()[0];
+        maxPosition = _RoomInfo.getRoomLimits()[1];
 
         _InitializeCamera();
 
@@ -76,14 +80,14 @@ public class CameraController : MonoBehaviour
         {
             //float xPosition = Mathf.Clamp(trackingGameObject.transform.position.x, _xMinLimit, _xMaxLimit);
             //float yPosition = Mathf.Clamp(trackingGameObject.transform.position.y, _yMinLimit, _yMaxLimit);
-            float xPosition = Mathf.Clamp(trackingGameObject.transform.position.x, _minPosition.x, _maxPosition.x);
-            float yPosition = Mathf.Clamp(trackingGameObject.transform.position.y, _minPosition.y, _maxPosition.y);
-            _MoveCameraToPosition(xPosition, yPosition);
+            float xPosition = Mathf.Clamp(trackingGameObject.transform.position.x, minPosition.x, maxPosition.x);
+            float yPosition = Mathf.Clamp(trackingGameObject.transform.position.y, minPosition.y, maxPosition.y);
+            moveCameraToPosition(xPosition, yPosition);
         }  
     }
 
 
-    private void _MoveCameraToPosition(float _XPosition, float _YPosition)
+    public void moveCameraToPosition(float _XPosition, float _YPosition)
     {
         Vector3 targetPosition = new Vector3(_XPosition, _YPosition, transform.position.z);
         transform.position = Vector3.Lerp(transform.position, targetPosition, smoothing * Time.deltaTime);
@@ -108,7 +112,13 @@ public class CameraController : MonoBehaviour
                 xPosition += _cameraWidth;
                 break;
         }
-        _MoveCameraToPosition(xPosition, yPosition);
+        moveCameraToPosition(xPosition, yPosition);
+    }
+
+    public void updateMinMaxLimits()
+    {
+        minPosition = _RoomInfo.getRoomLimits()[0];
+        maxPosition = _RoomInfo.getRoomLimits()[1];
     }
 
 /*

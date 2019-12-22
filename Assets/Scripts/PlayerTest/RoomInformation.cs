@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class roomInformation : MonoBehaviour
+public class RoomInformation : MonoBehaviour
 {
     [HideInInspector]
     public Vector2 roomLimitsMax;
