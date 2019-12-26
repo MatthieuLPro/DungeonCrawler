@@ -7206,8 +7206,9 @@ GameObject:
   - component: {fileID: 528015972}
   - component: {fileID: 528015971}
   - component: {fileID: 528015970}
+  - component: {fileID: 528015975}
   m_Layer: 25
-  m_Name: Controller
+  m_Name: Controller_4
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7356,6 +7357,20 @@ SpriteRenderer:
   m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &528015975
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 528015968}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 649b7130c7a25a93e8eb59b033bb07c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  roomLimitsMax: {x: 0, y: 0}
+  roomLimitsMin: {x: 0, y: 0}
 --- !u!1 &556885190
 GameObject:
   m_ObjectHideFlags: 0
@@ -12594,7 +12609,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &601682816
 Transform:
   m_ObjectHideFlags: 0
@@ -14290,7 +14305,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1145913717
 Transform:
   m_ObjectHideFlags: 0
@@ -16811,8 +16826,9 @@ GameObject:
   - component: {fileID: 1298200907}
   - component: {fileID: 1298200906}
   - component: {fileID: 1298200905}
+  - component: {fileID: 1298200910}
   m_Layer: 25
-  m_Name: Controller
+  m_Name: Controller_2
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -16961,6 +16977,20 @@ SpriteRenderer:
   m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1298200910
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1298200903}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 649b7130c7a25a93e8eb59b033bb07c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  roomLimitsMax: {x: 0, y: 0}
+  roomLimitsMin: {x: 0, y: 0}
 --- !u!1 &1299030893
 GameObject:
   m_ObjectHideFlags: 0
@@ -24683,7 +24713,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1619302215
 Transform:
   m_ObjectHideFlags: 0
@@ -25082,7 +25112,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 4.5
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
@@ -25405,7 +25435,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 4.5
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
@@ -26649,8 +26679,9 @@ GameObject:
   - component: {fileID: 1952370733}
   - component: {fileID: 1952370732}
   - component: {fileID: 1952370731}
+  - component: {fileID: 1952370736}
   m_Layer: 25
-  m_Name: Controller
+  m_Name: Controller_3
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -26799,6 +26830,20 @@ SpriteRenderer:
   m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1952370736
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1952370729}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 649b7130c7a25a93e8eb59b033bb07c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  roomLimitsMax: {x: 0, y: 0}
+  roomLimitsMin: {x: 0, y: 0}
 --- !u!1 &1954697693
 GameObject:
   m_ObjectHideFlags: 0
@@ -27087,7 +27132,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 4.5
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
@@ -28214,7 +28259,7 @@ GameObject:
   - component: {fileID: 8344224969875362226}
   - component: {fileID: 8344224969875362232}
   m_Layer: 25
-  m_Name: Controller
+  m_Name: Controller_1
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -28530,14 +28575,14 @@ Camera:
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0
-    y: 0
-    width: 1
-    height: 1
+    y: 0.5
+    width: 0.5
+    height: 0.5
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 4.4426394
+  orthographic size: 4.5
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
