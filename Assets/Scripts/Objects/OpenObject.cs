@@ -140,28 +140,29 @@ public class OpenObject : MonoBehaviour
 
     private void GetLoot(GameObject opener)
     {
+        ResultPlayer resultPlayer = opener.transform.parent.Find("Result").GetComponent<ResultPlayer>(); 
         switch(loot)
         {
             case 1:
-                opener.GetComponent<Player>().GetRuby(1);
+                resultPlayer.GetRuby(1);
                 break;
             case 2:
-                opener.GetComponent<Player>().GetRuby(5);
+                resultPlayer.GetRuby(5);
                 break;
             case 3:
-                opener.GetComponent<Player>().GetRuby(10);
+                resultPlayer.GetRuby(10);
                 break;
             case 50:
-                opener.GetComponent<Player>().GetRuby(50);
+                resultPlayer.GetRuby(50);
                 break;
             case 51:
-                opener.GetComponent<Player>().GetRuby(100);
+                resultPlayer.GetRuby(100);
                 break;
             case 52:
-                opener.GetComponent<Player>().GetRuby(300);
+                resultPlayer.GetRuby(300);
                 break;
             default:
-                opener.GetComponent<Player>().GetRuby(1);
+                resultPlayer.GetRuby(1);
                 break;
         }
     }

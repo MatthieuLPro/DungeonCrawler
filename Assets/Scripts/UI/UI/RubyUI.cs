@@ -11,21 +11,21 @@ public class RubyUI : MonoBehaviour
     private RubySystem _rubySystem;
     private AudioSource _audio = null;
 
-    [Header("Attached player")]
+    [Header("Attached result player")]
     [SerializeField]
-    private GameObject player;
-
+    private GameObject resultPlayer;
+    
 
     private void Start()
     {
-        _rubySystem = new RubySystem(player.GetComponent<Player>().rubyInit);
+        _rubySystem = new RubySystem(resultPlayer.GetComponent<ResultPlayer>().rubyInit);
         _audio = GetComponent<AudioSource>();
         InitRubyUI();
     }
 
     public void InitRubyUI()
     {
-        _ruby = player.GetComponent<Player>().rubyInit;
+        _ruby = resultPlayer.GetComponent<ResultPlayer>().rubyInit;
         GetComponent<Text>().text = _ruby.ToString();
         rubySystemStatic = _rubySystem;
 

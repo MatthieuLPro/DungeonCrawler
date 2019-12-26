@@ -64,6 +64,7 @@ public class HeartsHealthUI : MonoBehaviour
     {
         heart.transform.SetParent(transform);
         heart.transform.localPosition = Vector3.zero;
+        heart.transform.localScale = new Vector3(1, 1, 1);
         heart.GetComponent<RectTransform>().anchoredPosition = anchoredPosition;
         heart.GetComponent<RectTransform>().sizeDelta = new Vector2(10, 10);
     }

@@ -55,6 +55,7 @@ public class ManaUI : MonoBehaviour
     {
         _manaBar.transform.SetParent(transform);
         _manaBar.transform.localPosition = Vector3.zero;
+        _manaBar.transform.localScale = new Vector3(1, 1, 1);
         _manaBar.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, -18);
         _manaBar.GetComponent<RectTransform>().sizeDelta = new Vector2(10, manaValue);
     }

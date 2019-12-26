@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using UnityEngine;
 
-abstract public class Rubies : MonoBehaviour
+public class Rubies : MonoBehaviour
 {
     public int          value;
     private AudioSource _audio = null;
@@ -12,12 +12,13 @@ abstract public class Rubies : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        Player player = other.GetComponent<Player>();
-        if(player != null)
-        {
-            player.GetRuby(value);
-            Destroy(gameObject);
-        }     
+        if (!other.CompareTag("Player"))
+            return;
+
+        ResultPlayer resultPlayer = other.transform.parent.Find("Result").GetComponent<ResultPlayer>();
+        
+        resultPlayer.GetRuby(value);
+        Destroy(gameObject);
     }
 
     private IEnumerator GetRubyCo()
