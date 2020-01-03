@@ -13,19 +13,19 @@ public class RubyUI : MonoBehaviour
 
     [Header("Attached result player")]
     [SerializeField]
-    private GameObject resultPlayer;
+    public GameObject _resultPlayer;
     
 
     private void Start()
     {
-        _rubySystem = new RubySystem(resultPlayer.GetComponent<ResultPlayer>().rubyInit);
+        _rubySystem = new RubySystem(_resultPlayer.GetComponent<ResultPlayer>().rubyInit);
         _audio = GetComponent<AudioSource>();
         InitRubyUI();
     }
 
     public void InitRubyUI()
     {
-        _ruby = resultPlayer.GetComponent<ResultPlayer>().rubyInit;
+        _ruby = _resultPlayer.GetComponent<ResultPlayer>().rubyInit;
         GetComponent<Text>().text = _ruby.ToString();
         rubySystemStatic = _rubySystem;
 
@@ -39,6 +39,7 @@ public class RubyUI : MonoBehaviour
 
     private IEnumerator RubyCo()
     {
+        Debug.Log("player: " + _resultPlayer.transform.parent.name);
         int systemValue = _rubySystem.GetValue();
         if (_ruby < systemValue)
         {

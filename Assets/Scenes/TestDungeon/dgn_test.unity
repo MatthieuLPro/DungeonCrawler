@@ -2033,7 +2033,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 148cdaad6efa907beabb3f0e7b96ebfd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  resultPlayer: {fileID: 1956634365}
+  _resultPlayer: {fileID: 1956634365}
 --- !u!114 &319102193
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14698,7 +14698,7 @@ GameObject:
   - component: {fileID: 983780087}
   - component: {fileID: 983780088}
   m_Layer: 0
-  m_Name: Result_3
+  m_Name: Result
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -14776,7 +14776,7 @@ GameObject:
   - component: {fileID: 1006775554}
   - component: {fileID: 1006775555}
   m_Layer: 0
-  m_Name: Result_2
+  m_Name: Result
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -15292,7 +15292,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 148cdaad6efa907beabb3f0e7b96ebfd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  resultPlayer: {fileID: 1006775553}
+  _resultPlayer: {fileID: 1006775553}
 --- !u!114 &1094212269
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15868,7 +15868,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 148cdaad6efa907beabb3f0e7b96ebfd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  resultPlayer: {fileID: 983780086}
+  _resultPlayer: {fileID: 983780086}
 --- !u!114 &1165947744
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23753,7 +23753,7 @@ GameObject:
   - component: {fileID: 1425047271}
   - component: {fileID: 1425047272}
   m_Layer: 0
-  m_Name: Result_1
+  m_Name: Result
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -26912,7 +26912,7 @@ GameObject:
   - component: {fileID: 1715008359}
   - component: {fileID: 1715008358}
   m_Layer: 0
-  m_Name: Camera_4
+  m_Name: Camera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -27396,7 +27396,7 @@ GameObject:
   - component: {fileID: 1806500083}
   - component: {fileID: 1806500082}
   m_Layer: 0
-  m_Name: Camera_3
+  m_Name: Camera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -29022,7 +29022,7 @@ GameObject:
   - component: {fileID: 1956634366}
   - component: {fileID: 1956634367}
   m_Layer: 0
-  m_Name: Result_4
+  m_Name: Result
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -29182,7 +29182,7 @@ GameObject:
   - component: {fileID: 1984950110}
   - component: {fileID: 1984950109}
   m_Layer: 0
-  m_Name: Camera_2
+  m_Name: Camera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -30731,7 +30731,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 148cdaad6efa907beabb3f0e7b96ebfd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  resultPlayer: {fileID: 1425047270}
+  _resultPlayer: {fileID: 1425047270}
 --- !u!224 &7614156701382190612
 RectTransform:
   m_ObjectHideFlags: 0
@@ -31219,7 +31219,7 @@ GameObject:
   - component: {fileID: 8393391149828992853}
   - component: {fileID: 8393391149828992852}
   m_Layer: 0
-  m_Name: Camera_1
+  m_Name: Camera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
