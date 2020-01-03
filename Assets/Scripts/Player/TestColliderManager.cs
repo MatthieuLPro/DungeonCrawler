@@ -13,7 +13,7 @@ public class TestColliderManager : MonoBehaviour
     {
         _currentColliderIndex       = 0;
         _anime                      = GetComponent<Animator>();
-        _collidersInteractionFronts = gameObject.transform.Find("InteractionTest").transform.Find("Front").GetComponents<BoxCollider2D>();
+        _collidersInteractionFronts = gameObject.transform.Find("Interaction").transform.Find("Front").GetComponents<BoxCollider2D>();
     }
 
     /* ************************************************ */

@@ -1279,7 +1279,7 @@ GameObject:
   - component: {fileID: 186508959}
   - component: {fileID: 186508958}
   m_Layer: 5
-  m_Name: UI
+  m_Name: UI_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7952,7 +7952,7 @@ GameObject:
   - component: {fileID: 529761404}
   - component: {fileID: 529761403}
   m_Layer: 5
-  m_Name: UI
+  m_Name: UI_3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -13296,7 +13296,7 @@ GameObject:
   - component: {fileID: 625253053}
   - component: {fileID: 625253054}
   m_Layer: 25
-  m_Name: MovementTest
+  m_Name: Movement
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -13911,7 +13911,7 @@ GameObject:
   m_Component:
   - component: {fileID: 782575612}
   m_Layer: 25
-  m_Name: InteractionTest
+  m_Name: Interaction
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -13949,7 +13949,7 @@ GameObject:
   - component: {fileID: 810105823}
   - component: {fileID: 810105824}
   m_Layer: 25
-  m_Name: MovementTest
+  m_Name: Movement
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -14698,7 +14698,7 @@ GameObject:
   - component: {fileID: 983780087}
   - component: {fileID: 983780088}
   m_Layer: 0
-  m_Name: Result
+  m_Name: Result_3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -14776,7 +14776,7 @@ GameObject:
   - component: {fileID: 1006775554}
   - component: {fileID: 1006775555}
   m_Layer: 0
-  m_Name: Result
+  m_Name: Result_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -14909,7 +14909,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1029991119}
   m_Layer: 25
-  m_Name: InteractionTest
+  m_Name: Interaction
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -15470,7 +15470,7 @@ GameObject:
   - component: {fileID: 1141529609}
   - component: {fileID: 1141529608}
   m_Layer: 5
-  m_Name: UI
+  m_Name: UI_4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -23662,7 +23662,7 @@ GameObject:
   - component: {fileID: 1400772651}
   - component: {fileID: 1400772652}
   m_Layer: 25
-  m_Name: MovementTest
+  m_Name: Movement
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -23753,7 +23753,7 @@ GameObject:
   - component: {fileID: 1425047271}
   - component: {fileID: 1425047272}
   m_Layer: 0
-  m_Name: Result
+  m_Name: Result_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -26912,7 +26912,7 @@ GameObject:
   - component: {fileID: 1715008359}
   - component: {fileID: 1715008358}
   m_Layer: 0
-  m_Name: Camera
+  m_Name: Camera_4
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -27396,7 +27396,7 @@ GameObject:
   - component: {fileID: 1806500083}
   - component: {fileID: 1806500082}
   m_Layer: 0
-  m_Name: Camera
+  m_Name: Camera_3
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -28960,7 +28960,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1954697694}
   m_Layer: 25
-  m_Name: InteractionTest
+  m_Name: Interaction
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -29022,7 +29022,7 @@ GameObject:
   - component: {fileID: 1956634366}
   - component: {fileID: 1956634367}
   m_Layer: 0
-  m_Name: Result
+  m_Name: Result_4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -29182,7 +29182,7 @@ GameObject:
   - component: {fileID: 1984950110}
   - component: {fileID: 1984950109}
   m_Layer: 0
-  m_Name: Camera
+  m_Name: Camera_2
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -30377,7 +30377,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6343301819620318895}
   m_Layer: 25
-  m_Name: InteractionTest
+  m_Name: Interaction
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -30899,7 +30899,7 @@ GameObject:
   - component: {fileID: 7614156701630377335}
   - component: {fileID: 7614156701630377334}
   m_Layer: 5
-  m_Name: UI
+  m_Name: UI_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -31147,7 +31147,7 @@ GameObject:
   - component: {fileID: 8344224971451597185}
   - component: {fileID: 8344224971451597186}
   m_Layer: 25
-  m_Name: MovementTest
+  m_Name: Movement
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -31219,7 +31219,7 @@ GameObject:
   - component: {fileID: 8393391149828992853}
   - component: {fileID: 8393391149828992852}
   m_Layer: 0
-  m_Name: Camera
+  m_Name: Camera_1
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
