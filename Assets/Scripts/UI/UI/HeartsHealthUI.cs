@@ -20,7 +20,7 @@ public class HeartsHealthUI : MonoBehaviour
     private GameObject player = null;
 
     private List<HeartImage> heartImageList;
-    private HeartsHealthSystem heartsHealthSystem;
+    public HeartsHealthSystem heartsHealthSystem;
 
     private void Awake(){
         heartImageList = new List<HeartImage>();

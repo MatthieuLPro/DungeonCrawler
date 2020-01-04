@@ -39,7 +39,6 @@ public class RubyUI : MonoBehaviour
 
     private IEnumerator RubyCo()
     {
-        Debug.Log("player: " + _resultPlayer.transform.parent.name);
         int systemValue = rubySystem.GetValue();
         if (_ruby < systemValue)
         {

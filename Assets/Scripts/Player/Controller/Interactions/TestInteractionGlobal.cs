@@ -29,7 +29,7 @@ public class TestInteractionGlobal : MonoBehaviour
     {
         _parent         = transform.parent.transform.parent.gameObject;
 
-        _movement       = _parent.transform.GetChild(0).GetComponent<Movement>();
+        _movement       = _parent.transform.Find("Movement").GetComponent<Movement>();
         _anime          = _parent.GetComponent<Animator>();
         _rb2d           = _parent.GetComponent<Rigidbody2D>();
         _sprite         = _parent.GetComponent<SpriteRenderer>();
@@ -56,6 +56,9 @@ public class TestInteractionGlobal : MonoBehaviour
         if (_isKnock || _isInvincible)
             return;
 
+        // Need to adapt if loose life or mana (depend of enemy characteristics)
+        // Need to adapt amount of life or mana to change (depend of enemy characteristics)
+        _parent.transform.parent.GetComponent<Player>().LooseLife(1);
         StartCoroutine(KnockCo(enemy));
         StartCoroutine(InvincibleCo(enemy));
     }

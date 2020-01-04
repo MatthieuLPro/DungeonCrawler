@@ -11,11 +11,11 @@ public class Player : MonoBehaviour
     public bool bigKey = false;
 
     public void GetLife(int heal){
-        HeartsHealthUI.heartsHealthSystemStatic.Heal(heal);
+        transform.Find("UI").Find("HeartsHealthUI").GetComponent<HeartsHealthUI>().heartsHealthSystem.Heal(heal);
     }
 
     public void LooseLife(int damage){
-        HeartsHealthUI.heartsHealthSystemStatic.Damage(damage);
+        transform.Find("UI").Find("HeartsHealthUI").GetComponent<HeartsHealthUI>().heartsHealthSystem.Damage(damage);
     }
 
     public void GetMana(int heal){

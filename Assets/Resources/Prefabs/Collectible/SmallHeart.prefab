@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 5270140095095963886}
   - component: {fileID: 5270140095095963873}
   - component: {fileID: 5270140095095963872}
-  - component: {fileID: 5270140095095963875}
+  - component: {fileID: 8147876451662424706}
   m_Layer: 0
-  m_Name: CollectibleHealLife
+  m_Name: SmallHeart
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -59,6 +59,7 @@ SpriteRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -129,7 +130,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.068900764, y: 0.070806086}
   m_EdgeRadius: 0
---- !u!114 &5270140095095963875
+--- !u!114 &8147876451662424706
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -138,7 +139,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 5270140095095963874}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b086c3cd1131d6044a0c95ecbf35c5b8, type: 3}
+  m_Script: {fileID: 11500000, guid: 7766cf39223194a2ab95125d34bc8dd6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  heal: 2
+  heal: 0
