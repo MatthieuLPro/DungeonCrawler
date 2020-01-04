@@ -6,9 +6,10 @@ public class RoomInformation : MonoBehaviour
 {
     [HideInInspector]
     public Vector2 roomLimitsMax;
+    [HideInInspector]
     public Vector2 roomLimitsMin;
 
-    void Start()
+    void Awake()
     {
         roomLimitsMin = new Vector2(-1.3f, -3.34f);
         roomLimitsMax = new Vector2(1.31f, 4.39f);

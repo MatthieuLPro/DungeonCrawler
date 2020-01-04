@@ -50,7 +50,6 @@ public class CameraController : MonoBehaviour
         maxPosition = _RoomInfo.getRoomLimits()[1];
 
         _InitializeCamera();
-
     }
 
     void LateUpdate()
