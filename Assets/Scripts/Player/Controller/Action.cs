@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TestAction : MonoBehaviour
+public class Action : MonoBehaviour
 {    
     [Header("Action settings")]
     public float strength;
@@ -21,7 +21,7 @@ public class TestAction : MonoBehaviour
     {
         _parent             = transform.parent.gameObject;
         _movement           = _parent.transform.Find("Movement").GetComponent<Movement>();
-        _interactionFront   = _parent.transform.Find("InteractionTest").transform.Find("Front").GetComponent<TestInteractionFront>();
+        _interactionFront   = _parent.transform.Find("Interaction").transform.Find("Front").GetComponent<TestInteractionFront>();
         _anime              = _parent.GetComponent<Animator>();
     }
 

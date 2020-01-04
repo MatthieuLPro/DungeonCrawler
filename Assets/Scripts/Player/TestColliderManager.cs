@@ -76,31 +76,31 @@ public class TestColliderManager : MonoBehaviour
 
         if (x == 0)
             if (y > 0)
-                attackDirection = "AttackTopTest";
+                attackDirection = "AttackTop";
             else
-                attackDirection = "AttackBotTest";
+                attackDirection = "AttackBot";
         else if (x > 0)
             if (y < 0)
-                attackDirection = "AttackBotTest";
+                attackDirection = "AttackBot";
             else
-                attackDirection = "AttackRightTest";
+                attackDirection = "AttackRight";
         else
             if (y < 0)
-                attackDirection = "AttackBotTest";
+                attackDirection = "AttackBot";
             else
-                attackDirection = "AttackLeftTest";
+                attackDirection = "AttackLeft";
 
-        _collidersAttacks = gameObject.transform.Find("ActionTest").transform.Find(attackDirection).GetComponents<PolygonCollider2D>();
+        _collidersAttacks = gameObject.transform.Find("Action").transform.Find(attackDirection).GetComponents<PolygonCollider2D>();
     }
 
     public void SetAttackColliderToNull()
     {
-        string[] directions = new string[4] {"AttackTopTest", "AttackRightTest", "AttackBotTest", "AttackLeftTest"};
+        string[] directions = new string[4] {"AttackTop", "AttackRight", "AttackBot", "AttackLeft"};
 
         _currentColliderIndex = 0;
         for (var i = 0; i < directions.Length; i++)
         {
-            PolygonCollider2D[] colliders = gameObject.transform.Find("ActionTest").transform.Find(directions[i]).GetComponents<PolygonCollider2D>();
+            PolygonCollider2D[] colliders = gameObject.transform.Find("Action").transform.Find(directions[i]).GetComponents<PolygonCollider2D>();
             for (var j = 0; j < colliders.Length; j++)
                 colliders[j].enabled    = false;
         }

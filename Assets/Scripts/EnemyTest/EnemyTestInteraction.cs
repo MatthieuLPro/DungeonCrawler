@@ -77,8 +77,8 @@ public class EnemyTestInteraction : MonoBehaviour
     private IEnumerator KnockCo(GameObject player)
     {
         Vector2 directionKnock  = _parent.transform.position - player.transform.position;
-        float strength          = player.transform.parent.GetComponent<TestAction>().strength;
-        float knockTime         = player.transform.parent.GetComponent<TestAction>().knockBackTime;
+        float strength          = player.transform.parent.GetComponent<Action>().strength;
+        float knockTime         = player.transform.parent.GetComponent<Action>().knockBackTime;
         
         KnockToggleParam();
         
@@ -93,7 +93,7 @@ public class EnemyTestInteraction : MonoBehaviour
     /* Invincible (post knockback) */
     private IEnumerator InvincibleCo(GameObject player)
     {
-        float knockTime = player.transform.parent.GetComponent<TestAction>().knockBackTime;
+        float knockTime = player.transform.parent.GetComponent<Action>().knockBackTime;
 
         // Impossible de rentrer a nouveau en contact avec un enemy
         InvincibleParam();
