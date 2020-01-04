@@ -58,7 +58,7 @@ public class TestInteractionGlobal : MonoBehaviour
 
         // Need to adapt if loose life or mana (depend of enemy characteristics)
         // Need to adapt amount of life or mana to change (depend of enemy characteristics)
-        _parent.transform.parent.GetComponent<Player>().LooseLife(1);
+        DamageFromEnemyParam(enemy.GetComponent<EnemyTest>());
         StartCoroutine(KnockCo(enemy));
         StartCoroutine(InvincibleCo(enemy));
     }
@@ -91,6 +91,14 @@ public class TestInteractionGlobal : MonoBehaviour
     {
         _isInvincible     = !_isInvincible;
         _collider.enabled = !_collider.enabled;
+    }
+
+    private void DamageFromEnemyParam(EnemyTest enemyParam)
+    {
+        if (enemyParam.attackTypeMagic)
+            _parent.transform.parent.GetComponent<Player>().LooseMana(1);
+        if (enemyParam.attackTypePhysic)
+            _parent.transform.parent.GetComponent<Player>().LooseLife(1);
     }
 
     /* ************************************************ */

@@ -19,11 +19,13 @@ public class Player : MonoBehaviour
     }
 
     public void GetMana(int heal){
-        ManaUI.manaSystemStatic.ChangeMana(heal);
+        transform.Find("UI").Find("ManaUI").GetComponent<ManaUI>().manaSystem.ChangeMana(heal);
+        //ManaUI.manaSystemStatic.ChangeMana(heal);
     }
 
     public void LooseMana(int damage){
-        ManaUI.manaSystemStatic.ChangeMana(damage * -1);
+        transform.Find("UI").Find("ManaUI").GetComponent<ManaUI>().manaSystem.ChangeMana(damage * -1);
+        //ManaUI.manaSystemStatic.ChangeMana(damage * -1);
     }
 
     public void IsDead(){

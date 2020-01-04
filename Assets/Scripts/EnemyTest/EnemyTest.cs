@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class EnemyTest : MonoBehaviour
 {
-    public float strength;
+    /* ////////////////// */
+    // Alphabetical Order
+    /* ////////////////// */
+    public bool  attackTypeMagic;
+    public bool  attackTypePhysic;
     public float knockBackTime;
+    public float strength;
 }

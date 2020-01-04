@@ -6,12 +6,12 @@ using UnityEngine.UI;
 public class ManaUI : MonoBehaviour
 {
     public static ManaSystem manaSystemStatic;
+    public ManaSystem manaSystem;
 
     [SerializeField]
     private Sprite _manaBarSprite = null;
 
     private GameObject _manaBar;
-    private ManaSystem _manaSystem;
 
     [Header("Attached player")]
     [SerializeField]
@@ -20,7 +20,7 @@ public class ManaUI : MonoBehaviour
 
     private void Start(){
         _manaBar    = new GameObject("manaBar", typeof(Image));
-        _manaSystem = new ManaSystem(player.GetComponent<Player>().manaInit);
+        manaSystem = new ManaSystem(player.GetComponent<Player>().manaInit);
         ManaDisplay();
     }
 
@@ -34,19 +34,19 @@ public class ManaUI : MonoBehaviour
 
     public void InitManaUI()
     {
-        int manaValue = _manaSystem.GetMana();
-        manaSystemStatic = _manaSystem;
+        int manaValue = manaSystem.GetMana();
+        manaSystemStatic = manaSystem;
 
         _manaBar.GetComponent<RectTransform>().pivot = new Vector2(0.5f, 0);
         SetPositionManaUI(manaValue);
     
-        _manaSystem.OnDecrease += RefreshMana;
-        _manaSystem.OnIncrease += RefreshMana;
+        manaSystem.OnDecrease += RefreshMana;
+        manaSystem.OnIncrease += RefreshMana;
     }
 
     private void RefreshMana(object sender, System.EventArgs e)
     {
-        int manaValue = _manaSystem.GetMana();
+        int manaValue = manaSystem.GetMana();
 
         SetPositionManaUI(manaValue);
     }
