@@ -8,6 +8,6 @@ public class ResultPlayer : MonoBehaviour
     public int rubyInit = 0;
 
     public void GetRuby(int rubyAmount){
-        RubyUI.rubySystemStatic.ChangeRuby(rubyAmount);
+        transform.parent.Find("UI").Find("RubyTextUI").GetComponent<RubyUI>().rubySystem.ChangeRuby(rubyAmount);
     }
 }

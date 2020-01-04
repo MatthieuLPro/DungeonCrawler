@@ -6,9 +6,9 @@ using UnityEngine.UI;
 public class RubyUI : MonoBehaviour
 {
     public static RubySystem rubySystemStatic;
+    public RubySystem rubySystem;
 
     private int _ruby;
-    private RubySystem _rubySystem;
     private AudioSource _audio = null;
 
     [Header("Attached result player")]
@@ -18,7 +18,7 @@ public class RubyUI : MonoBehaviour
 
     private void Start()
     {
-        _rubySystem = new RubySystem(_resultPlayer.GetComponent<ResultPlayer>().rubyInit);
+        rubySystem = new RubySystem(_resultPlayer.GetComponent<ResultPlayer>().rubyInit);
         _audio = GetComponent<AudioSource>();
         InitRubyUI();
     }
@@ -27,10 +27,10 @@ public class RubyUI : MonoBehaviour
     {
         _ruby = _resultPlayer.GetComponent<ResultPlayer>().rubyInit;
         GetComponent<Text>().text = _ruby.ToString();
-        rubySystemStatic = _rubySystem;
+        rubySystemStatic = rubySystem;
 
-        _rubySystem.OnDecrease += RefreshRuby;
-        _rubySystem.OnIncrease += RefreshRuby;
+        rubySystem.OnDecrease += RefreshRuby;
+        rubySystem.OnIncrease += RefreshRuby;
     }
 
     private void RefreshRuby(object sender, System.EventArgs e){
@@ -40,7 +40,7 @@ public class RubyUI : MonoBehaviour
     private IEnumerator RubyCo()
     {
         Debug.Log("player: " + _resultPlayer.transform.parent.name);
-        int systemValue = _rubySystem.GetValue();
+        int systemValue = rubySystem.GetValue();
         if (_ruby < systemValue)
         {
             while(_ruby < systemValue)
