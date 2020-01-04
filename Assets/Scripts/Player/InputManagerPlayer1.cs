@@ -4,6 +4,12 @@ using UnityEngine;
 
 public class InputManagerPlayer1 : MonoBehaviour
 {
+
+    public static bool IsAxisInUse() 
+    {
+        return (MainHorizontal() != 0 || MainVertical() != 0);
+    }
+
     public static float MainHorizontal()
     {
         float r = 0.0f;

@@ -17,6 +17,10 @@ TagManager:
   - BlocRed
   - GlobeSwitch
   - PlayerAttack
+  - Undefined
+  - UIButton
+  - UIInput
+  - UIPanel
   layers:
   - Default
   - TransparentFX
