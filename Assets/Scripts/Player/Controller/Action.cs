@@ -10,6 +10,7 @@ public class Action : MonoBehaviour
 
     /* Parent components */
     private GameObject              _parent;
+    private string                  _player_name;
     private Movement                _movement;
     private TestInteractionFront    _interactionFront;
     private Animator                _anime;
@@ -20,6 +21,7 @@ public class Action : MonoBehaviour
     void Start()
     {
         _parent             = transform.parent.gameObject;
+        _player_name        = _parent.transform.parent.name; 
         _movement           = _parent.transform.Find("Movement").GetComponent<Movement>();
         _interactionFront   = _parent.transform.Find("Interaction").transform.Find("Front").GetComponent<TestInteractionFront>();
         _anime              = _parent.GetComponent<Animator>();
@@ -28,27 +30,48 @@ public class Action : MonoBehaviour
     void FixedUpdate()
     {
         // Action Button
-        if (InputManagerPlayer1.YButton())
+        if (_player_name == "Player_1")
         {
-            /* Priority Order */
-            /*
-                => Throw object if have object
-                => Carry object if object in front
-                => Attack
-            */
-            if (transform.Find("Pot") || transform.Find("Bush"))
-                ThrowCarryObject();
-            if (_interactionFront.objectCarry != null)
-                _interactionFront.InteractionWithObjectCarry();
-            else if (_movement.currentState != TestObjectState.knock)
-                StartCoroutine(MainAttack());
-
+            if(InputManagerPlayer1.BButton())
+                ActionsList();
+        }
+        else if (_player_name == "Player_2")
+        {
+            if(InputManagerPlayer2.BButton())
+                ActionsList();
+        }
+        else if (_player_name == "Player_3")
+        {
+            if(InputManagerPlayer3.BButton())
+                ActionsList();
+        }
+        else
+        {
+            if(InputManagerPlayer4.BButton())
+                ActionsList();
         }
     }
 
     /* ************************************************ */
     /* Functions */
     /* ************************************************ */
+    /* Action functions */
+    private void ActionsList()
+    {
+        /* Priority Order */
+        /*
+            => Throw object if have object
+            => Carry object if object in front
+            => Attack
+        */
+        if (transform.Find("Pot") || transform.Find("Bush"))
+            ThrowCarryObject();
+        if (_interactionFront.objectCarry != null)
+            _interactionFront.InteractionWithObjectCarry();
+        else if (_movement.currentState != TestObjectState.knock)
+            StartCoroutine(MainAttack());
+    }
+
     /* Throw object */
     private void ThrowCarryObject()
     {

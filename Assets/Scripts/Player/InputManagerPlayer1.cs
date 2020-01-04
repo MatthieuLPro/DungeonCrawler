@@ -30,9 +30,10 @@ public class InputManagerPlayer1 : MonoBehaviour
         return Input.GetButtonDown("A_Button");
     }
 
+    // Action button
     public static bool BButton()
     {
-        return Input.GetButtonDown("B_Button");
+        return Input.GetButtonDown("P1_action");
     }
 
     public static bool XButton()
