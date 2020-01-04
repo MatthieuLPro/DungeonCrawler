@@ -621,10 +621,10 @@ InputManager:
     positiveButton: h
     altNegativeButton: 
     altPositiveButton: 
-    gravity: 1
+    gravity: 1000
     dead: 0.2
-    sensitivity: 1
-    snap: 1
+    sensitivity: 1000
+    snap: 0
     invert: 0
     type: 0
     axis: 0
@@ -637,10 +637,10 @@ InputManager:
     positiveButton: t
     altNegativeButton: 
     altPositiveButton: 
-    gravity: 1
+    gravity: 1000
     dead: 0.2
-    sensitivity: 1
-    snap: 1
+    sensitivity: 1000
+    snap: 0
     invert: 0
     type: 0
     axis: 1
@@ -653,10 +653,10 @@ InputManager:
     positiveButton: l
     altNegativeButton: 
     altPositiveButton: 
-    gravity: 1
+    gravity: 1000
     dead: 0.2
-    sensitivity: 1
-    snap: 1
+    sensitivity: 1000
+    snap: 0
     invert: 0
     type: 0
     axis: 0
@@ -669,10 +669,10 @@ InputManager:
     positiveButton: i
     altNegativeButton: 
     altPositiveButton: 
-    gravity: 1
+    gravity: 1000
     dead: 0.2
-    sensitivity: 1
-    snap: 1
+    sensitivity: 1000
+    snap: 0
     invert: 0
     type: 0
     axis: 1
@@ -685,10 +685,10 @@ InputManager:
     positiveButton: '*'
     altNegativeButton: 
     altPositiveButton: 
-    gravity: 1
+    gravity: 1000
     dead: 0.2
-    sensitivity: 1
-    snap: 1
+    sensitivity: 1000
+    snap: 0
     invert: 0
     type: 0
     axis: 0
@@ -701,10 +701,10 @@ InputManager:
     positiveButton: n
     altNegativeButton: 
     altPositiveButton: 
-    gravity: 1
+    gravity: 1000
     dead: 0.2
-    sensitivity: 1
-    snap: 1
+    sensitivity: 1000
+    snap: 0
     invert: 0
     type: 0
     axis: 1
