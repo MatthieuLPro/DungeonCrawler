@@ -35764,7 +35764,7 @@ PrefabInstance:
     - target: {fileID: 6390412633640896401, guid: efa61601417765760815f517460b9266,
         type: 3}
       propertyPath: openDoor
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6722337694028802144, guid: efa61601417765760815f517460b9266,
         type: 3}
