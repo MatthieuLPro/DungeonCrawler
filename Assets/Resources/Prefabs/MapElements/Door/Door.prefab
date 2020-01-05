@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1633326642954508156}
   - component: {fileID: 1601229312227292093}
-  - component: {fileID: 42988833312957392}
+  - component: {fileID: 7480388793056250705}
   m_Layer: 0
   m_Name: Teleport
   m_TagString: Untagged
@@ -58,7 +58,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.20072448, y: 0.10022324}
   m_EdgeRadius: 0
---- !u!114 &42988833312957392
+--- !u!114 &7480388793056250705
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -67,9 +67,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 6510438191622148377}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 44a29d303a09f89288919939bf62755c, type: 3}
+  m_Script: {fileID: 11500000, guid: 753542493fcf18f91803eb87b6859a88, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  newPosition: {x: 0, y: 0}
+  minPosition: {x: 0, y: 0}
+  maxPosition: {x: 0, y: 0}
 --- !u!1 &6722337694028802144
 GameObject:
   m_ObjectHideFlags: 0
@@ -132,6 +135,7 @@ SpriteRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
