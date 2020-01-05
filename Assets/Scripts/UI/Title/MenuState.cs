@@ -33,9 +33,9 @@ public class MenuState : MonoBehaviour
     void Update()
     {
         // Check Players input
-        bool IsAxisIsUse = InputManager.IsAxisInUse();
+        bool IsAxisIsUse = InputManagerPlayer1.IsAxisInUse();
 
-        if (InputManager.MainVertical() > 0)
+        if (InputManagerPlayer1.MainVertical() > 0)
         {
             if (_CurrentIsAxisInUseState == false)
             {
@@ -43,7 +43,7 @@ public class MenuState : MonoBehaviour
                 _CurrentIsAxisInUseState = true;
             }
         }
-        else if (InputManager.MainVertical() < 0)
+        else if (InputManagerPlayer1.MainVertical() < 0)
         {
             if (_CurrentIsAxisInUseState == false)
             {
@@ -54,11 +54,11 @@ public class MenuState : MonoBehaviour
         else
             _CurrentIsAxisInUseState = false;
 
-        if (InputManager.XButton())
+        if (InputManagerPlayer1.XButton())
             ActivateFocusInput();
 
 
-        if (InputManager.BButton())
+        if (InputManagerPlayer1.BButton())
             Manager.SelectPreviousMenu();
     }
 
