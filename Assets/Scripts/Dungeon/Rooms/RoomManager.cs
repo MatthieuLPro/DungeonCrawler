@@ -10,17 +10,24 @@ public class RoomManager : MonoBehaviour
     public GameObject[] enemis;
     public GameObject[] switches;
 
+    [Header("Victory conditions")]
+    public bool byEnemies;
+    public bool bySwitches;
+
     private Predicate<GameObject>[] _verificationCbList;
     private Action<GameObject>[]    _rewardCbList;
 
     private RoomVerification _roomVerification;
     private RoomReward       _roomReward;     
-    private GameObject       _player; 
+    private GameObject       _player;
 
+    private int _numberOfCondition;
 
     void Start()
     {
-        _verificationCbList = new Predicate<GameObject>[5];
+        _numberOfCondition = _NumberOfConditions();
+
+        _verificationCbList = new Predicate<GameObject>[_numberOfCondition];
         _rewardCbList       = new Action<GameObject>[3];
 
         _roomVerification = transform.GetChild(0).gameObject.GetComponent<RoomVerification>();
@@ -29,12 +36,16 @@ public class RoomManager : MonoBehaviour
         _SubAllVerifications();
         _SubAllRewards();        
         
-        _player = GameObject.FindWithTag("Player");
+        // Delete this or adapt for many players
+        //_player = GameObject.FindWithTag("Player");
     }
 
     void Update()
     {
-        if (_VerifyAllObjects(switches, _verificationCbList[4]))
+        if (_numberOfCondition == 0)
+            return;
+
+        if (_VerifyAllObjects(switches, _verificationCbList[_numberOfCondition - 1]))
             _RewardAllObjects(doors, _rewardCbList[0]);
         else
             _RewardAllObjects(doors, _rewardCbList[1]);
@@ -46,10 +57,12 @@ public class RoomManager : MonoBehaviour
     /* Verify rules for all object  */
     private bool _VerifyAllObjects(GameObject[] objectArray, Predicate<GameObject> rule)
     {
+        Debug.Log("Predicat rule: " + rule(objectArray[0]));
         for(var i = 0; i < objectArray.Length; i++)
         {
-            if (!rule(objectArray[i]))
-                return false;
+            Debug.Log("Object array i: " + objectArray[i]);
+            /*if (!rule(objectArray[i]))
+                return false;*/
         }
 
         return true;
@@ -84,20 +97,31 @@ public class RoomManager : MonoBehaviour
     /* Sub all Predicates (Verifications) */
     private void _SubAllVerifications()
     {
+        int i = 0;
         /* if all enemis are dead */
-        _SubVerification(0, _roomVerification.EnemisDead);
-
-        /* if player has small key */
-        _SubVerification(1, _roomVerification.PlayerHasSmallKey);
-
-        /* if player has big key */
-        _SubVerification(2, _roomVerification.PlayerHasBigKey);
+        if (byEnemies)
+        {
+            _SubVerification(i, _roomVerification.EnemisDead);
+            i++;
+        }
 
         /* if all Floor switches are true */
-        _SubVerification(3, _roomVerification.FloorSwitch);
+        if (bySwitches)
+        {
+            if (switches.Length > 1)
+                _SubVerification(i, _roomVerification.FloorSwitch);
+            else
+                _SubVerification(i, _roomVerification.FloorToggle);
+            i++;
+        }
 
-        /* if all Floor toggles are true */
-        _SubVerification(4, _roomVerification.FloorToggle);
+        /* A retirer ? */
+        /* if player has small key */
+        //_SubVerification(1, _roomVerification.PlayerHasSmallKey);
+
+        /* A retirer ? */
+        /* if player has big key */
+        //_SubVerification(2, _roomVerification.PlayerHasBigKey);
     }
     
     /* Sub all Actions (Rewards) */
@@ -156,4 +180,22 @@ public class RoomManager : MonoBehaviour
         else
             _RewardAllObjects(doors, _rewardCbList[1]);
     }
+
+    /* ************************************************ */
+    /* Other functions */
+    /* ************************************************ */
+    /* Get number of conditions */
+    private int _NumberOfConditions()
+    {
+        int i = 0;
+
+        if (byEnemies)
+            i++;
+
+        if (bySwitches)
+            i++;
+
+        return i;
+    }
+
 }
