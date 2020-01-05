@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Door : MonoBehaviour
 {   
-    [Header("Door Settings")]
+    [Header("Door rules Settings")]
     public int openDoor = 0;
 
     [Header("Door Sprites")]
@@ -12,12 +12,19 @@ public class Door : MonoBehaviour
     public Sprite closeSprite = null;
 
     /*
-        if
-            _open_rule => 1 : SmallKey
-            _open_rule => 2 : BigKey
+        if _open_rule == 0
+            _open_rule => RoomManager (switch or enemies)
         else
-            _open_rule => RoomManager
+            if _open_rule => 1 : SmallKey
+            if _open_rule => 2 : BigKey
      */
+
+    private RoomManager roomManager;
+
+    private void Start()
+    {
+        roomManager = transform.parent.transform.parent.transform.parent.GetComponent<RoomManager>();
+    }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -27,7 +34,6 @@ public class Door : MonoBehaviour
         if (!other.CompareTag("Player"))
             return;
 
-        RoomManager roomManager = GameObject.FindWithTag("RoomManager").GetComponent<RoomManager>();
         if (roomManager.VerifyOneObject(other.gameObject, openDoor))
             roomManager.RewardOneObject(gameObject, 0);
     }

@@ -103,7 +103,6 @@ public class RoomManager : MonoBehaviour
     /* Sub all Actions (Rewards) */
     private void _SubAllRewards()
     {
-
         /* Open all doors */
         _SubReward(0, _roomReward.OpenDoor);
 
