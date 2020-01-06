@@ -87,6 +87,7 @@ public class EnemyTestInteraction : MonoBehaviour
 
         yield return new WaitForSeconds(knockTime);
 
+        _parent.GetComponent<EnemyTest>().looseLife();
         KnockToggleParam();
     }
 

@@ -9,7 +9,7 @@ public class RoomVerification : MonoBehaviour
     /* ************************************************ */
     /* All enemis are dead */
     public bool EnemisDead(GameObject enemis){
-        return enemis.transform.childCount < 0;
+        return (enemis == null);
     }
 
     /* ************************************************ */

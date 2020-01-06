@@ -45,10 +45,20 @@ public class RoomManager : MonoBehaviour
         if (_numberOfCondition == 0)
             return;
 
-        if (_VerifyAllObjects(switches, _verificationCbList[_numberOfCondition - 1]))
-            _RewardAllObjects(doors, _rewardCbList[0]);
-        else
-            _RewardAllObjects(doors, _rewardCbList[1]);
+        if (bySwitches)
+        {
+            if (_VerifyAllObjects(switches, _verificationCbList[_numberOfCondition - 1]))
+                _RewardAllObjects(doors, _rewardCbList[0]);
+            else
+                _RewardAllObjects(doors, _rewardCbList[1]);
+        }
+        else if (byEnemies)
+        {
+            if (_VerifyAllObjects(enemis, _verificationCbList[_numberOfCondition - 1]))
+                _RewardAllObjects(doors, _rewardCbList[0]);
+            else
+                _RewardAllObjects(doors, _rewardCbList[1]);
+        }
     }
 
     /* ************************************************ */
