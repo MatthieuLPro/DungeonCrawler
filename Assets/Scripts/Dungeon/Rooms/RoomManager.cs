@@ -35,7 +35,7 @@ public class RoomManager : MonoBehaviour
 
         _SubAllVerifications();
         _SubAllRewards();        
-        
+
         // Delete this or adapt for many players
         //_player = GameObject.FindWithTag("Player");
     }
@@ -57,12 +57,10 @@ public class RoomManager : MonoBehaviour
     /* Verify rules for all object  */
     private bool _VerifyAllObjects(GameObject[] objectArray, Predicate<GameObject> rule)
     {
-        Debug.Log("Predicat rule: " + rule(objectArray[0]));
         for(var i = 0; i < objectArray.Length; i++)
         {
-            Debug.Log("Object array i: " + objectArray[i]);
-            /*if (!rule(objectArray[i]))
-                return false;*/
+            if (!rule(objectArray[i]))
+                return false;
         }
 
         return true;
@@ -108,10 +106,11 @@ public class RoomManager : MonoBehaviour
         /* if all Floor switches are true */
         if (bySwitches)
         {
-            if (switches.Length > 1)
+            _SubVerification(i, _roomVerification.FloorSwitch);
+            /*if (switches.Length > 1)
                 _SubVerification(i, _roomVerification.FloorSwitch);
             else
-                _SubVerification(i, _roomVerification.FloorToggle);
+                _SubVerification(i, _roomVerification.FloorToggle);*/
             i++;
         }
 
