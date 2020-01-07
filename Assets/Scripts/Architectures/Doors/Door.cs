@@ -17,14 +17,7 @@ public class Door : MonoBehaviour
         else
             if _open_rule => 1 : SmallKey
             if _open_rule => 2 : BigKey
-     */
-
-    private RoomManager roomManager;
-
-    private void Start()
-    {
-        roomManager = transform.parent.transform.parent.transform.parent.GetComponent<RoomManager>();
-    }
+    */
 
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -34,7 +27,13 @@ public class Door : MonoBehaviour
         if (!other.CompareTag("Player"))
             return;
 
-        if (roomManager.VerifyOneObject(other.gameObject, openDoor))
-            roomManager.RewardOneObject(gameObject, 0);
+        Player player = other.transform.parent.GetComponent<Player>(); 
+
+        if (player.HasSmallKey())
+        {
+            player.LooseSmallKey();
+            gameObject.GetComponent<BoxCollider2D>().enabled = false;
+            gameObject.GetComponent<SpriteRenderer>().sprite = gameObject.GetComponent<Door>().openSprite;
+        }
     }
 }

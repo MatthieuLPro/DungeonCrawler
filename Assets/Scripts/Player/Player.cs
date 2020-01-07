@@ -32,20 +32,23 @@ public class Player : MonoBehaviour
         Destroy(GetComponent<PlayerController>());
     }
 
-        public void GetSmallKey(){
+    public void GetSmallKey(){
         keys += 1;
+    }
+
+    public void LooseSmallKey(){
+        keys -= 1;
     }
     
     public void GetBigKey(){
         bigKey = true;
     }
 
-    public bool HasKey()
+    // Predicate
+    public bool HasSmallKey()
     {
         if (keys <= 0)
             return (false);
-
-        keys--;
         return (true);
     }
 

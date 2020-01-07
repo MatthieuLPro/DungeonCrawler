@@ -68,7 +68,7 @@ public class OpenObject : MonoBehaviour
     public void OpenTheObject(GameObject opener){
         if (_openMethod == 2  && !opener.GetComponent<Player>().HasBigKey())
             return;
-        else if (_openMethod == 1  && !opener.GetComponent<Player>().HasKey())
+        else if (_openMethod == 1  && !opener.GetComponent<Player>().HasSmallKey())
             return;
 
         _spriteRend.sprite = _open;
