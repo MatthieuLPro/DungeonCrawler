@@ -29,11 +29,20 @@ public class Door : MonoBehaviour
 
         Player player = other.transform.parent.GetComponent<Player>(); 
 
-        if (player.HasSmallKey())
+        if (openDoor == 1 && player.HasSmallKey())
         {
             player.LooseSmallKey();
-            gameObject.GetComponent<BoxCollider2D>().enabled = false;
-            gameObject.GetComponent<SpriteRenderer>().sprite = gameObject.GetComponent<Door>().openSprite;
+            OpenDoor();
         }
+
+        if (openDoor == 2 && player.HasBigKey()){
+            OpenDoor();
+        }
+    }
+
+    private void OpenDoor()
+    {
+        gameObject.GetComponent<BoxCollider2D>().enabled = false;
+        gameObject.GetComponent<SpriteRenderer>().sprite = gameObject.GetComponent<Door>().openSprite;
     }
 }
