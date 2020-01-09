@@ -11,8 +11,8 @@ public class RoomInformation : MonoBehaviour
 
     void Awake()
     {
-        roomLimitsMin = new Vector2(-1.3f, -3.34f);
-        roomLimitsMax = new Vector2(1.31f, 4.39f);
+        roomLimitsMin = new Vector2(-8.58f, -7.47f);
+        roomLimitsMax = new Vector2(8.56f, 8.48f);
     }
 
     public void updateRoomLimits(Vector2 newLimitsMin, Vector2 newLimitsMax)

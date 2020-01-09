@@ -366,7 +366,7 @@ TilemapRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1585476041
-  m_SortingLayer: 5
+  m_SortingLayer: -4
   m_SortingOrder: 1
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
@@ -2963,7 +2963,7 @@ TilemapRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1585476041
-  m_SortingLayer: 5
+  m_SortingLayer: -4
   m_SortingOrder: 0
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
@@ -4403,7 +4403,7 @@ TilemapRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1585476041
-  m_SortingLayer: 5
+  m_SortingLayer: -4
   m_SortingOrder: 1
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
@@ -16001,7 +16001,7 @@ TilemapRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1585476041
-  m_SortingLayer: 5
+  m_SortingLayer: -4
   m_SortingOrder: 1
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
@@ -30353,7 +30353,7 @@ TilemapRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1585476041
-  m_SortingLayer: 5
+  m_SortingLayer: -4
   m_SortingOrder: 0
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
@@ -33316,7 +33316,7 @@ TilemapRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1148429261
-  m_SortingLayer: -4
+  m_SortingLayer: -7
   m_SortingOrder: 0
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
@@ -38808,7 +38808,7 @@ TilemapRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1148429261
-  m_SortingLayer: -4
+  m_SortingLayer: -7
   m_SortingOrder: 0
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
@@ -46372,7 +46372,7 @@ TilemapRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1148429261
-  m_SortingLayer: -4
+  m_SortingLayer: -7
   m_SortingOrder: 0
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
@@ -51364,7 +51364,7 @@ TilemapRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1585476041
-  m_SortingLayer: 5
+  m_SortingLayer: -4
   m_SortingOrder: 0
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
@@ -52835,10 +52835,8 @@ MonoBehaviour:
   _enabledBottomScroll: 0
   _enabledRightScroll: 0
   _enabledLeftScroll: 0
-  minPosition: {x: 0, y: 0}
-  maxPosition: {x: 0, y: 0}
-  _cameraHeight: 0
-  _cameraWidth: 0
+  minPosition: {x: -9, y: -8}
+  maxPosition: {x: 9, y: 9}
   smoothing: 10
 --- !u!20 &1715008359
 Camera:
@@ -53809,10 +53807,8 @@ MonoBehaviour:
   _enabledBottomScroll: 0
   _enabledRightScroll: 0
   _enabledLeftScroll: 0
-  minPosition: {x: 0, y: 0}
-  maxPosition: {x: 0, y: 0}
-  _cameraHeight: 0
-  _cameraWidth: 0
+  minPosition: {x: -9, y: -8}
+  maxPosition: {x: 9, y: 9}
   smoothing: 10
 --- !u!20 &1806500083
 Camera:
@@ -54005,7 +54001,7 @@ TilemapRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1148429261
-  m_SortingLayer: -4
+  m_SortingLayer: -7
   m_SortingOrder: 1
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
@@ -55775,7 +55771,7 @@ TilemapRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1148429261
-  m_SortingLayer: -4
+  m_SortingLayer: -7
   m_SortingOrder: 1
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
@@ -57823,10 +57819,8 @@ MonoBehaviour:
   _enabledBottomScroll: 0
   _enabledRightScroll: 0
   _enabledLeftScroll: 0
-  minPosition: {x: 0, y: 0}
-  maxPosition: {x: 0, y: 0}
-  _cameraHeight: 0
-  _cameraWidth: 0
+  minPosition: {x: -9, y: -8}
+  maxPosition: {x: 9, y: 9}
   smoothing: 10
 --- !u!20 &1984950110
 Camera:
@@ -59670,7 +59664,7 @@ TilemapRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1148429261
-  m_SortingLayer: -4
+  m_SortingLayer: -7
   m_SortingOrder: 1
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
@@ -61203,10 +61197,8 @@ MonoBehaviour:
   _enabledBottomScroll: 0
   _enabledRightScroll: 0
   _enabledLeftScroll: 0
-  minPosition: {x: 0, y: 0}
-  maxPosition: {x: 0, y: 0}
-  _cameraHeight: 0
-  _cameraWidth: 0
+  minPosition: {x: -9, y: -8}
+  maxPosition: {x: 9, y: 9}
   smoothing: 10
 --- !u!20 &8393391149828992853
 Camera:
