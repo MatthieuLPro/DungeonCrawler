@@ -20,7 +20,7 @@ public class CameraController : MonoBehaviour
     private float _xScreenDistance;
     private float _yScreenDistance;
 
-    private RoomInformation _RoomInfo;
+    private RoomPlayerInformation _roomPlayerInfo;
 
     public enum EcameraScrollDirection
     {
@@ -37,7 +37,7 @@ public class CameraController : MonoBehaviour
         _enabledCameraScroll    = true;
         _boxCollider2D          = gameObject.GetComponent<BoxCollider2D>();
         _Camera                 = gameObject.GetComponent<Camera>();
-        _RoomInfo               = trackingGameObject.GetComponent<RoomInformation>();
+        _roomPlayerInfo         = trackingGameObject.transform.parent.GetComponent<RoomPlayerInformation>();
 
         SetScreenDistance();
         _UpdateCameraPosition(true);
@@ -69,8 +69,9 @@ public class CameraController : MonoBehaviour
 
     public void updateMinMaxLimits()
     {
-        minPosition = _RoomInfo.getRoomLimits()[0];
-        maxPosition = _RoomInfo.getRoomLimits()[1];
+        Vector2[] newCameraLimits = _roomPlayerInfo.getPlayerRoomLimits();
+        minPosition = newCameraLimits[0];
+        maxPosition = newCameraLimits[1];
     }
 
     public void SetScreenDistance()
