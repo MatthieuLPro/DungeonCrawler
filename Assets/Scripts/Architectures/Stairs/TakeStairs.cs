@@ -5,6 +5,6 @@ public class TakeStairs : Stairs
     protected override void StairsInteraction(GameObject player)
     {
         player.GetComponent<Movement>().maxSpeedTemp = player.GetComponent<Movement>().maxSpeed / 4;
-        player.transform.parent.GetComponent<SpriteRenderer>().sortingLayerName = transform.parent.GetComponent<StairsCharacteristics>().layoutUp;
+        player.transform.parent.GetComponent<SpriteRenderer>().sortingLayerName = transform.parent.GetComponent<StairsCharacteristics>().GetSortLayerUp();
     }
 }

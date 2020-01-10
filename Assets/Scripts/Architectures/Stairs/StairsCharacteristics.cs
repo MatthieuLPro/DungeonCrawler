@@ -5,8 +5,24 @@ using UnityEngine;
 public class StairsCharacteristics : MonoBehaviour
 {
     [Header("Settings Stairs")]
-    public string layoutUp      = "Name of layer up";
-    public string layoutDown    = "Name of layer down";
+    public string sortLayerUp   = "Name of layer up";
+    public string sortLayerDown = "Name of layer down";
     public int    layerUp       = 0;
     public int    layerDown     = 0;
+
+    public string GetSortLayerUp(){
+        return sortLayerUp;
+    }
+
+    public string GetSortLayerDown(){
+        return sortLayerDown;
+    }
+
+    public int GetLayerUp(){
+        return layerUp;
+    }
+
+    public int GetLayerDown(){
+        return layerDown;
+    }
 }

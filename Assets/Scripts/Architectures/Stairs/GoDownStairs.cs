@@ -8,8 +8,8 @@ public class GoDownStairs : Stairs
             return;
 
         player.GetComponent<Movement>().maxSpeedTemp = player.GetComponent<Movement>().maxSpeed;
-        player.transform.parent.GetComponent<SpriteRenderer>().sortingLayerName  = transform.parent.GetComponent<StairsCharacteristics>().layoutDown;
-        player.layer = transform.parent.GetComponent<StairsCharacteristics>().layerDown;
+        player.transform.parent.GetComponent<SpriteRenderer>().sortingLayerName  = transform.parent.GetComponent<StairsCharacteristics>().GetSortLayerDown();
+        player.transform.parent.gameObject.layer = transform.parent.GetComponent<StairsCharacteristics>().GetLayerDown();
     }
 
 }

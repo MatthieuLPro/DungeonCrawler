@@ -8,7 +8,7 @@ public class GoUpStairs : Stairs
             return;
 
         player.GetComponent<Movement>().maxSpeedTemp = player.GetComponent<Movement>().maxSpeed;
-        player.transform.parent.GetComponent<SpriteRenderer>().sortingLayerName  = transform.parent.GetComponent<StairsCharacteristics>().layoutUp;
-        player.layer = transform.parent.GetComponent<StairsCharacteristics>().layerUp;
+        player.transform.parent.GetComponent<SpriteRenderer>().sortingLayerName  = transform.parent.GetComponent<StairsCharacteristics>().GetSortLayerUp();
+        player.transform.parent.gameObject.layer = transform.parent.GetComponent<StairsCharacteristics>().GetLayerUp();
     }
 }
