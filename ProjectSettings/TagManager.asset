@@ -58,11 +58,11 @@ TagManager:
   - name: underPlayer_d1
     uniqueID: 3860082279
     locked: 0
-  - name: player_d1
-    uniqueID: 4236827421
-    locked: 0
   - name: wall_d1
     uniqueID: 4082551591
+    locked: 0
+  - name: player_d1
+    uniqueID: 4236827421
     locked: 0
   - name: overPlayer_d1
     uniqueID: 2296236633
@@ -70,11 +70,11 @@ TagManager:
   - name: underPlayer_0
     uniqueID: 3146538035
     locked: 0
-  - name: player_0
-    uniqueID: 187983035
-    locked: 0
   - name: wall_0
     uniqueID: 752246527
+    locked: 0
+  - name: player_0
+    uniqueID: 187983035
     locked: 0
   - name: overPlayer_0
     uniqueID: 2709491255
@@ -84,6 +84,9 @@ TagManager:
     locked: 0
   - name: player_u1
     uniqueID: 82111235
+    locked: 0
+  - name: wall_u1
+    uniqueID: 3740957439
     locked: 0
   - name: overPlayer_u1
     uniqueID: 1849884409
