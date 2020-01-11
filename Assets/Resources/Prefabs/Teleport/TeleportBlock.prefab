@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 3194577785325979231}
   - component: {fileID: 3194577785325979230}
   - component: {fileID: 3194577785325979226}
-  m_Layer: 0
+  m_Layer: 25
   m_Name: TeleportBlock
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -70,8 +70,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 187983035
+  m_SortingLayer: -6
   m_SortingOrder: -1
   m_Sprite: {fileID: 21300024, guid: 2614102cded19dca7aec69c00ea81f94, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -142,8 +142,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _teleportArrival: {fileID: 6151935777648050302}
-  minPosition: {x: 0, y: 0}
-  maxPosition: {x: 0, y: 0}
+  nextRoomCoord: 
+  nextRoomLevel: 
 --- !u!1 &6151935777648050302
 GameObject:
   m_ObjectHideFlags: 0
@@ -154,7 +154,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6151935777648050289}
   - component: {fileID: 6151935777648050288}
-  m_Layer: 0
+  m_Layer: 25
   m_Name: TeleportArrival
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -210,8 +210,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 187983035
+  m_SortingLayer: -6
   m_SortingOrder: -1
   m_Sprite: {fileID: 21300022, guid: 2614102cded19dca7aec69c00ea81f94, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

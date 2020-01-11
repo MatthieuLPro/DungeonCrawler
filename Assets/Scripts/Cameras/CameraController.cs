@@ -17,8 +17,8 @@ public class CameraController : MonoBehaviour
     private BoxCollider2D _boxCollider2D;
     private Camera _Camera;
 
-    private float _xScreenDistance;
-    private float _yScreenDistance;
+    public float _xScreenDistance;
+    public float _yScreenDistance;
 
     private RoomPlayerInformation _roomPlayerInfo;
 
@@ -36,7 +36,7 @@ public class CameraController : MonoBehaviour
     {
         _enabledCameraScroll    = true;
         _boxCollider2D          = gameObject.GetComponent<BoxCollider2D>();
-        _Camera                 = gameObject.GetComponent<Camera>();
+        _Camera                 = transform.parent.transform.parent.Find("Player_1").Find("Camera").gameObject.GetComponent<Camera>();
         _roomPlayerInfo         = trackingGameObject.transform.parent.GetComponent<RoomPlayerInformation>();
 
         SetScreenDistance();
