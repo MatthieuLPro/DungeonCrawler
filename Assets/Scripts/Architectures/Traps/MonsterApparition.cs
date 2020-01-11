@@ -23,14 +23,10 @@ public class MonsterApparition : MonoBehaviour
         if (!other.CompareTag("Player"))
             return;
 
-        Player player = other.GetComponent<Player>();
-        if(player != null)
-        {
-            if (_appearOneByOne)
-                MonsterOneByOne();
-            else
-                MonsterOnce();
-        }
+        if (_appearOneByOne)
+            MonsterOneByOne();
+        else
+            MonsterAll();
 
         if (!_coIsWorking)
             Destroy(gameObject);
@@ -39,7 +35,7 @@ public class MonsterApparition : MonoBehaviour
     /* ************************************************ */
     /* Apparitions functions */
     /* ************************************************ */
-    private void MonsterOnce()
+    private void MonsterAll()
     {
         for(var i = 0; i < _monsters.Length; i++)
             ShowMonster(_monsters[i]);
@@ -49,19 +45,15 @@ public class MonsterApparition : MonoBehaviour
         StartCoroutine(OneByOneCo());
     }
 
-    private void ShowMonster(GameObject monster)
-    {
-        monster.transform.GetChild(0).gameObject.SetActive(true);
-        monster.transform.GetChild(1).gameObject.SetActive(true);
-        monster.GetComponent<SpriteRenderer>().enabled = true;
-        monster.GetComponent<BoxCollider2D>().enabled = true;
+    private void ShowMonster(GameObject monster){
+        monster.gameObject.SetActive(true);
     }
   
     /* ************************************************ */
     /* Coroutines */
     /* ************************************************ */
 
-    /* Monsters appear one by one */  
+    /* Monsters appear one by one effect */  
     private IEnumerator OneByOneCo()
     {
         _coIsWorking = true;

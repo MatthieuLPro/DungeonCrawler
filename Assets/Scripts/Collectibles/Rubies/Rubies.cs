@@ -4,11 +4,6 @@ using UnityEngine;
 public class Rubies : MonoBehaviour
 {
     public int          value;
-    private AudioSource _audio = null;
-
-    private void Start(){
-        _audio = GetComponent<AudioSource>();
-    }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -23,7 +18,7 @@ public class Rubies : MonoBehaviour
 
     private IEnumerator GetRubyCo()
     {
-        _audio.Play();
+        GetComponent<AudioSource>().Play();
         yield return new WaitForSeconds(0.2f);
         
         Destroy(gameObject);

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class RoomReward : MonoBehaviour
-{    
+{
     /* ************************************************ */
     /* Doors Consequences */
     /* ************************************************ */
@@ -15,6 +15,8 @@ public class RoomReward : MonoBehaviour
 
         door.GetComponent<BoxCollider2D>().enabled = false;
         door.GetComponent<SpriteRenderer>().sprite = door.GetComponent<Door>().openSprite;
+        CallAudio("open");
+
     }
 
     /* Close door */
@@ -25,6 +27,7 @@ public class RoomReward : MonoBehaviour
 
         door.GetComponent<BoxCollider2D>().enabled = true;
         door.GetComponent<SpriteRenderer>().sprite = door.GetComponent<Door>().closeSprite;
+        CallAudio("close");
     }
     
     /* ************************************************ */
@@ -44,8 +47,41 @@ public class RoomReward : MonoBehaviour
     /* ************************************************ */
     /* Treasure appear */
     /* TO DO */
-    public void TreasureAppear(GameObject treasure)
-    {
+    public void TreasureAppear(GameObject treasure){
         return;
+    }
+
+
+    /* ************************************************ */
+    /* Event audio */
+    /* ************************************************ */
+    private void CallAudio(string roomEvent)
+    {
+        SetAudioClip(roomEvent);
+        PlayAudioClip();
+    }
+
+    private void SetAudioClip(string roomEvent){
+        GetComponent<AudioSource>().clip = NewAudioClip(roomEvent);
+    }
+
+    private void PlayAudioClip(){
+        GetComponent<AudioSource>().Play();
+    }
+
+    private AudioClip NewAudioClip(string roomEvent)
+    {
+        switch(roomEvent)
+        {
+            case "door_open":
+                return Resources.Load("Sounds/door_open") as AudioClip;
+                break;
+            case "door_close":
+                return Resources.Load("Sounds/door_close") as AudioClip;
+                break;
+            default:
+                return Resources.Load("Sounds/door_close") as AudioClip;
+                break;
+        }
     }
 }

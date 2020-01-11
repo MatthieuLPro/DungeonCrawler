@@ -16,6 +16,7 @@ public class FloorSwitch : MonoBehaviour
             return;
 
         value = !value;
-        gameObject.GetComponent<BoxCollider2D>().enabled = false;
+        GetComponent<AudioSource>().Play();
+        gameObject.GetComponent<CircleCollider2D>().enabled = false;
     }
 }

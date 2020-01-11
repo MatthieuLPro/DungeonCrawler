@@ -5,6 +5,12 @@ abstract public class Hearts : MonoBehaviour
     [HideInInspector]
     public int heal = 0;
 
+    private AudioSource _audio = null;
+
+    private void Start(){
+        _audio = GetComponent<AudioSource>();
+    }
+
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (!other.CompareTag("Player"))
@@ -14,6 +20,7 @@ abstract public class Hearts : MonoBehaviour
         if(player != null)
         {
             player.GetLife(heal);
+            _audio.Play();
             Destroy(gameObject);
         }     
     }

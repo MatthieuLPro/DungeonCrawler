@@ -22,14 +22,20 @@ public class BallTunnel : MonoBehaviour
 
     private bool _coIsRunning       = false;
     private bool _coLaunchIsRunning = false;
+
     private Vector3[] _spawnPos1 = new [] { Vector3.zero, Vector3.zero, Vector3.zero };
     private Vector3[] _spawnPos2 = new [] { Vector3.zero, Vector3.zero };
+
     private GameObject _prefab1 = null;
     private GameObject _prefab2 = null;
+
+    private AudioSource _audio = null;
 
     private void Start()
     {
         Transform exitTransform = transform.GetChild(1).transform;
+
+        _audio = GetComponent<AudioSource>();
 
         if (_isHorizontal)
             GenerateHorizontalSpawn();
@@ -180,12 +186,12 @@ public class BallTunnel : MonoBehaviour
     // Get sorting layer name depending of level
     private string GetSortingLayer()
     {
-        if (gameObject.layer == 20)
-            return "Wall-1";
-        else if(gameObject.layer == 22)
-            return "Wall";
+        if (gameObject.layer == 24)
+            return "player_d1";
+        else if(gameObject.layer == 25)
+            return "player_0";
         
-        return "Wall+1";
+        return "player_u1";
     }
 
     /* ************************************************ */
@@ -205,6 +211,7 @@ public class BallTunnel : MonoBehaviour
     {
         _coIsRunning = true;
         GameObject instantiatePrefab = InstantiateNewBall();
+        _audio.Play();
 
         instantiatePrefab.transform.SetParent(transform);
         instantiatePrefab.layer = gameObject.layer;

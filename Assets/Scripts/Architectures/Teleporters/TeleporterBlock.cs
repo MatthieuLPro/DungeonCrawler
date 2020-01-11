@@ -8,10 +8,6 @@ public class TeleporterBlock : MonoBehaviour
     [SerializeField]
     private GameObject _teleportArrival = null;
 
-    [Header("Min & max position for camera")]
-    public Vector2 minPosition;
-    public Vector2 maxPosition;
-
     [Header("Next room information")]
     public string nextRoomCoord;
     public string nextRoomLevel;

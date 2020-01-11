@@ -7,6 +7,7 @@ public class SmallKeys : MonoBehaviour
         if (!other.CompareTag("Player"))
             return;
         
+        GetComponent<AudioSource>().Play();
         other.transform.parent.GetComponent<Player>().GetSmallKey();
         Destroy(gameObject);
     }

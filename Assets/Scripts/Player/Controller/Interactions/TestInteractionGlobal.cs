@@ -40,6 +40,12 @@ public class TestInteractionGlobal : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
+        if (other.transform.parent.gameObject.CompareTag("Enemy"))
+        {
+            InteractionWithEnemy(other.transform.parent.gameObject);
+            return;
+        }
+
         if (other.CompareTag("Enemy"))
         {
             InteractionWithEnemy(other.gameObject);
@@ -56,8 +62,6 @@ public class TestInteractionGlobal : MonoBehaviour
         if (_isKnock || _isInvincible)
             return;
 
-        // Need to adapt if loose life or mana (depend of enemy characteristics)
-        // Need to adapt amount of life or mana to change (depend of enemy characteristics)
         DamageFromEnemyParam(enemy.GetComponent<EnemyTest>());
         StartCoroutine(KnockCo(enemy));
         StartCoroutine(InvincibleCo(enemy));
