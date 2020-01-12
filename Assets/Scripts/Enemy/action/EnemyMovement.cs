@@ -12,16 +12,14 @@ public enum EnemyState{
 
 public abstract class EnemyMovement : MonoBehaviour
 {
-    [Header("Speed Settings")]
+    [Header("Movement Settings")]
     public float   speed;
-
-    [Header("Movement Frequence Settings")]
     [SerializeField]
     private float _waitTime = .0f;
     [SerializeField]
     private float _moveTime = .0f;
 
-    [Header("Wake up down Settings")]
+    [Header("Wake up & sleep Settings")]
     [SerializeField]
     private bool _wakeSystem = false;
     [SerializeField]
@@ -101,14 +99,14 @@ public abstract class EnemyMovement : MonoBehaviour
     /* Movement functions */
     /* ************************************************ */
 
-    // Linear movement (walk)
+    // Linear movement (walk - constant speed)
     private void ClassicMovement()
     {
         if(_waitTime == 0)
             MoveObject();
     }
 
-    // Ooching movement (jump style)
+    // Ooching movement (jump style - speed alternate 0 & max)
     private void OochingMovement()
     {
         if(_waitTime == 0 || (!_isWaiting && _coMoveIsRunning))
@@ -162,7 +160,8 @@ public abstract class EnemyMovement : MonoBehaviour
     /* Coroutines */
     /* ************************************************ */
 
-    /* For Wait and Move mode */
+    /* For ooching movement */
+    /* Can't move */
     private IEnumerator WaitCo()
     {
         _coWaitIsRunning = true;
@@ -173,6 +172,7 @@ public abstract class EnemyMovement : MonoBehaviour
         _isWaiting       = false;
     }
 
+    /* Can move */
     private IEnumerator MoveCo()
     {
         _coMoveIsRunning = true;
@@ -189,7 +189,8 @@ public abstract class EnemyMovement : MonoBehaviour
         }
     }
 
-    /* For Wake up mode */
+    /* For sleep and wake up movement */
+    /* Is waking up (effect) */
     private IEnumerator WakeUpCo()
     {
         GetComponent<Transform>().parent.GetComponent<CircleCollider2D>().enabled = false;
@@ -203,6 +204,7 @@ public abstract class EnemyMovement : MonoBehaviour
         GetComponent<Transform>().parent.GetChild(1).GetComponent<BoxCollider2D>().enabled  = true;
     }
     
+    /* Is going to sleep (effect) */
     private IEnumerator WakeDownCo()
     {
         GetComponent<Transform>().parent.GetChild(1).GetComponent<BoxCollider2D>().enabled = false;
@@ -216,6 +218,7 @@ public abstract class EnemyMovement : MonoBehaviour
         StartCoroutine(WaitWakeSystemCo());
     }
 
+    /* Is moving */
     private IEnumerator WaitWakeSystemCo()
     {            
         yield return new WaitForSeconds(_wakeTime);

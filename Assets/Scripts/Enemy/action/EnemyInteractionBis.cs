@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyInteraction : MonoBehaviour
+public class EnemyInteractionBis : MonoBehaviour
 {
     [Header("Attack parameters")]
     [SerializeField]

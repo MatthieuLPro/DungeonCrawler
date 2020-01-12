@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class EnemyDirection : EnemyMovement
 {
-    [Header("Direction Type Settings")]
+    [Header("Direction Type Options")]
     [SerializeField]
-    private bool _enableDiagonal    = false;
-    public bool onlyTop             = false;
-    public bool onlyRight           = false;
-    public bool onlyDown            = false;
-    public bool onlyLeft            = false;
+    private bool _enableDiagonal = false;
+    public bool  onlyTop         = false;
+    public bool  onlyRight       = false;
+    public bool  onlyDown        = false;
+    public bool  onlyLeft        = false;
 
     [Header("Movement Settings")]
     [SerializeField]
@@ -22,13 +22,13 @@ public class EnemyDirection : EnemyMovement
     [SerializeField]
     private float _chaseLength      = 0.0f;
 
-    [Header("Direction behaviour Settings")]
+    [Header("Direction Options")]
     [SerializeField]
-    private bool _enableHunt                = false;
+    private bool _enableHunt              = false;
     [SerializeField]
-    private bool _randomDirection           = false;
+    private bool _randomDirection         = false;
     [SerializeField]
-    private bool _randomDiagonalDirection   = false;
+    private bool _randomDiagonalDirection = false;
 
     private int _movementTimer = 0;
     private int _movementLimit;
@@ -44,7 +44,10 @@ public class EnemyDirection : EnemyMovement
 
     private void FixedUpdate(){
         if (_enableHunt || _randomDiagonalDirection)
+        {
+            Debug.Log("exit 1");
             AIdirection();
+        }
         else if (_randomDirection)
             RandomDirection();
         else if (onlyTop)
@@ -63,7 +66,8 @@ public class EnemyDirection : EnemyMovement
         MainController();
     }
 
-    private void OnTriggerEnter2D(Collider2D other){
+    private void OnTriggerEnter2D(Collider2D other)
+    {
         if (_randomDiagonalDirection){
             RandomDiagonal();
             StartCoroutine(RefreshBoxCo());
@@ -74,7 +78,8 @@ public class EnemyDirection : EnemyMovement
     /* Find directions function */
     /* ************************************************ */
     // Object has a behaviour
-    private void AIdirection(){
+    private void AIdirection()
+    {
         if (!_enableDiagonal)
         {
             if (!CheckSequence())
@@ -84,7 +89,9 @@ public class EnemyDirection : EnemyMovement
                 _movementSequence = _movementLimit;
         }
 
-        if (_enableHunt){
+        if (_enableHunt)
+        {
+            Debug.Log("exit 2");
             HuntDirection();
         }
         else if (_randomDiagonalDirection)
@@ -94,15 +101,20 @@ public class EnemyDirection : EnemyMovement
     /* ************************************************ */
     /* Find directions function */
     /* ************************************************ */
-    // New direction depending of player _enableHunt
+    
+    /* If _enableHunt == true */
+    // New direction depending of player position
     private void HuntDirection(){
         GameObject player   = GameObject.FindWithTag("Player");
         Transform target    = player.transform;
 
         if (_chaseRadius > 0 && _chaseLength > 0)
         {
+            Debug.Log("exit 3");
             if (Vector3.Distance(target.position, transform.position) < _chaseRadius ||
-                Vector3.Distance(target.position, transform.position) > _chaseLength || _chaseLength == 0){
+                Vector3.Distance(target.position, transform.position) > _chaseLength || _chaseLength == 0)
+            {
+                Debug.Log("exit 4");
                 changePos.x = 0;
                 changePos.y = 0;
                 return;
@@ -117,7 +129,7 @@ public class EnemyDirection : EnemyMovement
         }
         else
         {
-            if(GetRandomBool())
+            if(RandomBool())
                 HuntVerticalDirection(player);
             else
                 HuntHorizontalDirection(player);
@@ -163,9 +175,10 @@ public class EnemyDirection : EnemyMovement
     }
 
     // New direction if _randomDiagonalDirection (Only diagonal movement)
-    public void RandomDiagonal(){
+    public void RandomDiagonal()
+    {
         if (changePos.x == 0){
-            if (GetRandomBool())
+            if (RandomBool())
                 changePos.x = _movementAngle;
             else
                 changePos.x = -1 * _movementAngle;
@@ -173,7 +186,7 @@ public class EnemyDirection : EnemyMovement
         else
             changePos.x = -1 * changePos.x;
         
-        if (GetRandomBool())
+        if (RandomBool())
             changePos.y = _movementAngle;
         else
             changePos.y = -1 * _movementAngle;
@@ -183,12 +196,15 @@ public class EnemyDirection : EnemyMovement
     /* Enemy Direction functions */
     /* ************************************************ */
     // Random direction on X AND Y
-    private void RandomAllDirections(){
+    private void RandomAllDirections()
+    {
         changePos.x = Random.Range(-1.0f, 1.0f);
         changePos.y = Random.Range(-1.0f, 1.0f);
     }
+
     // Random direction on X OR Y
-    private void RandomOneDirection(){
+    private void RandomOneDirection()
+    {
         float direction = Random.Range(-1.0f, 1.1f);
 
         if (direction > 0)
@@ -198,7 +214,8 @@ public class EnemyDirection : EnemyMovement
     }
 
     // If the movement sequence is done
-    private bool CheckSequence(){
+    private bool CheckSequence()
+    {
         if (_movementSequence == 0)
             return false;
 
@@ -216,11 +233,8 @@ public class EnemyDirection : EnemyMovement
     /* General functions */
     /* ************************************************ */
     // Random value true or false
-    private bool GetRandomBool(){
-        if (Random.Range(0, 2) == 1)
-            return (true);
-
-        return (false);
+    private bool RandomBool(){
+        return (Random.Range(0, 2) == 1);
     }
 
     

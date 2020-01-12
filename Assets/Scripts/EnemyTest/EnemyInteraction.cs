@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyTestInteraction : MonoBehaviour
+public class EnemyInteraction : MonoBehaviour
 {
     [Header("Interaction parameters")]
     [SerializeField]
