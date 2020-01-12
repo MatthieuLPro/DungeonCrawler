@@ -118,7 +118,7 @@ public class TestInteractionGlobal : MonoBehaviour
         
         // Application de la nouvelle force
         _rb2d.AddForce(directionKnock * enemy.GetComponent<EnemyTest>().strength, ForceMode2D.Impulse);
-        _parent.transform.parent.Find("Audio").GetComponent<PlayerAudio>().CallAudio("hurt");
+        _parent.transform.parent.Find("Audio").GetComponent<AudioManager>().CallAudio("hurt");
         yield return new WaitForSeconds(enemy.GetComponent<EnemyTest>().knockBackTime);
 
         KnockToggleParam();

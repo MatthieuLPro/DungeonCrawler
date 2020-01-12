@@ -91,7 +91,7 @@ public class EnemyInteraction : MonoBehaviour
     // Knock out player
     private IEnumerator KnockCo(Rigidbody2D player){
         StartCoroutine(player.GetComponent<PlayerController>().FlashCo(_knockTime));
-        player.GetComponent<PlayerAudio>().CallAudio("hurt");
+        player.GetComponent<AudioManager>().CallAudio("hurt");
         yield return new WaitForSeconds(_knockTime);
 
         player.velocity = Vector2.zero;

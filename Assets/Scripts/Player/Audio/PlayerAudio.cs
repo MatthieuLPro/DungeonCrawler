@@ -4,16 +4,16 @@ using UnityEngine;
 
 public class PlayerAudio : MonoBehaviour
 {
-    AudioSource audioData;
+    private AudioSource _audioData;
 
     void Start(){
-        audioData = GetComponent<AudioSource>();
+        _audioData = GetComponent<AudioSource>();
     }
 
     public void CallAudio(string animation)
     {
         ChangeAudioClip(animation);
-        audioData.Play();
+        _audioData.Play();
     }
 
 
@@ -32,6 +32,6 @@ public class PlayerAudio : MonoBehaviour
             default:
                 break;
         }
-        audioData.clip = clip;
+        _audioData.clip = clip;
     }
 }

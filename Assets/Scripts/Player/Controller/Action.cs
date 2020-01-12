@@ -89,7 +89,7 @@ public class Action : MonoBehaviour
         _movement.blockMovement = true;
 
         _parent.GetComponent<Rigidbody2D>().velocity = Vector3.zero;
-        _parent.transform.parent.Find("Audio").GetComponent<PlayerAudio>().CallAudio("attack");
+        _parent.transform.parent.Find("Audio").GetComponent<AudioManager>().CallAudio("attack");
 
         yield return null;
 
