@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 
 abstract public class Manas : MonoBehaviour
 {
@@ -7,11 +9,19 @@ abstract public class Manas : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        Player player = other.transform.parent.GetComponent<Player>();
-        if(player != null)
-        {
-            player.GetMana(heal);
-            Destroy(gameObject);
-        }     
+        if (!other.CompareTag("Player"))
+            return;
+
+        other.transform.parent.GetComponent<Player>().GetMana(heal);
+        StartCoroutine(GetObjectFindEffectCo());
+    }
+
+    private IEnumerator GetObjectFindEffectCo()
+    {
+        GetComponent<BoxCollider2D>().enabled = false;
+        GetComponent<AudioSource>().Play();
+        yield return new WaitForSeconds(0.5f);
+        
+        Destroy(gameObject);
     }
 }
