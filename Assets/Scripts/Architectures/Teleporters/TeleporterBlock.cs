@@ -15,7 +15,7 @@ public class TeleporterBlock : MonoBehaviour
     private RoomInformation _nextRoomInformation;
 
     private void Awake(){
-        _nextRoomInformation = transform.root.Find("Level_" + nextRoomLevel).Find("Room_(" + nextRoomCoord + ")").GetComponent<RoomInformation>();
+        _nextRoomInformation = transform.root.Find("Level_" + nextRoomLevel).Find("Room_" + nextRoomCoord).GetComponent<RoomInformation>();
     }
 
 

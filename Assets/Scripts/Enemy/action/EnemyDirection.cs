@@ -236,7 +236,6 @@ public class EnemyDirection : EnemyMovement
     private bool RandomBool(){
         return (Random.Range(0, 2) == 1);
     }
-
     
     /* ************************************************ */
     /* Coroutines */
@@ -247,5 +246,36 @@ public class EnemyDirection : EnemyMovement
         yield return new WaitForSeconds(0.1f);
 
         GetComponent<BoxCollider2D>().enabled = true;
+    }
+
+    /* ************************************************ */
+    /* Setter */
+    /* ************************************************ */
+    public void UpdateSpeed(float newSpeed){
+        newSpeed = newSpeed;
+    }
+
+    public void UpdateDirection(string direction)
+    {
+        onlyTop     = false;
+        onlyRight   = false;
+        onlyDown    = false;
+        onlyLeft    = false;
+
+        switch(direction)
+        {
+            case "top":
+                onlyTop = true;
+                break;
+            case "right":
+                onlyRight = true;
+                break;
+            case "down":
+                onlyDown = true;
+                break;
+            default:
+                onlyLeft = true;
+                break;
+        }
     }
 }

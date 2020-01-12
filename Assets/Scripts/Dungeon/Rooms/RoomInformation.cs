@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class RoomInformation : MonoBehaviour
 {
-    public Vector2 roomLimitsMin;
-    public Vector2 roomLimitsMax;
-    
+    [Header("Room informations")]
+    public Vector2  roomLimitsMin;
+    public Vector2  roomLimitsMax;
+
     public Vector2[] getRoomLimits(){
         return new Vector2[] { roomLimitsMin, roomLimitsMax };
     }

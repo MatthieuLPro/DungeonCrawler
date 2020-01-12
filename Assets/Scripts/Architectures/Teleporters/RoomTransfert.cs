@@ -13,8 +13,11 @@ public class RoomTransfert : MonoBehaviour
  
     private RoomInformation _nextRoomInformation;
 
+    /* ************************************************ */
+    /* Main functions */
+    /* ************************************************ */
     private void Awake(){
-        _nextRoomInformation = transform.root.Find("Level_" + nextRoomLevel).Find("Room_(" + nextRoomCoord + ")").GetComponent<RoomInformation>();
+        _nextRoomInformation = transform.root.Find("Level_" + nextRoomLevel).Find("Room_" + nextRoomCoord).GetComponent<RoomInformation>();
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -25,13 +28,16 @@ public class RoomTransfert : MonoBehaviour
         GameObject player                           = other.gameObject;
         RoomPlayerInformation roomPlayerInfo        = player.transform.parent.GetComponent<RoomPlayerInformation>();
         CameraController camController              = player.transform.parent.transform.Find("Camera").GetComponent<CameraController>();
-        Vector2 newPlayerPosition                   = GetPlayerNewPosition(player);
 
-        player.transform.position = new Vector2 (newPlayerPosition.x, newPlayerPosition.y);
-        roomPlayerInfo.updatePlayerRoomLimits(_nextRoomInformation.getRoomLimits());
-        camController.updateMinMaxLimits();
+        UpdatePlayerPosition(player, GetPlayerNewPosition(player));
+        UpdatePlayerRoomInformation(roomPlayerInfo);
+
+        UpdateCamera(camController);
     }
 
+    /* ************************************************ */
+    /* Get New position for teleport */
+    /* ************************************************ */
     private Vector2 GetPlayerNewPosition(GameObject player)
     {
         Vector2 position;
@@ -47,5 +53,25 @@ public class RoomTransfert : MonoBehaviour
             position.y = newPosition.y;
 
         return position;
+    }
+
+    /* ************************************************ */
+    /* Update object functions */
+    /* ************************************************ */
+    /* Update player informations */
+    private void UpdatePlayerPosition(GameObject player, Vector2 newPosition){
+        player.transform.position = newPosition;
+    }
+
+    private void UpdatePlayerRoomInformation(RoomPlayerInformation roomPlayerInfo)
+    {
+        roomPlayerInfo.updatePlayerRoomLimits(_nextRoomInformation.getRoomLimits());
+        roomPlayerInfo.UpdateActualLevel(nextRoomLevel);
+        roomPlayerInfo.UpdateActualRoom(nextRoomCoord);        
+    }
+
+    /* Update camera informations */
+    private void UpdateCamera(CameraController camera){
+        camera.updateMinMaxLimits();
     }
 }

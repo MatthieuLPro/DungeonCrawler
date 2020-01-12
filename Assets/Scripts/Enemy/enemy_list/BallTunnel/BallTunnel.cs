@@ -63,23 +63,14 @@ public class BallTunnel : MonoBehaviour
     private void GenerateHorizontalSpawn()
     {
         Transform exitTransform = transform.GetChild(1).transform;
+        int flag = (_length > 0 ? 1 : -1);
 
         exitTransform.position = exitTransform.position + new Vector3(_length, 0, 0);
-        if (_length > 0)
-        {
-            _spawnPos1[0] = transform.position + new Vector3(_length - _length + 1, 0, 0);
-            if (_randomSpawn){
-                _spawnPos1[1] = transform.position + new Vector3(_length - _length + 1, -1, 0);
-                _spawnPos1[2] = transform.position + new Vector3(_length - _length + 1, 1, 0);
-            }
-        }
-        else
-        {
-            _spawnPos1[0] = transform.position + new Vector3(_length - _length - 1, 0, 0);
-            if (_randomSpawn){
-                _spawnPos1[1] = transform.position + new Vector3(_length - _length - 1, -1, 0);
-                _spawnPos1[2] = transform.position + new Vector3(_length - _length - 1, 1, 0);
-            }
+
+        _spawnPos1[0] = transform.position + new Vector3(_length - _length + flag, 0, 0);
+        if (_randomSpawn){
+            _spawnPos1[1] = transform.position + new Vector3(_length - _length + flag, -1, 0);
+            _spawnPos1[2] = transform.position + new Vector3(_length - _length + flag, 1, 0);
         }
     }
 
@@ -131,6 +122,15 @@ public class BallTunnel : MonoBehaviour
     {
         GameObject InstantiatePrefab = null;
 
+        GameObject newPrefab = _prefab1;
+
+        // Generate new Prefab
+        if (_differentTypes && randomBall == 1)
+            newPrefab = _prefab2;
+
+        // Generate new Position
+        if (_randomSpawn && randomBall == 1)
+
         if (_randomSpawn && _differentTypes)
         {
             var randomBall = Random.Range(0, 2);
@@ -165,21 +165,22 @@ public class BallTunnel : MonoBehaviour
     // Set prefab direction movement
     private void SetPrefabParams(GameObject prefabMovement)
     {
-        prefabMovement.GetComponent<EnemyDirection>().speed = _prefabSpeed;
+        EnemyDirection enemyDirection = prefabMovement.GetComponent<EnemyDirection>();
 
+        enemyDirection.UpdateSpeed(_prefabSpeed);
         if (_isHorizontal)
         {
             if (_length > 0)
-                prefabMovement.GetComponent<EnemyDirection>().onlyRight = true;
+                enemyDirection.UpdateDirection("right");
             else
-                prefabMovement.GetComponent<EnemyDirection>().onlyLeft = true;
+                enemyDirection.UpdateDirection("left");
         }
         else
         {
             if (_length > 0)
-                prefabMovement.GetComponent<EnemyDirection>().onlyTop = true;
+                enemyDirection.UpdateDirection("top");
             else
-                prefabMovement.GetComponent<EnemyDirection>().onlyDown = true;                
+                enemyDirection.UpdateDirection("down");
         }
     }
 
@@ -211,6 +212,7 @@ public class BallTunnel : MonoBehaviour
     {
         _coIsRunning = true;
         GameObject instantiatePrefab = InstantiateNewBall();
+
         _audio.Play();
 
         instantiatePrefab.transform.SetParent(transform);
