@@ -43,7 +43,7 @@ public class PlayerController : MovingObject
         RefreshAttackCollider();
         anime.SetBool("Attacking", true);
         currentState = ObjectState.attack;
-        GetComponent<PlayerAudio>().CallAudio("attack");
+        GetComponent<AudioManager>().CallAudio("attack");
         yield return null;
 
         anime.SetBool("Attacking", false);

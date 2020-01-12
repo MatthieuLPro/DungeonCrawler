@@ -84,10 +84,11 @@ public class EnemyTestInteraction : MonoBehaviour
         
         // Application de la nouvelle force
         _rb2d.AddForce(directionKnock * strength, ForceMode2D.Impulse);
+        _parent.transform.GetChild(1).GetComponent<AudioManager>().CallAudio("hurt");
 
         yield return new WaitForSeconds(knockTime);
 
-        _parent.GetComponent<EnemyTest>().looseLife();
+        _parent.GetComponent<EnemyTest>().ManageLife();
         KnockToggleParam();
     }
 

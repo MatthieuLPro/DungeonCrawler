@@ -13,15 +13,29 @@ public class EnemyTest : MonoBehaviour
     public float strength;
     public int   life;
 
-    /* Add damage depending of player str */
-    public void looseLife()
-    {
-        life -= 1;
-        if (life <= 0)
-            IsDead();
+    public void ManageLife(){
+        UpdateLife();
+        VerifyLife();
     }
 
-    public void IsDead(){
+    /* Add damage depending of player str */
+    private void UpdateLife(){
+        life -= 1;
+    }
+
+    private void VerifyLife()
+    {
+        if (life <= 0)
+            StartCoroutine(DestroyEnemyCo());
+    }
+
+    private IEnumerator DestroyEnemyCo()
+    {
+        transform.GetChild(0).GetComponent<BoxCollider2D>().enabled = false;
+        transform.GetChild(1).GetComponent<AudioManager>().CallAudio("Ko");
+        
+        yield return new WaitForSeconds(0.5f);
+
         Destroy(gameObject);
     }
 
