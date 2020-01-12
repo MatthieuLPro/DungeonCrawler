@@ -14,9 +14,10 @@ public class TeleporterBlock : MonoBehaviour
  
     private RoomInformation _nextRoomInformation;
 
-    private void awake(){
+    private void Awake(){
         _nextRoomInformation = transform.root.Find("Level_" + nextRoomLevel).Find("Room_(" + nextRoomCoord + ")").GetComponent<RoomInformation>();
     }
+
 
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -24,7 +25,7 @@ public class TeleporterBlock : MonoBehaviour
             return;
 
         GameObject player                       = other.gameObject;
-        RoomPlayerInformation roomPlayerInfo    = player.GetComponent<RoomPlayerInformation>();
+        RoomPlayerInformation roomPlayerInfo    = player.transform.parent.GetComponent<RoomPlayerInformation>();
         CameraController camController          = player.transform.parent.transform.Find("Camera").GetComponent<CameraController>();
 
         player.GetComponent<Transform>().position = _teleportArrival.GetComponent<Transform>().position;
