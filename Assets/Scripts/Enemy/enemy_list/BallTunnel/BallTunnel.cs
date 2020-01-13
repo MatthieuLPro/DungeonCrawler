@@ -6,10 +6,6 @@ public class BallTunnel : MonoBehaviour
 {
     [Header("Tunnel Settings")]
     [SerializeField]
-    private bool _isHorizontal = false;
-    [SerializeField]
-    private float _length = 2;
-    [SerializeField]
     private float _launchTime = 2;
     [SerializeField]
     private float _firstLaunchOffset = 0;
@@ -20,6 +16,9 @@ public class BallTunnel : MonoBehaviour
     [SerializeField]
     private bool _randomSpawn       = false;
 
+    private bool _isHorizontal = false;
+    private float _length;
+
     private bool _coIsRunning       = false;
     private bool _coLaunchIsRunning = false;
 
@@ -29,6 +28,9 @@ public class BallTunnel : MonoBehaviour
     private GameObject _prefab1 = null;
     private GameObject _prefab2 = null;
 
+    private string _sortingLayer;
+    private int    _layer;
+
     private AudioSource _audio = null;
 
     private void Start()
@@ -36,6 +38,10 @@ public class BallTunnel : MonoBehaviour
         Transform exitTransform = transform.GetChild(1).transform;
 
         _audio = GetComponent<AudioSource>();
+        _sortingLayer = GetSortingLayer();
+        _layer = gameObject.layer;
+
+        CalculateDistance();
 
         if (_isHorizontal)
             GenerateHorizontalSpawn();
@@ -59,13 +65,25 @@ public class BallTunnel : MonoBehaviour
     /* ************************************************ */
     /* General functions */
     /* ************************************************ */
-    // Generate horizontal position
+    // Get distance between entrance and exit
+    private void CalculateDistance()
+    {
+        Vector2 exitPosition = transform.GetChild(1).transform.position;
+
+        _isHorizontal = true;
+        _length = exitPosition.x - transform.position.x;
+
+        if(transform.position.x == exitPosition.x)
+        {
+            _isHorizontal = false;
+            _length = exitPosition.y - transform.position.y;
+        }
+    }
+
+    // Generate horizontal spawn position
     private void GenerateHorizontalSpawn()
     {
-        Transform exitTransform = transform.GetChild(1).transform;
         int flag = (_length > 0 ? 1 : -1);
-
-        exitTransform.position = exitTransform.position + new Vector3(_length, 0, 0);
 
         _spawnPos1[0] = transform.position + new Vector3(_length - _length + flag, 0, 0);
         if (_randomSpawn){
@@ -74,99 +92,71 @@ public class BallTunnel : MonoBehaviour
         }
     }
 
+    // Generate vertical spawn position
     private void GenerateVerticalSpawn()
     {
-        Transform exitTransform = transform.GetChild(1).transform;
+        int flag = (_length > 0 ? 1 : -1);
 
-        exitTransform.position = exitTransform.position + new Vector3(0, _length, 0);
-        if (_length > 0)
-        {
-            _spawnPos1[0] = transform.position + new Vector3(0, _length - _length + 1, 0);
-            if (_randomSpawn){
-                _spawnPos1[1] = transform.position + new Vector3(-1, _length - _length + 1, 0);
-                _spawnPos1[2] = transform.position + new Vector3(1, _length - _length + 1, 0);
-            }
-
-            if (_differentTypes)
-            {
-                if (_randomSpawn){
-                    _spawnPos2[0] = transform.position + new Vector3(-0.5f, _length - _length + 1, 0);
-                    _spawnPos2[1] = transform.position + new Vector3(0.5f, _length - _length + 1, 0);
-                }
-                else
-                    _spawnPos2[0] = transform.position + new Vector3(0, _length - _length + 1, 0);
-            }
+        _spawnPos1[0] = transform.position + new Vector3(0, _length - _length + flag, 0);
+        if (_randomSpawn){
+            _spawnPos1[1] = transform.position + new Vector3(-1, _length - _length + flag, 0);
+            _spawnPos1[2] = transform.position + new Vector3(1, _length - _length + flag, 0);
         }
-        else
-        {
-            _spawnPos1[0] = transform.position + new Vector3(0, _length - _length - 1, 0);
-            if (_randomSpawn){
-                _spawnPos1[1] = transform.position + new Vector3(-1, _length - _length - 1, 0);
-                _spawnPos1[2] = transform.position + new Vector3(1, _length - _length - 1, 0);
-            }
 
-            if (_differentTypes)
-            {
-                if (_randomSpawn){
-                    _spawnPos2[0] = transform.position + new Vector3(-0.5f, _length - _length - 1, 0);
-                    _spawnPos2[1] = transform.position + new Vector3(0.5f, _length - _length - 1, 0);
-                }
-                else
-                    _spawnPos2[0] = transform.position + new Vector3(0, _length - _length - 1, 0);
+        if (_differentTypes)
+        {
+            if (_randomSpawn){
+                _spawnPos2[0] = transform.position + new Vector3(-0.5f, _length - _length + flag, 0);
+                _spawnPos2[1] = transform.position + new Vector3(0.5f, _length - _length + flag, 0);
             }
+            else
+                _spawnPos2[0] = transform.position + new Vector3(0, _length - _length + flag, 0);
         }
     }
 
     // Generate object depending of settings
     private GameObject InstantiateNewBall()
     {
-        GameObject InstantiatePrefab = null;
+        GameObject newPrefab            = NewPrefabType();
+        Vector3 newPos                  = Vector3.zero;
 
-        GameObject newPrefab = _prefab1;
-
-        // Generate new Prefab
-        if (_differentTypes && randomBall == 1)
-            newPrefab = _prefab2;
-
-        // Generate new Position
-        if (_randomSpawn && randomBall == 1)
-
-        if (_randomSpawn && _differentTypes)
-        {
-            var randomBall = Random.Range(0, 2);
-
-            InstantiatePrefab =  Instantiate((randomBall == 0 ? _prefab1 : _prefab2),
-                                              randomBall == 0 ? _spawnPos1[Random.Range(0, 3)] : _spawnPos2[Random.Range(0, 2)],
-                                              Quaternion.identity);
-        }
-        else if(_randomSpawn)
-        {
-            InstantiatePrefab =  Instantiate(_prefab1,
-                                             _spawnPos1[Random.Range(0, 3)],
-                                             Quaternion.identity);
-        }
-        else if(_differentTypes)
-        {
-            var randomBall = Random.Range(0, 2);
-
-            InstantiatePrefab =  Instantiate((randomBall == 0 ? _prefab1 : _prefab2),
-                                              randomBall == 0 ? _spawnPos1[0] : _spawnPos2[0],
-                                              Quaternion.identity);
-        }
+        newPos = NewPrefabPosition(0);
+        if (newPrefab == _prefab1)
+            newPos = NewPrefabPosition(0);
         else
+            newPos = NewPrefabPosition(1);
+
+        return (Instantiate(newPrefab, newPos, Quaternion.identity));
+    }
+
+    private Vector3 NewPrefabPosition(int prefabType)
+    {
+        // PrefabType == 0 : smallBall
+        // PrefabType == 1 : bigBall
+        if (_randomSpawn)
         {
-            InstantiatePrefab =  Instantiate(_prefab1,
-                                             _spawnPos1[0],
-                                             Quaternion.identity);            
+            if (prefabType == 1)
+                return _spawnPos2[Random.Range(0, 2)];
+
+            return _spawnPos1[Random.Range(0, 3)];
         }
-        return InstantiatePrefab;
+        else if (prefabType == 1)
+            return _spawnPos2[0];
+
+        return _spawnPos1[0];
+    }
+
+    private GameObject NewPrefabType()
+    {
+        if (_differentTypes && Random.Range(0, 2) != 0)
+            return _prefab2;
+
+        return _prefab1;
     }
 
     // Set prefab direction movement
-    private void SetPrefabParams(GameObject prefabMovement)
+    private void SetPrefabParams(EnemyDirection enemyDirection)
     {
-        EnemyDirection enemyDirection = prefabMovement.GetComponent<EnemyDirection>();
-
         enemyDirection.UpdateSpeed(_prefabSpeed);
         if (_isHorizontal)
         {
@@ -216,9 +206,10 @@ public class BallTunnel : MonoBehaviour
         _audio.Play();
 
         instantiatePrefab.transform.SetParent(transform);
-        instantiatePrefab.layer = gameObject.layer;
-        instantiatePrefab.GetComponent<SpriteRenderer>().sortingLayerName = GetSortingLayer();
-        SetPrefabParams(instantiatePrefab.transform.GetChild(0).gameObject);
+        instantiatePrefab.layer = _layer;
+        instantiatePrefab.GetComponent<SpriteRenderer>().sortingLayerName = _sortingLayer;
+        SetPrefabParams(instantiatePrefab.transform.GetChild(0).gameObject.GetComponent<EnemyDirection>());
+
         yield return new WaitForSeconds(_launchTime);
         _coIsRunning = false;
     }
