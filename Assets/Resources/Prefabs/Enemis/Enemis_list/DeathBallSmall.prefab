@@ -141,7 +141,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.07444122
+  m_Radius: 0.009132701
 --- !u!114 &5932979492763154030
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -157,7 +157,7 @@ MonoBehaviour:
   attackTypeMagic: 0
   attackTypePhysic: 1
   knockBackTime: 0.3
-  strength: 1
+  strength: 5
   life: 1
 --- !u!1 &459380087123714152
 GameObject:
@@ -231,7 +231,6 @@ GameObject:
   m_Component:
   - component: {fileID: 459380087339730453}
   - component: {fileID: 459380087339730455}
-  - component: {fileID: 3989503471287915977}
   m_Layer: 25
   m_Name: Movement
   m_TagString: Enemy
@@ -289,19 +288,3 @@ MonoBehaviour:
   _enableHunt: 0
   _randomDirection: 0
   _randomDiagonalDirection: 0
---- !u!58 &3989503471287915977
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 459380087339730450}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 0.07444122
