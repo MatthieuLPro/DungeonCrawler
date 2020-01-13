@@ -75,14 +75,14 @@ public abstract class EnemyMovement : MonoBehaviour
             else if(_moveTime > 0 && !_coMoveIsRunning)
                 StartCoroutine(MoveCo());
             else 
-                ClassicMovement();
+                LinearMovement();
         }
         else if (changePos != Vector3.zero && currentState != EnemyState.attack)
         {
             if (_waitTime > 0)
                 OochingMovement();
             else
-                ClassicMovement();
+                LinearMovement();
         }
         else
             AnimationIdle();
@@ -96,11 +96,11 @@ public abstract class EnemyMovement : MonoBehaviour
     }
 
     /* ************************************************ */
-    /* Movement functions */
+    /* Type of movement functions */
     /* ************************************************ */
 
     // Linear movement (walk - constant speed)
-    private void ClassicMovement()
+    private void LinearMovement()
     {
         if(_waitTime == 0)
             MoveObject();
@@ -160,8 +160,8 @@ public abstract class EnemyMovement : MonoBehaviour
     /* Coroutines */
     /* ************************************************ */
 
-    /* For ooching movement */
-    /* Can't move */
+    /* TYPE MOVEMENT : OOCHING */
+    /* Is not moving */
     private IEnumerator WaitCo()
     {
         _coWaitIsRunning = true;
@@ -172,7 +172,7 @@ public abstract class EnemyMovement : MonoBehaviour
         _isWaiting       = false;
     }
 
-    /* Can move */
+    /* Is moving */
     private IEnumerator MoveCo()
     {
         _coMoveIsRunning = true;
@@ -189,7 +189,7 @@ public abstract class EnemyMovement : MonoBehaviour
         }
     }
 
-    /* For sleep and wake up movement */
+    /* TYPE MOVEMENT : SLEEP & WAKE UP */
     /* Is waking up (effect) */
     private IEnumerator WakeUpCo()
     {

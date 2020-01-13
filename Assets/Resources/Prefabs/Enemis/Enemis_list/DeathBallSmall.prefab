@@ -156,8 +156,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackTypeMagic: 0
   attackTypePhysic: 1
-  knockBackTime: 0.3
-  strength: 5
+  knockBackTime: 0.25
+  strength: 7
   life: 1
 --- !u!1 &459380087123714152
 GameObject:
@@ -287,4 +287,4 @@ MonoBehaviour:
   _chaseLength: 0
   _enableHunt: 0
   _randomDirection: 0
-  _randomDiagonalDirection: 0
+  _onlyDiagonalDirection: 0

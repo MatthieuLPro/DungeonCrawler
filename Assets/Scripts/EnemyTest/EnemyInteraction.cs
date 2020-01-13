@@ -84,7 +84,7 @@ public class EnemyInteraction : MonoBehaviour
         
         // Application de la nouvelle force
         _rb2d.AddForce(directionKnock * strength, ForceMode2D.Impulse);
-        _parent.transform.GetChild(1).GetComponent<AudioManager>().CallAudio("hurt");
+        _parent.transform.GetChild(2).GetComponent<AudioManager>().CallAudio("hurt");
 
         yield return new WaitForSeconds(knockTime);
 

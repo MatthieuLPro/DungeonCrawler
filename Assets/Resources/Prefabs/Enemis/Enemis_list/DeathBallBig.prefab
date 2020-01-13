@@ -128,7 +128,7 @@ MonoBehaviour:
   _chaseLength: 0
   _enableHunt: 0
   _randomDirection: 0
-  _randomDiagonalDirection: 0
+  _onlyDiagonalDirection: 0
 --- !u!1 &5038971271031526476
 GameObject:
   m_ObjectHideFlags: 0
@@ -248,8 +248,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackTypeMagic: 0
   attackTypePhysic: 1
-  knockBackTime: 0.3
-  strength: 5
+  knockBackTime: 0.25
+  strength: 7
   life: 1
 --- !u!50 &5038971271031526474
 Rigidbody2D:

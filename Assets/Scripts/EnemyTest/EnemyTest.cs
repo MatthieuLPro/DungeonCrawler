@@ -31,8 +31,8 @@ public class EnemyTest : MonoBehaviour
 
     private IEnumerator DestroyEnemyCo()
     {
-        transform.GetChild(0).GetComponent<BoxCollider2D>().enabled = false;
-        transform.GetChild(1).GetComponent<AudioManager>().CallAudio("Ko");
+        transform.GetChild(1).GetComponent<BoxCollider2D>().enabled = false;
+        transform.GetChild(2).GetComponent<AudioManager>().CallAudio("Ko");
         
         yield return new WaitForSeconds(0.5f);
 
