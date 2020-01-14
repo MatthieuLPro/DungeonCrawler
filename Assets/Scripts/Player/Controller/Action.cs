@@ -5,7 +5,7 @@ using UnityEngine;
 public class Action : MonoBehaviour
 {    
     [Header("Action settings")]
-    public float strength;
+    public float thrust;
     public float knockBackTime;
 
     /* Parent components */
@@ -58,25 +58,28 @@ public class Action : MonoBehaviour
     /* Action functions */
     private void ActionsList()
     {
+        if (_movement.currentState != TestObjectState.knock)
+            StartCoroutine(MainAttack());
+
         /* Priority Order */
         /*
             => Throw object if have object
             => Carry object if object in front
             => Attack
         */
-        if (transform.Find("Pot") || transform.Find("Bush"))
+        /*if (transform.Find("Pot") || transform.Find("Bush"))
             ThrowCarryObject();
         if (_interactionFront.objectCarry != null)
             _interactionFront.InteractionWithObjectCarry();
         else if (_movement.currentState != TestObjectState.knock)
-            StartCoroutine(MainAttack());
+            StartCoroutine(MainAttack());*/
     }
 
     /* Throw object */
-    private void ThrowCarryObject()
+    /*private void ThrowCarryObject()
     {
 
-    }
+    }*/
 
     /* ************************************************ */
     /* Coroutines */
@@ -98,5 +101,20 @@ public class Action : MonoBehaviour
         yield return new WaitForSeconds(_anime.GetCurrentAnimatorClipInfo(0)[0].clip.length - .3f);
 
         _movement.blockMovement = false;
+    }
+
+    /* ************************************************ */
+    /* Getter */
+    /* ************************************************ */
+    public float GetThrust(){
+        return thrust;
+    }
+
+    public float GetKnockBackTime(){
+        return knockBackTime;
+    }
+
+    public int GetStrength(){
+        return _parent.transform.parent.GetComponent<Player>().GetStrength();
     }
 }

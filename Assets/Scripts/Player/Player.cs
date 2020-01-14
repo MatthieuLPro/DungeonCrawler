@@ -9,7 +9,12 @@ public class Player : MonoBehaviour
     public int manaInit = 34;
     public int keys = 0;
     public bool bigKey = false;
+    public int strength = 1;
 
+    /* NEED TO RENAME ALL THAT SHIT */
+    /* ************************************************ */
+    /* Setters and Updaters */
+    /* ************************************************ */
     public void GetLife(int heal){
         transform.Find("UI").Find("HeartsHealthUI").GetComponent<HeartsHealthUI>().heartsHealthSystem.Heal(heal);
     }
@@ -57,5 +62,12 @@ public class Player : MonoBehaviour
         if (bigKey == false)
             return (false);
         return (true);
+    }
+
+    /* ************************************************ */
+    /* Getters */
+    /* ************************************************ */
+    public int GetStrength(){
+        return strength;
     }
 }

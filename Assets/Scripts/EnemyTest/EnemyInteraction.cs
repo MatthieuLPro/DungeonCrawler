@@ -8,7 +8,7 @@ public class EnemyInteraction : MonoBehaviour
     [SerializeField]
     private bool _isInvincible;
     [SerializeField]
-    private float invincibleTime = .5f;
+    private float _invincibleTime = .5f;
 
     /* Parent components */
     private GameObject      _parent;
@@ -42,70 +42,83 @@ public class EnemyInteraction : MonoBehaviour
         if (_isKnock || _isInvincible)
             return;
 
-        StartCoroutine(KnockCo(other.gameObject));
-        StartCoroutine(InvincibleCo(other.gameObject));
+        StartCoroutine(_KnockBackTimeCo(other.gameObject));
+        StartCoroutine(_InvincibleTimeCo());
     }
 
     /* ************************************************ */
     /* Parameters functions */
     /* ************************************************ */
     /* KnockBack */
-    private void KnockToggleParam()
+
+    /* If attack begin => enemy is knock */
+    /* Else => enemy is not knock */
+    // Vitesse mise à zero, seule la nouvelle force compte
+    /* If attack begin => enemy becomes invincible */
+    /* Else => enemy becomes vulnerable */
+
+    private void KnockToggleParam(bool value)
     {
-        // Rentrer en contact avec un enemy
-        _isKnock                = !_isKnock;
-
-        // Vitesse mise à zero, seule la nouvelle force compte
-        _rb2d.velocity          = Vector2.zero;
-
-        if (_rb2d.bodyType == RigidbodyType2D.Kinematic)
-            _rb2d.bodyType = RigidbodyType2D.Dynamic;
-        else
-            _rb2d.bodyType = RigidbodyType2D.Kinematic;
+        _SetEnemyIsKnock(value);
+        _SetVelocityToZero();
+        _SetEnemyInvincible(value);
     }
 
-    private void InvincibleParam()
+    /* ************************************************ */
+    /* Setters & toggle functions */
+    /* ************************************************ */
+    private void _SetEnemyIsKnock(bool value){
+        _isKnock = value;
+    }
+
+    private void _SetVelocityToZero(){
+        _rb2d.velocity = Vector2.zero;
+    }
+
+    //If enemy is invincible, then collider is disabled
+    private void _SetEnemyInvincible(bool value)
     {
-        _isInvincible     = !_isInvincible;
-        _collider.enabled = !_collider.enabled;
+        _isInvincible     = value;
+        _collider.enabled = !value;
+    }
+
+    /* ************************************************ */
+    /* Apply force functions */
+    /* ************************************************ */
+    private Vector2 CalculateKnockBackDirection(Vector3 playerPosition){
+        return (_parent.transform.position - playerPosition);
+    }
+
+    private void _ApplyThrustOnEnemy(Vector3 strengthDirection){
+        _rb2d.AddForce(strengthDirection, ForceMode2D.Impulse);
     }
 
     /* ************************************************ */
     /* Coroutines */
     /* ************************************************ */
-    /* KnockBack */
-    private IEnumerator KnockCo(GameObject player)
+    /* KnockBack time */
+    private IEnumerator _KnockBackTimeCo(GameObject player)
     {
-        Vector2 directionKnock  = _parent.transform.position - player.transform.position;
-        float strength          = player.transform.parent.GetComponent<Action>().strength;
-        float knockTime         = player.transform.parent.GetComponent<Action>().knockBackTime;
-        
-        KnockToggleParam();
-        
-        // Application de la nouvelle force
-        _rb2d.AddForce(directionKnock * strength, ForceMode2D.Impulse);
-        _parent.transform.GetChild(2).GetComponent<AudioManager>().CallAudio("hurt");
+        Vector2 directionKnock  = CalculateKnockBackDirection(player.transform.position);
+        Action playerAction = player.transform.parent.GetComponent<Action>();
 
-        yield return new WaitForSeconds(knockTime);
+        KnockToggleParam(true);
 
-        _parent.GetComponent<EnemyTest>().ManageLife();
-        KnockToggleParam();
+        _ApplyThrustOnEnemy(directionKnock * playerAction.GetThrust());        
+        _CallHurt();
+
+        yield return new WaitForSeconds(playerAction.GetKnockBackTime());
+
+        _parent.GetComponent<EnemyTest>().ManageLife(playerAction.GetStrength());
     }
 
-    /* Invincible (post knockback) */
-    private IEnumerator InvincibleCo(GameObject player)
+    /* Invincible time */
+    private IEnumerator _InvincibleTimeCo()
     {
-        float knockTime = player.transform.parent.GetComponent<Action>().knockBackTime;
-
-        // Impossible de rentrer a nouveau en contact avec un enemy
-        InvincibleParam();
-
-        yield return new WaitForSeconds(knockTime);
-
         float time         = .0f;
         Color regularColor = _sprite.color;
 
-        while(time < invincibleTime)
+        while(time < _invincibleTime)
         {
             _sprite.color = new Color(1f,1f,1f,0f);
             yield return new WaitForSeconds(0.02f);
@@ -118,6 +131,13 @@ public class EnemyInteraction : MonoBehaviour
 
         _sprite.color = regularColor;
 
-        InvincibleParam();
+        KnockToggleParam(false);
+    }
+    /* ************************************************ */
+    /* Audio */
+    /* ************************************************ */
+    /* Hurt */
+    private void _CallHurt(){
+        _parent.transform.GetChild(2).GetComponent<AudioManager>().CallAudio("hurt");
     }
 }

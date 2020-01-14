@@ -10,17 +10,18 @@ public class EnemyTest : MonoBehaviour
     public bool  attackTypeMagic;
     public bool  attackTypePhysic;
     public float knockBackTime;
-    public float strength;
+    public int strength;
+    public float thrust;
     public int   life;
 
-    public void ManageLife(){
-        UpdateLife();
+    public void ManageLife(int damage){
+        UpdateLife(damage);
         VerifyLife();
     }
 
     /* Add damage depending of player str */
-    private void UpdateLife(){
-        life -= 1;
+    private void UpdateLife(int damage){
+        life -= damage;
     }
 
     private void VerifyLife()
@@ -38,5 +39,28 @@ public class EnemyTest : MonoBehaviour
 
         Destroy(gameObject);
     }
+
+    /* ************************************************ */
+    /* Getter */
+    /* ************************************************ */
+    public int GetStrength(){
+        return strength;
+    }
+
+    public float GetThrust(){
+        return thrust;
+    }
+
+    public float GetKnockBackTime(){
+        return knockBackTime;
+    }
+
+    public bool GetAttackTypePhysic(){
+        return attackTypePhysic;
+    }    
+
+    public bool GetAttackTypeMagic(){
+        return attackTypeMagic;
+    }    
 
 }

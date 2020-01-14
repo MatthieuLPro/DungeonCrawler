@@ -62,76 +62,118 @@ public class TestInteractionGlobal : MonoBehaviour
         if (_isKnock || _isInvincible)
             return;
 
-        DamageFromEnemyParam(enemy.GetComponent<EnemyTest>());
-        StartCoroutine(KnockCo(enemy));
-        StartCoroutine(InvincibleCo(enemy));
+        _ApplyDamageFromEnemy(enemy.GetComponent<EnemyTest>(), _parent.transform.parent.GetComponent<Player>());
+        StartCoroutine(_KnockBackTimeCo(enemy));
+        StartCoroutine(_InvincibleTimeCo());
     }
-
+    
     /* ************************************************ */
     /* Parameters functions */
     /* ************************************************ */
     /* KnockBack */
-    private void KnockToggleParam()
+
+    /* If attack begin => enemy is knock */
+    /* Else => enemy is not knock */
+    // Vitesse mise à zero, seule la nouvelle force compte
+    /* If attack begin => enemy becomes invincible */
+    /* Else => enemy becomes vulnerable */
+
+    private void KnockToggleParam(bool value)
     {
-        // Rentrer en contact avec un enemy
-        _isKnock                = !_isKnock;
+        _SetPlayerIsKnock(value);
+        _SetVelocityToZero();
+        _SetPlayerInvincible(value);
+    }
 
-        // Bouger pendant l'animation knockBack
-        _movement.blockMovement = !_movement.blockMovement;
+    private void _BlockMovement(bool value)
+    {
+        _SetBlockPlayerMovement(value);
+        _SetPlayerStateMachine();
+        AnimationKnockBack();
+    }
 
-        // Vitesse mise à zero, seule la nouvelle force compte
-        _rb2d.velocity          = Vector2.zero;
-        
-        // Nouvelle etat machine personnage
+    /* ************************************************ */
+    /* Setters & toggle functions */
+    /* ************************************************ */
+    private void _SetPlayerIsKnock(bool value){
+        _isKnock = value;
+    }
+
+    private void _SetVelocityToZero(){
+        _rb2d.velocity = Vector2.zero;
+    }
+
+    //If enemy is invincible, then collider is disabled
+    private void _SetPlayerInvincible(bool value)
+    {
+        _isInvincible     = value;
+        _collider.enabled = !value;
+    }
+
+    private void _SetPlayerStateMachine()
+    {
         if (_movement.currentState == TestObjectState.knock)
             _movement.currentState = TestObjectState.idle;
         else
             _movement.currentState = TestObjectState.knock;
-
-        AnimationKnockBack();
     }
 
-    private void InvincibleToggleParam()
-    {
-        _isInvincible     = !_isInvincible;
-        _collider.enabled = !_collider.enabled;
+    private void _SetBlockPlayerMovement(bool value){
+        _movement.blockMovement = value;
     }
 
-    private void DamageFromEnemyParam(EnemyTest enemyParam)
+    /* ************************************************ */
+    /* Apply damages on player functions */
+    /* ************************************************ */
+    private void _ApplyDamageFromEnemy(EnemyTest enemy, Player player)
     {
-        if (enemyParam.attackTypeMagic)
-            _parent.transform.parent.GetComponent<Player>().LooseMana(1);
-        if (enemyParam.attackTypePhysic)
-            _parent.transform.parent.GetComponent<Player>().LooseLife(1);
+        if (enemy.GetAttackTypePhysic())
+            player.LooseMana(enemy.GetStrength());
+        if (enemy.attackTypePhysic)
+            player.LooseLife(enemy.GetStrength());
+    }
+
+    private void _PhysicalDamageFromEnemy(Player player, int strength){
+        player.LooseLife(strength);
+    }
+
+    private void _MagicalDamageFromEnemy(Player player, int strength){
+        player.LooseMana(strength);
+    }
+
+    /* ************************************************ */
+    /* Apply force functions */
+    /* ************************************************ */
+    private Vector2 CalculateKnockBackDirection(Vector3 enemyPosition){
+        return (_parent.transform.position - enemyPosition);
+    }
+
+    private void _ApplyThrustOnPlayer(Vector3 strengthDirection){
+        _rb2d.AddForce(strengthDirection, ForceMode2D.Impulse);
     }
 
     /* ************************************************ */
     /* Coroutines */
     /* ************************************************ */
     /* KnockBack */
-    private IEnumerator KnockCo(GameObject enemy)
+    private IEnumerator _KnockBackTimeCo(GameObject enemy)
     {
         // Get Direction of knockback
-        Vector2 directionKnock  = _parent.transform.position - enemy.transform.position;
+        Vector2 directionKnock  = CalculateKnockBackDirection(enemy.transform.position);
+        EnemyTest enemyTest     = enemy.GetComponent<EnemyTest>();
         
-        KnockToggleParam();
+        KnockToggleParam(true);
+        _BlockMovement(true);
         
         // Application de la nouvelle force
-        _rb2d.AddForce(directionKnock * enemy.GetComponent<EnemyTest>().strength, ForceMode2D.Impulse);
-        _parent.transform.parent.Find("Audio").GetComponent<AudioManager>().CallAudio("hurt");
-        yield return new WaitForSeconds(enemy.GetComponent<EnemyTest>().knockBackTime);
-
-        KnockToggleParam();
+        _ApplyThrustOnPlayer(directionKnock * enemyTest.GetThrust());
+        _CallHurt();
+        yield return new WaitForSeconds(enemyTest.GetKnockBackTime());
+        _BlockMovement(false);
     }
 
-    /* Invincible (post knockback) */
-    private IEnumerator InvincibleCo(GameObject enemy)
+    private IEnumerator _InvincibleTimeCo()
     {
-        // Impossible de rentrer a nouveau en contact avec un enemy
-        InvincibleToggleParam();
-
-        yield return new WaitForSeconds(enemy.GetComponent<EnemyTest>().knockBackTime);
-
         float time         = .0f;
         Color regularColor = _sprite.color;
 
@@ -147,7 +189,7 @@ public class TestInteractionGlobal : MonoBehaviour
 
         _sprite.color = regularColor;
 
-        InvincibleToggleParam();
+        KnockToggleParam(false);
     }
 
     /* ************************************************ */
@@ -160,5 +202,13 @@ public class TestInteractionGlobal : MonoBehaviour
             _anime.SetBool("Moving", false);
 
         _anime.SetBool("KnockBacking", !_anime.GetBool("KnockBacking"));
+    }
+
+    /* ************************************************ */
+    /* Audio */
+    /* ************************************************ */
+    /* Hurt */
+    private void _CallHurt(){
+        _parent.transform.parent.Find("Audio").GetComponent<AudioManager>().CallAudio("hurt");
     }
 }
