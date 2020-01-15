@@ -11,44 +11,114 @@ public class Enemy : MonoBehaviour
     private int  _mana       = 0;
     public bool isInvincible = false;
 
+    private EnemyState _actualState;
+
     private int _actualHealth;
     private int _actualMana;
 
-    void Start(){
-        _actualHealth = _health;
-        _actualMana = _mana;
+    public enum EnemyState {
+        idle,
+        move,
+        knockBack,
+        ko
+    }
+
+    void Start()
+    {
+        _actualHealth   = _health;
+        _actualMana     = _mana;
+        _actualState    = EnemyState.idle;
     }
 
     /* ************************************************ */
-    /* Change enemy values */
+    /* Public Functions */
     /* ************************************************ */
-    public void ChangeHealth(int value){
-        if (_actualHealth + value > _health)
-            _actualHealth = _health;
-        else
-            _actualHealth += value;
-        IsDead();
+    public void DamageHealth(int value)
+    {
+        _UpdateData(_actualHealth, value * -1);
+
+        if (_IsDead())
+            _LaunchDeathEffect();
     }
 
-    public void ChangeMana(int value){
-        if(_actualMana + value > _mana)
-            _actualMana = _mana;
-        else if (_actualMana + value < 0)
-            _actualMana = 0;
-        else
-            _actualMana += value;
+    public void HealLife(int value){
+        _UpdateData(_actualHealth, value);
     }
 
-    public void IsDead(){
-        if (_actualHealth <= 0)
-            StartCoroutine(AnimationDeath());
+    public void DamageMana(int value){
+        _UpdateData(_actualMana, value * -1);
+    }
+
+    public void HealMana(int value){
+        _UpdateData(_actualMana, value);
+    }
+
+    private void _LaunchDeathEffect(){
+        StartCoroutine(_AnimationDeath());
+    }
+
+    /* ************************************************ */
+    /* Updatter */
+    /* ************************************************ */
+    private void _UpdateData(int variable, int value){
+        variable += value;
+    }
+
+    /* ************************************************ */
+    /* Setter */
+    /* ************************************************ */
+    public void SetState(string state)
+    {
+        switch (state)
+        {
+            case "idle":
+                _actualState = EnemyState.idle;
+                break;
+            case "move":
+                _actualState = EnemyState.move;
+                break;
+            case "knockBack":
+                _actualState = EnemyState.knockBack;
+                break;
+            case "ko":
+                _actualState = EnemyState.ko;
+                break;
+            default:
+                _actualState = EnemyState.idle;
+                break;
+        }
+    }
+
+    /* ************************************************ */
+    /* Getter */
+    /* ************************************************ */
+    public int GetHealth(){
+        return _actualHealth;
+    }
+    public int GetMana(){
+        return _actualMana;
+    }
+
+    public EnemyState GetState(){
+        return _actualState;
+    }
+
+    /* ************************************************ */
+    /* Question */
+    /* ************************************************ */
+    public bool IsInvincible(){
+        return isInvincible;
+    }
+
+    private bool _IsDead(){
+        return (_actualState <= 0);
     }
 
     /* ************************************************ */
     /* Coroutines */
     /* ************************************************ */
 
-    private IEnumerator AnimationDeath()
+    private IEnumerator _AnimationDeath()
     {
         GetComponent<Animator>().SetBool("Ko", true);
         yield return new WaitForSeconds(.59f);
