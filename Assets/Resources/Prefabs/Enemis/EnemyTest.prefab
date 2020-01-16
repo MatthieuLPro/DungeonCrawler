@@ -329,12 +329,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a861ffe22e4157748cdb6002db7412d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackTypeMagic: 0
-  attackTypePhysic: 1
-  knockBackTime: 0.25
-  strength: 1
-  thrust: 7
-  life: 1
+  _maxHealth: 1
+  _maxMana: 0
+  _strength: 1
+  _thrust: 3
+  _knockBackTime: 0.2
+  _attackTypeMagic: 0
+  _attackTypePhysic: 1
 --- !u!212 &4995763900489442682
 SpriteRenderer:
   m_ObjectHideFlags: 0

@@ -127,10 +127,10 @@ public class TestInteractionGlobal : MonoBehaviour
     /* ************************************************ */
     private void _ApplyDamageFromEnemy(EnemyTest enemy, Player player)
     {
-        if (enemy.GetAttackTypePhysic())
-            player.LooseMana(enemy.GetStrength());
-        if (enemy.attackTypePhysic)
-            player.LooseLife(enemy.GetStrength());
+        if (enemy.AttackTypeMagic)
+            player.LooseMana(enemy.Strength);
+        if (enemy.AttackTypePhysic)
+            player.LooseLife(enemy.Strength);
     }
 
     private void _PhysicalDamageFromEnemy(Player player, int strength){
@@ -166,9 +166,9 @@ public class TestInteractionGlobal : MonoBehaviour
         _BlockMovement(true);
         
         // Application de la nouvelle force
-        _ApplyThrustOnPlayer(directionKnock * enemyTest.GetThrust());
+        _ApplyThrustOnPlayer(directionKnock * enemyTest.Thrust);
         _CallHurt();
-        yield return new WaitForSeconds(enemyTest.GetKnockBackTime());
+        yield return new WaitForSeconds(enemyTest.KnockBackTime);
         _BlockMovement(false);
     }
 

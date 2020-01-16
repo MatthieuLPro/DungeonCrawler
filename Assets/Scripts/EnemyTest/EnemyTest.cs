@@ -5,22 +5,27 @@ using UnityEngine;
 public class EnemyTest : MonoBehaviour
 {
     /* ////////////////// */
-    // Alphabetical Order
+    // Enemy Characteristics
     /* ////////////////// */
     [Header("Health & Mana")]
-    public int maxHealth;
-    public int maxMana;
+    [SerializeField]
+    private int _maxHealth;
+    [SerializeField]
+    private int _maxMana;
 
     [Header("Attack interaction")]
-    public bool  attackTypeMagic;
-    public bool  attackTypePhysic;
-    public float knockBackTime;
-    public int strength;
-    public float thrust;
+    [SerializeField]
+    private int _strength;
+    [SerializeField]
+    private float _thrust;
+    [SerializeField]
+    private float _knockBackTime;
+    [SerializeField]
+    private bool _attackTypeMagic;
+    [SerializeField]
+    private bool _attackTypePhysic;
 
-    private int _actualHealth;
-    private int _actualMana;
-
+    /* Enemy State machine */
     public enum EnemyState {
         idle,
         move,
@@ -28,14 +33,17 @@ public class EnemyTest : MonoBehaviour
         ko
     }
 
+    /* Actual situation */
     private EnemyState _actualState;
+    [SerializeField]
+    private int _actualHealth;
+    private int _actualMana;
 
     void Start()
     {
-        _actualHealth    = maxHealth;
-        _actualMana      = maxMana;
-        _actualState           = EnemyState.idle;
-
+        _actualHealth    = _maxHealth;
+        _actualMana      = _maxMana;
+        _actualState     = EnemyState.idle;
     }
 
     /* ************************************************ */
@@ -43,36 +51,29 @@ public class EnemyTest : MonoBehaviour
     /* ************************************************ */  
     public void DamageHealth(int value)
     {
-        _UpdateData(_actualHealth, value * -1);
-
+        _actualHealth -= value;
         if (_IsDead())
             _AnimationDeath();
     }
   
     public void Healhealth(int value)
     {
-        _UpdateData(_actualHealth, value);
-        _UpdateForLimits(_actualHealth, maxHealth);
+        _actualHealth += value;
+        _UpdateForLimits(ref _actualHealth, _maxHealth);
     }
 
     public void DamageMana(int value){
-        _UpdateData(_actualMana, value * -1);
+        _actualMana -= value;
+        _UpdateForLimits(ref _actualMana, _maxMana);
     }
 
     public void HealMana(int value)
     {
-        _UpdateData(_actualMana, value);
-        _UpdateForLimits(_actualMana, maxMana);
+        _actualMana += value;
+        _UpdateForLimits(ref _actualMana, _maxMana);
     }
-
-    /* ************************************************ */
-    /* Updatter */
-    /* ************************************************ */
-    private void _UpdateData(int variable, int value){
-        variable += value;
-    }
-
-    private void _UpdateForLimits(int variable, int limit)
+    
+    private void _UpdateForLimits(ref int variable, int limit)
     {
         if (variable > limit)
             variable = limit;
@@ -107,45 +108,19 @@ public class EnemyTest : MonoBehaviour
     }
 
     /* ************************************************ */
-    /* Getter */
+    /* Getter & Setter */
     /* ************************************************ */
-    public int GetActualHealth(){
-        return _actualHealth;
-    }
-    public int GetActualMana(){
-        return _actualMana;
-    }
-
-    public int GetMaxHealth(){
-        return maxHealth;
-    }
-    public int GetMaxMana(){
-        return maxMana;
-    }
-
-    public EnemyState GetState(){
-        return _actualState;
-    }
-
-    public int GetStrength(){
-        return strength;
-    }
-
-    public float GetThrust(){
-        return thrust;
-    }
-
-    public float GetKnockBackTime(){
-        return knockBackTime;
-    }
-
-    public bool GetAttackTypePhysic(){
-        return attackTypePhysic;
-    }    
-
-    public bool GetAttackTypeMagic(){
-        return attackTypeMagic;
-    }
+    /* if value < 0 => damage else heal */
+    public int ActualHealth { get; }
+    public int ActualMana { get; }
+    public int MaxHealth { get; }
+    public int MaxMana { get; }
+    public EnemyState ActualState { get; }
+    public float KnockBackTime { get; }
+    public int Strength { get; }
+    public float Thrust { get; }
+    public bool AttackTypeMagic { get; }
+    public bool AttackTypePhysic { get; }
 
     /* ************************************************ */
     /* Question */
