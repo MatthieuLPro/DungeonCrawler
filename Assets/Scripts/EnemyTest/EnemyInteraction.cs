@@ -109,7 +109,7 @@ public class EnemyInteraction : MonoBehaviour
 
         yield return new WaitForSeconds(playerAction.GetKnockBackTime());
 
-        _parent.GetComponent<EnemyTest>().DamageHealth(playerAction.GetStrength());
+        _parent.GetComponent<EnemyTest>().ActualHealth = (playerAction.GetStrength() * -1);
     }
 
     /* Invincible time */

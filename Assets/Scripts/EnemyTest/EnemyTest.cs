@@ -10,8 +10,6 @@ public class EnemyTest : MonoBehaviour
     [Header("Health & Mana")]
     [SerializeField]
     private int _maxHealth;
-    [SerializeField]
-    private int _maxMana;
 
     [Header("Attack interaction")]
     [SerializeField]
@@ -35,95 +33,75 @@ public class EnemyTest : MonoBehaviour
 
     /* Actual situation */
     private EnemyState _actualState;
-    [SerializeField]
     private int _actualHealth;
-    private int _actualMana;
 
-    void Start()
+    private void Start()
     {
         _actualHealth    = _maxHealth;
-        _actualMana      = _maxMana;
         _actualState     = EnemyState.idle;
     }
 
     /* ************************************************ */
-    /* Public functions */
+    /* Update functions */
     /* ************************************************ */  
-    public void DamageHealth(int value)
-    {
-        _actualHealth -= value;
-        if (_IsDead())
-            _AnimationDeath();
-    }
-  
-    public void Healhealth(int value)
-    {
-        _actualHealth += value;
-        _UpdateForLimits(ref _actualHealth, _maxHealth);
-    }
-
-    public void DamageMana(int value){
-        _actualMana -= value;
-        _UpdateForLimits(ref _actualMana, _maxMana);
-    }
-
-    public void HealMana(int value)
-    {
-        _actualMana += value;
-        _UpdateForLimits(ref _actualMana, _maxMana);
-    }
-    
-    private void _UpdateForLimits(ref int variable, int limit)
+    private int _UpdateForLimits(int variable, int limit)
     {
         if (variable > limit)
-            variable = limit;
+            return limit;
 
         if (variable < 0)
-            variable = 0;
+            return 0;
+
+        return variable;
     }
 
-    /* ************************************************ */
-    /* Setter */
-    /* ************************************************ */
-    public void SetState(string state)
+    private EnemyState _GetState(string state)
     {
         switch (state)
         {
             case "idle":
-                _actualState = EnemyState.idle;
-                break;
+                return EnemyState.idle;
             case "move":
-                _actualState = EnemyState.move;
-                break;
+                return EnemyState.move;
             case "knockBack":
-                _actualState = EnemyState.knockBack;
-                break;
+                return EnemyState.knockBack;
             case "ko":
-                _actualState = EnemyState.ko;
-                break;
+                return EnemyState.ko;
             default:
-                _actualState = EnemyState.idle;
-                break;
+                return EnemyState.idle;
         }
     }
 
     /* ************************************************ */
     /* Getter & Setter */
     /* ************************************************ */
+
     /* if value < 0 => damage else heal */
-    public int ActualHealth { get; }
-    public int ActualMana { get; }
-    public int MaxHealth { get; }
-    public int MaxMana { get; }
-    public EnemyState ActualState { get; }
-    public float KnockBackTime { get; }
-    public int Strength { get; }
-    public float Thrust { get; }
-    public bool AttackTypeMagic { get; }
-    public bool AttackTypePhysic { get; }
+    public int ActualHealth { 
+        get { return _actualHealth; } 
+        set {
+            _actualHealth += value;
+            _actualHealth = _UpdateForLimits(_actualHealth, _maxHealth); 
+            
+            if (_IsDead())
+                Destroy(gameObject);
+        }
+    }
+
+    public EnemyState ActualState {
+        get { return _actualState; }
+        set { _actualState = _GetState(value.ToString()); }
+    }
+
+    public int MaxHealth            { get; }
+    public float KnockBackTime      { get; }
+    public int Strength             { get; }
+    public float Thrust             { get; }
+    public bool AttackTypeMagic     { get; }
+    public bool AttackTypePhysic    { get; }
 
     /* ************************************************ */
-    /* Question */
+    /* Predicate */
     /* ************************************************ */
     private bool _IsDead(){
         return (_actualHealth <= 0);
