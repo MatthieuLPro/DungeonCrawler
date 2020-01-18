@@ -2,124 +2,74 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyTest : MonoBehaviour
+public class EnemyTest : MonoBehaviour, IEnemy, IKillable, IDamageable
 {
-    /* ////////////////// */
-    // Enemy Characteristics
-    /* ////////////////// */
-    [Header("Health & Mana")]
-    [SerializeField]
-    private int _maxHealth;
+    /* Enemy components */
+    private Enemy _enemyComponent;
+    private Killable _killableComponent;
+    private Damageable _damageableComponent;
 
-    [Header("Attack interaction")]
-    [SerializeField]
-    private int _strength;
-    [SerializeField]
-    private float _thrust;
-    [SerializeField]
-    private float _knockBackTime;
-    [SerializeField]
-    private bool _attackTypeMagic;
-    [SerializeField]
-    private bool _attackTypePhysic;
+    /* Initial enemis values */
+    [Header("Damageable component")]
+    public int maxHealth;
 
-    /* Enemy State machine */
-    public enum EnemyState {
-        idle,
-        move,
-        knockBack,
-        ko
-    }
-
-    /* Actual situation */
-    private EnemyState _actualState;
-    private int _actualHealth;
+    [Header("Enemy component")]
+    public int strength;
+    public float thrust;
+    public float knockBackTime;
+    public bool attackTypeMagic;
+    public bool attackTypePhysic;
 
     private void Start()
     {
-        _actualHealth    = _maxHealth;
-        _actualState     = EnemyState.idle;
+        _enemyComponent         = new Enemy(strength, thrust, knockBackTime, attackTypeMagic, attackTypePhysic);
+        _killableComponent      = new Killable();
+        _damageableComponent    = new Damageable(maxHealth);
     }
 
     /* ************************************************ */
-    /* Update functions */
-    /* ************************************************ */  
-    private int _UpdateForLimits(int variable, int limit)
-    {
-        if (variable > limit)
-            return limit;
-
-        if (variable < 0)
-            return 0;
-
-        return variable;
+    /* Enemy component */
+    /* ************************************************ */
+    public EnemyStateBis GetState(string state){
+        return _enemyComponent.GetState(state);
     }
 
-    private EnemyState _GetState(string state)
-    {
-        switch (state)
-        {
-            case "idle":
-                return EnemyState.idle;
-            case "move":
-                return EnemyState.move;
-            case "knockBack":
-                return EnemyState.knockBack;
-            case "ko":
-                return EnemyState.ko;
-            default:
-                return EnemyState.idle;
-        }
-    }
+    public EnemyStateBis ActualState    { get; set; }
+    public int MaxHealth                { get; }
+    public float KnockBackTime          { get; }
+    public int Strength                 { get; }
+    public float Thrust                 { get; }
+    public bool AttackTypeMagic         { get; }
+    public bool AttackTypePhysic        { get; }
 
     /* ************************************************ */
-    /* Getter & Setter */
+    /* Damageable component */
     /* ************************************************ */
-
-    /* if value < 0 => damage else heal */
     public int ActualHealth { 
-        get { return _actualHealth; } 
+        get { return _damageableComponent.ActualHealth; } 
         set {
-            _actualHealth += value;
-            _actualHealth = _UpdateForLimits(_actualHealth, _maxHealth); 
-            
-            if (_IsDead())
-                Destroy(gameObject);
+            _damageableComponent.ActualHealth = value;
+            if(_killableComponent.IsDead(_damageableComponent.ActualHealth))
+                _killableComponent.AnimationDead(gameObject);
         }
     }
 
-    public EnemyState ActualState {
-        get { return _actualState; }
-        set { _actualState = _GetState(value.ToString()); }
+    public int GetNewValue(int actualHealth, int value){
+        return (_damageableComponent.GetNewValue(actualHealth, value));
     }
 
-    public int MaxHealth            { get; }
-    public float KnockBackTime      { get; }
-    public int Strength             { get; }
-    public float Thrust             { get; }
-    public bool AttackTypeMagic     { get; }
-    public bool AttackTypePhysic    { get; }
-
-    /* ************************************************ */
-    /* Predicate */
-    /* ************************************************ */
-    private bool _IsDead(){
-        return (_actualHealth <= 0);
+    public int GetValueFromLimits(int variable, int limit){
+        return (_damageableComponent.GetValueFromLimits(variable, limit));
     }
 
     /* ************************************************ */
-    /* Coroutines */
+    /* Killable component */
     /* ************************************************ */
+    public bool IsDead(int actualHealth){
+        return (_killableComponent.IsDead(actualHealth));
+    }
 
-    private IEnumerator _AnimationDeath()
-    {
-        GetComponent<Animator>().SetBool("Ko", true);
-
-        transform.GetChild(1).GetComponent<BoxCollider2D>().enabled = false;
-        transform.GetChild(2).GetComponent<AudioManager>().CallAudio("Ko");
-
-        yield return new WaitForSeconds(.59f);
-
-        Destroy(gameObject); 
+    public void AnimationDead(GameObject enemyObject){
+        _killableComponent.AnimationDead(enemyObject);
     }
 }

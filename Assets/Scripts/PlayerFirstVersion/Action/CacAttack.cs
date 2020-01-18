@@ -36,14 +36,14 @@ public class CacAttack : MonoBehaviour
                 return;
             }
 
-            if (enemy.GetComponent<Enemy>().isInvincible){
+            if (enemy.GetComponent<EnemyBis>().isInvincible){
                 return;
             }
 
             Vector2 difference = enemy.transform.position - transform.position;
             difference = difference.normalized * _thrust;
             ChangeEnemyState(enemy);
-            enemy.GetComponent<Enemy>().DamageHealth(-1);
+            enemy.GetComponent<EnemyBis>().DamageHealth(-1);
             enemyRb2d.AddForce(difference, ForceMode2D.Impulse);
             StartCoroutine((KnockCo(enemy)));
         }
@@ -56,7 +56,7 @@ public class CacAttack : MonoBehaviour
         enemy.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
         ChangeEnemyState(enemy);
         _coIsRunning = false;
-        enemy.GetComponent<Enemy>().DamageHealth(_damage);
+        enemy.GetComponent<EnemyBis>().DamageHealth(_damage);
     }
 
     private void ChangeEnemyState(GameObject enemy){
