@@ -49,8 +49,8 @@ public class EnemyTest : MonoBehaviour, IEnemy, IKillable, IDamageable
         get { return _damageableComponent.ActualHealth; } 
         set {
             _damageableComponent.ActualHealth = value;
-            if(_killableComponent.IsDead(_damageableComponent.ActualHealth))
-                _killableComponent.AnimationDead(gameObject);
+            if(IsDead(_damageableComponent.ActualHealth))
+                AnimationDead(gameObject);
         }
     }
 
