@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class ConsequenceKnockBack : MonoBehaviour, IConsequenceKnockBack
 {
-    public void ConsequenceKnockBack();
-
     public void CallKnockBack(GameObject user, Vector2 directionKnock, float thrust, float knockBackTime){
         StartCoroutine(_KnockBackTimeCo(user, directionKnock, thrust, knockBackTime));
     }

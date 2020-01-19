@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class ConsequenceDamage : MonoBehaviour, IConsequenceDamage
 {
-    public ConsequenceDamage();
-
     // Change Enemy into universal object
     public void DamageOnObject(Enemy enemy, float strength){
         _enemy.ActualHealth = strength * -1;
