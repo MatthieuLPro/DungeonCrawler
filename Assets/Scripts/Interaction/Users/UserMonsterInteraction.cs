@@ -16,7 +16,7 @@ public class UserMonsterInteraction : MonoBehaviour, IUserMonsterInteraction
 
     public UserMonsterInteraction(bool sensibleKnockBack, bool alwaysInvincible, float invincibleTime)
     {
-        _parent   = transform.parent;
+        _parent   = transform.parent.gameObject;
         _collider = GetComponent<BoxCollider2D>();
 
         _sensibleKnockBack  = sensibleKnockBack;
