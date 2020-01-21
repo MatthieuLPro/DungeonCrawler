@@ -5,8 +5,8 @@ using UnityEngine;
 public class ConsequenceDamage : MonoBehaviour, IConsequenceDamage
 {
     // Change Enemy into universal object
-    public void DamageOnObject(Enemy enemy, float strength){
-        _enemy.ActualHealth = strength * -1;
+    /*public void DamageOnObject(Enemy enemy, float strength){
+        enemy.ActualHealth = strength * -1;
     }
 
     public void CallInvincibleTime(GameObject user, SpriteRenderer sprite, float invincibleTime){
@@ -32,5 +32,5 @@ public class ConsequenceDamage : MonoBehaviour, IConsequenceDamage
         sprite.color = regularColor;
 
         user.GetComponent<UserMonsterInteraction>().KnockToggleParam(false);
-    }
+    }*/
 }

@@ -5,6 +5,6 @@ using UnityEngine;
 public interface IConsequenceDamage
 {
     // Change Enemy into universal object
-    void DamageOnObject(Enemy enemy, float strength);
-    void CallInvincibleTime(GameObject user, SpriteRenderer sprite, float invincibleTime);
+    // void DamageOnObject(Enemy enemy, float strength);
+    // void CallInvincibleTime(GameObject user, SpriteRenderer sprite, float invincibleTime);
 }

@@ -4,5 +4,5 @@ using UnityEngine;
 
 public interface IUserMonsterInteraction
 {
-    void InteractionWithAttack(Collider2D collider);
+    // void InteractionWithAttack(Collider2D collider);
 }

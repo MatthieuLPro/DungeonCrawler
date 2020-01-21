@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class UserMonsterInteraction : MonoBehaviour, IUserMonsterInteraction
 {
-    private bool _isKnock;
+    /*private bool _isKnock;
     private bool _sensibleKnockBack;
 
     private bool _isInvincible;
@@ -39,7 +39,7 @@ public class UserMonsterInteraction : MonoBehaviour, IUserMonsterInteraction
 
         if (_sensibleKnockBack)
         {
-            Vector2 directionKnock  = CalculateKnockBackDirection(opponent.transform.position);
+            //Vector2 directionKnock  = CalculateKnockBackDirection(opponent.transform.position);
             float thrust            = opponent.transform.parent.GetComponent<Action>().GetThrust();
             float knockBackTime     = opponent.transform.parent.GetComponent<Action>().GetKnockBackTime();
 
@@ -52,12 +52,12 @@ public class UserMonsterInteraction : MonoBehaviour, IUserMonsterInteraction
             csqObject.DamageOnObject(_parent.GetComponent<Enemy>(), opponent.transform.parent.GetComponent<Action>().GetStrength());
             csqObject.CallInvincibleTime(gameObject, _parent.GetComponent<SpriteRenderer>(), _invincibleTime);
         }
-    }
+    }*/
 
     /* ************************************************ */
     /* Knock update params */
     /* ************************************************ */
-    private void KnockToggleParam(bool value)
+    /*private void KnockToggleParam(bool value)
     {
         _SetObjectIsKnock(value);
         _SetVelocityToZero();
@@ -77,7 +77,7 @@ public class UserMonsterInteraction : MonoBehaviour, IUserMonsterInteraction
     {
         _isInvincible     = value;
         _collider.enabled = !value;
-    }
+    }*/
 
     /* ************************************************ */
     /* Apply force functions */
@@ -132,7 +132,7 @@ public class UserMonsterInteraction : MonoBehaviour, IUserMonsterInteraction
     /* Audio */
     /* ************************************************ */
     /* Hurt */
-    private void _CallHurt(){
+    /*private void _CallHurt(){
         _parent.transform.GetChild(2).GetComponent<AudioManager>().CallAudio("hurt");
-    }
+    }*/
 }

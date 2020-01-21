@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ConsequenceKnockBack : MonoBehaviour, IConsequenceKnockBack
 {
-    public void CallKnockBack(GameObject user, Vector2 directionKnock, float thrust, float knockBackTime){
+    /*public void CallKnockBack(GameObject user, Vector2 directionKnock, float thrust, float knockBackTime){
         StartCoroutine(_KnockBackTimeCo(user, directionKnock, thrust, knockBackTime));
     }
 
@@ -18,16 +18,16 @@ public class ConsequenceKnockBack : MonoBehaviour, IConsequenceKnockBack
         _CallHurt();
 
         yield return new WaitForSeconds(knockBackTime);
-    }
+    }*/
 
     /* ************************************************ */
     /* Apply force functions */
     /* ************************************************ */
-    private Vector2 CalculateKnockBackDirection(Vector3 opponentPosition){
+    /*private Vector2 CalculateKnockBackDirection(Vector3 opponentPosition){
         return (_parent.transform.position - opponentPosition);
     }
 
     private void _ApplyThrustOnObject(Vector3 strengthDirection){
         _parent.GetComponent<Rigidbody2D>().AddForce(strengthDirection, ForceMode2D.Impulse);
-    }
+    }*/
 }

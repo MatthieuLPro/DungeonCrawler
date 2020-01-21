@@ -4,5 +4,5 @@ using UnityEngine;
 
 public interface IConsequenceKnockBack
 {
-    void CallKnockBack(GameObject user, Vector2 directionKnock, float thrust, float knockBackTime);
+    // void CallKnockBack(GameObject user, Vector2 directionKnock, float thrust, float knockBackTime);
 }
