@@ -77,9 +77,6 @@ abstract public class HuntDirections : NpcGeneralDirections
 
     protected float _GetDirectionVariation(float targetPositionValue, float playerColliderSize)
     {
-        Debug.Log("targetPositionValue: " + targetPositionValue);
-        Debug.Log("Comp value : " + (playerColliderSize));
-
         if (targetPositionValue > targetPositionValue + playerColliderSize)
             return -1.0f;
         else if (targetPositionValue < targetPositionValue - playerColliderSize)
