@@ -11,6 +11,12 @@ abstract public class NpcGeneralAddForces : MonoBehaviour
     public Rigidbody2D rb2d;
     private GameObject _parent;
 
+    [HideInInspector]
+    public bool isWaiting = true;
+    [HideInInspector]
+    public bool isMoving  = false;
+
+
     private void Start()
     {
         _parent = transform.parent.gameObject.transform.parent.gameObject;
