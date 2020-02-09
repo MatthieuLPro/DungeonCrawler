@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class InfiniteMovements : NpcGeneralAddForces
 {
-    override protected void AddForceMovement(){
-        MoveObject();
+    override public void AddForceMovement(Vector3 directionVariation){
+        MoveObject(directionVariation);
     }
 }

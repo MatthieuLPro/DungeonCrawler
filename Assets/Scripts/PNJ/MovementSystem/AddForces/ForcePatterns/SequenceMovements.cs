@@ -13,11 +13,11 @@ public class SequenceMovements : NpcGeneralAddForces
     private bool _isWaiting = true;
     private bool _isMoving  = false;
 
-    override protected void AddForceMovement()
+    override public void AddForceMovement(Vector3 directionVariation)
     {
         if(_waitTime == 0 || (!_isWaiting && _isMoving))
         {
-            MoveObject();
+            MoveObject(directionVariation);
             return;
         }
 

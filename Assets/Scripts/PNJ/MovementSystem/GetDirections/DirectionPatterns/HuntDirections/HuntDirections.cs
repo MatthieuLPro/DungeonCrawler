@@ -15,6 +15,15 @@ abstract public class HuntDirections : NpcGeneralDirections
     [SerializeField]
     private float _chaseLength = 0.0f;
 
+    public HuntDirections()
+    {
+        if(_chaseRadius <= 0)
+            _chaseRadius = 1;
+
+        if(_chaseLength <= 0)
+            _chaseLength = 0.05f;
+    }
+
     // Abstract method
     override protected Vector2 GetDirectionVariations()
     {
@@ -22,7 +31,12 @@ abstract public class HuntDirections : NpcGeneralDirections
         Vector2 targetPosition     = target.transform.position;
         Vector2 targetColliderSize = target.GetComponent<BoxCollider2D>().size;
 
-        if (_TargetIsTooClose(targetPosition))
+        float distance = Vector3.Distance(targetPosition, transform.position);
+
+        if (_TargetIsTooClose(distance))
+            return _SetNotMoving();
+
+        if (_TargetIsTooFar(distance))
             return _SetNotMoving();
 
         return _GetDirection(targetPosition, targetColliderSize);
@@ -36,16 +50,18 @@ abstract public class HuntDirections : NpcGeneralDirections
         // else return object
     }
 
-    // Verification direction
-    private bool _TargetIsTooClose(Vector2 targetPosition)
+    // Verification target position
+    private bool _TargetIsTooClose(float distance)
     {
-        if (_chaseRadius <= 0 || _chaseLength <= 0)
-            return false;
+        if (distance <= _chaseLength)
+            return true;
 
-        float distance = Vector3.Distance(targetPosition, transform.position);
+        return false;
+    }
 
-        if (distance < _chaseRadius ||
-            distance > _chaseLength || _chaseLength == 0)
+    private bool _TargetIsTooFar(float distance)
+    {
+        if (distance > _chaseRadius)
             return true;
 
         return false;
@@ -61,6 +77,9 @@ abstract public class HuntDirections : NpcGeneralDirections
 
     protected float _GetDirectionVariation(float targetPositionValue, float playerColliderSize)
     {
+        Debug.Log("targetPositionValue: " + targetPositionValue);
+        Debug.Log("Comp value : " + (playerColliderSize));
+
         if (targetPositionValue > targetPositionValue + playerColliderSize)
             return -1.0f;
         else if (targetPositionValue < targetPositionValue - playerColliderSize)
