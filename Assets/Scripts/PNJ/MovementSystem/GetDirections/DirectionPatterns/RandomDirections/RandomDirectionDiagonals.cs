@@ -23,10 +23,10 @@ public class RandomDirectionDiagonals : RandomDirections
     {
         int angle = (Random.Range(0, 2) == 1 ? 1 : -1);
 
-        if (changePos.x == 0)
+        if (PosVariation.x == 0)
             return angle * _movementAngle;
 
-        return -1 * changePos.x;
+        return -1 * PosVariation.x;
     }
 
     // Get angle variation on Y

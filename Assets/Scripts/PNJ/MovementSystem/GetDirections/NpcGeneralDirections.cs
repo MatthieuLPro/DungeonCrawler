@@ -4,15 +4,10 @@ using UnityEngine;
 
 abstract public class NpcGeneralDirections : MonoBehaviour
 {
-    [HideInInspector]
-    public Vector3 changePos;
-
     public Vector2 PosVariation { get; set; }
 
-    private void FixedUpdate()
-    {
+    public void UpdatePosition(){
         PosVariation = GetDirectionVariations();
-        //MainController();
     }
 
     abstract protected Vector2 GetDirectionVariations();
