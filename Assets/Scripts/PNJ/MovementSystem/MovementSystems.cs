@@ -24,7 +24,7 @@ public class MovementSystems : MonoBehaviour
 
     private void _UpdateDirection()
     {
-        if (_npcGeneralAddForce.isMoving)
+        if (_npcGeneralAddForce._IsMoving)
             return;
         
         _npcGeneralDirection.UpdatePosition();

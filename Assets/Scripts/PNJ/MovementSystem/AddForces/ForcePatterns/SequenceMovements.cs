@@ -12,7 +12,7 @@ public class SequenceMovements : NpcGeneralAddForces
 
     override public void AddForceMovement(Vector3 directionVariation)
     {
-        if(_waitTime == 0 || (!isWaiting && isMoving))
+        if(_waitTime == 0 || (!_IsWaiting && _IsMoving))
         {
             MoveObject(directionVariation);
             return;
@@ -23,9 +23,9 @@ public class SequenceMovements : NpcGeneralAddForces
 
     private void LaunchCoroutines()
     {
-        if(isWaiting && !isMoving)
+        if(_IsWaiting && !_IsMoving)
             StartCoroutine(WaitCo());
-        else if (!isWaiting && !isMoving)
+        else if (!_IsWaiting && !_IsMoving)
             StartCoroutine(MoveCo());
     }
 
@@ -35,20 +35,20 @@ public class SequenceMovements : NpcGeneralAddForces
     /* Is not moving */
     private IEnumerator WaitCo()
     {            
-        isWaiting = true;
+        _IsWaiting = true;
 
         yield return new WaitForSeconds(_waitTime);
 
-        isWaiting = false;
+        _IsWaiting = false;
     }
 
     /* Is moving */
     private IEnumerator MoveCo()
     {            
-        isMoving  = true;
+        _IsMoving  = true;
 
         yield return new WaitForSeconds(_moveTime);
 
-        isMoving  = false;
+        _IsMoving  = false;
     }
 }
