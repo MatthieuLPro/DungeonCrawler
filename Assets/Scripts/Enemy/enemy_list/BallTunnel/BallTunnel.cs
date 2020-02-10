@@ -16,7 +16,8 @@ public class BallTunnel : MonoBehaviour
 
     private bool _isHorizontal = false;
     private float _length;
-    private string _direction;
+    private int _directionX = 0;
+    private int _directionY = 0;
 
     private Vector3[] _spawnType1 = new [] { Vector3.zero, Vector3.zero, Vector3.zero };
     private Vector3[] _spawnType2 = new [] { Vector3.zero, Vector3.zero };
@@ -109,10 +110,12 @@ public class BallTunnel : MonoBehaviour
     // Generate prefab model from resource
     private void _SetPrefabModel()
     {
-        _prefab1 = Resources.Load("Prefabs/Enemis/Enemis_list/DeathBallSmall") as GameObject;
+        //_prefab1 = Resources.Load("Prefabs/Enemis/Enemis_list/DeathBallSmall") as GameObject;
+        _prefab1 = Resources.Load("Prefabs/Enemis/DtmSingleMvtTest") as GameObject;
 
         if(_differentTypes)
-            _prefab2 = Resources.Load("Prefabs/Enemis/Enemis_list/DeathBallBig") as GameObject;
+            _prefab2 = Resources.Load("Prefabs/Enemis/DtmSingleMvtTestBis") as GameObject;
+            //_prefab2 = Resources.Load("Prefabs/Enemis/Enemis_list/DeathBallBig") as GameObject;
     }
 
     // Set sorting layer name depending of level
@@ -133,16 +136,16 @@ public class BallTunnel : MonoBehaviour
         if (_isHorizontal)
         {
             if (_length > 0)
-                _direction = "right";
+                _directionX = 1;
             else
-                _direction = "left";
+                _directionX = -1;
         }
         else
         {
             if (_length > 0)
-                _direction = "top";
+                _directionY = 1;
             else
-                _direction = "down";
+                _directionY = -1;
         }
     }
     /* ************************************************ */
@@ -189,10 +192,11 @@ public class BallTunnel : MonoBehaviour
     }
 
     // Set prefab direction movement
-    private void _UpdatePrefabParams(EnemyDirection enemyDirection)
+    private void _UpdatePrefabParams(DeterminateSingleDirections enemyDirection, NpcGeneralAddForces enemySpeed)
     {
-        enemyDirection.UpdateSpeed(_prefabSpeed);
-        enemyDirection.UpdateDirection(_direction);
+        enemyDirection._DirectionX  = _directionX;
+        enemyDirection._DirectionY  = _directionY;
+        enemySpeed._Speed           = _prefabSpeed;
     }
 
     /* ************************************************ */
@@ -220,14 +224,16 @@ public class BallTunnel : MonoBehaviour
         {
             yield return new WaitForSeconds(_launchDelay);
 
-            GameObject myBall = _InstantiateNewBall();
+            GameObject myBall                           = _InstantiateNewBall();
+            DeterminateSingleDirections myBallDirection = myBall.transform.GetChild(0).transform.GetChild(0).GetComponent<DeterminateSingleDirections>();
+            NpcGeneralAddForces myBallSpeed             = myBall.transform.GetChild(0).transform.GetChild(1).GetComponent<NpcGeneralAddForces>();
 
             myBall.transform.SetParent(transform);
             myBall.layer = _layer;
             myBall.transform.GetChild(0).gameObject.layer = _layer;
             myBall.transform.GetChild(1).gameObject.layer = _layer;
             myBall.GetComponent<SpriteRenderer>().sortingLayerName = _sortingLayer;
-            _UpdatePrefabParams(myBall.transform.GetChild(0).gameObject.GetComponent<EnemyDirection>());
+            _UpdatePrefabParams(myBallDirection, myBallSpeed);
         }
     }
 }

@@ -8,13 +8,11 @@ public class RandomDirectionDiagonals : RandomDirections
     [SerializeField]
     private float _movementAngle = 0.25f;
 
-    override protected Vector2 _GetDirection()
-    {
+    override protected Vector2 _GetDirection(){
         return _GetDiagonalVariation();
     }
 
-    private Vector2 _GetDiagonalVariation()
-    {
+    private Vector2 _GetDiagonalVariation(){
         return new Vector2(_GetDiagonalXAngleVariation(), _GetDiagonalYAngleVariation());
     }
 
