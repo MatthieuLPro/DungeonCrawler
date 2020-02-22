@@ -22,6 +22,7 @@ TagManager:
   - UIInput
   - UIPanel
   - Wall
+  - Test
   layers:
   - Default
   - TransparentFX
