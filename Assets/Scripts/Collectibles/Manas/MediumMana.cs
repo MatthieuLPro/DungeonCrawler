@@ -1,6 +1,6 @@
 ﻿public class MediumMana : Manas
 {
     void Awake() {
-        heal = 20;
+        value = 20;
     }
 }

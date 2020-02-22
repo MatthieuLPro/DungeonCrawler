@@ -2,27 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-abstract public class Hearts : MonoBehaviour
+abstract public class Hearts : Collectibles
 {
     [HideInInspector]
-    public int heal = 0;
+    public int value = 0;
 
-    private void OnTriggerEnter2D(Collider2D other)
+    override public void OnTriggerEnter2D(Collider2D other)
     {
         if (!other.CompareTag("Player"))
             return;
 
-        other.transform.parent.GetComponent<Player>().GetLife(heal);
+        other.transform.parent.GetComponent<Player>().GetLife(value);
         StartCoroutine(GetObjectFindEffectCo());
-    }
-
-    private IEnumerator GetObjectFindEffectCo()
-    {
-        GetComponent<BoxCollider2D>().enabled = false;
-        GetComponent<SpriteRenderer>().enabled = false;
-        GetComponent<AudioSource>().Play();
-        yield return new WaitForSeconds(0.5f);
-        
-        Destroy(gameObject);
     }
 }

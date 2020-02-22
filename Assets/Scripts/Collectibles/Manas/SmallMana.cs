@@ -1,6 +1,6 @@
 ﻿public class SmallMana : Manas
 {
     void Awake() {
-        heal = 5;
+        value = 5;
     }
 }

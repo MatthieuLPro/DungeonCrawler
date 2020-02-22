@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SmallKeys : Keys
+public class SmallKeys : Collectibles
 {
     override public void OnTriggerEnter2D(Collider2D other)
     {

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-abstract public class Keys : MonoBehaviour
+abstract public class Collectibles : MonoBehaviour
 {
     abstract public void OnTriggerEnter2D(Collider2D other);
 

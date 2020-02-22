@@ -1,6 +1,6 @@
 ﻿public class SmallHeart : Hearts
 {
     void Awake(){
-        heal = 2;
+        value = 2;
     }
 }

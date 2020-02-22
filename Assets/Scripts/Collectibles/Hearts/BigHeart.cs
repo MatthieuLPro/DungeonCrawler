@@ -1,6 +1,6 @@
 ﻿public class BigHeart : Hearts
 {
     void Awake(){
-        heal = 99;
+        value = 99;
     }
 }
