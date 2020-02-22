@@ -21,6 +21,7 @@ TagManager:
   - UIButton
   - UIInput
   - UIPanel
+  - Wall
   layers:
   - Default
   - TransparentFX
