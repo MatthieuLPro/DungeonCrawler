@@ -37,12 +37,16 @@ public class Player : MonoBehaviour
         Destroy(GetComponent<PlayerController>());
     }
 
-    public void GetSmallKey(){
+    public void GetSmallKey()
+    {
         keys += 1;
+        transform.Find("UI").Find("SmallKeyTextUI").GetComponent<SmallKeyUI>().smallKeySystem.AddSmallKey();
     }
 
-    public void LooseSmallKey(){
+    public void LooseSmallKey()
+    {
         keys -= 1;
+        transform.Find("UI").Find("SmallKeyTextUI").GetComponent<SmallKeyUI>().smallKeySystem.RemoveSmallKey();
     }
     
     public void GetBigKey(){
