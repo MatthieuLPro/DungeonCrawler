@@ -26,7 +26,7 @@ public class RubyUI : MonoBehaviour
     public void InitRubyUI()
     {
         _ruby = _resultPlayer.GetComponent<ResultPlayer>().rubyInit;
-        GetComponent<Text>().text = _ruby.ToString();
+        GetComponent<Text>().text = _ruby.ToString("00");
         rubySystemStatic = rubySystem;
 
         rubySystem.OnDecrease += RefreshRuby;
@@ -46,7 +46,7 @@ public class RubyUI : MonoBehaviour
             {
                 _audio.Play();
                 _ruby++;
-                GetComponent<Text>().text = _ruby.ToString();
+                GetComponent<Text>().text = _ruby.ToString("00");
                 yield return new WaitForSeconds(0.07f);
             }
         }
@@ -56,7 +56,7 @@ public class RubyUI : MonoBehaviour
             {
                 _audio.Play();
                 _ruby--;
-                GetComponent<Text>().text = _ruby.ToString();
+                GetComponent<Text>().text = _ruby.ToString("00");
                 yield return new WaitForSeconds(0.07f);
 
             }

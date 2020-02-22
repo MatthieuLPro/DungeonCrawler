@@ -7,22 +7,24 @@ using UnityEngine;
 public class BigKeySystem : MonoBehaviour
 {
     private bool _bigKey;
+    public event EventHandler OnDecrease;
+    public event EventHandler OnIncrease;
 
     public BigKeySystem(bool bigKeyInit){
         _bigKey = bigKeyInit;
     }
 
-    public int GetValue(){
+    public bool GetValue(){
         return _bigKey;
     }
 
-    public void AddSmallKey()
+    public void AddBigKey()
     {
         _GetBigKey();
         OnIncrease(this, EventArgs.Empty);
     }
 
-    public void RemoveSmallKey()
+    public void RemoveBigKey()
     {
         _LooseBigKey();
         OnDecrease(this, EventArgs.Empty);

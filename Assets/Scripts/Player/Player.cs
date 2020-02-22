@@ -51,6 +51,12 @@ public class Player : MonoBehaviour
     
     public void GetBigKey(){
         bigKey = true;
+        transform.Find("UI").Find("BigKeyTextUI").GetComponent<BigKeyUI>().bigKeySystem.AddBigKey();
+    }
+
+    public void LooseBigKey(){
+        bigKey = false;
+        transform.Find("UI").Find("BigKeyTextUI").GetComponent<BigKeyUI>().bigKeySystem.RemoveBigKey();
     }
 
     // Predicate

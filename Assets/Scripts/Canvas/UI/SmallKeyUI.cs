@@ -28,7 +28,7 @@ public class SmallKeyUI : MonoBehaviour
     public void InitSmallKeyUI()
     {
         _smallKey = _player.GetComponent<Player>().keys;
-        GetComponent<Text>().text = _smallKey.ToString();
+        GetComponent<Text>().text = _smallKey.ToString("00");
         smallKeySystemStatic = smallKeySystem;
 
         smallKeySystem.OnDecrease += RefreshSmallKey;
@@ -44,22 +44,15 @@ public class SmallKeyUI : MonoBehaviour
         int systemValue = smallKeySystem.GetValue();
         if (_smallKey < systemValue)
         {
-            while(_smallKey < systemValue)
-            {
-                _smallKey++;
-                GetComponent<Text>().text = _smallKey.ToString();
-                yield return new WaitForSeconds(0.07f);
-            }
+            _smallKey++;
+            GetComponent<Text>().text = _smallKey.ToString("00");
+            yield return new WaitForSeconds(0.07f);
         }
         else
         {
-            while(_smallKey > systemValue)
-            {
-                _smallKey--;
-                GetComponent<Text>().text = _smallKey.ToString();
-                yield return new WaitForSeconds(0.07f);
-
-            }
+            _smallKey--;
+            GetComponent<Text>().text = _smallKey.ToString("00");
+            yield return new WaitForSeconds(0.07f);
         }
     }
 }

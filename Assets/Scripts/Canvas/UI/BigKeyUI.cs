@@ -17,61 +17,52 @@ public class BigKeyUI : MonoBehaviour
     [SerializeField]
     public GameObject _player;
     
-
     private void Start()
     {
-        smallKeySystem = new SmallKeySystem(_player.GetComponent<Player>().HasBigKey());
+        bigKeySystem = new BigKeySystem(_player.GetComponent<Player>().HasBigKey());
         _audio = GetComponent<AudioSource>();
         InitSmallKeyUI();
     }
 
     public void InitSmallKeyUI()
     {
-        _bigKey = _player.GetComponent<Player>().HasBigKey();
-        char value = 'X';
+        _bigKey = _HasBigKey();
+        GetComponent<Text>().text = _GetCharValue();
+        bigKeySystemStatic = bigKeySystem;
 
-        if (_bigKey)
-            value = 'O';
-        GetComponent<Text>().text = _smallKey.ToString();
-        smallKeySystemStatic = smallKeySystem;
-
-        smallKeySystem.OnDecrease += RefreshSmallKey;
-        smallKeySystem.OnIncrease += RefreshSmallKey;
+        bigKeySystem.OnDecrease += RefreshBigKey;
+        bigKeySystem.OnIncrease += RefreshBigKey;
     }
 
-    private char _GetCharValue()
-    {
-        char value = 'X';
+    private bool _HasBigKey(){
+        return _player.GetComponent<Player>().HasBigKey();
+    }
 
-        if (_bigKey) value = 'O';
+    private string _GetCharValue()
+    {
+        string value = "X";
+
+        if (_bigKey) value = "O";
         return value;
     }
 
-    private void RefreshSmallKey(object sender, System.EventArgs e){
-        StartCoroutine(SmallKeyCo());
+    private Color _GetColor()
+    {
+        Color value = Color.red;
+
+        if (_bigKey) value = Color.green;
+        return value;
     }
 
-    private IEnumerator SmallKeyCo()
-    {
-        int systemValue = smallKeySystem.GetValue();
-        if (_smallKey < systemValue)
-        {
-            while(_smallKey < systemValue)
-            {
-                _smallKey++;
-                GetComponent<Text>().text = _smallKey.ToString();
-                yield return new WaitForSeconds(0.07f);
-            }
-        }
-        else
-        {
-            while(_smallKey > systemValue)
-            {
-                _smallKey--;
-                GetComponent<Text>().text = _smallKey.ToString();
-                yield return new WaitForSeconds(0.07f);
+    private void RefreshBigKey(object sender, System.EventArgs e){
+        StartCoroutine(BigKeyCo());
+    }
 
-            }
-        }
+    private IEnumerator BigKeyCo()
+    {
+        _bigKey = _HasBigKey();
+        GetComponent<Text>().text   = _GetCharValue();
+        GetComponent<Text>().color  = _GetColor();
+        yield return new WaitForSeconds(0.07f);
     }
 }
