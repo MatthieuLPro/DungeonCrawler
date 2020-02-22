@@ -11,6 +11,8 @@ public class Door : MonoBehaviour
     public Sprite openSprite = null;
     public Sprite closeSprite = null;
 
+    private RoomReward _reward; 
+
     /*
         if _open_rule == 0
             _open_rule => RoomManager (switch or enemies)
@@ -18,6 +20,10 @@ public class Door : MonoBehaviour
             if _open_rule => 1 : SmallKey
             if _open_rule => 2 : BigKey
     */
+
+    void Start(){
+        _reward = transform.parent.transform.parent.transform.parent.GetChild(1).GetComponent<RoomReward>();
+    }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -32,17 +38,11 @@ public class Door : MonoBehaviour
         if (openDoor == 1 && player.HasSmallKey())
         {
             player.LooseSmallKey();
-            OpenDoor();
+            _reward.OpenDoor(gameObject);
         }
 
         if (openDoor == 2 && player.HasBigKey()){
-            OpenDoor();
+            _reward.OpenDoor(gameObject);
         }
-    }
-
-    private void OpenDoor()
-    {
-        gameObject.GetComponent<BoxCollider2D>().enabled = false;
-        gameObject.GetComponent<SpriteRenderer>().sprite = gameObject.GetComponent<Door>().openSprite;
     }
 }

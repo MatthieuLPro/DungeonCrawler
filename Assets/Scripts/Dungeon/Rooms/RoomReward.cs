@@ -55,21 +55,21 @@ public class RoomReward : MonoBehaviour
     /* ************************************************ */
     /* Event audio */
     /* ************************************************ */
-    private void CallAudio(string roomEvent)
+    public void CallAudio(string roomEvent)
     {
-        SetAudioClip(roomEvent);
-        PlayAudioClip();
+        _SetAudioClip(roomEvent);
+        _PlayAudioClip();
     }
 
-    private void SetAudioClip(string roomEvent){
-        GetComponent<AudioSource>().clip = NewAudioClip(roomEvent);
+    private void _SetAudioClip(string roomEvent){
+        GetComponent<AudioSource>().clip = _NewAudioClip(roomEvent);
     }
 
-    private void PlayAudioClip(){
+    private void _PlayAudioClip(){
         GetComponent<AudioSource>().Play();
     }
 
-    private AudioClip NewAudioClip(string roomEvent)
+    private AudioClip _NewAudioClip(string roomEvent)
     {
         switch(roomEvent)
         {
