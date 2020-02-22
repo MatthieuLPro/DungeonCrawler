@@ -2,14 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BigKeys : MonoBehaviour
+public class BigKeys : Keys
 {
-    private void OnTriggerEnter2D(Collider2D other)
+    override public void OnTriggerEnter2D(Collider2D other)
     {
         if (!other.CompareTag("Player"))
             return;
         
         other.transform.parent.GetComponent<Player>().GetBigKey();
-        Destroy(gameObject);
+        StartCoroutine(GetObjectFindEffectCo());
     }
 }
