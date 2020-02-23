@@ -40,11 +40,12 @@ public class TestInteractionGlobal : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.transform.parent.gameObject.CompareTag("Enemy"))
+        /*if (other.transform.parent.gameObject.CompareTag("Enemy"))
         {
+            Debug.Log("Exit 1");
             InteractionWithEnemy(other.transform.parent.gameObject);
             return;
-        }
+        }*/
 
         if (other.CompareTag("Enemy"))
         {
@@ -127,10 +128,8 @@ public class TestInteractionGlobal : MonoBehaviour
     /* ************************************************ */
     private void _ApplyDamageFromEnemy(EnemyTest enemy, Player player)
     {
-        if (enemy.AttackTypeMagic)
-            player.LooseMana(enemy.Strength);
-        if (enemy.AttackTypePhysic)
-            player.LooseLife(enemy.Strength);
+        if (enemy.AttackTypePhysic) player.LooseLife(enemy.Strength);
+        if (enemy.AttackTypeMagic) player.LooseMana(enemy.Strength);
     }
 
     private void _PhysicalDamageFromEnemy(Player player, int strength){

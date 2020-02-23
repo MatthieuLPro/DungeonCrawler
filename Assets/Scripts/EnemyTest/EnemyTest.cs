@@ -11,20 +11,26 @@ public class EnemyTest : MonoBehaviour, IEnemy, IKillable, IDamageable
 
     /* Initial enemis values */
     [Header("Damageable component")]
-    public int maxHealth;
+    [SerializeField]
+    private int _maxHealth;
 
     [Header("Enemy component")]
-    public int strength;
-    public float thrust;
-    public float knockBackTime;
-    public bool attackTypeMagic;
-    public bool attackTypePhysic;
+    [SerializeField]
+    private int _strength;
+    [SerializeField]
+    private float _thrust;
+    [SerializeField]
+    private float _knockBackTime;
+    [SerializeField]
+    private bool _attackTypeMagic;
+    [SerializeField]
+    private bool _attackTypePhysic;
 
     private void Start()
     {
-        _enemyComponent         = new Enemy(strength, thrust, knockBackTime, attackTypeMagic, attackTypePhysic);
+        _enemyComponent         = new Enemy(Strength, Thrust, KnockBackTime, AttackTypeMagic, AttackTypePhysic);
         _killableComponent      = new Killable();
-        _damageableComponent    = new Damageable(maxHealth);
+        _damageableComponent    = new Damageable(MaxHealth);
     }
 
     /* ************************************************ */
@@ -35,12 +41,24 @@ public class EnemyTest : MonoBehaviour, IEnemy, IKillable, IDamageable
     }
 
     public EnemyStateBis ActualState    { get; set; }
-    public int MaxHealth                { get; }
-    public float KnockBackTime          { get; }
-    public int Strength                 { get; }
-    public float Thrust                 { get; }
-    public bool AttackTypeMagic         { get; }
-    public bool AttackTypePhysic        { get; }
+    public int MaxHealth {
+        get { return _maxHealth; }
+    }
+    public float KnockBackTime {
+        get { return _knockBackTime; }
+    }
+    public int Strength { 
+        get { return _strength; }
+    }
+    public float Thrust { 
+        get { return _thrust; }
+    }
+    public bool AttackTypePhysic {
+        get { return _attackTypePhysic; }
+    }
+    public bool AttackTypeMagic {
+        get { return _attackTypeMagic;}
+    }
 
     /* ************************************************ */
     /* Damageable component */
