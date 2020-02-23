@@ -11,66 +11,107 @@ public class Player : MonoBehaviour
     public bool bigKey = false;
     public int strength = 1;
 
-    /* NEED TO RENAME ALL THAT SHIT */
     /* ************************************************ */
-    /* Setters and Updaters */
+    /* Getters & Setters */
     /* ************************************************ */
     public void GetLife(int heal){
-        transform.Find("UI").Find("HeartsHealthUI").GetComponent<HeartsHealthUI>().heartsHealthSystem.Heal(heal);
+        _UpdateUIHeart(true, heal);
     }
 
     public void LooseLife(int damage){
-        transform.Find("UI").Find("HeartsHealthUI").GetComponent<HeartsHealthUI>().heartsHealthSystem.Damage(damage);
+        _UpdateUIHeart(false, damage);
     }
 
     public void GetMana(int heal){
-        transform.Find("UI").Find("ManaUI").GetComponent<ManaUI>().manaSystem.ChangeMana(heal);
-        //ManaUI.manaSystemStatic.ChangeMana(heal);
+        _UpdateUIMana(true, heal);
     }
 
     public void LooseMana(int damage){
-        transform.Find("UI").Find("ManaUI").GetComponent<ManaUI>().manaSystem.ChangeMana(damage * -1);
-        //ManaUI.manaSystemStatic.ChangeMana(damage * -1);
-    }
-
-    public void IsDead(){
-        Destroy(GetComponent<PlayerController>());
+        _UpdateUIMana(false, damage);
     }
 
     public void GetSmallKey()
     {
         keys += 1;
-        transform.Find("UI").Find("SmallKeyTextUI").GetComponent<SmallKeyUI>().smallKeySystem.AddSmallKey();
+        _UpdateUISmallKey(true);
     }
 
     public void LooseSmallKey()
     {
         keys -= 1;
-        transform.Find("UI").Find("SmallKeyTextUI").GetComponent<SmallKeyUI>().smallKeySystem.RemoveSmallKey();
+        _UpdateUISmallKey(false);
     }
     
-    public void GetBigKey(){
+    public void GetBigKey()
+    {
         bigKey = true;
-        transform.Find("UI").Find("BigKeyTextUI").GetComponent<BigKeyUI>().bigKeySystem.AddBigKey();
+        _UpdateUIBigKey(true);
     }
 
-    public void LooseBigKey(){
+    public void LooseBigKey()
+    {
         bigKey = false;
-        transform.Find("UI").Find("BigKeyTextUI").GetComponent<BigKeyUI>().bigKeySystem.RemoveBigKey();
+        _UpdateUIBigKey(false);
     }
 
-    // Predicate
+    /* ************************************************ */
+    /* Update player State */
+    /* ************************************************ */
+    public void IsDead(){
+        Destroy(GetComponent<PlayerController>());
+    }
+
+    /* ************************************************ */
+    /* Update UI */
+    /* ************************************************ */
+    private void _UpdateUIHeart(bool adding, int value)
+    {
+        if (adding)
+            _GetUIGO("Hearts", "HeartsHealthUI").GetComponent<HeartsHealthUI>().heartsHealthSystem.Heal(value);
+        else
+            _GetUIGO("Hearts", "HeartsHealthUI").GetComponent<HeartsHealthUI>().heartsHealthSystem.Damage(value);
+    }
+
+    private void _UpdateUIMana(bool adding, int value)
+    {
+        if (adding)
+            _GetUIGO("Manas", "ManaUI").GetComponent<ManaUI>().manaSystem.ChangeMana(value);
+        else
+            _GetUIGO("Manas", "ManaUI").GetComponent<ManaUI>().manaSystem.ChangeMana(value * -1);
+    }
+
+    private void _UpdateUISmallKey(bool adding)
+    {
+        if (adding)
+            _GetUIGO("SmallKeys", "SmallKeyTextUI").GetComponent<SmallKeyUI>().smallKeySystem.AddSmallKey();
+        else
+            _GetUIGO("SmallKeys", "SmallKeyTextUI").GetComponent<SmallKeyUI>().smallKeySystem.RemoveSmallKey();
+    }
+
+    private void _UpdateUIBigKey(bool adding)
+    {
+        if (adding)
+            _GetUIGO("BigKeys", "BigKeyTextUI").GetComponent<BigKeyUI>().bigKeySystem.AddBigKey();
+        else
+            _GetUIGO("BigKeys", "BigKeyTextUI").GetComponent<BigKeyUI>().bigKeySystem.RemoveBigKey();
+    }
+
+    private Transform _GetUIGO(string fileName, string UIName){
+        return transform.Find("UI").Find(fileName).Find(UIName);
+    }
+
+    /* ************************************************ */
+    /* Predicates */
+    /* ************************************************ */
     public bool HasSmallKey()
     {
-        if (keys <= 0)
-            return (false);
+        if (keys <= 0) return (false);
         return (true);
     }
 
     public bool HasBigKey()
     {
-        if (bigKey == false)
-            return (false);
+        if (bigKey == false) return (false);
         return (true);
     }
 
