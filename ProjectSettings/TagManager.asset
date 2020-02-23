@@ -23,6 +23,7 @@ TagManager:
   - UIPanel
   - Wall
   - Test
+  - PlayerAudio
   layers:
   - Default
   - TransparentFX

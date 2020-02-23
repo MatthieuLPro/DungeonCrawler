@@ -10,7 +10,7 @@ public class ObjectSoundList : MonoBehaviour
     {
         _factory = new Dictionary<string, ObjectSoundListFactory>
         {
-            { "Player", new PlayerSoundListFactory() },
+            { "PlayerAudio", new PlayerSoundListFactory() },
             { "Enemy",  new MonsterSoundListFactory() }
         };
     }

@@ -43,9 +43,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6537e7cf749805f0b03f7693c96563a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 4
-  isWaiting: 1
-  isMoving: 0
+  _speed: 0
 --- !u!1 &3780766632936195906
 GameObject:
   m_ObjectHideFlags: 0
@@ -315,12 +313,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a861ffe22e4157748cdb6002db7412d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 0
-  strength: 2
-  thrust: 7
-  knockBackTime: 0.25
-  attackTypeMagic: 0
-  attackTypePhysic: 1
+  _maxHealth: 0
+  _strength: 1
+  _thrust: 8
+  _knockBackTime: 0.25
+  _attackTypeMagic: 0
+  _attackTypePhysic: 1
 --- !u!50 &5163821012158799101
 Rigidbody2D:
   serializedVersion: 4
