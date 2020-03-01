@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 7788580006439165085}
   - component: {fileID: 8499770090475017320}
   m_Layer: 0
-  m_Name: SmallMana
+  m_Name: small_mana
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

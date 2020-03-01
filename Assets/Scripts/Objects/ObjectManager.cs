@@ -82,6 +82,18 @@ public class ObjectManager : MonoBehaviour
         gameObject.GetComponent<SpriteRenderer>().enabled = true;
     }
 
+    public void UpdateCoverSortingLayer(){
+        SpriteRenderer sprite = transform.GetChild(0).GetComponent<SpriteRenderer>();
+
+        StartCoroutine(_ChangeCoverLayerCo(sprite));
+    }
+
+    private IEnumerator _ChangeCoverLayerCo(SpriteRenderer sprite){
+        yield return new WaitForSeconds(0.25f);
+
+        sprite.sortingLayerName = GetSortingLayerPlayerName();
+    }
+
     /* ************************************************ */
     /* Layer */
     /* ************************************************ */

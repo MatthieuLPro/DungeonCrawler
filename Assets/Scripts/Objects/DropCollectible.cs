@@ -22,7 +22,8 @@ public class DropCollectible : MonoBehaviour
     private ObjectManager _manager;
 
     void Start(){
-        if (_item == 0) _item = Random.Range(0, 4);
+        if (_item == 0) 
+            _item = Random.Range(0, 3);
         _myPrefab = _GetCollectiblePrefab();
 
         _manager = transform.parent.GetComponent<ObjectManager>();
@@ -45,10 +46,10 @@ public class DropCollectible : MonoBehaviour
                 collectible = Resources.Load("Prefabs/Collectible/ruby_green") as GameObject;
                 break;
             case 2:
-                collectible = Resources.Load("Prefabs/Collectible/CollectibleHealLife") as GameObject;
+                collectible = Resources.Load("Prefabs/Collectible/small_heart") as GameObject;
                 break;
             case 3:
-                collectible = Resources.Load("Prefabs/Collectible/CollectibleHealMana") as GameObject;
+                collectible = Resources.Load("Prefabs/Collectible/small_mana") as GameObject;
                 break;
             case 10:
                 collectible = Resources.Load("Prefabs/Collectible/small_key") as GameObject;

@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 7418233849261445546}
   - component: {fileID: 8147876451662424706}
   m_Layer: 25
-  m_Name: SmallHeart
+  m_Name: small_heart
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -239,4 +239,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7766cf39223194a2ab95125d34bc8dd6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  heal: 0
+  value: 0

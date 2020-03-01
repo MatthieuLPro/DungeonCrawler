@@ -19,6 +19,8 @@ public class DestructibleObject : MonoBehaviour
             return;
 
         _manager.AnimationDestroy();
+
+        _manager.UpdateCoverSortingLayer();
         _manager.ActiveSpriteRenderer();
 
         _manager.DesactivateMovementCollider();
