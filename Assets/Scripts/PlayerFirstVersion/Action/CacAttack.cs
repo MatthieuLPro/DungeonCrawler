@@ -20,11 +20,7 @@ public class CacAttack : MonoBehaviour
     // Need to check if isColliding & CoisRunning are usefull
     private void OnTriggerEnter2D(Collider2D other)
     {   
-
-        if(ObjectIsDestructible(other.gameObject) == true){
-            other.GetComponent<DestructibleObject>().Smash();
-        }
-        else if (other.CompareTag("Enemy")){
+        if (other.CompareTag("Enemy")){
             GameObject enemy = other.gameObject;
 
             if (enemy == null)

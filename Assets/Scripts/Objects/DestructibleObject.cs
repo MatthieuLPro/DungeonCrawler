@@ -4,16 +4,28 @@ using UnityEngine;
 
 public class DestructibleObject : MonoBehaviour
 {
-    private Animator animator;
+    private ObjectManager _manager;
 
     void Start(){
-        animator = GetComponent<Animator>();
+        _manager = transform.parent.GetComponent<ObjectManager>();
     }
 
-    public void Smash(){
-        animator.SetBool("destroying", true);
-        foreach(BoxCollider2D box in gameObject.GetComponents<BoxCollider2D>()){
-            Destroy(box);
-        }
+    /* ************************************************ */
+    /* OnTrigger interaction */
+    /* ************************************************ */
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (!other.CompareTag("PlayerAttack"))
+            return;
+
+        _manager.AnimationDestroy();
+
+        _manager.DesactivateMovementCollider();
+        _manager.DesactivateDestructibleCollider();
+        _manager.DesactivateCarrierCollider();
+
+        _manager.UpdateSortingLayer();
+
+        _manager.DropCollectible();
     }
 }
