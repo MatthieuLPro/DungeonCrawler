@@ -14,6 +14,9 @@ public class MonsterSoundList : IObjectSoundList
             case "ko":
                 return Resources.Load("Sounds/Enemies/enemy_ko") as AudioClip;
                 break;
+            case "bullet":
+                return Resources.Load("Sounds/Enemies/bullet") as AudioClip;
+                break;
             default:
                 return Resources.Load("Sounds/Enemies/enemy_ko") as AudioClip;
                 break;

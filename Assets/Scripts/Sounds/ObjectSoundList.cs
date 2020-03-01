@@ -11,7 +11,7 @@ public class ObjectSoundList : MonoBehaviour
         _factory = new Dictionary<string, ObjectSoundListFactory>
         {
             { "PlayerAudio", new PlayerSoundListFactory() },
-            { "Enemy",  new MonsterSoundListFactory() }
+            { "EnemyAudio",  new MonsterSoundListFactory() }
         };
     }
 

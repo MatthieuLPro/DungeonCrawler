@@ -194,7 +194,7 @@ MonoBehaviour:
   _invincibleTime: 0.5
   _strength: 1
   _thrust: 8
-  _knockBackTime: 0
+  _knockBackTime: 0.25
   _attackTypeMagic: 0
   _attackTypePhysic: 1
 --- !u!212 &6315227563945330984
@@ -441,7 +441,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6537e7cf749805f0b03f7693c96563a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speed: 3
+  _speed: 2
 --- !u!1 &8673797635408115740
 GameObject:
   m_ObjectHideFlags: 0

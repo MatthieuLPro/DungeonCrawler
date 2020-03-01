@@ -24,6 +24,7 @@ TagManager:
   - Wall
   - Test
   - PlayerAudio
+  - EnemyAudio
   layers:
   - Default
   - TransparentFX

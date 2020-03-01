@@ -11,6 +11,9 @@ public class EnemyShoot : MonoBehaviour
     /* Detector component */
     private ObjectDetector _detectorScript;
 
+    /* Sound component */
+    private AudioManager _audioScript;
+
     [Header("Range attack params")]
     [SerializeField]
     private float _bulletFrequency = .0f;
@@ -27,6 +30,7 @@ public class EnemyShoot : MonoBehaviour
         _parent         = transform.parent.gameObject;
         _enemyScript    = _parent.GetComponent<EnemyTest>();
         _detectorScript = _parent.transform.GetChild(0).GetComponent<ObjectDetector>();
+        _audioScript    = _parent.transform.GetChild(2).GetComponent<AudioManager>();
 
         _myPrefab = GetAmmoType();
     }
@@ -104,6 +108,7 @@ public class EnemyShoot : MonoBehaviour
         BulletIsLaunched = true;
 
         _InstantiateBullet();
+        _audioScript.CallAudio("bullet");
         yield return new WaitForSeconds(BulletFrequency);
 
         BulletIsLaunched = false;
