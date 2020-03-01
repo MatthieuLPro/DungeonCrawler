@@ -39,7 +39,7 @@ abstract public class HuntDirections : NpcGeneralDirections
         if (_TargetIsTooFar(distance))
             return _SetNotMoving();
 
-        return _GetDirection(targetPosition, targetColliderSize);
+        return GetDirection(targetPosition, targetColliderSize);
     }
 
     private void _GetClosestTarget()
@@ -73,7 +73,7 @@ abstract public class HuntDirections : NpcGeneralDirections
     }
 
     // Set direction variation
-    abstract protected Vector2 _GetDirection(Vector2 targetPosition, Vector2 playerColliderSize);
+    abstract public Vector2 GetDirection(Vector2 targetPosition, Vector2 playerColliderSize);
 
     protected float _GetDirectionVariation(float targetPositionValue, float playerColliderSize)
     {

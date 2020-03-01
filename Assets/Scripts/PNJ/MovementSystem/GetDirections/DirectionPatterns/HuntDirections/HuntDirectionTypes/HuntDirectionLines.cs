@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class HuntDirectionLines : HuntDirections
 {
-    override protected Vector2 _GetDirection(Vector2 targetPosition, Vector2 playerColliderSize)
+    override public Vector2 GetDirection(Vector2 targetPosition, Vector2 playerColliderSize)
     {
         float xPosition = 0.0f;
         float yPosition = 0.0f;

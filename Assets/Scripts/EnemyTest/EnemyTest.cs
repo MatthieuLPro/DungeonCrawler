@@ -13,8 +13,12 @@ public class EnemyTest : MonoBehaviour, IEnemy, IKillable, IDamageable
     [Header("Damageable component")]
     [SerializeField]
     private int _maxHealth;
+    [SerializeField]
+    private bool _isInvincible;
+    [SerializeField]
+    private float _invincibleTime = .5f;
 
-    [Header("Enemy component")]
+    [Header("Interaction component")]
     [SerializeField]
     private int _strength;
     [SerializeField]
@@ -43,6 +47,13 @@ public class EnemyTest : MonoBehaviour, IEnemy, IKillable, IDamageable
     public EnemyStateBis ActualState    { get; set; }
     public int MaxHealth {
         get { return _maxHealth; }
+    }
+    public bool IsInvincible {
+        get { return _isInvincible; }
+        set { _isInvincible = value; }
+    }
+    public float InvincibleTime {
+        get { return _invincibleTime; }
     }
     public float KnockBackTime {
         get { return _knockBackTime; }
@@ -89,5 +100,15 @@ public class EnemyTest : MonoBehaviour, IEnemy, IKillable, IDamageable
 
     public void AnimationDead(GameObject enemyObject){
         _killableComponent.AnimationDead(enemyObject);
+    }
+
+    /* ************************************************ */
+    /* Layer info */
+    /* ************************************************ */
+    public string GetSortingLayerPlayerName(){
+        string myLayer;
+
+        myLayer = "player_" + gameObject.GetComponent<SpriteRenderer>().sortingLayerName.Split('_')[1];
+        return myLayer;
     }
 }

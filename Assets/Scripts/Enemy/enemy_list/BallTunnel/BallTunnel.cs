@@ -194,8 +194,8 @@ public class BallTunnel : MonoBehaviour
     // Set prefab direction movement
     private void _UpdatePrefabParams(DeterminateSingleDirections enemyDirection, NpcGeneralAddForces enemySpeed)
     {
-        enemyDirection._DirectionX  = _directionX;
-        enemyDirection._DirectionY  = _directionY;
+        enemyDirection.DirectionX  = _directionX;
+        enemyDirection.DirectionY  = _directionY;
         enemySpeed._Speed           = _prefabSpeed;
     }
 

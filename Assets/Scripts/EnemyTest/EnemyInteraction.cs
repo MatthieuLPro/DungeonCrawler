@@ -4,16 +4,11 @@ using UnityEngine;
 
 public class EnemyInteraction : MonoBehaviour
 {
-    [Header("Interaction parameters")]
-    [SerializeField]
-    private bool _isInvincible;
-    [SerializeField]
-    private float _invincibleTime = .5f;
-
     /* Parent components */
     private GameObject      _parent;
     private Rigidbody2D     _rb2d;
     private SpriteRenderer  _sprite;
+    private EnemyTest       _enemyScript;
 
     /* Interaction components */
     private BoxCollider2D   _collider;
@@ -30,8 +25,10 @@ public class EnemyInteraction : MonoBehaviour
         _rb2d           = _parent.GetComponent<Rigidbody2D>();
         _sprite         = _parent.GetComponent<SpriteRenderer>();
 
+        _enemyScript    = _parent.GetComponent<EnemyTest>();
+
         _collider       = GetComponent<BoxCollider2D>();
-        _isKnock        = false;
+        IsKnock         = false;
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -39,7 +36,7 @@ public class EnemyInteraction : MonoBehaviour
         if (!other.CompareTag("PlayerAttack"))
             return;
 
-        if (_isKnock || _isInvincible)
+        if (IsKnock || _enemyScript.IsInvincible)
             return;
 
         StartCoroutine(_KnockBackTimeCo(other.gameObject));
@@ -57,9 +54,9 @@ public class EnemyInteraction : MonoBehaviour
     /* If attack begin => enemy becomes invincible */
     /* Else => enemy becomes vulnerable */
 
-    private void KnockToggleParam(bool value)
+    private void _KnockToggleParam(bool value)
     {
-        _SetEnemyIsKnock(value);
+        IsKnock = value;
         _SetVelocityToZero();
         _SetEnemyInvincible(value);
     }
@@ -67,25 +64,25 @@ public class EnemyInteraction : MonoBehaviour
     /* ************************************************ */
     /* Setters & toggle functions */
     /* ************************************************ */
-    private void _SetEnemyIsKnock(bool value){
-        _isKnock = value;
+    public bool IsKnock {
+        get { return _isKnock; }
+        set { _isKnock = value; }
     }
 
     private void _SetVelocityToZero(){
         _rb2d.velocity = Vector2.zero;
     }
 
-    //If enemy is invincible, then collider is disabled
-    private void _SetEnemyInvincible(bool value)
-    {
-        _isInvincible     = value;
-        _collider.enabled = !value;
+    //If enemy is invincible, then interaction collider is disabled
+    private void _SetEnemyInvincible(bool value){
+        _enemyScript.IsInvincible   = value;
+        _collider.enabled           = !value;
     }
 
     /* ************************************************ */
     /* Apply force functions */
     /* ************************************************ */
-    private Vector2 CalculateKnockBackDirection(Vector3 playerPosition){
+    private Vector2 _CalculateKnockBackDirection(Vector3 playerPosition){
         return (_parent.transform.position - playerPosition);
     }
 
@@ -99,17 +96,17 @@ public class EnemyInteraction : MonoBehaviour
     /* KnockBack time */
     private IEnumerator _KnockBackTimeCo(GameObject player)
     {
-        Vector2 directionKnock  = CalculateKnockBackDirection(player.transform.position);
-        Action playerAction = player.transform.parent.GetComponent<Action>();
+        Vector2 directionKnock  = _CalculateKnockBackDirection(player.transform.position);
+        Action playerAction     = player.transform.parent.GetComponent<Action>();
 
-        KnockToggleParam(true);
+        _KnockToggleParam(true);
 
         _ApplyThrustOnEnemy(directionKnock * playerAction.GetThrust());        
         _CallHurt();
 
         yield return new WaitForSeconds(playerAction.GetKnockBackTime());
 
-        _parent.GetComponent<EnemyTest>().ActualHealth = (playerAction.GetStrength() * -1);
+        _enemyScript.ActualHealth = (playerAction.GetStrength() * -1);
     }
 
     /* Invincible time */
@@ -118,7 +115,7 @@ public class EnemyInteraction : MonoBehaviour
         float time         = .0f;
         Color regularColor = _sprite.color;
 
-        while(time < _invincibleTime)
+        while(time < _enemyScript.InvincibleTime)
         {
             _sprite.color = new Color(1f,1f,1f,0f);
             yield return new WaitForSeconds(0.02f);
@@ -131,7 +128,7 @@ public class EnemyInteraction : MonoBehaviour
 
         _sprite.color = regularColor;
 
-        KnockToggleParam(false);
+        _KnockToggleParam(false);
     }
 
     /* ************************************************ */

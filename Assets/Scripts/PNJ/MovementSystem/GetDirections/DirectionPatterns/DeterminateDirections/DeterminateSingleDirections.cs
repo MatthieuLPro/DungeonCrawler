@@ -2,27 +2,25 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+// Always the same direction (x; y)
 public class DeterminateSingleDirections : DeterminateDirections
 {
     [Header("Direction Settings")]
     [SerializeField]
-    private int _directionX = 0;
+    private float _directionX = 0;
     [SerializeField]
-    private int _directionY = 0;
+    private float _directionY = 0;
     
-    public int _DirectionX { get; set; }
-    public int _DirectionY { get; set; }
-
-    void Start()
-    {
-        if (_DirectionX != -1 && _DirectionX != 1)
-            _DirectionX = 0;
-
-        if (_DirectionY != -1 && _DirectionY != 1)
-            _DirectionY = 0;
+    public float DirectionX {
+        get { return _directionX; }
+        set { _directionX = value; }
+    }
+    public float DirectionY {
+        get { return _directionY; }
+        set { _directionY = value; }
     }
 
-    override protected Vector2 _GetDirection(){
-        return new Vector2(_DirectionX, _DirectionY);
+    override public Vector2 GetDirection(){
+        return new Vector2(DirectionX, DirectionY);
     }
 }
