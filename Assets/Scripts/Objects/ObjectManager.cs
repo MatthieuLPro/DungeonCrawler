@@ -9,7 +9,7 @@ public class ObjectManager : MonoBehaviour
     private string _sortingLayer;
 
     void Start(){
-        _animator = gameObject.GetComponent<Animator>();
+        _animator = transform.GetChild(0).GetComponent<Animator>();
         Layer = gameObject.layer;
         SortingLayer = gameObject.GetComponent<SpriteRenderer>().sortingLayerName;
     }
@@ -31,16 +31,16 @@ public class ObjectManager : MonoBehaviour
     /* Desactivate Box Collider */
     /* ************************************************ */
     public void DesactivateMovementCollider(){
-        Destroy(gameObject.GetComponent<BoxCollider2D>());
+        Destroy(transform.GetChild(0).GetComponent<BoxCollider2D>());
     }
 
     public void DesactivateDestructibleCollider(){
-        Destroy(transform.GetChild(0).GetComponent<BoxCollider2D>());
+        Destroy(transform.GetChild(1).GetComponent<BoxCollider2D>());
     }
 
     public void DesactivateCarrierCollider(){
         if (_IsCarrier())
-            Destroy(transform.GetChild(1).GetComponent<BoxCollider2D>());
+            Destroy(transform.GetChild(2).GetComponent<BoxCollider2D>());
     }
 
     /* ************************************************ */
@@ -48,21 +48,21 @@ public class ObjectManager : MonoBehaviour
     /* ************************************************ */
     public void DropCollectible(){
         if (_IsDroppingObject())
-            transform.GetChild(2).GetComponent<DropCollectible>().DropCollectibleInField();
+            transform.GetChild(3).GetComponent<DropCollectible>().DropCollectibleInField();
     }
 
     /* ************************************************ */
     /* Predicates */
     /* ************************************************ */
     private bool _IsCarrier(){
-        if (transform.GetChild(1).name == "Tag_Carrier")
+        if (transform.GetChild(2).name == "Tag_Carrier")
             return true;
 
         return false;
     }
 
     private bool _IsDroppingObject(){
-        if (transform.GetChild(2).name == "Tag_DropObject")
+        if (transform.GetChild(3).name == "Tag_DropObject")
             return true;
 
         return false;
@@ -76,15 +76,15 @@ public class ObjectManager : MonoBehaviour
     }
 
     /* ************************************************ */
-    /* Layer */
+    /* Sprite renderer */
     /* ************************************************ */
-    public void UpdateSortingLayer(){
-        SpriteRenderer sprite = gameObject.GetComponent<SpriteRenderer>();
-
-        sprite.sortingLayerName = GetSortingLayerPlayerName();
-        sprite.sortingOrder = -2;
+    public void ActiveSpriteRenderer(){
+        gameObject.GetComponent<SpriteRenderer>().enabled = true;
     }
 
+    /* ************************************************ */
+    /* Layer */
+    /* ************************************************ */
     public string GetSortingLayerPlayerName(){
         string myLayer;
 

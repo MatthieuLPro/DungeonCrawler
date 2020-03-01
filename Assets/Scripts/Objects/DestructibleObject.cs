@@ -19,12 +19,11 @@ public class DestructibleObject : MonoBehaviour
             return;
 
         _manager.AnimationDestroy();
+        _manager.ActiveSpriteRenderer();
 
         _manager.DesactivateMovementCollider();
         _manager.DesactivateDestructibleCollider();
         _manager.DesactivateCarrierCollider();
-
-        _manager.UpdateSortingLayer();
 
         _manager.DropCollectible();
     }
