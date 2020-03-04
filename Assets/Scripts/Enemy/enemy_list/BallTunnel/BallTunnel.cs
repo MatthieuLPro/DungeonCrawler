@@ -111,10 +111,10 @@ public class BallTunnel : MonoBehaviour
     private void _SetPrefabModel()
     {
         //_prefab1 = Resources.Load("Prefabs/Enemis/Enemis_list/DeathBallSmall") as GameObject;
-        _prefab1 = Resources.Load("Prefabs/Enemis/DtmSingleMvtTest") as GameObject;
+        _prefab1 = Resources.Load("Prefabs/Enemis/Tunnels/DtmSingleMvtTest") as GameObject;
 
         if(_differentTypes)
-            _prefab2 = Resources.Load("Prefabs/Enemis/DtmSingleMvtTestBis") as GameObject;
+            _prefab2 = Resources.Load("Prefabs/Enemis/Tunnels/DtmSingleMvtTestBis") as GameObject;
             //_prefab2 = Resources.Load("Prefabs/Enemis/Enemis_list/DeathBallBig") as GameObject;
     }
 
