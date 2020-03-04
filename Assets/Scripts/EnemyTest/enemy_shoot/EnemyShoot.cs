@@ -2,6 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
+/* ************************************************ */
+/* Class descritption */
+/* ************************************************ */
+// This class instance bullet
+// Bullet instance can have 2 types of direction
+// - Hunt   => Target player position
+// - Linear => Direction is horizontal or vertical
+
 public class EnemyShoot : MonoBehaviour
 {
     /* Parent components */
@@ -17,6 +26,8 @@ public class EnemyShoot : MonoBehaviour
     [Header("Range attack params")]
     [SerializeField]
     private float _bulletFrequency = .0f;
+    [SerializeField]
+    private string _bulletType = "hunt";
 
     private bool _bulletIsLaunched;
     private GameObject _myPrefab;
@@ -74,7 +85,7 @@ public class EnemyShoot : MonoBehaviour
         GameObject bullet = Instantiate(_myPrefab, transform.position, Quaternion.identity);
 
         _SetLayers(bullet);
-        _SetDirection(bullet);
+        _findDirection(bullet);
         _SetParent(bullet);
     }
 
@@ -86,19 +97,56 @@ public class EnemyShoot : MonoBehaviour
         sprite.sortingOrder = -1;
     }
 
-    private void _SetDirection(GameObject bullet){
+    private void _SetParent(GameObject bullet){
+        bullet.transform.SetParent(transform);
+    }
+
+    /* ************************************************ */
+    /* Bullet directions */
+    /* ************************************************ */
+    private void _findDirection(GameObject bullet) {
+        if (_bulletType == "linear")
+            _setLinearDirection(bullet);
+        else
+            _SetHuntDirection(bullet);
+    }
+
+    private void _setLinearDirection(GameObject bullet) {
         DeterminateSingleDirections direction = bullet.transform.GetChild(0).transform.GetChild(0).GetComponent<DeterminateSingleDirections>();
         Vector2 targetPosition                = Target.transform.position;
-        Vector2 targetColliderSize            = Target.GetComponent<BoxCollider2D>().size;
+
+        if ((targetPosition.x - _parent.transform.position.x) > 0) {
+            if ((targetPosition.y - _parent.transform.position.y) > 0) {
+                direction.DirectionX = 0;
+                direction.DirectionY = 1;
+            }
+            else {
+                direction.DirectionX = 1;
+                direction.DirectionY = 0;   
+            }   
+        }
+        else {
+            if ((targetPosition.y - _parent.transform.position.y) > 0) {
+                direction.DirectionX = -1;
+                direction.DirectionY = 0;
+            }
+            else {
+                direction.DirectionX = 0;
+                direction.DirectionY = -1;   
+            }   
+        }
+
+        direction.GetDirection();
+    }
+
+    private void _SetHuntDirection(GameObject bullet){
+        DeterminateSingleDirections direction = bullet.transform.GetChild(0).transform.GetChild(0).GetComponent<DeterminateSingleDirections>();
+        Vector2 targetPosition                = Target.transform.position;
 
         direction.DirectionX = targetPosition.x - _parent.transform.position.x;
         direction.DirectionY = targetPosition.y - _parent.transform.position.y;
 
         direction.GetDirection();
-    }
-
-    private void _SetParent(GameObject bullet){
-        bullet.transform.SetParent(transform);
     }
 
     /* ************************************************ */

@@ -7,9 +7,13 @@ public class ObjectDetector : MonoBehaviour
     [SerializeField]
     private string _detectorType;
 
-    private bool _isDetected;
-    private GameObject _detectedObject;
+    private bool                _isDetected;
+    private GameObject          _detectedObject;
+    private CircleCollider2D    _collider;
 
+    void Start() {
+        _collider = gameObject.GetComponent<CircleCollider2D>();
+    }
 
     /* ************************************************ */
     /* Getter & Setter */
@@ -48,7 +52,12 @@ public class ObjectDetector : MonoBehaviour
 
         IsDetected = false;
         DetectedObject = null;
+        StartCoroutine(_RefreshColliderCo());
     }
 
-
+    private IEnumerator _RefreshColliderCo() {
+        _collider.enabled = false;
+        yield return new WaitForSeconds(0.1f);
+        _collider.enabled = true;
+    }
 }
