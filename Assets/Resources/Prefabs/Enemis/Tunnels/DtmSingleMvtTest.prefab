@@ -30,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 1198521461046074802}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 5, y: 5, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 6220103503465483959}
   - {fileID: 1198521461276802457}
@@ -155,6 +155,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _maxHealth: 0
+  _isInvincible: 0
+  _invincibleTime: 0.5
   _strength: 1
   _thrust: 8
   _knockBackTime: 0.25
@@ -220,8 +222,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d887d88f42f2c7499ca4b167d41a7d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _isInvincible: 1
-  _invincibleTime: 0.5
 --- !u!1 &1716732007122380173
 GameObject:
   m_ObjectHideFlags: 0
