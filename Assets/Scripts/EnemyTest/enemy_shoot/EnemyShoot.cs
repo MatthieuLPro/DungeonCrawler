@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-
 /* ************************************************ */
 /* Class descritption */
 /* ************************************************ */
@@ -138,6 +137,7 @@ public class EnemyShoot : MonoBehaviour
 
         direction.GetDirection();
     }
+
 
     private void _SetHuntDirection(GameObject bullet){
         DeterminateSingleDirections direction = bullet.transform.GetChild(0).transform.GetChild(0).GetComponent<DeterminateSingleDirections>();

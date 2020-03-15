@@ -9,10 +9,14 @@ public class ObjectDetector : MonoBehaviour
 
     private bool                _isDetected;
     private GameObject          _detectedObject;
-    private CircleCollider2D    _collider;
+    private CircleCollider2D    _colliderCircle = null;
+    private BoxCollider2D       _colliderBox = null;
 
     void Start() {
-        _collider = gameObject.GetComponent<CircleCollider2D>();
+        if (gameObject.GetComponent<CircleCollider2D>() != null)
+            _colliderCircle = gameObject.GetComponent<CircleCollider2D>();
+        else
+            _colliderBox = gameObject.GetComponent<BoxCollider2D>();
     }
 
     /* ************************************************ */
@@ -56,8 +60,14 @@ public class ObjectDetector : MonoBehaviour
     }
 
     private IEnumerator _RefreshColliderCo() {
-        _collider.enabled = false;
+        if (_colliderCircle)
+            _colliderCircle.enabled = false;
+        else
+            _colliderBox.enabled = false;
         yield return new WaitForSeconds(0.1f);
-        _collider.enabled = true;
+        if (_colliderCircle)            
+            _colliderCircle.enabled = true;
+        else
+            _colliderBox.enabled = false;
     }
 }

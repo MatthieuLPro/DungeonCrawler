@@ -4,25 +4,25 @@ using UnityEngine;
 
 public class MovementSystems : MonoBehaviour
 {
-    private NpcGeneralDirections _npcGeneralDirection;
-    private NpcGeneralAddForces _npcGeneralAddForce;
+    protected NpcGeneralDirections _npcGeneralDirection;
+    protected NpcGeneralAddForces _npcGeneralAddForce;
     
-    private Vector3 _directionVariation;
+    protected Vector3 _directionVariation;
 
-    void Start()
+    protected virtual void Start()
     {
         _directionVariation     = Vector3.zero;
         _npcGeneralDirection    = transform.GetChild(0).GetComponent<NpcGeneralDirections>();
         _npcGeneralAddForce     = transform.GetChild(1).GetComponent<NpcGeneralAddForces>();
     }
 
-    void FixedUpdate()
+    protected virtual void FixedUpdate()
     {
         _UpdateDirection();
         _UpdateMovement();
     }
 
-    private void _UpdateDirection()
+    protected void _UpdateDirection()
     {
         if (_npcGeneralAddForce._IsMoving)
             return;
@@ -30,7 +30,7 @@ public class MovementSystems : MonoBehaviour
         _npcGeneralDirection.UpdatePosition();
     }
 
-    private void _UpdateMovement()
+    protected void _UpdateMovement()
     {
         _directionVariation = new Vector3(_npcGeneralDirection.PosVariation.x, _npcGeneralDirection.PosVariation.y, 0);
         _npcGeneralAddForce.AddForceMovement(_directionVariation);
