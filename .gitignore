@@ -1,39 +1,18 @@
-# ===========================
-# Default Collab Ignore Rules
-# ===========================
+# Ignore everything
+/*
+/*/
 
-Library/
-.vs/
-Logs/
-obj/
+# Inverse ignore some stuff
+!/Assets/
+!/ProjectSettings/
+!.gitignore
 
-# OS Generated
-# ============
+# OS Stuff
 .DS_Store
 ._*
 .Spotlight-V100
 .Trashes
-Icon?
 ehthumbs.db
-[Tt]humbs.db
-[Dd]esktop.ini
-*.meta
-
-
-# Visual Studio / MonoDevelop generated
-# =====================================
-[Ee]xported[Oo]bj/
-*.userprefs
-*.csproj
-*.pidb
-*.suo
-*.sln
-*.user
-*.unityproj
-*.booproj
-
-
-# Unity generated
-# ===============
-sysinfo.txt
-*.stackdump
+Thumbs.db
+$RECYCLE.BIN/
+Desktop.ini
