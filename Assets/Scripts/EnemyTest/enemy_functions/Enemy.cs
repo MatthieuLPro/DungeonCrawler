@@ -12,7 +12,7 @@ public class Enemy : MonoBehaviour, IEnemy
 
     public Enemy(int strength, float thrust, float knockBackTime, bool attackTypeMagic, bool attackTypePhysic)
     {
-        _strength           = _strength;
+        _strength           = strength;
         _thrust             = thrust;
         _knockBackTime      = knockBackTime;
         _attackTypeMagic    = attackTypeMagic;

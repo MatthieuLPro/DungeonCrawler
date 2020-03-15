@@ -14,9 +14,6 @@ public class CacAttack : MonoBehaviour
     [SerializeField]
     private int  _damage = -1;
 
-    private bool _isColliding = false;
-    private bool _coIsRunning = false;
-
     // Need to check if isColliding & CoisRunning are usefull
     private void OnTriggerEnter2D(Collider2D other)
     {   
@@ -51,7 +48,6 @@ public class CacAttack : MonoBehaviour
 
         enemy.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
         ChangeEnemyState(enemy);
-        _coIsRunning = false;
         enemy.GetComponent<EnemyBis>().DamageHealth(_damage);
     }
 

@@ -13,14 +13,10 @@ public class CarryObjectManager : MonoBehaviour
     [Header("CarryObject Settings")]
     [SerializeField]
     private int _item = 0;
-    [SerializeField]
-    private bool hideTrigger = false;
 
     [SerializeField]
     private GameObject _myPrefab = null;
     
-    private bool _open;
-
     /* Item list variable: */
     /* 
         0       = Random between(0 - 3)
@@ -38,7 +34,6 @@ public class CarryObjectManager : MonoBehaviour
     /* ************************************************ */
     private void Start()
     {
-        _open   = false;
         if (_item == 0)
             _item = Random.Range(0, 4);
     }

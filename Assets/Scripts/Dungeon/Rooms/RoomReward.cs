@@ -71,17 +71,19 @@ public class RoomReward : MonoBehaviour
 
     private AudioClip _NewAudioClip(string roomEvent)
     {
+        AudioClip newAudioClip = null;
         switch(roomEvent)
         {
             case "door_open":
-                return Resources.Load("Sounds/door_open") as AudioClip;
+                newAudioClip = Resources.Load("Sounds/door_open") as AudioClip;
                 break;
             case "door_close":
-                return Resources.Load("Sounds/door_close") as AudioClip;
+                newAudioClip =  Resources.Load("Sounds/door_close") as AudioClip;
                 break;
             default:
-                return Resources.Load("Sounds/door_close") as AudioClip;
+                newAudioClip = Resources.Load("Sounds/door_close") as AudioClip;
                 break;
         }
+        return newAudioClip;
     }
 }

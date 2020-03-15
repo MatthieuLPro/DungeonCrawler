@@ -6,17 +6,20 @@ public class PlayerSoundList : IObjectSoundList
 {
     public AudioClip UpdateAudioClip(string animation)
     {
+        AudioClip newAudioClip = null;
+
         switch(animation)
         {
             case "attack":
-                return Resources.Load("Sounds/Players/player_attack") as AudioClip;
+                newAudioClip = Resources.Load("Sounds/Players/player_attack") as AudioClip;
                 break;
             case "hurt":
-                return Resources.Load("Sounds/Players/player_hurt") as AudioClip;
+                newAudioClip = Resources.Load("Sounds/Players/player_hurt") as AudioClip;
                 break;
             default:
-                return Resources.Load("Sounds/Players/player_hurt") as AudioClip;
+                newAudioClip = Resources.Load("Sounds/Players/player_hurt") as AudioClip;
                 break;
         }
+        return newAudioClip;
     }
 }

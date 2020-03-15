@@ -12,26 +12,30 @@ public class EnemyTest : MonoBehaviour, IEnemy, IKillable, IDamageable
     /* Initial enemis values */
     [Header("Damageable component")]
     [SerializeField]
-    private int _maxHealth;
+    private int _maxHealth = 0;
     [SerializeField]
-    private bool _isInvincible;
+    private bool _isInvincible = false;
     [SerializeField]
     private float _invincibleTime = .5f;
 
     [Header("Interaction component")]
     [SerializeField]
-    private int _strength;
+    private int _strength = 0;
     [SerializeField]
-    private float _thrust;
+    private float _thrust = 0.0f;
     [SerializeField]
-    private float _knockBackTime;
+    private float _knockBackTime = 0.0f;
     [SerializeField]
-    private bool _attackTypeMagic;
+    private bool _attackTypeMagic = false;
     [SerializeField]
-    private bool _attackTypePhysic;
+    private bool _attackTypePhysic = false;
 
     private void Start()
     {
+        //_enemyComponent         = gameObject.AddComponent(typeof(Enemy)) as EnemyShoot(Strength, Thrust, KnockBackTime, AttackTypeMagic, AttackTypePhysic);
+        //_killableComponent      = gameObject.AddComponent(typeof(Killable) as _killable(); 
+        //_damageableComponent    = gameObject.AddComponent(typeof(Damageable)) as Damageable(MaxHealth);
+
         _enemyComponent         = new Enemy(Strength, Thrust, KnockBackTime, AttackTypeMagic, AttackTypePhysic);
         _killableComponent      = new Killable();
         _damageableComponent    = new Damageable(MaxHealth);

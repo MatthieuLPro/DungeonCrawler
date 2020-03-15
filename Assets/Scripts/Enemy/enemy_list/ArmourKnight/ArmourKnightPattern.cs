@@ -21,7 +21,7 @@ public class ArmourKnightPattern : MonoBehaviour
     [SerializeField]
     private float _radius = 0.1f;
     [SerializeField]
-    private Vector3 _center;
+    private Vector3 _center = Vector3.zero;
 
     [Header("Transition Circle Phase Settings")]
     [SerializeField]

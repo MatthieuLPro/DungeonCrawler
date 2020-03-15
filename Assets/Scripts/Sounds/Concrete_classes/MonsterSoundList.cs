@@ -6,20 +6,22 @@ public class MonsterSoundList : IObjectSoundList
 {
     public AudioClip UpdateAudioClip(string animation)
     {
+        AudioClip newAudioClip = null;
         switch(animation)
         {
             case "hurt":
-                return Resources.Load("Sounds/Enemies/enemy_hit") as AudioClip;
+                newAudioClip = Resources.Load("Sounds/Enemies/enemy_hit") as AudioClip;
                 break;
             case "ko":
-                return Resources.Load("Sounds/Enemies/enemy_ko") as AudioClip;
+                newAudioClip = Resources.Load("Sounds/Enemies/enemy_ko") as AudioClip;
                 break;
             case "bullet":
-                return Resources.Load("Sounds/Enemies/bullet") as AudioClip;
+                newAudioClip = Resources.Load("Sounds/Enemies/bullet") as AudioClip;
                 break;
             default:
-                return Resources.Load("Sounds/Enemies/enemy_ko") as AudioClip;
+                newAudioClip = Resources.Load("Sounds/Enemies/enemy_ko") as AudioClip;
                 break;
         }
+        return newAudioClip;
     }
 }

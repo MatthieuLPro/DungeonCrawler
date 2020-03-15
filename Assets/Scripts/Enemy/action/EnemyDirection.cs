@@ -270,10 +270,6 @@ public class EnemyDirection : EnemyMovement
     /* ************************************************ */
     /* Setter */
     /* ************************************************ */
-    public void UpdateSpeed(float newSpeed){
-        newSpeed = newSpeed;
-    }
-
     public void UpdateDirection(string direction)
     {
         onlyTop     = false;

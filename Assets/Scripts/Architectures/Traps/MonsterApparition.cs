@@ -6,11 +6,11 @@ public class MonsterApparition : MonoBehaviour
 {
     [Header("Monster List")]
     [SerializeField]
-    private GameObject[] _monsters;
+    private GameObject[] _monsters = null;
 
     [Header("Trap settings")]
     [SerializeField]
-    private bool _appearOneByOne;
+    private bool _appearOneByOne = false;
 
     private bool _coIsWorking;
 

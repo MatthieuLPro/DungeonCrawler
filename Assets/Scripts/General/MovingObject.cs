@@ -13,37 +13,37 @@ public enum ObjectState{
 public abstract class MovingObject : MonoBehaviour
 {
     [Header("General Movement parameters")]
-    public float   acceleration;
-    public float   decceleration;
-    public float   maxSpeed;
-    public bool    hasManyForce;
+    public float   acceleration = 0.0f;
+    public float   decceleration = 0.0f;
+    public float   maxSpeed = 0.0f;
+    public bool    hasManyForce = false;
 
     [HideInInspector]
     public float maxSpeedTemp;
 
     [Header("General Knockback parameters")]
     [SerializeField]
-    private Color _flashColor;
+    private Color _flashColor = Color.red;
     [SerializeField]
-    private Color _regularColor;
+    private Color _regularColor = Color.white;
     [SerializeField]
     private float _flashDuration = .02f;
     [SerializeField]
-    private BoxCollider2D _hurtBox;
+    private BoxCollider2D _hurtBox = null;
     [SerializeField]
-    private SpriteRenderer _sprite;
+    private SpriteRenderer _sprite = null;
 
     [HideInInspector]
-    public Vector3     changePos;
+    public Vector3 changePos = Vector3.zero;
 
     [HideInInspector]
     public ObjectState currentState;
 
     [HideInInspector]
-    public Animator    anime;
+    public Animator anime;
 
     [HideInInspector]
-    public Rigidbody2D   _rb2d;
+    public Rigidbody2D _rb2d;
 
     protected virtual void Start()
     {

@@ -7,7 +7,7 @@ public class ArmourKnightSystem : MonoBehaviour
 
     [Header("Armour knights List")]
     [SerializeField]
-    private GameObject[] _armourKnights;
+    private GameObject[] _armourKnights = null;
 
     [Header("Phase Frequence Settings")]
     [SerializeField]
