@@ -10,7 +10,7 @@ public class Rubies : Collectibles
         if (!other.CompareTag("Player"))
             return;
 
-        ResultPlayer resultPlayer = other.transform.parent.Find("Result").GetComponent<ResultPlayer>();
+        ResultPlayer resultPlayer = other.transform.parent.GetComponent<ResultPlayer>();
         resultPlayer.GetRuby(value);
         
         StartCoroutine(GetObjectFindEffectCo());

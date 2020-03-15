@@ -12,11 +12,11 @@ public class ResultPlayer : MonoBehaviour
 
     void Start() {
         _score = 0;
-        _scoreDungeon = transform.Find("Scores").GetComponent<ScoresDungeon>();
+        _scoreDungeon = transform.parent.Find("Scores").GetComponent<ScoresDungeon>();
     }
 
     public void GetRuby(int rubyAmount){
-        transform.parent.Find("UI").Find("Rubies").Find("RubyTextUI").GetComponent<RubyUI>().rubySystem.ChangeRuby(rubyAmount);
+        transform.Find("UI").Find("Rubies").Find("RubyTextUI").GetComponent<RubyUI>().rubySystem.ChangeRuby(rubyAmount);
         Score = rubyAmount;
         _scoreDungeon.UpdateScore(this);
     }

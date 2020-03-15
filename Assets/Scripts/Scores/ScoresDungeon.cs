@@ -15,10 +15,10 @@ public class ScoresDungeon : MonoBehaviour
     private ResultPlayer _resultPlayer3;
     private ResultPlayer _resultPlayer4;
 
-    private int _scorePlayer1 = 0;
-    private int _scorePlayer2 = 0;
-    private int _scorePlayer3 = 0;
-    private int _scorePlayer4 = 0;
+    public int _scorePlayer1 = 0;
+    public int _scorePlayer2 = 0;
+    public int _scorePlayer3 = 0;
+    public int _scorePlayer4 = 0;
 
     public Text timerText   = null;
     public Text player1Text = null;
@@ -27,7 +27,8 @@ public class ScoresDungeon : MonoBehaviour
     public Text player4Text = null;
     private float startTime;
 
-    private string[] _rank = new string[4];
+    public string[] _rank = new string[4];
+    public int[] _rankScore = new int[4];
 
     void Start()
     {
@@ -36,16 +37,26 @@ public class ScoresDungeon : MonoBehaviour
         _resultPlayer3 = transform.parent.Find("Player_3").GetComponent<ResultPlayer>();
         _resultPlayer4 = transform.parent.Find("Player_4").GetComponent<ResultPlayer>();
 
-        _rank[0] = "player_1";
-        if (_resultPlayer2) _rank[1] = "player_2";
-        if (_resultPlayer3) _rank[2] = "player_3";
-        if (_resultPlayer4) _rank[3] = "player_4";
+        _rank[0]            = "player_1";
+        _rankScore[0]       = 0;
+        player1Text.text    = rank_1;
 
+        if (_resultPlayer2) {
+            player2Text.text    = rank_2;
+            _rank[1]            = "player_2";
+            _rankScore[1]       = 0;
+        }
+        if (_resultPlayer3) {
+            player3Text.text    = rank_3;
+            _rank[2]            = "player_3";
+            _rankScore[2]       = 0;        
+        }
+        if (_resultPlayer4) {
+            player4Text.text    = rank_4;
+            _rank[3]            = "player_4";
+            _rankScore[3]       = 0;        
+        }
         startTime = Time.time;
-        player1Text.text = rank_1;
-        player2Text.text = rank_2;
-        player3Text.text = rank_3;
-        player4Text.text = rank_4;
     }
 
     void Update() {
@@ -63,9 +74,11 @@ public class ScoresDungeon : MonoBehaviour
         if (resultPlayer == _resultPlayer4)
             _scorePlayer4 = _resultPlayer4.Score;
 
-        _UpdateRank();
+        _UpdateRankScore();
+        _UpdateRankText();
     }
 
+    // Increment timer and update text
     void _UpdateTimer() {
         float t = Time.time - startTime;
 
@@ -75,6 +88,16 @@ public class ScoresDungeon : MonoBehaviour
         timerText.text = minutes + ":" + seconds;
     }
 
-    void _UpdateRank() {
+    // Update player rank
+    void _UpdateRankScore() {
+        Array.Sort(_rankScore);
+        Array.Reverse(_rankScore);
+    }
+
+    void _UpdateRankText() {
+        player1Text.text = _rank[0];
+        player2Text.text = _rank[1];
+        player3Text.text = _rank[2];
+        player4Text.text = _rank[3];
     }
 }
