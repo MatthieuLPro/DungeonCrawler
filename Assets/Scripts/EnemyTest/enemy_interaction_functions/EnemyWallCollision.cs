@@ -17,8 +17,8 @@ public class EnemyWallCollision : MonoBehaviour
     private void _ChangeDirection(Vector3 contact) {
         DeterminateSingleDirections direction = transform.parent.GetChild(0).transform.GetChild(0).GetComponent<DeterminateSingleDirections>();
 
-        float xDirection = contact.x == 0 ? Random.Range(0, 2) : direction.DirectionX * -1;
-        float yDirection = contact.y == 0 ? Random.Range(0, 2) : direction.DirectionY * -1;
+        float xDirection = ((contact.x < 0.1f && contact.x > -0.1f) ? Random.Range(0, 2) : direction.DirectionX * -1);
+        float yDirection = ((contact.y < 0.1f && contact.y > -0.1f) ? Random.Range(0, 2) : direction.DirectionY * -1);
         
         if (xDirection == 0)
             direction.DirectionX = -0.5f;
@@ -34,5 +34,4 @@ public class EnemyWallCollision : MonoBehaviour
         else
             direction.DirectionY = yDirection;
     }
-
 }
