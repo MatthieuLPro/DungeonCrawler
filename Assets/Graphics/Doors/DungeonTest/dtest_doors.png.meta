@@ -410,6 +410,12 @@ TextureImporter:
   - first:
       213: 997067647936066643
     second: dtest_doors_135
+  - first:
+      213: -6797639181584809697
+    second: dtest_doors_136
+  - first:
+      213: -7472077349220944558
+    second: dtest_doors_137
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
