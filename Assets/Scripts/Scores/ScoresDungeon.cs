@@ -118,4 +118,11 @@ public class ScoresDungeon : MonoBehaviour
         if (_resultPlayer3) player3Text.text = _rankPlayer3[0];
         if (_resultPlayer4) player4Text.text = _rankPlayer4[0];
     }
+
+    // Debug function (need to clean when score dungeon is finish)
+    void showValue() {
+        for(int i = 0; i < 4; i++) {
+            Debug.Log("Value for " + i + " " + _rankGlobal[i][0] + " : " + _rankGlobal[i][1]);
+        }
+    }
 }

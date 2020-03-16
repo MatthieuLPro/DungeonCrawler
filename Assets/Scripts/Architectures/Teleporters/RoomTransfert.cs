@@ -26,11 +26,13 @@ public class RoomTransfert : MonoBehaviour
             return;
 
         GameObject player                           = other.gameObject;
+        ResultPlayer resultplayer                   = player.transform.parent.GetComponent<ResultPlayer>();
         RoomPlayerInformation roomPlayerInfo        = player.transform.parent.GetComponent<RoomPlayerInformation>();
         CameraController camController              = player.transform.parent.transform.Find("Camera").GetComponent<CameraController>();
 
         UpdatePlayerPosition(player, GetPlayerNewPosition(player));
         UpdatePlayerRoomInformation(roomPlayerInfo);
+        if (!_nextRoomInformation.AlreadyVisited) UpdatePlayerResult(resultplayer);
 
         UpdateCamera(camController);
     }
@@ -62,12 +64,14 @@ public class RoomTransfert : MonoBehaviour
     private void UpdatePlayerPosition(GameObject player, Vector2 newPosition){
         player.transform.position = newPosition;
     }
-
-    private void UpdatePlayerRoomInformation(RoomPlayerInformation roomPlayerInfo)
-    {
+    private void UpdatePlayerRoomInformation(RoomPlayerInformation roomPlayerInfo){
         roomPlayerInfo.updatePlayerRoomLimits(_nextRoomInformation.getRoomLimits());
         roomPlayerInfo.UpdateActualLevel(nextRoomLevel);
         roomPlayerInfo.UpdateActualRoom(nextRoomCoord);        
+    }
+    private void UpdatePlayerResult(ResultPlayer resultPlayer) {
+        resultPlayer.EnterFirstInRoom(_nextRoomInformation.RoomValue);
+        _nextRoomInformation.AlreadyVisited = true;
     }
 
     /* Update camera informations */
