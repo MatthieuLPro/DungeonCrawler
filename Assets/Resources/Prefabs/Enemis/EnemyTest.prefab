@@ -251,8 +251,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d887d88f42f2c7499ca4b167d41a7d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _isInvincible: 0
-  _invincibleTime: 0.5
 --- !u!61 &4995763899764540632
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -309,7 +307,7 @@ Transform:
   m_GameObject: {fileID: 4995763900489442676}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 5, y: 5, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 8316635196482643551}
   - {fileID: 4995763899764540634}
@@ -330,7 +328,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _maxHealth: 1
-  _maxMana: 0
+  _isInvincible: 0
+  _invincibleTime: 0.5
   _strength: 1
   _thrust: 3
   _knockBackTime: 0.2
@@ -350,6 +349,7 @@ SpriteRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -442,7 +442,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.32, y: 0.32}
+    oldSize: {x: 2, y: 2}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0

@@ -88,8 +88,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6537e7cf749805f0b03f7693c96563a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 4
-  rb2d: {fileID: 0}
+  _speed: 0
 --- !u!1 &3346741013679827759
 GameObject:
   m_ObjectHideFlags: 0
@@ -327,7 +326,7 @@ Transform:
   m_GameObject: {fileID: 6622611268606485914}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 3.72, y: 24.01, z: 0}
-  m_LocalScale: {x: 5, y: 5, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 7914555958216795825}
   - {fileID: 6622611269222581300}
@@ -347,12 +346,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a861ffe22e4157748cdb6002db7412d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 1
-  strength: 1
-  thrust: 4
-  knockBackTime: 0.25
-  attackTypeMagic: 0
-  attackTypePhysic: 1
+  _maxHealth: 0
+  _isInvincible: 0
+  _invincibleTime: 0.5
+  _strength: 0
+  _thrust: 0
+  _knockBackTime: 0
+  _attackTypeMagic: 0
+  _attackTypePhysic: 0
 --- !u!212 &6622611268606485908
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -367,6 +368,7 @@ SpriteRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -459,7 +461,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.32, y: 0.32}
+    oldSize: {x: 2, y: 2}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -512,8 +514,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d887d88f42f2c7499ca4b167d41a7d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _isInvincible: 0
-  _invincibleTime: 0.5
 --- !u!61 &6622611269222581302
 BoxCollider2D:
   m_ObjectHideFlags: 0
