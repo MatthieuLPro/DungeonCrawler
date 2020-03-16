@@ -2,23 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System;
 
 public class ScoresDungeon : MonoBehaviour
 {
-    const string rank_1 = "1st";
-    const string rank_2 = "2nd";
-    const string rank_3 = "3rd";
-    const string rank_4 = "4th";
-
     private ResultPlayer _resultPlayer1;
     private ResultPlayer _resultPlayer2;
     private ResultPlayer _resultPlayer3;
     private ResultPlayer _resultPlayer4;
-
-    public int _scorePlayer1 = 0;
-    public int _scorePlayer2 = 0;
-    public int _scorePlayer3 = 0;
-    public int _scorePlayer4 = 0;
 
     public Text timerText   = null;
     public Text player1Text = null;
@@ -28,7 +19,14 @@ public class ScoresDungeon : MonoBehaviour
     private float startTime;
 
     public string[] _rank = new string[4];
-    public int[] _rankScore = new int[4];
+    public string[] _rankPlayer1 = new string[2];
+    public string[] _rankPlayer2 = new string[2];
+    public string[] _rankPlayer3 = new string[2];
+    public string[] _rankPlayer4 = new string[2];
+    public string[] _rankText = new string[4];
+    public string[][] _rankGlobal = new string[4][];
+
+    public int nb_players;
 
     void Start()
     {
@@ -37,24 +35,35 @@ public class ScoresDungeon : MonoBehaviour
         _resultPlayer3 = transform.parent.Find("Player_3").GetComponent<ResultPlayer>();
         _resultPlayer4 = transform.parent.Find("Player_4").GetComponent<ResultPlayer>();
 
+        _rankText = new string[4] {"4th", "3rd", "2nd", "1st"};
+
         _rank[0]            = "player_1";
-        _rankScore[0]       = 0;
-        player1Text.text    = rank_1;
+        _rankPlayer1        = new string[2] {_rankText[3], "0"};
+        player1Text.text    = _rankPlayer1[0];
+        _rankGlobal[0]      = _rankPlayer1;
+
+        nb_players += 1;
 
         if (_resultPlayer2) {
-            player2Text.text    = rank_2;
             _rank[1]            = "player_2";
-            _rankScore[1]       = 0;
+            _rankPlayer2        = new string[2] {_rankText[3], "0"};
+            player2Text.text    = _rankPlayer2[0];
+            _rankGlobal[1]      = _rankPlayer2;
+            nb_players += 1;
         }
         if (_resultPlayer3) {
-            player3Text.text    = rank_3;
             _rank[2]            = "player_3";
-            _rankScore[2]       = 0;        
+            _rankPlayer3        = new string[2] {_rankText[3], "0"};
+            player3Text.text    = _rankPlayer3[0];
+            _rankGlobal[2]      = _rankPlayer3;
+            nb_players += 1;
         }
         if (_resultPlayer4) {
-            player4Text.text    = rank_4;
             _rank[3]            = "player_4";
-            _rankScore[3]       = 0;        
+            _rankPlayer4        = new string[2] {_rankText[3], "0"};
+            player4Text.text    = _rankPlayer4[0];
+            _rankGlobal[3]      = _rankPlayer4;
+            nb_players += 1;
         }
         startTime = Time.time;
     }
@@ -64,15 +73,15 @@ public class ScoresDungeon : MonoBehaviour
     }
 
     // Update call by resultPlayer
-    public void UpdateScore(ResultPlayer resultPlayer){
+    public void UpdateScore(ResultPlayer resultPlayer, int points){
         if (resultPlayer == _resultPlayer1)
-            _scorePlayer1 = _resultPlayer1.Score;
+            _rankPlayer1[1] = (int.Parse(_rankPlayer1[1]) + points).ToString();
         if (resultPlayer == _resultPlayer2)
-            _scorePlayer2 = _resultPlayer2.Score;
+            _rankPlayer2[1] = (int.Parse(_rankPlayer2[1]) + points).ToString();
         if (resultPlayer == _resultPlayer3)
-            _scorePlayer3 = _resultPlayer3.Score;
+            _rankPlayer3[1] = (int.Parse(_rankPlayer3[1]) + points).ToString();
         if (resultPlayer == _resultPlayer4)
-            _scorePlayer4 = _resultPlayer4.Score;
+            _rankPlayer4[1] = (int.Parse(_rankPlayer4[1]) + points).ToString();
 
         _UpdateRankScore();
         _UpdateRankText();
@@ -90,14 +99,23 @@ public class ScoresDungeon : MonoBehaviour
 
     // Update player rank
     void _UpdateRankScore() {
-        Array.Sort(_rankScore);
-        Array.Reverse(_rankScore);
+        int rank = 0;
+        for(int i = 0; i < nb_players; i++) {
+            for(int j = 0; j < nb_players; j++) {
+                if (int.Parse(_rankGlobal[i][1]) > int.Parse(_rankGlobal[j][1])) {
+                    rank += 1;
+                }
+            }
+            _rankGlobal[i][0] = _rankText[rank];
+            rank = 0;
+        }
     }
 
+    // Update player rank text
     void _UpdateRankText() {
-        player1Text.text = _rank[0];
-        player2Text.text = _rank[1];
-        player3Text.text = _rank[2];
-        player4Text.text = _rank[3];
+        player1Text.text = _rankPlayer1[0];
+        if (_resultPlayer2) player2Text.text = _rankPlayer2[0];
+        if (_resultPlayer3) player3Text.text = _rankPlayer3[0];
+        if (_resultPlayer4) player4Text.text = _rankPlayer4[0];
     }
 }

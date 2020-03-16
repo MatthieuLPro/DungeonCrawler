@@ -4,27 +4,26 @@ using UnityEngine;
 
 public class ResultPlayer : MonoBehaviour
 {
-    private int _score;
     private ScoresDungeon _scoreDungeon;
 
     [Header("Result parameters")]
     public int rubyInit = 0;
 
     void Start() {
-        _score = 0;
         _scoreDungeon = transform.parent.Find("Scores").GetComponent<ScoresDungeon>();
     }
 
     public void GetRuby(int rubyAmount){
         transform.Find("UI").Find("Rubies").Find("RubyTextUI").GetComponent<RubyUI>().rubySystem.ChangeRuby(rubyAmount);
-        Score = rubyAmount;
-        _scoreDungeon.UpdateScore(this);
+        _scoreDungeon.UpdateScore(this, rubyAmount);
     }
 
-    public void FinishDungeon(){
+    public void FinishDungeon(int finishDungeonValue){
+        _scoreDungeon.UpdateScore(this, finishDungeonValue);
     }
 
-    public void EnterFirstInRoom(){
+    public void EnterFirstInRoom(int roomValue){
+        _scoreDungeon.UpdateScore(this, roomValue);
     }
 
     public void KillMonster(){
@@ -34,10 +33,5 @@ public class ResultPlayer : MonoBehaviour
     }
 
     public void AmountDamageBoss(){
-    }
-
-    public int Score { 
-        get { return _score; }
-        set { _score += value; }
     }
 }
