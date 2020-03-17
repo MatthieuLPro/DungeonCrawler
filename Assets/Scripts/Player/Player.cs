@@ -78,17 +78,17 @@ public class Player : MonoBehaviour
     private void _UpdateUIHeart(bool adding, int value)
     {
         if (adding)
-            _GetUIGO("Hearts", "HeartsHealthUI").GetComponent<HeartsHealthUI>().heartsHealthSystem.Heal(value);
+            _GetUIGO("Hearts").GetComponent<HeartsHealthUI>().heartsHealthSystem.Heal(value);
         else
-            _GetUIGO("Hearts", "HeartsHealthUI").GetComponent<HeartsHealthUI>().heartsHealthSystem.Damage(value);
+            _GetUIGO("Hearts").GetComponent<HeartsHealthUI>().heartsHealthSystem.Damage(value);
     }
 
     private void _UpdateUIMana(bool adding, int value)
     {
         if (adding)
-            _GetUIGO("Manas", "ManaUI").GetComponent<ManaUI>().manaSystem.ChangeMana(value);
+            _GetUIGO("Manas").GetComponent<ManaUI>().manaSystem.ChangeMana(value);
         else
-            _GetUIGO("Manas", "ManaUI").GetComponent<ManaUI>().manaSystem.ChangeMana(value * -1);
+            _GetUIGO("Manas").GetComponent<ManaUI>().manaSystem.ChangeMana(value * -1);
     }
 
     private void _UpdateUISmallKey(bool adding)
@@ -107,8 +107,11 @@ public class Player : MonoBehaviour
             _GetUIGO("BigKeys", "BigKeyTextUI").GetComponent<BigKeyUI>().bigKeySystem.RemoveBigKey();
     }
 
-    private Transform _GetUIGO(string fileName, string UIName){
-        return transform.Find("UI").Find(fileName).Find(UIName);
+    private Transform _GetUIGO(string UIName, string fileName = ""){
+        if (fileName != "")
+            return transform.Find("UI").Find(fileName).Find(UIName);
+        else
+            return transform.Find("UI").Find(UIName);
     }
 
     /* ************************************************ */
