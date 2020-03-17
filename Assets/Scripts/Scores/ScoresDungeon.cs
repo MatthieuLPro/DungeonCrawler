@@ -23,8 +23,9 @@ public class ScoresDungeon : MonoBehaviour
     public string[] _rankPlayer2 = new string[2];
     public string[] _rankPlayer3 = new string[2];
     public string[] _rankPlayer4 = new string[2];
-    public string[] _rankText = new string[4];
-    public string[][] _rankGlobal = new string[4][];
+
+    public string[] _rankText       = new string[4];
+    public string[][] _rankGlobal   = new string[4][];
 
     public int nb_players;
 

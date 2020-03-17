@@ -7,7 +7,7 @@ public class Player : MonoBehaviour
     [Header("Player parameters")]
     public int playerIndex = 1;
     public int healthInit = 5;
-    public int manaInit = 34;
+    public int manaInit = 70;
     public int keys = 0;
     public bool bigKey = false;
     public int strength = 1;

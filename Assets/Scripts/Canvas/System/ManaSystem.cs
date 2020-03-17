@@ -54,9 +54,9 @@ public class ManaSystem
     private bool IncreaseMana()
     {
         _mana.IncreaseByOne();
-        if(_mana.GetValue() >= 34)
+        if(_mana.GetValue() >= 70)
         {
-            _mana.SetValue(34);
+            _mana.SetValue(70);
             return true;
         }
         return false;
