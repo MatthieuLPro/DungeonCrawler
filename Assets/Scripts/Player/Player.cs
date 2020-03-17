@@ -94,24 +94,24 @@ public class Player : MonoBehaviour
     private void _UpdateUISmallKey(bool adding)
     {
         if (adding)
-            _GetUIGO("SmallKeys", "SmallKeyTextUI").GetComponent<SmallKeyUI>().smallKeySystem.AddSmallKey();
+            _GetUIGO("SmallKeyTextUI", "SmallKeys").GetComponent<SmallKeyUI>().smallKeySystem.AddSmallKey();
         else
-            _GetUIGO("SmallKeys", "SmallKeyTextUI").GetComponent<SmallKeyUI>().smallKeySystem.RemoveSmallKey();
+            _GetUIGO("SmallKeyTextUI", "SmallKeys").GetComponent<SmallKeyUI>().smallKeySystem.RemoveSmallKey();
     }
 
     private void _UpdateUIBigKey(bool adding)
     {
         if (adding)
-            _GetUIGO("BigKeys", "BigKeyTextUI").GetComponent<BigKeyUI>().bigKeySystem.AddBigKey();
+            _GetUIGO("BigKeyTextUI", "BigKeys").GetComponent<BigKeyUI>().bigKeySystem.AddBigKey();
         else
-            _GetUIGO("BigKeys", "BigKeyTextUI").GetComponent<BigKeyUI>().bigKeySystem.RemoveBigKey();
+            _GetUIGO("BigKeyTextUI", "BigKeys").GetComponent<BigKeyUI>().bigKeySystem.RemoveBigKey();
     }
 
     private Transform _GetUIGO(string UIName, string fileName = ""){
         if (fileName != "")
-            return transform.Find("UI").Find(fileName).Find(UIName);
+            return transform.Find("UI").transform.Find(fileName).transform.Find(UIName);
         else
-            return transform.Find("UI").Find(UIName);
+            return transform.Find("UI").transform.Find(UIName);
     }
 
     /* ************************************************ */
