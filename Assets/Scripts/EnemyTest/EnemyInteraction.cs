@@ -97,16 +97,16 @@ public class EnemyInteraction : MonoBehaviour
     private IEnumerator _KnockBackTimeCo(GameObject player)
     {
         Vector2 directionKnock  = _CalculateKnockBackDirection(player.transform.position);
-        Action playerAction     = player.transform.parent.GetComponent<Action>();
+        Attack playerAttack     = player.transform.parent.GetComponent<Attack>();
 
         _KnockToggleParam(true);
 
-        _ApplyThrustOnEnemy(directionKnock * playerAction.GetThrust());        
+        _ApplyThrustOnEnemy(directionKnock * playerAttack.GetThrust());        
         _CallHurt();
 
-        yield return new WaitForSeconds(playerAction.GetKnockBackTime());
+        yield return new WaitForSeconds(playerAttack.GetKnockBackTime());
 
-        _enemyScript.ActualHealth = (playerAction.GetStrength() * -1);
+        _enemyScript.ActualHealth = (playerAttack.GetStrength() * -1);
     }
 
     /* Invincible time */

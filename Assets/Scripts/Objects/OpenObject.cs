@@ -6,44 +6,21 @@ public class OpenObject : MonoBehaviour
 {
     [Header("Treasure Settings")]
     [SerializeField]
-    private Sprite _open = null;
+    private Sprite _openTop = null;
     [SerializeField]
-    private int loot = 0;
+    private Sprite _openBot = null;
+    [SerializeField]
+    private int _loot = 0;
     [SerializeField]
     private int _openMethod = 0;
-    
-    [Header("Loot Sprites")]
-    [SerializeField]
-    private Sprite _rubyGreen = null;
-    [SerializeField]
-    private Sprite _rubyBlue = null;
-    [SerializeField]
-    private Sprite _rubyRed = null;
-    [SerializeField]
-    private Sprite _rubyFift = null;
-    [SerializeField]
-    private Sprite _rubyHund = null;
-    [SerializeField]
-    private Sprite _rubyThreeHund = null;
-    [SerializeField]
-    private Sprite _smallKey = null;
-    [SerializeField]
-    private Sprite _bigKey = null;
 
-    private SpriteRenderer _spriteRend;
-    private GameObject lootObject;
+    private GameObject _lootObject;
 
     /*
         Loot values:
             - 1 : Ruby green
             - 2 : Ruby blue
             - 3 : Ruby red
-            - 4 : Bomb 1
-            - 5 : Bomb 3
-            - 6 : Bomb 5
-            - 7 : Arrow 5
-            - 8 : Arrow 10
-            - 9 : Arrow 15
             - 50 : Ruby 50
             - 51 : Ruby 100
             - 52 : Ruby 300
@@ -54,94 +31,111 @@ public class OpenObject : MonoBehaviour
 
     /*
         _openMethod values:
-            - 0 : Can open
-            - 1 : Normal key
-            - 2 : Big Key
+            - 0 : Do not need key
+            - 1 : Need small key
+            - 2 : Need big key
     */
 
     private void Start(){
-        _spriteRend = GetComponent<SpriteRenderer>();
-        if (loot == 0)
-            loot = Random.Range(1,7);
+        if (Loot == 0)
+            Loot = Random.Range(1,7);
     }
 
-    public void OpenTheObject(GameObject opener){
-        if (_openMethod == 2  && !opener.GetComponent<Player>().HasBigKey())
+    public void TryToOpen(GameObject opener) {
+        if (!_CanOpenObject(opener)) 
             return;
-        else if (_openMethod == 1  && !opener.GetComponent<Player>().HasSmallKey())
-            return;
+        _ChangeSpriteToOpen();
+        _OpenTheObject(opener);
+    }
 
-        _spriteRend.sprite = _open;
-        foreach(BoxCollider2D box in gameObject.GetComponents<BoxCollider2D>())
+    bool _CanOpenObject(GameObject opener) {
+        Player player = opener.GetComponent<Player>();
+        if (_openMethod == 2  && !player.HasBigKey())
+            return false;
+        else if (_openMethod == 1  && !player.HasSmallKey())
+            return false;
+        
+        return true;
+    } 
+
+    void _OpenTheObject(GameObject opener){
+        foreach(BoxCollider2D box in GetComponents<BoxCollider2D>())
         {
             if (box.isTrigger == true)
                 Destroy(box);
         }
-        GenerateLoot();
-        StartCoroutine(ShowLoot(opener));
+        _GeneratePrefabLoot();
+        StartCoroutine(_LootAnimationCo(opener));
     }
 
-    private IEnumerator ShowLoot(GameObject opener)
-    {
-        opener.GetComponent<PlayerController>().enabled = false;
-        yield return new WaitForSeconds(1f);
-
-        opener.GetComponent<PlayerController>().enabled = true;
-        Destroy(lootObject);
-        GetLoot(opener);
+    void _ChangeSpriteToOpen() {
+        GetComponent<SpriteRenderer>().sprite = _openBot;
+        transform.parent.GetComponent<SpriteRenderer>().sprite = _openTop;
     }
 
-    private void GenerateLoot()
+    void _GeneratePrefabLoot()
     {
         GameObject myPrefab;
 
-        myPrefab = Resources.Load("Prefabs/Loot") as GameObject;
-        lootObject = Instantiate(myPrefab, GetComponent<Transform>().position, Quaternion.identity);
-        lootObject.GetComponent<Transform>().position += new Vector3(0, 0, -1);
-        lootObject.GetComponent<SpriteRenderer>().sprite = LootSprite();
+        myPrefab        = Resources.Load("Prefabs/Collectible/Loot") as GameObject;
+        _lootObject     = Instantiate(myPrefab, GetComponent<Transform>().position + new Vector3(0, 0.5f, 0), Quaternion.identity);
+        _lootObject.GetComponent<SpriteRenderer>().sprite = _GenerateLootSprite();
     }
 
-    private Sprite LootSprite()
+    Sprite _GenerateLootSprite()
     {
         Sprite newSprite;
+        Object[] sprites = Resources.LoadAll("Sprites/Objects/collectibles");
 
-        switch(loot)
+        switch(_loot)
         {
             case 1:
-                newSprite = _rubyGreen;
+                newSprite = (Sprite)sprites[14];
                 break;
             case 2:
-                newSprite = _rubyBlue;
+                newSprite = (Sprite)sprites[11]; Resources.Load<Sprite>("Sprites/Objects/ruby_blue1");
                 break;
             case 3:
-                newSprite = _rubyRed;
+                newSprite = (Sprite)sprites[17]; Resources.Load<Sprite>("Sprites/Objects/ruby_red1");
                 break;
             case 50:
-                newSprite = _rubyFift;
+                newSprite = (Sprite)sprites[8]; Resources.Load<Sprite>("Sprites/Objects/ruby50");
                 break;
             case 51:
-                newSprite = _rubyHund;
+                newSprite = (Sprite)sprites[9]; Resources.Load<Sprite>("Sprites/Objects/ruby100");
                 break;
             case 52:
-                newSprite = _rubyThreeHund;
+                newSprite = (Sprite)sprites[10]; Resources.Load<Sprite>("Sprites/Objects/ruby300");
                 break;
             case 100:
-                newSprite = _smallKey;
+                newSprite = (Sprite)sprites[5]; Resources.Load<Sprite>("Sprites/Objects/key_small");
                 break;
             case 101:
-                newSprite = _bigKey;
+                newSprite = (Sprite)sprites[4]; Resources.Load<Sprite>("Sprites/Objects/key_big");
                 break;
             default:
-                newSprite = _rubyGreen;
+                newSprite = (Sprite)sprites[14];
                 break;
         }
         return newSprite;
     }
 
-    private void GetLoot(GameObject opener)
+    IEnumerator _LootAnimationCo(GameObject opener)
     {
-        ResultPlayer resultPlayer = opener.transform.parent.Find("Result").GetComponent<ResultPlayer>(); 
-        switch(loot)
+        opener.transform.GetChild(0).Find("Movement").GetComponent<Movement>().enabled = false;
+        yield return new WaitForSeconds(1f);
+
+        opener.transform.GetChild(0).Find("Movement").GetComponent<Movement>().enabled = true;
+        Destroy(_lootObject);
+        _GetReward(opener);
+    }
+
+    void _GetReward(GameObject opener)
+    {
+        ResultPlayer resultPlayer   = opener.GetComponent<ResultPlayer>();
+        Player player               = opener.GetComponent<Player>();
+
+        switch(Loot)
         {
             case 1:
                 resultPlayer.GetRuby(1);
@@ -161,9 +155,21 @@ public class OpenObject : MonoBehaviour
             case 52:
                 resultPlayer.GetRuby(300);
                 break;
+            case 100:
+                player.GetSmallKey();
+                break;
+            case 101:
+                player.GetBigKey();
+                break;
             default:
                 resultPlayer.GetRuby(1);
                 break;
         }
+    }
+
+    // Getter & Setter
+    public int Loot {
+        get { return _loot; }
+        set { _loot = value; }
     }
 }

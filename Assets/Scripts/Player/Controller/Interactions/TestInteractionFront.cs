@@ -17,7 +17,8 @@ public class TestInteractionFront : MonoBehaviour
 
     private bool _isKnock;
 
-    public GameObject objectCarry;
+    public GameObject objectCarry = null;
+    public GameObject _objectOpen = null;
 
     /* ************************************************ */
     /* Main Functions */
@@ -33,32 +34,44 @@ public class TestInteractionFront : MonoBehaviour
         _sprite         = _parent.GetComponent<SpriteRenderer>();
 
         _collider       = GetComponent<BoxCollider2D>();
-
-        objectCarry     = null;
     }
 
-    private void OnTriggerEnter2D(Collider2D other)
+    void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("ObjectCarry"))
-        {
-            objectCarry = other.gameObject;
+        //if (other.CompareTag("ObjectCarry")) {
+        //    objectCarry = other.gameObject;
+        //    return;
+        //}
+        //objectCarry = null;
+
+        if (other.CompareTag("ObjectOpen")) {
+            ObjectOpen = other.gameObject;
             return;
         }
+        ObjectOpen = null;
     }
 
-    private void OnTriggerExit2D(Collider2D other){
-        objectCarry = null;
+    void OnTriggerExit2D(Collider2D other){
+        ObjectOpen = null;
     }
 
     /* ************************************************ */
     /* Functions */
     /* ************************************************ */
     /* Tag: Object Carry */
-    public void InteractionWithObjectCarry()
-    {
-        objectCarry.GetComponent<SpriteRenderer>().sprite = null;
-        objectCarry.GetComponent<CarryObjectManager>().GenerateCollectible();
-        objectCarry.GetComponent<CarryObjectManager>().CarryObject(_parent);
-        objectCarry = null;
+    //public void InteractionWithObjectCarry()
+    //{
+    //    objectCarry.GetComponent<SpriteRenderer>().sprite = null;
+    //    objectCarry.GetComponent<CarryObjectManager>().GenerateCollectible();
+    //    objectCarry.GetComponent<CarryObjectManager>().CarryObject(_parent);
+    //    objectCarry = null;
+    //}
+
+    /* ************************************************ */
+    /* Getter & Setter */
+    /* ************************************************ */
+    public GameObject ObjectOpen {
+        get { return _objectOpen; }
+        set { _objectOpen = value; }
     }
 }

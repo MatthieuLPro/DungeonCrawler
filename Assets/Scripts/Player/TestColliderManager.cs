@@ -90,7 +90,7 @@ public class TestColliderManager : MonoBehaviour
             else
                 attackDirection = "AttackLeft";
 
-        _collidersAttacks = gameObject.transform.Find("Action").transform.Find(attackDirection).GetComponents<PolygonCollider2D>();
+        _collidersAttacks = gameObject.transform.Find("Attack").transform.Find(attackDirection).GetComponents<PolygonCollider2D>();
     }
 
     public void SetAttackColliderToNull()
@@ -100,7 +100,7 @@ public class TestColliderManager : MonoBehaviour
         _currentColliderIndex = 0;
         for (var i = 0; i < directions.Length; i++)
         {
-            PolygonCollider2D[] colliders = gameObject.transform.Find("Action").transform.Find(directions[i]).GetComponents<PolygonCollider2D>();
+            PolygonCollider2D[] colliders = gameObject.transform.Find("Attack").transform.Find(directions[i]).GetComponents<PolygonCollider2D>();
             for (var j = 0; j < colliders.Length; j++)
                 colliders[j].enabled    = false;
         }
