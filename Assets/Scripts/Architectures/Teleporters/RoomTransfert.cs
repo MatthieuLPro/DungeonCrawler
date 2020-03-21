@@ -17,9 +17,11 @@ public class RoomTransfert : MonoBehaviour
     [Header("Type of transition")]
     [SerializeField]
     private bool _teleportPlayer = false;
+    // Transition = false || true (no teleport / yes teleport)
     [SerializeField]
     private bool _updateFogList = false;
-    // Transition = 0 || 1 (no teleport / yes teleport)
+    [SerializeField]
+    private bool _isInside = false;
  
     private RoomInformation _nextRoomInformation;
 
@@ -40,7 +42,6 @@ public class RoomTransfert : MonoBehaviour
         ResultPlayer resultplayer                   = parent.GetComponent<ResultPlayer>();
         RoomPlayerInformation roomPlayerInfo        = parent.GetComponent<RoomPlayerInformation>();
         CameraController camController              = parent.transform.Find("Camera").GetComponent<CameraController>();
-        string previousRoom                         = roomPlayerInfo.ActualRoom;
 
         if (TeleportPlayer)
             UpdatePlayerPosition(player, GetPlayerNewPosition(player));
@@ -49,7 +50,7 @@ public class RoomTransfert : MonoBehaviour
         UpdatePlayerRoomLimits(roomPlayerInfo);
 
         if (UpdateFogList)
-            UpdatePlayerFogList(roomPlayerInfo, previousRoom);
+            UpdatePlayerFogList(roomPlayerInfo);
 
         if (!_nextRoomInformation.AlreadyVisited)
             UpdatePlayerResult(resultplayer);
@@ -77,6 +78,10 @@ public class RoomTransfert : MonoBehaviour
 
     public bool UpdateFogList {
         get { return _updateFogList; }
+    }
+
+    public bool IsInside {
+        get { return _isInside; }
     }
 
     /* ************************************************ */
@@ -107,16 +112,19 @@ public class RoomTransfert : MonoBehaviour
         player.transform.position = newPosition;
     }
     private void UpdatePlayerRoomInformation(RoomPlayerInformation roomPlayerInfo){
-        roomPlayerInfo.ActualLevel      = NextRoomLevel;
-        roomPlayerInfo.ActualRoom       = NextRoomCoord;
+        roomPlayerInfo.ActualLevel              = NextRoomLevel;
+        roomPlayerInfo.PreviousRoom             = roomPlayerInfo.ActualRoom;
+        roomPlayerInfo.PreviousRoomIsInside     = roomPlayerInfo.ActualRoomIsInside;
+        roomPlayerInfo.ActualRoom               = NextRoomCoord;
+        roomPlayerInfo.ActualRoomIsInside       = IsInside;
     }
 
     private void UpdatePlayerRoomLimits(RoomPlayerInformation roomPlayerInfo) {
         roomPlayerInfo.PlayerRoomLimits = _nextRoomInformation.getRoomLimits();
     }
 
-    private void UpdatePlayerFogList(RoomPlayerInformation roomPlayerInfo, string previousRoom) {
-        roomPlayerInfo.UpdateFogList(previousRoom);
+    private void UpdatePlayerFogList(RoomPlayerInformation roomPlayerInfo) {
+        roomPlayerInfo.UpdateFogList(IsInside);
     }
 
     private void UpdatePlayerResult(ResultPlayer resultPlayer) {
