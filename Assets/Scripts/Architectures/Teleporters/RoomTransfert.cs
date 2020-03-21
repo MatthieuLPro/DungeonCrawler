@@ -5,11 +5,19 @@ using UnityEngine;
 public class RoomTransfert : MonoBehaviour
 {
     [Header("New player position")]
-    public Vector2 newPosition;
+    [SerializeField]
+    private Vector2 _newPosition = Vector2.zero;
 
     [Header("Next room information")]
-    public string nextRoomCoord;
-    public string nextRoomLevel;
+    [SerializeField]
+    private string _nextRoomCoord = "00";
+    [SerializeField]
+    private string _nextRoomLevel = "0";
+
+    [Header("Type of transition")]
+    [SerializeField]
+    private bool _teleportPlayer = false;
+    // Transition = 0 || 1 (no teleport / yes teleport)
  
     private RoomInformation _nextRoomInformation;
 
@@ -17,7 +25,7 @@ public class RoomTransfert : MonoBehaviour
     /* Main functions */
     /* ************************************************ */
     private void Awake(){
-        _nextRoomInformation = transform.root.Find("Level_" + nextRoomLevel).Find("Room_" + nextRoomCoord).GetComponent<RoomInformation>();
+        _nextRoomInformation = transform.root.Find("Level_" + NextRoomLevel).Find("Room_" + NextRoomCoord).GetComponent<RoomInformation>();
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -26,15 +34,41 @@ public class RoomTransfert : MonoBehaviour
             return;
 
         GameObject player                           = other.gameObject;
-        ResultPlayer resultplayer                   = player.transform.parent.GetComponent<ResultPlayer>();
-        RoomPlayerInformation roomPlayerInfo        = player.transform.parent.GetComponent<RoomPlayerInformation>();
-        CameraController camController              = player.transform.parent.transform.Find("Camera").GetComponent<CameraController>();
+        Transform parent                            = player.transform.parent;
+        ResultPlayer resultplayer                   = parent.GetComponent<ResultPlayer>();
+        RoomPlayerInformation roomPlayerInfo        = parent.GetComponent<RoomPlayerInformation>();
+        CameraController camController              = parent.transform.Find("Camera").GetComponent<CameraController>();
+        string previousRoom                         = NextRoomCoord;
 
-        UpdatePlayerPosition(player, GetPlayerNewPosition(player));
+        if (TeleportPlayer)
+            UpdatePlayerPosition(player, GetPlayerNewPosition(player));
+
         UpdatePlayerRoomInformation(roomPlayerInfo);
-        if (!_nextRoomInformation.AlreadyVisited) UpdatePlayerResult(resultplayer);
+        UpdatePlayerRoomLimits(roomPlayerInfo);
+        UpdatePlayerFogList(roomPlayerInfo, previousRoom);
+
+        if (!_nextRoomInformation.AlreadyVisited)
+            UpdatePlayerResult(resultplayer);
 
         UpdateCamera(camController);
+    }
+
+    public string NextRoomCoord {
+        get { return _nextRoomCoord; }
+        set { _nextRoomCoord = value; }
+    }
+
+    public string NextRoomLevel {
+        get { return _nextRoomLevel; }
+        set { _nextRoomLevel = value; }
+    }
+
+    public Vector2 NewPosition {
+        get { return _newPosition; }
+    }
+
+    public bool TeleportPlayer {
+        get { return _teleportPlayer; }
     }
 
     /* ************************************************ */
@@ -44,32 +78,39 @@ public class RoomTransfert : MonoBehaviour
     {
         Vector2 position;
 
-        if (newPosition.x == 0)
+        if (NewPosition.x == 0)
             position.x = player.transform.position.x;
         else
-            position.x = newPosition.x;
+            position.x = NewPosition.x;
 
-        if (newPosition.y == 0)
+        if (NewPosition.y == 0)
             position.y = player.transform.position.y;
         else
-            position.y = newPosition.y;
+            position.y = NewPosition.y;
 
         return position;
     }
 
     /* ************************************************ */
-    /* Update object functions */
+    /* Update */
     /* ************************************************ */
     /* Update player informations */
     private void UpdatePlayerPosition(GameObject player, Vector2 newPosition){
         player.transform.position = newPosition;
     }
     private void UpdatePlayerRoomInformation(RoomPlayerInformation roomPlayerInfo){
-        roomPlayerInfo.PlayerRoomLimits = _nextRoomInformation.getRoomLimits();
-        roomPlayerInfo.ActualLevel      = nextRoomLevel;
-        roomPlayerInfo.ActualRoom       = nextRoomCoord;
-        roomPlayerInfo.UpdateFogList();
+        roomPlayerInfo.ActualLevel      = NextRoomLevel;
+        roomPlayerInfo.ActualRoom       = NextRoomCoord;
     }
+
+    private void UpdatePlayerRoomLimits(RoomPlayerInformation roomPlayerInfo) {
+        roomPlayerInfo.PlayerRoomLimits = _nextRoomInformation.getRoomLimits();
+    }
+
+    private void UpdatePlayerFogList(RoomPlayerInformation roomPlayerInfo, string previousRoom) {
+        roomPlayerInfo.UpdateFogList(previousRoom);
+    }
+
     private void UpdatePlayerResult(ResultPlayer resultPlayer) {
         resultPlayer.EnterFirstInRoom(_nextRoomInformation.RoomValue);
         _nextRoomInformation.AlreadyVisited = true;

@@ -5,8 +5,8 @@ using UnityEngine;
 public class RoomPlayerInformation : MonoBehaviour
 {
     [Header("Actual player room information")]
-    public string  _actualRoom;
-    public string  _actualLevel;
+    public string  _actualRoom = "00";
+    public string  _actualLevel = "0";
     public Vector2 roomLimitsMax;
     public Vector2 roomLimitsMin;
     public int playerNumber;
@@ -38,10 +38,14 @@ public class RoomPlayerInformation : MonoBehaviour
             }
     }
 
-    public void UpdateFogList() {
-        string newUnFog         = string.Concat(ActualLevel, "-", ActualRoom);
+    public void UpdateFogList(string previousRoom) {
+        string newUnFog1        = string.Concat(ActualLevel, "-", ActualRoom, "-", previousRoom);
+        string newUnFog2        = string.Concat(ActualLevel, "-", previousRoom, "-", ActualRoom);
         GameObject unFogObject  = _unFogList.transform.GetChild(0).gameObject;
-        GameObject fogObject    = _fogList.transform.Find(newUnFog).gameObject;
+        GameObject fogObject    = _fogList.transform.Find(newUnFog1).gameObject;
+        if (fogObject == null) {
+            fogObject = _fogList.transform.Find(newUnFog2).gameObject;
+        }
 
         unFogObject.layer   = 13;
         unFogObject.transform.SetParent(_fogList.transform);
