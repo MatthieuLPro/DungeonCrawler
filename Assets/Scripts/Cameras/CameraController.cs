@@ -122,7 +122,7 @@ public class CameraController : MonoBehaviour
 
     public void updateMinMaxLimits()
     {
-        Vector2[] newCameraLimits = _roomPlayerInfo.getPlayerRoomLimits();
+        Vector2[] newCameraLimits = _roomPlayerInfo.PlayerRoomLimits;
         minPosition = newCameraLimits[0];
         maxPosition = newCameraLimits[1];
     }

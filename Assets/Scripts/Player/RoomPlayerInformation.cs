@@ -5,35 +5,47 @@ using UnityEngine;
 public class RoomPlayerInformation : MonoBehaviour
 {
     [Header("Actual player room information")]
-    public string  actualRoom;
-    public string  actualLevel;
+    public string  _actualRoom;
+    public string  _actualLevel;
     public Vector2 roomLimitsMax;
     public Vector2 roomLimitsMin;
     public int playerNumber;
 
-    public string getActualRoom(){
-        return actualRoom;
+    public GameObject _fogList;
+    public GameObject _unFogList;
+
+    void Start() {
+        _fogList    = transform.Find("Fogs").gameObject;
+        _unFogList  = transform.Find("Unfogs").gameObject;
     }
 
-    public string getActualLevel(){
-        return actualLevel;
+    /* Getter & Setter */
+    public string ActualRoom {
+        get { return _actualRoom; }
+        set { _actualRoom = value; }
     }
 
-    public Vector2[] getPlayerRoomLimits(){
-        return new Vector2[] { roomLimitsMin, roomLimitsMax };
+    public string ActualLevel {
+        get { return _actualLevel; }
+        set { _actualLevel = value; }
     }
 
-    public void UpdateActualRoom(string newRoom){
-        actualRoom = newRoom;
+    public Vector2[] PlayerRoomLimits {
+        get { return new Vector2[] { roomLimitsMin, roomLimitsMax}; }
+        set { 
+                roomLimitsMin = value[0];
+                roomLimitsMax = value[1];
+            }
     }
 
-    public void UpdateActualLevel(string newLevel){
-        actualLevel = newLevel;
-    }
+    public void UpdateFogList() {
+        string newUnFog         = string.Concat(ActualLevel, "-", ActualRoom);
+        GameObject unFogObject  = _unFogList.transform.GetChild(0).gameObject;
+        GameObject fogObject    = _fogList.transform.Find(newUnFog).gameObject;
 
-    public void updatePlayerRoomLimits(Vector2[] newLimits)
-    {
-        roomLimitsMin = newLimits[0];
-        roomLimitsMax = newLimits[1];
+        unFogObject.layer   = 13;
+        unFogObject.transform.SetParent(_fogList.transform);
+        fogObject.layer     = 14;
+        fogObject.transform.SetParent(_unFogList.transform);
     }
 }

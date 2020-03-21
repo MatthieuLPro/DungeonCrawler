@@ -40,14 +40,14 @@ TagManager:
   - Level_2
   - Transition
   - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Player01FogON
+  - Player01FogOFF
+  - Player02FogON
+  - Player02FogOFF
+  - Player03FogON
+  - Player03FogOFF
+  - Player04FogON
+  - Player04FogOFF
   - Level_d4
   - Level_d3
   - Level_d2

@@ -21,7 +21,7 @@ public class PlayersInfo : MonoBehaviour
     {
         for(int i = 0; i < _playersInformation.Length; i++)
         {
-            if (_playersInformation[i].getActualRoom() == roomId)
+            if (_playersInformation[i].ActualRoom == roomId)
                 return true;
         }
         return false;

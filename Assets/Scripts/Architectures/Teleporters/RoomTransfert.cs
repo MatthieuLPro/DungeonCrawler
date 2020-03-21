@@ -65,9 +65,10 @@ public class RoomTransfert : MonoBehaviour
         player.transform.position = newPosition;
     }
     private void UpdatePlayerRoomInformation(RoomPlayerInformation roomPlayerInfo){
-        roomPlayerInfo.updatePlayerRoomLimits(_nextRoomInformation.getRoomLimits());
-        roomPlayerInfo.UpdateActualLevel(nextRoomLevel);
-        roomPlayerInfo.UpdateActualRoom(nextRoomCoord);        
+        roomPlayerInfo.PlayerRoomLimits = _nextRoomInformation.getRoomLimits();
+        roomPlayerInfo.ActualLevel      = nextRoomLevel;
+        roomPlayerInfo.ActualRoom       = nextRoomCoord;
+        roomPlayerInfo.UpdateFogList();
     }
     private void UpdatePlayerResult(ResultPlayer resultPlayer) {
         resultPlayer.EnterFirstInRoom(_nextRoomInformation.RoomValue);

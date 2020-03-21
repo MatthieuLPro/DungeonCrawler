@@ -29,7 +29,7 @@ public class TeleporterBlock : MonoBehaviour
         CameraController camController          = player.transform.parent.transform.Find("Camera").GetComponent<CameraController>();
 
         player.GetComponent<Transform>().position = _teleportArrival.GetComponent<Transform>().position;
-        roomPlayerInfo.updatePlayerRoomLimits(_nextRoomInformation.getRoomLimits());
+        roomPlayerInfo.PlayerRoomLimits = _nextRoomInformation.getRoomLimits();
         camController.updateMinMaxLimits();
 
     }
