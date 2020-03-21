@@ -46,12 +46,14 @@ public class TestInteractionFront : MonoBehaviour
 
         if (other.CompareTag("ObjectOpen")) {
             ObjectOpen = other.gameObject;
+            ObjectOpen.GetComponent<OpenObject>().ShowOpenInfo();
             return;
         }
         ObjectOpen = null;
     }
 
     void OnTriggerExit2D(Collider2D other){
+        ObjectOpen.GetComponent<OpenObject>().HideOpenInfo();
         ObjectOpen = null;
     }
 

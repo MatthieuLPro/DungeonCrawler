@@ -14,10 +14,12 @@ public class OpenObject : MonoBehaviour
     [SerializeField]
     private int _openMethod = 0;
 
-    private GameObject _lootObject;
+    private GameObject _lootObject = null;
+
+    private GameObject _info = null; 
 
     /*
-        Loot values:
+        _loot values:
             - 1 : Ruby green
             - 2 : Ruby blue
             - 3 : Ruby red
@@ -26,19 +28,28 @@ public class OpenObject : MonoBehaviour
             - 52 : Ruby 300
             - 100 : Small key
             - 101 : Grand key
-        If loot = 0 => Random value between [1;6]
+        If _loot = 0 => Random value between [1;6]
     */
 
     /*
         _openMethod values:
-            - 0 : Do not need key
-            - 1 : Need small key
-            - 2 : Need big key
+            - 1 : Do not need key
+            - 2 : Need small key
+            - 3 : Need big key
+        If _openMethod = 0 => Random value between [1;3]
     */
 
     private void Start(){
         if (Loot == 0)
             Loot = Random.Range(1,7);
+        if (OpenMethod == 0)
+            OpenMethod = Random.Range(1,4);
+            
+        _info = transform.parent.transform.Find("InfoTreasure").gameObject;
+        if (OpenMethod == 3)
+            _info.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Sprites/Objects/big_small");
+        _info.active = false;
+
     }
 
     public void TryToOpen(GameObject opener) {
@@ -48,15 +59,25 @@ public class OpenObject : MonoBehaviour
         _OpenTheObject(opener);
     }
 
+    public void ShowOpenInfo() {
+        if (OpenMethod == 1 || OpenMethod == 2)
+            _info.active = true;
+    }
+
+    public void HideOpenInfo() {
+        if (OpenMethod == 1 || OpenMethod == 2)
+            _info.active = false;
+    }
+
     bool _CanOpenObject(GameObject opener) {
         Player player = opener.GetComponent<Player>();
-        if (_openMethod == 2  && !player.HasBigKey())
+        if (OpenMethod == 2  && !player.HasBigKey())
             return false;
-        else if (_openMethod == 1  && !player.HasSmallKey())
+        else if (OpenMethod == 1  && !player.HasSmallKey())
             return false;
         
         return true;
-    } 
+    }
 
     void _OpenTheObject(GameObject opener){
         foreach(BoxCollider2D box in GetComponents<BoxCollider2D>())
@@ -69,8 +90,8 @@ public class OpenObject : MonoBehaviour
     }
 
     void _ChangeSpriteToOpen() {
-        GetComponent<SpriteRenderer>().sprite = _openBot;
-        transform.parent.GetComponent<SpriteRenderer>().sprite = _openTop;
+        GetComponent<SpriteRenderer>().sprite                   = _openBot;
+        transform.parent.GetComponent<SpriteRenderer>().sprite  = _openTop;
     }
 
     void _GeneratePrefabLoot()
@@ -78,8 +99,8 @@ public class OpenObject : MonoBehaviour
         GameObject myPrefab;
 
         myPrefab        = Resources.Load("Prefabs/Collectible/Loot") as GameObject;
-        _lootObject     = Instantiate(myPrefab, GetComponent<Transform>().position + new Vector3(0, 0.5f, 0), Quaternion.identity);
-        _lootObject.GetComponent<SpriteRenderer>().sprite = _GenerateLootSprite();
+        LootObject     = Instantiate(myPrefab, GetComponent<Transform>().position + new Vector3(0, 0.5f, 0), Quaternion.identity);
+        LootObject.GetComponent<SpriteRenderer>().sprite = _GenerateLootSprite();
     }
 
     Sprite _GenerateLootSprite()
@@ -87,7 +108,7 @@ public class OpenObject : MonoBehaviour
         Sprite newSprite;
         Object[] sprites = Resources.LoadAll("Sprites/Objects/collectibles");
 
-        switch(_loot)
+        switch(Loot)
         {
             case 1:
                 newSprite = (Sprite)sprites[14];
@@ -126,7 +147,7 @@ public class OpenObject : MonoBehaviour
         yield return new WaitForSeconds(1f);
 
         opener.transform.GetChild(0).Find("Movement").GetComponent<Movement>().enabled = true;
-        Destroy(_lootObject);
+        Destroy(LootObject);
         _GetReward(opener);
     }
 
@@ -171,5 +192,15 @@ public class OpenObject : MonoBehaviour
     public int Loot {
         get { return _loot; }
         set { _loot = value; }
+    }
+
+    public GameObject LootObject {
+        get { return _lootObject; }
+        set { _lootObject = value; }
+    }
+
+    public int OpenMethod {
+        get { return _openMethod; }
+        set { _openMethod = value; }
     }
 }
