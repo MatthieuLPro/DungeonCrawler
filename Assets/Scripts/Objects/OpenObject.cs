@@ -47,9 +47,20 @@ public class OpenObject : MonoBehaviour
             
         _info = transform.parent.transform.Find("InfoTreasure").gameObject;
         if (OpenMethod == 3)
-            _info.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Sprites/Objects/big_small");
+            _info.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Sprites/Objects/treasures/treasure_info_bigKey");
+
+        Debug.Log("sprite: " + Resources.Load<Sprite>("Sprites/Objects/treasures/treasure_info_bigKey"));
         _info.active = false;
 
+    }
+
+    void OnTriggerEnter2D(Collider2D other) {
+        if (other.CompareTag("PlayerInteractionFront"))
+            ShowOpenInfo();
+    }
+
+    void OnTriggerExit2D(Collider2D other) {
+        HideOpenInfo();
     }
 
     public void TryToOpen(GameObject opener) {
@@ -76,6 +87,7 @@ public class OpenObject : MonoBehaviour
         else if (OpenMethod == 1  && !player.HasSmallKey())
             return false;
         
+        Destroy(_info);
         return true;
     }
 
@@ -143,10 +155,10 @@ public class OpenObject : MonoBehaviour
 
     IEnumerator _LootAnimationCo(GameObject opener)
     {
-        opener.transform.GetChild(0).Find("Movement").GetComponent<Movement>().enabled = false;
+        opener.transform.GetChild(0).Find("Movement").GetComponent<Movement>().blockMovement = false;
         yield return new WaitForSeconds(1f);
 
-        opener.transform.GetChild(0).Find("Movement").GetComponent<Movement>().enabled = true;
+        opener.transform.GetChild(0).Find("Movement").GetComponent<Movement>().blockMovement = true;
         Destroy(LootObject);
         _GetReward(opener);
     }

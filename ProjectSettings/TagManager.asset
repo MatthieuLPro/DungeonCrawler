@@ -25,6 +25,7 @@ TagManager:
   - Test
   - PlayerAudio
   - EnemyAudio
+  - PlayerInteractionFront
   layers:
   - Default
   - TransparentFX

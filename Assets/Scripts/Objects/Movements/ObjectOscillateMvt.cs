@@ -6,19 +6,24 @@ public class ObjectOscillateMvt : MonoBehaviour
 {
     private Vector3 _parentPos = Vector3.zero;
 
-    float maxHeight = 0.5f;
-    float minHeight = -0.5f;
-    float hoverHeight = 0.0f;
-    float hoverRange = 0.0f;
-    float hoverSpeed = 10.0f;
+    [Header("Position params: ")]
+    [SerializeField]
+    private Vector3 _offsetPos = Vector3.zero;
+
+    [Header("Movement params: ")]
+    [SerializeField]
+    private float _hoverHeight = 1.0f;
+    [SerializeField]
+    private float _hoverRange = 0.1f;
+    [SerializeField]
+    private float _hoverSpeed = 10.0f;
 
     void Start() {
         _parentPos = transform.parent.transform.position;
-        hoverHeight = (maxHeight + minHeight) / 2.0f;
-        hoverRange = maxHeight - minHeight;
+        _offsetPos = new Vector3(0, 0.6f, 0);
     } 
 
     void Update() {
-        this.transform.position = _parentPos + Vector3.up * hoverHeight * Mathf.Cos(Time.time * hoverSpeed) * hoverRange;
+        this.transform.position = _parentPos + _offsetPos + Vector3.up * _hoverHeight * Mathf.Cos(Time.time * _hoverSpeed) * _hoverRange;
     }
 }

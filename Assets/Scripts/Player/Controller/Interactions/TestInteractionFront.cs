@@ -36,8 +36,7 @@ public class TestInteractionFront : MonoBehaviour
         _collider       = GetComponent<BoxCollider2D>();
     }
 
-    void OnTriggerEnter2D(Collider2D other)
-    {
+    void OnTriggerEnter2D(Collider2D other) {
         //if (other.CompareTag("ObjectCarry")) {
         //    objectCarry = other.gameObject;
         //    return;
@@ -46,14 +45,12 @@ public class TestInteractionFront : MonoBehaviour
 
         if (other.CompareTag("ObjectOpen")) {
             ObjectOpen = other.gameObject;
-            ObjectOpen.GetComponent<OpenObject>().ShowOpenInfo();
             return;
         }
         ObjectOpen = null;
     }
 
-    void OnTriggerExit2D(Collider2D other){
-        ObjectOpen.GetComponent<OpenObject>().HideOpenInfo();
+    void OnTriggerExit2D(Collider2D other) {
         ObjectOpen = null;
     }
 
