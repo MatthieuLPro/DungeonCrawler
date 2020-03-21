@@ -17,6 +17,8 @@ public class RoomTransfert : MonoBehaviour
     [Header("Type of transition")]
     [SerializeField]
     private bool _teleportPlayer = false;
+    [SerializeField]
+    private bool _updateFogList = false;
     // Transition = 0 || 1 (no teleport / yes teleport)
  
     private RoomInformation _nextRoomInformation;
@@ -38,14 +40,16 @@ public class RoomTransfert : MonoBehaviour
         ResultPlayer resultplayer                   = parent.GetComponent<ResultPlayer>();
         RoomPlayerInformation roomPlayerInfo        = parent.GetComponent<RoomPlayerInformation>();
         CameraController camController              = parent.transform.Find("Camera").GetComponent<CameraController>();
-        string previousRoom                         = NextRoomCoord;
+        string previousRoom                         = roomPlayerInfo.ActualRoom;
 
         if (TeleportPlayer)
             UpdatePlayerPosition(player, GetPlayerNewPosition(player));
 
         UpdatePlayerRoomInformation(roomPlayerInfo);
         UpdatePlayerRoomLimits(roomPlayerInfo);
-        UpdatePlayerFogList(roomPlayerInfo, previousRoom);
+
+        if (UpdateFogList)
+            UpdatePlayerFogList(roomPlayerInfo, previousRoom);
 
         if (!_nextRoomInformation.AlreadyVisited)
             UpdatePlayerResult(resultplayer);
@@ -69,6 +73,10 @@ public class RoomTransfert : MonoBehaviour
 
     public bool TeleportPlayer {
         get { return _teleportPlayer; }
+    }
+
+    public bool UpdateFogList {
+        get { return _updateFogList; }
     }
 
     /* ************************************************ */

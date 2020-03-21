@@ -41,15 +41,21 @@ public class RoomPlayerInformation : MonoBehaviour
     public void UpdateFogList(string previousRoom) {
         string newUnFog1        = string.Concat(ActualLevel, "-", ActualRoom, "-", previousRoom);
         string newUnFog2        = string.Concat(ActualLevel, "-", previousRoom, "-", ActualRoom);
-        GameObject unFogObject  = _unFogList.transform.GetChild(0).gameObject;
-        GameObject fogObject    = _fogList.transform.Find(newUnFog1).gameObject;
+        GameObject unFogObject  = null;
+        Transform fogObject    = _fogList.transform.Find(newUnFog1);
+        Debug.Log("Text 1: " + newUnFog1);
+        Debug.Log("Text 2: " + newUnFog2);
         if (fogObject == null) {
-            fogObject = _fogList.transform.Find(newUnFog2).gameObject;
+            fogObject = _fogList.transform.Find(newUnFog2);
         }
 
-        unFogObject.layer   = 13;
-        unFogObject.transform.SetParent(_fogList.transform);
-        fogObject.layer     = 14;
-        fogObject.transform.SetParent(_unFogList.transform);
+        if (_unFogList.transform.childCount > 0) {
+            unFogObject = _unFogList.transform.GetChild(0).gameObject;
+            unFogObject.layer   = 13;
+            unFogObject.transform.SetParent(_fogList.transform);
+        }
+
+        fogObject.gameObject.layer     = 14;
+        fogObject.SetParent(_unFogList.transform);
     }
 }

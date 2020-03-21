@@ -14,6 +14,11 @@ public class CameraController : MonoBehaviour
     public Vector2 minPosition;
     public Vector2 maxPosition;
 
+    public Vector2 topLeftLimit = Vector2.zero;
+    public Vector2 topRightLimit = Vector2.zero;
+    public Vector2 botLeftLimit = Vector2.zero;
+    public Vector2 botRightLimit = Vector2.zero;
+
     private BoxCollider2D _boxCollider2D;
     private Camera _Camera;
 
@@ -106,16 +111,41 @@ public class CameraController : MonoBehaviour
 
     private void _UpdateCameraPosition(bool _forceUpdate)
     {
+        float xPosition =  0.0f;
+        float yPosition =  0.0f;
+
+        Vector2 maxLimit = Vector2.zero;
+        Vector2 minLimit = Vector2.zero;
+
         if (_forceUpdate || (_enabledCameraScroll))
         {
-            float xPosition = Mathf.Clamp(trackingGameObject.transform.position.x, minPosition.x + _xScreenDistance, maxPosition.x - _xScreenDistance);
-            float yPosition = Mathf.Clamp(trackingGameObject.transform.position.y, minPosition.y - _yScreenDistance, maxPosition.y + _yScreenDistance);
+            if (minPosition.x == 0f)
+                minLimit.x = -1000f;
+            else
+                minLimit.x = minPosition.x + _xScreenDistance;
+
+            if (minPosition.y == 0f)
+                minLimit.y = -1000f;
+            else
+                minLimit.y = minPosition.y - _yScreenDistance;
+
+            if (maxPosition.x == 0f)
+                maxLimit.x = 1000f;
+            else
+                maxLimit.x = maxPosition.x - _xScreenDistance;
+
+            if (maxPosition.y == 0f)
+                maxLimit.y = 1000f;
+            else
+                maxLimit.y = maxPosition.y + _yScreenDistance;
+            xPosition = Mathf.Clamp(trackingGameObject.transform.position.x, minLimit.x, maxLimit.x);
+            yPosition = Mathf.Clamp(trackingGameObject.transform.position.y, minLimit.y, maxLimit.y);
             moveCameraToPosition(xPosition, yPosition);
         }  
     }
 
     public void moveCameraToPosition(float _XPosition, float _YPosition)
-    {
+    {//
         Vector3 targetPosition = new Vector3(_XPosition, _YPosition, transform.position.z);
         transform.position = Vector3.Lerp(transform.position, targetPosition, smoothing * Time.deltaTime);
     }
