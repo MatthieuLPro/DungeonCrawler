@@ -4,8 +4,11 @@ using UnityEngine;
 
 public class PlayersInfo : MonoBehaviour
 {
+
+    public int PlayersCount = 1;
     private RoomPlayerInformation[] _playersInformation;
 
+   
     void Start()
     {
         _playersInformation = new RoomPlayerInformation[4] { transform.GetChild(0).GetComponent<RoomPlayerInformation>(),
@@ -22,5 +25,10 @@ public class PlayersInfo : MonoBehaviour
                 return true;
         }
         return false;
+    }
+
+    private void _setCameras() 
+    {
+
     }
 }
