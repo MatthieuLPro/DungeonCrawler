@@ -40,6 +40,8 @@ public class OpenObject : MonoBehaviour
     */
 
     private void Start(){
+        Object[] sprites = Resources.LoadAll("Sprites/Objects/treasures/treasure_info");
+
         if (Loot == 0)
             Loot = Random.Range(1,7);
         if (OpenMethod == 0)
@@ -47,16 +49,16 @@ public class OpenObject : MonoBehaviour
             
         _info = transform.parent.transform.Find("InfoTreasure").gameObject;
         if (OpenMethod == 3)
-            _info.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Sprites/Objects/treasures/treasure_info_bigKey");
+            _info.GetComponent<SpriteRenderer>().sprite = (Sprite)sprites[1];
 
-        Debug.Log("sprite: " + Resources.Load<Sprite>("Sprites/Objects/treasures/treasure_info_bigKey"));
         _info.active = false;
 
     }
 
     void OnTriggerEnter2D(Collider2D other) {
-        if (other.CompareTag("PlayerInteractionFront"))
+        if (other.CompareTag("PlayerInteractionFront")) {
             ShowOpenInfo();
+        }
     }
 
     void OnTriggerExit2D(Collider2D other) {
@@ -64,27 +66,28 @@ public class OpenObject : MonoBehaviour
     }
 
     public void TryToOpen(GameObject opener) {
-        if (!_CanOpenObject(opener)) 
+        if (!_CanOpenObject(opener)) { 
             return;
+        }
         _ChangeSpriteToOpen();
         _OpenTheObject(opener);
     }
 
     public void ShowOpenInfo() {
-        if (OpenMethod == 1 || OpenMethod == 2)
+        if (OpenMethod == 2 || OpenMethod == 3)
             _info.active = true;
     }
 
     public void HideOpenInfo() {
-        if (OpenMethod == 1 || OpenMethod == 2)
+        if (OpenMethod == 2 || OpenMethod == 3)
             _info.active = false;
     }
 
     bool _CanOpenObject(GameObject opener) {
         Player player = opener.GetComponent<Player>();
-        if (OpenMethod == 2  && !player.HasBigKey())
+        if (OpenMethod == 3  && !player.HasBigKey())
             return false;
-        else if (OpenMethod == 1  && !player.HasSmallKey())
+        else if (OpenMethod == 2  && !player.HasSmallKey())
             return false;
         
         Destroy(_info);
@@ -126,25 +129,25 @@ public class OpenObject : MonoBehaviour
                 newSprite = (Sprite)sprites[14];
                 break;
             case 2:
-                newSprite = (Sprite)sprites[11]; Resources.Load<Sprite>("Sprites/Objects/ruby_blue1");
+                newSprite = (Sprite)sprites[11];
                 break;
             case 3:
-                newSprite = (Sprite)sprites[17]; Resources.Load<Sprite>("Sprites/Objects/ruby_red1");
+                newSprite = (Sprite)sprites[17];
                 break;
             case 50:
-                newSprite = (Sprite)sprites[8]; Resources.Load<Sprite>("Sprites/Objects/ruby50");
+                newSprite = (Sprite)sprites[8];
                 break;
             case 51:
-                newSprite = (Sprite)sprites[9]; Resources.Load<Sprite>("Sprites/Objects/ruby100");
+                newSprite = (Sprite)sprites[9];
                 break;
             case 52:
-                newSprite = (Sprite)sprites[10]; Resources.Load<Sprite>("Sprites/Objects/ruby300");
+                newSprite = (Sprite)sprites[10];
                 break;
             case 100:
-                newSprite = (Sprite)sprites[5]; Resources.Load<Sprite>("Sprites/Objects/key_small");
+                newSprite = (Sprite)sprites[5];
                 break;
             case 101:
-                newSprite = (Sprite)sprites[4]; Resources.Load<Sprite>("Sprites/Objects/key_big");
+                newSprite = (Sprite)sprites[4];
                 break;
             default:
                 newSprite = (Sprite)sprites[14];
@@ -155,10 +158,10 @@ public class OpenObject : MonoBehaviour
 
     IEnumerator _LootAnimationCo(GameObject opener)
     {
-        opener.transform.GetChild(0).Find("Movement").GetComponent<Movement>().blockMovement = false;
+        opener.transform.GetChild(0).Find("Movement").GetComponent<Movement>().blockMovement = true;
         yield return new WaitForSeconds(1f);
 
-        opener.transform.GetChild(0).Find("Movement").GetComponent<Movement>().blockMovement = true;
+        opener.transform.GetChild(0).Find("Movement").GetComponent<Movement>().blockMovement = false;
         Destroy(LootObject);
         _GetReward(opener);
     }

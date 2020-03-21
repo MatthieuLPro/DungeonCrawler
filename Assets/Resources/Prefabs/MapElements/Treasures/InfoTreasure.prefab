@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 9057760711903373055}
   - component: {fileID: 9057760711903373052}
-  - component: {fileID: 3462956688882133615}
   - component: {fileID: 304034453011711700}
   m_Layer: 25
   m_Name: InfoTreasure
@@ -71,7 +70,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1585476041
   m_SortingLayer: -5
-  m_SortingOrder: 1
+  m_SortingOrder: 2
   m_Sprite: {fileID: -1757078703996892013, guid: 7cd3c9162e6f2ba6fb44aa5cf4aae146,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -84,25 +83,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!95 &3462956688882133615
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9057760711903373051}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &304034453011711700
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -115,3 +95,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b9b89717b24e6c6fd97c2c6bb89717b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _offsetPos: {x: 0, y: 0, z: 0}
+  _hoverHeight: 1
+  _hoverRange: 0.1
+  _hoverSpeed: 10

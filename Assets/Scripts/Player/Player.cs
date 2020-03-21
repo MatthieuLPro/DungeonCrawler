@@ -102,9 +102,9 @@ public class Player : MonoBehaviour
     private void _UpdateUIBigKey(bool adding)
     {
         if (adding)
-            _GetUIGO("BigKeyTextUI", "BigKeys").GetComponent<BigKeyUI>().bigKeySystem.AddBigKey();
+            _GetUIGO("BigKeys").GetComponent<BigKeyIconUI>().UpdateIcon(true);
         else
-            _GetUIGO("BigKeyTextUI", "BigKeys").GetComponent<BigKeyUI>().bigKeySystem.RemoveBigKey();
+            _GetUIGO("BigKeys").GetComponent<BigKeyIconUI>().UpdateIcon(false);
     }
 
     private Transform _GetUIGO(string UIName, string fileName = ""){
