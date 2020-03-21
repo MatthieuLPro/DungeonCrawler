@@ -27,6 +27,8 @@ public class DestructibleObject : MonoBehaviour
         _manager.DesactivateDestructibleCollider();
         _manager.DesactivateCarrierCollider();
 
+        _manager.PlaySound();
+
         _manager.DropCollectible();
     }
 }

@@ -103,4 +103,11 @@ public class ObjectManager : MonoBehaviour
         myLayer = "player_" + SortingLayer.Split('_')[1];
         return myLayer;
     }
+
+    /* ************************************************ */
+    /* Sound */
+    /* ************************************************ */
+    public void PlaySound(){
+        GetComponent<AudioSource>().Play();
+    }
 }
