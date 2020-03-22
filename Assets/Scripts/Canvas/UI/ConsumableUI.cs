@@ -9,18 +9,20 @@ public class ConsumableUI : MonoBehaviour
     private float _thickness;
     private RectTransform _resultRect;
     private Image _consumableObject = null;
+    private Animator _consumableObjectAnime = null;
+    private AudioManager _consumableObjectSound = null;
 
     void Start()
     {
         Rect cameraPixelRect    = transform.parent.transform.parent.Find("Camera").gameObject.GetComponent<Camera>().pixelRect;
         string playerName       = transform.parent.transform.parent.name;
 
-        _cameraSize         = new Vector3(cameraPixelRect.width, cameraPixelRect.height, 0);
-        _resultRect         = GetComponent<RectTransform>();
-        _thickness          = _resultRect.rect.height;
-        _consumableObject   = transform.GetChild(0).GetComponent<Image>();
-
-        //_SetRectLocalPosition(_GetTextHorizontalSide(playerName));
+        _cameraSize             = new Vector3(cameraPixelRect.width, cameraPixelRect.height, 0);
+        _resultRect             = GetComponent<RectTransform>();
+        _thickness              = _resultRect.rect.height;
+        _consumableObject       = transform.GetChild(0).GetComponent<Image>();
+        _consumableObjectAnime  = transform.GetChild(0).GetComponent<Animator>();
+        _consumableObjectSound  = transform.GetChild(0).GetComponent<AudioManager>();
 
         float xDistance = GetAdaptedDistance(true);
         float yDistance = GetAdaptedDistance(false);
@@ -33,8 +35,9 @@ public class ConsumableUI : MonoBehaviour
     }
 
     public void AddConsumable(int consumable) {
-        _consumableObject.sprite = _GetConsumableSprite(consumable);
+        
         _consumableObject.color = new Color(255, 255, 255, 100);
+        StartCoroutine(_SearchObjectCo(consumable));
     }
 
     public void RemoveConsumable() {
@@ -62,5 +65,16 @@ public class ConsumableUI : MonoBehaviour
         _resultRect.localPosition = new Vector3((_cameraSize.x - _thickness) * xDistance,
                                                 (_cameraSize.y - _thickness) * yDistance,
                                                 _resultRect.localPosition.z);
+    }
+
+    IEnumerator _SearchObjectCo(int consumable) {
+        _consumableObjectAnime.SetBool("isSearching", true);
+        _consumableObjectSound.CallAudio("search");
+        yield return new WaitForSeconds(3f);
+
+        _consumableObjectAnime.SetBool("isSearching", false);
+        _consumableObject.sprite = _GetConsumableSprite(consumable);
+        yield return new WaitForSeconds(0.2f);
+        _consumableObjectSound.CallAudio("find");
     }
 }

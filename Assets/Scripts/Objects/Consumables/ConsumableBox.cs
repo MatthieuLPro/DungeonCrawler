@@ -27,4 +27,5 @@ public class ConsumableBox : MonoBehaviour
         Object[] sprites = Resources.LoadAll("Sprites/Hud/consumables/object_consumable");
         GetComponent<SpriteRenderer>().sprite = (Sprite)sprites[18];
     }
+
 }
