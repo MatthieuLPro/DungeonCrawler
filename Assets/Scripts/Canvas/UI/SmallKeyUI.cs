@@ -48,15 +48,15 @@ public class SmallKeyUI : MonoBehaviour
     }
 
     void SetRectLocalPosition(float zPosition, float side) {
-        _resultRect.localPosition = new Vector3((_cameraSize.x - _thickness) / 3.2f * side,
-                                                (_cameraSize.y - _thickness) / 2.3f,
+        _resultRect.localPosition = new Vector3((_cameraSize.x - _thickness) / 3.05f * side,
+                                                (_cameraSize.y - _thickness) / 1.8f,
                                                 zPosition);
     }
 
     public void InitSmallKeyUI()
     {
         _smallKey = _player.GetComponent<Player>().keys;
-        GetComponent<Text>().text = _smallKey.ToString("00");
+        GetComponent<Text>().text = _smallKey.ToString("0");
         smallKeySystemStatic = smallKeySystem;
 
         smallKeySystem.OnDecrease += RefreshSmallKey;
@@ -73,13 +73,13 @@ public class SmallKeyUI : MonoBehaviour
         if (_smallKey < systemValue)
         {
             _smallKey++;
-            GetComponent<Text>().text = _smallKey.ToString("00");
+            GetComponent<Text>().text = _smallKey.ToString("0");
             yield return new WaitForSeconds(0.07f);
         }
         else
         {
             _smallKey--;
-            GetComponent<Text>().text = _smallKey.ToString("00");
+            GetComponent<Text>().text = _smallKey.ToString("0");
             yield return new WaitForSeconds(0.07f);
         }
     }

@@ -23,7 +23,7 @@ public class BigKeyIconUI : MonoBehaviour
         _bigKeySprite    = GetComponent<Image>();
 
         _SetRectLocalPosition(_resultRect.localPosition.z, _GetTextHorizontalSide(playerName));
-        Destroy(GetComponent<RubyIconeUI>());
+        Destroy(GetComponent<RubyIconeUI>()); // ?! c'est quoi ?!
     }
 
     public void UpdateIcon(bool hasBigKey) {
@@ -42,8 +42,8 @@ public class BigKeyIconUI : MonoBehaviour
     }
 
     void _SetRectLocalPosition(float zPosition, float side) {
-        _resultRect.localPosition = new Vector3((_cameraSize.x - _thickness) / 4.3f * side,
-                                                (_cameraSize.y - _thickness) / 2.3f,
+        _resultRect.localPosition = new Vector3((_cameraSize.x - _thickness) / 4.15f * side,
+                                                (_cameraSize.y - _thickness) / 1.8f,
                                                 zPosition);
     }
 }

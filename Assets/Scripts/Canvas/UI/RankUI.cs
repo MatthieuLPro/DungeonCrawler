@@ -28,8 +28,8 @@ public class RankUI : MonoBehaviour
     }
 
     void SetRectLocalPosition(float zPosition, float side) {
-        _resultRect.localPosition = new Vector3((_cameraSize.x - _thickness) / 2.5f * side,
-                                                (_cameraSize.y - _thickness) / 2.5f * -1f,
+        _resultRect.localPosition = new Vector3((_cameraSize.x - _thickness) / 2.2f * side,
+                                                (_cameraSize.y - _thickness) / 2f * -1f,
                                                 zPosition);
     }
 }

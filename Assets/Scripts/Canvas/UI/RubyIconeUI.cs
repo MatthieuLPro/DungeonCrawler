@@ -30,8 +30,8 @@ public class RubyIconeUI : MonoBehaviour
     }
 
     void SetRectLocalPosition(float zPosition, float side) {
-        _resultRect.localPosition = new Vector3((_cameraSize.x - _thickness) / 2.1f * side,
-                                                (_cameraSize.y - _thickness) / 2.3f,
+        _resultRect.localPosition = new Vector3((_cameraSize.x - _thickness) / 1.95f * side,
+                                                (_cameraSize.y - _thickness) / 1.8f,
                                                 zPosition);
     }
 }
