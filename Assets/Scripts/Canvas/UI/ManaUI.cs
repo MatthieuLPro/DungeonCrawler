@@ -52,16 +52,16 @@ public class ManaUI : MonoBehaviour
     float GetAdaptedDistance(bool isAxisX, float side = 0f) {
         if (isAxisX) {
             if (side == 1f)
-                return 3f * side;
+                return (1f / 4f) * side;
             else
-                return 1.6f * side;
+                return (1f / 1.6f) * side;
         }
-        return 1.5f;
+        return 1 / 1.5f;
     }
 
     void SetRectLocalPosition(float xDistance, float yDistance) {
-        _resultRect.localPosition = new Vector3((_cameraSize.x - _thickness) / xDistance,
-                                                (_cameraSize.y - _thickness) / yDistance,
+        _resultRect.localPosition = new Vector3((_cameraSize.x - _thickness) * xDistance,
+                                                (_cameraSize.y - _thickness) * yDistance,
                                                 _resultRect.localPosition.z);
     }
 

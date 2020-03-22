@@ -20,7 +20,12 @@ public class ConsumableUI : MonoBehaviour
         _thickness          = _resultRect.rect.height;
         _consumableObject   = transform.GetChild(0).GetComponent<Image>();
 
-        _SetRectLocalPosition(_GetTextHorizontalSide(playerName));
+        //_SetRectLocalPosition(_GetTextHorizontalSide(playerName));
+
+        float xDistance = GetAdaptedDistance(true);
+        float yDistance = GetAdaptedDistance(false);
+
+        SetRectLocalPosition(xDistance, yDistance);
     }
 
     public bool ConsumableExist() {
@@ -46,16 +51,16 @@ public class ConsumableUI : MonoBehaviour
     }
 
     // Get HUD Position
-    float _GetTextHorizontalSide(string player) {
-        if (player == "Player_1" || player == "Player_3")
-            return -1f;
-        return 1f;
+    float GetAdaptedDistance(bool isAxisX, float side = 0f) {
+        if (isAxisX) {
+            return 0f;
+        }
+        return 1 / 1.2f;
     }
 
-    void _SetRectLocalPosition(float side = 1f) {
-        _resultRect.localPosition = new Vector3(0,
-                                                (_cameraSize.y - _thickness) / 1.2f,
+    void SetRectLocalPosition(float xDistance, float yDistance) {
+        _resultRect.localPosition = new Vector3((_cameraSize.x - _thickness) * xDistance,
+                                                (_cameraSize.y - _thickness) * yDistance,
                                                 _resultRect.localPosition.z);
     }
-
 }

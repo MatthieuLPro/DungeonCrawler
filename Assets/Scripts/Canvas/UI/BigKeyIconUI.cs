@@ -22,8 +22,11 @@ public class BigKeyIconUI : MonoBehaviour
         _thickness      = _resultRect.rect.height;
         _bigKeySprite    = GetComponent<Image>();
 
-        _SetRectLocalPosition(_resultRect.localPosition.z, _GetTextHorizontalSide(playerName));
-        Destroy(GetComponent<RubyIconeUI>()); // ?! c'est quoi ?!
+        float side      = GetHorizontalSide(playerName);
+        float xDistance = GetAdaptedDistance(true, side);
+        float yDistance = GetAdaptedDistance(false, side);
+
+        SetRectLocalPosition(xDistance, yDistance);
     }
 
     public void UpdateIcon(bool hasBigKey) {
@@ -35,15 +38,25 @@ public class BigKeyIconUI : MonoBehaviour
     }
 
     // Get HUD Position
-    float _GetTextHorizontalSide(string player) {
+    float GetHorizontalSide(string player) {
         if (player == "Player_1" || player == "Player_3")
             return -1f;
         return 1f;
     }
 
-    void _SetRectLocalPosition(float zPosition, float side) {
-        _resultRect.localPosition = new Vector3((_cameraSize.x - _thickness) / 4.15f * side,
-                                                (_cameraSize.y - _thickness) / 1.8f,
-                                                zPosition);
+    float GetAdaptedDistance(bool isAxisX, float side = 0f) {
+        if (isAxisX) {
+            if (side == 1)
+                return (1f / 1.5f) * side;
+            else
+                return (1f / 4.15f) * side;
+        }
+        return 1 / 1.8f;
+    }
+
+    void SetRectLocalPosition(float xDistance, float yDistance) {
+        _resultRect.localPosition = new Vector3((_cameraSize.x - _thickness) * xDistance,
+                                                (_cameraSize.y - _thickness) * yDistance,
+                                                _resultRect.localPosition.z);
     }
 }

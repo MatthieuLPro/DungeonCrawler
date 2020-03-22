@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class SmallKeyUI : MonoBehaviour
+public class SmallKeyTextUI : MonoBehaviour
 {
     public static SmallKeySystem smallKeySystemStatic;
     
@@ -37,20 +37,31 @@ public class SmallKeyUI : MonoBehaviour
         _resultRect = GetComponent<RectTransform>();
         _thickness  = _resultRect.rect.height;
 
-        SetRectLocalPosition(_resultRect.localPosition.z, GetTextHorizontalSide(playerName));
+        float side      = GetHorizontalSide(playerName);
+        float xDistance = GetAdaptedDistance(true, side);
+        float yDistance = GetAdaptedDistance(false, side);
+
+        SetRectLocalPosition(xDistance, yDistance);
     }
 
     // Get HUD Position
-    float GetTextHorizontalSide(string player) {
+    float GetHorizontalSide(string player) {
         if (player == "Player_1" || player == "Player_3")
             return -1f;
         return 1f;
     }
 
-    void SetRectLocalPosition(float zPosition, float side) {
-        _resultRect.localPosition = new Vector3((_cameraSize.x - _thickness) / 3.05f * side,
-                                                (_cameraSize.y - _thickness) / 1.8f,
-                                                zPosition);
+    float GetAdaptedDistance(bool isAxisX, float side = 0f) {
+        if (isAxisX) {
+            return (1f / 3.05f) * side;
+        }
+        return 1 / 1.8f;
+    }
+
+    void SetRectLocalPosition(float xDistance, float yDistance) {
+        _resultRect.localPosition = new Vector3((_cameraSize.x - _thickness) * xDistance,
+                                                (_cameraSize.y - _thickness) * yDistance,
+                                                _resultRect.localPosition.z);
     }
 
     public void InitSmallKeyUI()

@@ -43,20 +43,34 @@ public class HeartsHealthUI : MonoBehaviour
         _resultRect = GetComponent<RectTransform>();
         _thickness  = _resultRect.rect.height;
 
-        SetRectLocalPosition(_resultRect.localPosition.z, GetTextHorizontalSide(player.name));
+        float side      = GetHorizontalSide(player.name);
+        float xDistance = GetAdaptedDistance(true, side);
+        float yDistance = GetAdaptedDistance(false, side);
+
+        SetRectLocalPosition(xDistance, yDistance);
     }
 
     // Get HUD Position
-    float GetTextHorizontalSide(string player) {
+    float GetHorizontalSide(string player) {
         if (player == "Player_1" || player == "Player_3")
             return -1f;
-        return 0.65f;
+        return 1f;
     }
 
-    void SetRectLocalPosition(float zPosition, float side) {
-        _resultRect.localPosition = new Vector3((_cameraSize.x - _thickness) / 1.95f * side,
-                                                (_cameraSize.y - _thickness) / 1.3f,
-                                                zPosition);
+    float GetAdaptedDistance(bool isAxisX, float side = 0f) {
+        if (isAxisX) {
+            if (side == 1f)
+                return (1f / 2.8f) * side;
+            else
+                return (1f / 1.90f) * side;
+        }
+        return 1 / 1.3f;
+    }
+
+    void SetRectLocalPosition(float xDistance, float yDistance) {
+        _resultRect.localPosition = new Vector3((_cameraSize.x - _thickness) * xDistance,
+                                                (_cameraSize.y - _thickness) * yDistance,
+                                                _resultRect.localPosition.z);
     }
 
     public void SetHeartsHealthSystem(HeartsHealthSystem heartsHealthSystem)

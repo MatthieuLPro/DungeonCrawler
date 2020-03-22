@@ -94,9 +94,9 @@ public class Player : MonoBehaviour
     private void _UpdateUISmallKey(bool adding)
     {
         if (adding)
-            _GetUIGO("SmallKeyTextUI", "SmallKeys").GetComponent<SmallKeyUI>().smallKeySystem.AddSmallKey();
+            _GetUIGO("SmallKeyTextUI", "SmallKeys").GetComponent<SmallKeyTextUI>().smallKeySystem.AddSmallKey();
         else
-            _GetUIGO("SmallKeyTextUI", "SmallKeys").GetComponent<SmallKeyUI>().smallKeySystem.RemoveSmallKey();
+            _GetUIGO("SmallKeyTextUI", "SmallKeys").GetComponent<SmallKeyTextUI>().smallKeySystem.RemoveSmallKey();
     }
 
     private void _UpdateUIBigKey(bool adding)
