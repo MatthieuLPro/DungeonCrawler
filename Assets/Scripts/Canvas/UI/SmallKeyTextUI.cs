@@ -53,7 +53,11 @@ public class SmallKeyTextUI : MonoBehaviour
 
     float GetAdaptedDistance(bool isAxisX, float side = 0f) {
         if (isAxisX) {
-            return (1f / 3.05f) * side;
+            //return (1f / 3.05f) * side;
+            if (side == 1f)
+                return (1f / 1.78f) * side;
+            else
+                return (1f / 3.05f) * side;
         }
         return 1 / 1.8f;
     }

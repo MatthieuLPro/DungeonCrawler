@@ -51,7 +51,11 @@ public class RubyUI : MonoBehaviour
 
     float GetAdaptedDistance(bool isAxisX, float side = 0f) {
         if (isAxisX) {
-            return (1f / 2.15f) * side;
+            //return (1f / 2.15f) * side;
+            if (side == 1f)
+                return (1f / 2.40f) * side;
+            else
+                return (1f / 2.15f) * side;
         }
         return 1 / 1.8f;
     }

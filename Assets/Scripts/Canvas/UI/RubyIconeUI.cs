@@ -34,7 +34,11 @@ public class RubyIconeUI : MonoBehaviour
 
     float GetAdaptedDistance(bool isAxisX, float side = 0f) {
         if (isAxisX) {
-            return (1f / 1.95f) * side;
+            //return (1f / 1.95f) * side;
+            if (side == 1f)
+                return (1f / 2.8f) * side;
+            else
+                return (1f / 1.90f) * side;
         }
         return 1 / 1.8f;
     }

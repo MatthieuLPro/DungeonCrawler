@@ -47,9 +47,9 @@ public class BigKeyIconUI : MonoBehaviour
     float GetAdaptedDistance(bool isAxisX, float side = 0f) {
         if (isAxisX) {
             if (side == 1)
-                return (1f / 1.5f) * side;
+                return (1f / 1.55f) * side;
             else
-                return (1f / 4.15f) * side;
+                return (1f / 4.03f) * side;
         }
         return 1 / 1.8f;
     }
