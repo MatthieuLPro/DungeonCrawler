@@ -2,57 +2,24 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum PlayerMode
+public class LevelInitialize : MonoBehaviour
 {
-    singlePlayer = 1,
-    twoPlayers = 2,
-    threePlayers = 3,
-    fourPlayers = 4
-};
-
-public enum DifficultyMode
-{
-    easy,
-    medium,
-    hard,
-    speedrunner
-};
-
-public class level_manager : MonoBehaviour
-{
-    //public PlayerMode SelectedPlayerMode;
-    public DifficultyMode SelectedDifficultyMode;
-
     public GameObject[] PlayersList = new GameObject[3];
     public GameObject PlayerPrefab;
 
     public RaceParameters raceParameters;
 
-    private int _playersCount;
+    private int _playersNumber;
 
-    // Start is called before the first frame update
     void Start()
     {
-        _initializePlayers(raceParameters.GetPlayersCount());
+        _initializePlayers(raceParameters.GetPlayersNumber());
     }
 
-    // Update is called once per frame
-    void Update()
+    private void _initializePlayers(int playersNumber)
     {
-        
-    }
-    
-    private void _InitializeLevel() 
-    {
-        /*for (int playerIndex = 1; playerIndex <= playersCount; playerIndex++)
-        {
-            _initializePlayer(playerIndex);
-        }*/
-    }
-    private void _initializePlayers(int playersCount)
-    {
-        _playersCount = playersCount;
-        for (int playerIndex = 0; playerIndex <= _playersCount; playerIndex++) 
+        _playersNumber = playersNumber;
+        for (int playerIndex = 0; playerIndex <= _playersNumber; playerIndex++)
         {
             GameObject playerGameObject = Instantiate(PlayerPrefab) as GameObject;
             GameObject cameraGameObject = playerGameObject.transform.Find("Camera").gameObject;
@@ -61,31 +28,31 @@ public class level_manager : MonoBehaviour
         }
     }
 
-    private Rect _getCameraParametersFromPlayerIndex(int playerIndex) 
+    private Rect _getCameraParametersFromPlayerIndex(int playerIndex)
     {
         Rect cameraRect = new Rect();
-        switch (_playersCount) 
+        switch (_playersNumber)
         {
-            case (int) PlayerMode.singlePlayer:
+            case 1:
             default:
                 cameraRect.x = 0;
                 cameraRect.y = 0;
                 cameraRect.width = 1;
                 cameraRect.height = 1f;
                 break;
-            case (int) PlayerMode.twoPlayers:
+            case 2:
                 cameraRect.x = 0;
                 cameraRect.width = 1;
                 cameraRect.height = 0.5f;
                 if (playerIndex == 0)
                     cameraRect.y = 0;
-                else if (playerIndex == 1) 
+                else if (playerIndex == 1)
                     cameraRect.y = 0.5f;
                 break;
-            case (int) PlayerMode.threePlayers:
+            case 3:
                 cameraRect.width = 0.5f;
                 cameraRect.height = 0.5f;
-                if (playerIndex == 0) 
+                if (playerIndex == 0)
                 {
                     cameraRect.x = 0;
                     cameraRect.y = 0.5f;
@@ -99,9 +66,9 @@ public class level_manager : MonoBehaviour
                 {
                     cameraRect.x = 0;
                     cameraRect.y = 0f;
-                } 
+                }
                 break;
-            case (int) PlayerMode.fourPlayers:
+            case 4:
                 cameraRect.width = 0.5f;
                 cameraRect.height = 0.5f;
                 if (playerIndex == 0)
@@ -130,3 +97,4 @@ public class level_manager : MonoBehaviour
         return cameraRect;
     }
 }
+
