@@ -11,7 +11,7 @@ public class DebugRoomScript : MonoBehaviour
     public GameObject PlayersDropdownGO;
     public GameObject LevelsDropdownGO;
 
-    public RaceParameters raceParameters;
+    public GameParameters gameParameters;
 
     private int _PlayersNumber;
     private string _LevelName;
@@ -31,7 +31,7 @@ public class DebugRoomScript : MonoBehaviour
         _LevelName = LevelsNameList[LevelsDropdown.value];
 
         Debug.Log("Go to scene: " + _LevelName + " With: " + _PlayersNumber);
-        raceParameters.SetPlayersNumber(_PlayersNumber);
+        gameParameters.SetPlayersNumber(_PlayersNumber);
         SceneManager.LoadScene(_LevelName);
         Destroy(gameObject);
     }

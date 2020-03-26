@@ -9,6 +9,7 @@ public class RoomPlayerInformation : MonoBehaviour
     public string  actualLevel;
     public Vector2 roomLimitsMax;
     public Vector2 roomLimitsMin;
+    public int playerNumber;
 
     public string getActualRoom(){
         return actualRoom;

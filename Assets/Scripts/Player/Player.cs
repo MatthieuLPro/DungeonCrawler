@@ -5,6 +5,7 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     [Header("Player parameters")]
+    public int playerIndex = 1;
     public int healthInit = 5;
     public int manaInit = 34;
     public int keys = 0;
@@ -14,6 +15,16 @@ public class Player : MonoBehaviour
     /* ************************************************ */
     /* Getters & Setters */
     /* ************************************************ */
+    public int GetPlayerIndex() 
+    {
+        return playerIndex;
+    }
+
+    public void SetPlayerIndex(int index) 
+    {
+        playerIndex = index;
+    }
+
     public void GetLife(int heal){
         _UpdateUIHeart(true, heal);
     }

@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RaceParameters : MonoBehaviour
+public class GameParameters : MonoBehaviour
 {
-    static public int PlayersNumber = 1;
+    static public int PlayersNumber = 4;
 
-    public void SetPlayersNumber(int playersCount) 
+    public void SetPlayersNumber(int playersCount)
     {
         PlayersNumber = playersCount;
     }
