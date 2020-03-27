@@ -52,6 +52,12 @@ public class TestInteractionGlobal : MonoBehaviour
             InteractionWithEnemy(other.gameObject);
             return;
         }
+
+        if (other.CompareTag("PlayerAttack"))
+        {
+            InteractionWithPlayer(other.gameObject.transform.gameObject);
+            return;
+        }
     }
 
     /* ************************************************ */
@@ -64,7 +70,18 @@ public class TestInteractionGlobal : MonoBehaviour
             return;
 
         _ApplyDamageFromEnemy(enemy.GetComponent<EnemyTest>(), _parent.transform.parent.GetComponent<Player>());
-        StartCoroutine(_KnockBackTimeCo(enemy));
+        StartCoroutine(_KnockBackTimeEnemyCo(enemy));
+        StartCoroutine(_InvincibleTimeCo());
+    }
+
+    /* Tag: PlayerAttack */
+    private void InteractionWithPlayer(GameObject player)
+    {
+        if (_isKnock || _isInvincible)
+            return;
+
+        //_ApplyDamageFromEnemy(enemy.GetComponent<EnemyTest>(), _parent.transform.parent.GetComponent<Player>());
+        StartCoroutine(_KnockBackTimePlayerCo(player));
         StartCoroutine(_InvincibleTimeCo());
     }
     
@@ -143,8 +160,8 @@ public class TestInteractionGlobal : MonoBehaviour
     /* ************************************************ */
     /* Apply force functions */
     /* ************************************************ */
-    private Vector2 CalculateKnockBackDirection(Vector3 enemyPosition){
-        return (_parent.transform.position - enemyPosition);
+    private Vector2 CalculateKnockBackDirection(Vector3 opposantPosition){
+        return (_parent.transform.position - opposantPosition);
     }
 
     private void _ApplyThrustOnPlayer(Vector3 strengthDirection){
@@ -155,7 +172,7 @@ public class TestInteractionGlobal : MonoBehaviour
     /* Coroutines */
     /* ************************************************ */
     /* KnockBack */
-    private IEnumerator _KnockBackTimeCo(GameObject enemy)
+    private IEnumerator _KnockBackTimeEnemyCo(GameObject enemy)
     {
         // Get Direction of knockback
         Vector2 directionKnock  = CalculateKnockBackDirection(enemy.transform.position);
@@ -168,6 +185,22 @@ public class TestInteractionGlobal : MonoBehaviour
         _ApplyThrustOnPlayer(directionKnock * enemyTest.Thrust);
         _CallHurt();
         yield return new WaitForSeconds(enemyTest.KnockBackTime);
+        _BlockMovement(false);
+    }
+
+    private IEnumerator _KnockBackTimePlayerCo(GameObject player)
+    {
+        // Get Direction of knockback
+        Vector2 directionKnock   = CalculateKnockBackDirection(player.transform.position);
+        Attack playerAttack      = player.transform.parent.GetComponent<Attack>();
+        
+        KnockToggleParam(true);
+        _BlockMovement(true);
+        
+        // Application de la nouvelle force
+        _ApplyThrustOnPlayer(directionKnock * playerAttack.Thrust);
+        _CallHurt();
+        yield return new WaitForSeconds(playerAttack.KnockBackTime);
         _BlockMovement(false);
     }
 

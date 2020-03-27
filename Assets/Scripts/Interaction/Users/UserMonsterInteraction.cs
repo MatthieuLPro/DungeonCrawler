@@ -40,8 +40,8 @@ public class UserMonsterInteraction : MonoBehaviour, IUserMonsterInteraction
         if (_sensibleKnockBack)
         {
             //Vector2 directionKnock  = CalculateKnockBackDirection(opponent.transform.position);
-            float thrust            = opponent.transform.parent.GetComponent<Action>().GetThrust();
-            float knockBackTime     = opponent.transform.parent.GetComponent<Action>().GetKnockBackTime();
+            float thrust            = opponent.transform.parent.GetComponent<Action>().Thrust;
+            float knockBackTime     = opponent.transform.parent.GetComponent<Action>().KnockBackTime;
 
             new ConsequenceKnockBack().CallKnockBack(gameObject, directionKnock, thrust, knockBackTime);
         }

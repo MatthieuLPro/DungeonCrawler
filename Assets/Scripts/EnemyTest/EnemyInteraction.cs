@@ -101,10 +101,10 @@ public class EnemyInteraction : MonoBehaviour
 
         _KnockToggleParam(true);
 
-        _ApplyThrustOnEnemy(directionKnock * playerAttack.GetThrust());        
+        _ApplyThrustOnEnemy(directionKnock * playerAttack.Thrust);        
         _CallHurt();
 
-        yield return new WaitForSeconds(playerAttack.GetKnockBackTime());
+        yield return new WaitForSeconds(playerAttack.KnockBackTime);
 
         _enemyScript.ActualHealth = (playerAttack.GetStrength() * -1);
     }

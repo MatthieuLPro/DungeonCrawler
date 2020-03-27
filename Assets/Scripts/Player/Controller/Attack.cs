@@ -104,14 +104,16 @@ public class Attack : MonoBehaviour
     }
 
     /* ************************************************ */
-    /* Getter */
+    /* Getter & Setter */
     /* ************************************************ */
-    public float GetThrust(){
-        return thrust;
+    public float Thrust {
+        get { return thrust; }
+        set { thrust = value; }
     }
 
-    public float GetKnockBackTime(){
-        return knockBackTime;
+    public float KnockBackTime {
+        get { return knockBackTime; }
+        set { knockBackTime = value; }
     }
 
     public int GetStrength(){
