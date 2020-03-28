@@ -42,7 +42,7 @@ public class InputManagerPlayer1 : MonoBehaviour
 
     public static bool XButton()
     {
-        return Input.GetButtonDown("P1_Consommable");
+        return Input.GetButtonDown("P1_Consumable");
     }
 
     public static bool YButton()
