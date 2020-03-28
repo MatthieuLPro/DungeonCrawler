@@ -181,6 +181,7 @@ MonoBehaviour:
   LevelsNameList:
   - CameraTest
   - PlayerCreation
+  - MovementTest
   PlayersDropdownGO: {fileID: 1429507524}
   LevelsDropdownGO: {fileID: 401026038}
   gameParameters: {fileID: 1305945}
