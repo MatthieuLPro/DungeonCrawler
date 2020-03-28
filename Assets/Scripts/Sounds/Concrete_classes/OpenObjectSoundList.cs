@@ -19,7 +19,6 @@ public class OpenObjectSoundList : IObjectSoundList
                 newAudioClip = Resources.Load("Sounds/Objects/Treasures/CantOpen") as AudioClip;
                 break;
         }
-        Debug.Log("newAudioClip : " + newAudioClip);
         return newAudioClip;
     }
 }

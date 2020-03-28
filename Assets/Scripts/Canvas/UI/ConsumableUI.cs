@@ -75,6 +75,8 @@ public class ConsumableUI : MonoBehaviour
 
         _consumableObjectAnime.SetBool("isSearching", false);
         _consumableObject.sprite = _GetConsumableSprite(consumable);
+        Debug.Log("consumable: " + consumable);
+        Debug.Log("_consumableObject.sprite: " + _consumableObject.sprite);
         yield return new WaitForSeconds(0.2f);
         _consumableObjectSound.CallAudio("find");
         _consumableObjectSound.PlayAudio();
