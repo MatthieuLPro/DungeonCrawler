@@ -53,7 +53,7 @@ public class TestInteractionGlobal : MonoBehaviour
             return;
         }
 
-        if (other.CompareTag("PlayerAttack"))
+        if (other.CompareTag("PlayerAttack") || other.gameObject.name == "ConsumableBanana")
         {
             InteractionWithPlayer(other.gameObject.transform.gameObject);
             return;

@@ -5,11 +5,13 @@ using UnityEngine;
 public class UseConsumable : MonoBehaviour
 {
     private string _consumable = "";
+    private ConsumableUI _consumablePlayerUI = null;
 
     private ConsumableEffect _effect = null;
 
     void Start() {
         _effect = new ConsumableEffect();
+        _consumablePlayerUI = transform.parent.transform.parent.Find("UI").Find("Consumable").GetComponent<ConsumableUI>();
     }
 
     // Update is called once per frame
@@ -35,7 +37,9 @@ public class UseConsumable : MonoBehaviour
     }
 
     void _LaunchEffect(string effect) {
-        _effect.LaunchEffect(effect);
+        _effect.LaunchEffect(effect, Vector3.zero, "right");
+        Consumable = "";
+        _consumablePlayerUI.RemoveConsumable();
     }
 
     public string Consumable {

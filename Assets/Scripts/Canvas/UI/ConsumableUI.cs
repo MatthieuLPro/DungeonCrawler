@@ -35,22 +35,14 @@ public class ConsumableUI : MonoBehaviour
     }
 
     public void AddConsumable(int consumable) {
-        
         _consumableObject.color = new Color(255, 255, 255, 100);
         StartCoroutine(_SearchObjectCo(consumable));
     }
 
     public void RemoveConsumable() {
-        _consumableObject.sprite = null;
-        _consumableObject.color = new Color(255, 255, 255, 0);
-    }
-
-
-    Sprite _GetConsumableSprite(int consumable) {
-        Object[] sprites = Resources.LoadAll("Sprites/Hud/consumables/object_consumable");
-        if (consumable < 0 || consumable > 15)
-            return null;
-        return (Sprite)sprites[consumable];
+        _consumableObjectAnime.SetInteger("itemNb", 0);
+        _consumableObject.sprite    = null;
+        _consumableObject.color     = new Color(255, 255, 255, 0);
     }
 
     // Get HUD Position
@@ -69,16 +61,18 @@ public class ConsumableUI : MonoBehaviour
 
     IEnumerator _SearchObjectCo(int consumable) {
         _consumableObjectAnime.SetBool("isSearching", true);
-        _consumableObjectSound.CallAudio("search");
-        _consumableObjectSound.PlayAudio();
+        _consumableObjectAnime.SetInteger("itemNb", consumable);
+        PlayAudio("search");
         yield return new WaitForSeconds(3f);
 
         _consumableObjectAnime.SetBool("isSearching", false);
-        _consumableObject.sprite = _GetConsumableSprite(consumable);
-        Debug.Log("consumable: " + consumable);
-        Debug.Log("_consumableObject.sprite: " + _consumableObject.sprite);
-        yield return new WaitForSeconds(0.2f);
-        _consumableObjectSound.CallAudio("find");
+
+        yield return new WaitForSeconds(0.5f);
+        PlayAudio("find");
+    }
+
+    void PlayAudio(string audioClip) {
+        _consumableObjectSound.CallAudio(audioClip);
         _consumableObjectSound.PlayAudio();
     }
 }
