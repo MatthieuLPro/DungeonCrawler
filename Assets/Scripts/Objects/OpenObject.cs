@@ -16,7 +16,9 @@ public class OpenObject : MonoBehaviour
 
     private GameObject _lootObject = null;
 
-    private GameObject _info = null; 
+    private GameObject _info = null;
+
+    private GameObject _soundManager = null;
 
     /*
         _loot values:
@@ -47,7 +49,8 @@ public class OpenObject : MonoBehaviour
         if (OpenMethod == 0)
             OpenMethod = Random.Range(1,4);
             
-        _info = transform.parent.transform.Find("InfoTreasure").gameObject;
+        _soundManager   = transform.parent.transform.Find("Sound").gameObject;
+        _info           = transform.parent.transform.Find("InfoTreasure").gameObject;
         if (OpenMethod == 3)
             _info.GetComponent<SpriteRenderer>().sprite = (Sprite)sprites[1];
 
@@ -67,8 +70,14 @@ public class OpenObject : MonoBehaviour
 
     public void TryToOpen(GameObject opener) {
         if (!_CanOpenObject(opener)) { 
+            _PlayAudioClip();
             return;
         }
+        if (OpenMethod == 3)
+            _UpdateAudioClip("openBig");
+        else
+            _UpdateAudioClip("openSmall");
+        _PlayAudioClip();
         _ChangeSpriteToOpen();
         _OpenTheObject(opener);
     }
@@ -217,5 +226,16 @@ public class OpenObject : MonoBehaviour
     public int OpenMethod {
         get { return _openMethod; }
         set { _openMethod = value; }
+    }
+
+    /* ************************************************ */
+    /* Sound */
+    /* ************************************************ */
+    private void _UpdateAudioClip(string newAudioClip){
+        _soundManager.GetComponent<AudioManager>().CallAudio(newAudioClip);
+    }
+
+    private void _PlayAudioClip(){
+        _soundManager.GetComponent<AudioManager>().PlayAudio();
     }
 }

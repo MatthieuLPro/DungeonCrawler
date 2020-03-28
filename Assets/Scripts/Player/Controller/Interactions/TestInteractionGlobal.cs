@@ -242,5 +242,6 @@ public class TestInteractionGlobal : MonoBehaviour
     /* Hurt */
     private void _CallHurt(){
         _parent.transform.parent.Find("Audio").GetComponent<AudioManager>().CallAudio("hurt");
+        _parent.transform.parent.Find("Audio").GetComponent<AudioManager>().PlayAudio();
     }
 }

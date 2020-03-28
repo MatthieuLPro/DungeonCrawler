@@ -13,6 +13,7 @@ public class ObjectSoundList : MonoBehaviour
             { "PlayerAudio", new PlayerSoundListFactory() },
             { "EnemyAudio",  new MonsterSoundListFactory() },
             { "ConsumableAudio",  new ConsumableSoundListFactory() },
+            { "OpenObjectAudio",  new OpenObjectSoundListFactory() }
         };
     }
 

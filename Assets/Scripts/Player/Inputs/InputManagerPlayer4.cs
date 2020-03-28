@@ -7,16 +7,14 @@ public class InputManagerPlayer4 : MonoBehaviour
     public static float MainHorizontal()
     {
         float r = 0.0f;
-        r += Input.GetAxis("P4_joystick_horizontal");
-        r += Input.GetAxis("P4_key_horizontal");
+        r += Input.GetAxis("P4_Horizontal");
         return Mathf.Clamp(r, -1.0f, 1.0f);
     }
 
     public static float MainVertical()
     {
         float r = 0.0f;
-        r += Input.GetAxis("P4_joystick_vertical");
-        r += Input.GetAxis("P4_key_vertical");
+        r += Input.GetAxis("P4_Vertical");
         return Mathf.Clamp(r, -1.0f, 1.0f);
     }
 
@@ -33,7 +31,7 @@ public class InputManagerPlayer4 : MonoBehaviour
     // Action button
     public static bool BButton()
     {
-        return Input.GetButtonDown("P4_action");
+        return Input.GetButtonDown("P4_Attack");
     }
 
     public static bool XButton()

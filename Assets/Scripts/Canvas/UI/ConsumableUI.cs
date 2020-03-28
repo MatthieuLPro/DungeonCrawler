@@ -70,11 +70,13 @@ public class ConsumableUI : MonoBehaviour
     IEnumerator _SearchObjectCo(int consumable) {
         _consumableObjectAnime.SetBool("isSearching", true);
         _consumableObjectSound.CallAudio("search");
+        _consumableObjectSound.PlayAudio();
         yield return new WaitForSeconds(3f);
 
         _consumableObjectAnime.SetBool("isSearching", false);
         _consumableObject.sprite = _GetConsumableSprite(consumable);
         yield return new WaitForSeconds(0.2f);
         _consumableObjectSound.CallAudio("find");
+        _consumableObjectSound.PlayAudio();
     }
 }
