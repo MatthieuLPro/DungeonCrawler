@@ -44,7 +44,7 @@ public class TestInteractionFront : MonoBehaviour
         //objectCarry = null;
 
         if (other.CompareTag("ObjectOpen")) {
-            ObjectOpen = other.gameObject;
+            StartCoroutine(_ObjectConnectionCo(other.gameObject));
             return;
         }
         ObjectOpen = null;
@@ -72,5 +72,10 @@ public class TestInteractionFront : MonoBehaviour
     public GameObject ObjectOpen {
         get { return _objectOpen; }
         set { _objectOpen = value; }
+    }
+
+    IEnumerator _ObjectConnectionCo(GameObject gameObject) {
+        yield return null;
+        ObjectOpen = gameObject;
     }
 }

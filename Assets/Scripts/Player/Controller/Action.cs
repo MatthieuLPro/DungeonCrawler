@@ -15,6 +15,7 @@ public class Action : MonoBehaviour
     void Update() {
        if (InputManagerPlayer1.AButton() && _front.ObjectOpen)
         {
+            Debug.Log("Open");
             GameObject objectOpen = _front.ObjectOpen;
             objectOpen.GetComponent<OpenObject>().TryToOpen(_player);
         }         
