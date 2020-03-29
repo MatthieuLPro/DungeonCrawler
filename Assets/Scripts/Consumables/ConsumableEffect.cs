@@ -6,7 +6,10 @@ public class ConsumableEffect : MonoBehaviour
 {
     private Vector2 _playerPosition = Vector2.zero;
     private string _playerDirection = "";
-    public ConsumableEffect(){}
+    private Transform _consumableList = null;
+    public ConsumableEffect(Transform consumableList){
+        ConsumableList = consumableList;
+    }
 
     public void LaunchEffect(string effect, Vector2 playerPosition, string playerDirection) {
         PlayerPosition = playerPosition;
@@ -76,7 +79,7 @@ public class ConsumableEffect : MonoBehaviour
     }
 
     void _SetPrefabParent(GameObject instancePrefab) {
-        return; //instancePrefab.transform.SetParent()
+        instancePrefab.transform.SetParent(ConsumableList);
     }
 
     public Vector2 PlayerPosition {
@@ -87,5 +90,10 @@ public class ConsumableEffect : MonoBehaviour
     public string PlayerDirection {
         get { return _playerDirection; }
         set { _playerDirection = value; }
+    }
+
+    public Transform ConsumableList {
+        get { return _consumableList; }
+        set { _consumableList = value; }
     }
 }

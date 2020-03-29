@@ -35,7 +35,6 @@ public class ConsumableUI : MonoBehaviour
     }
 
     public void AddConsumable(int consumable) {
-        _consumableObject.color = new Color(255, 255, 255, 100);
         StartCoroutine(_SearchObjectCo(consumable));
     }
 
@@ -63,6 +62,10 @@ public class ConsumableUI : MonoBehaviour
         _consumableObjectAnime.SetBool("isSearching", true);
         _consumableObjectAnime.SetInteger("itemNb", consumable);
         PlayAudio("search");
+
+        yield return new WaitForSeconds(0.15f);
+        _consumableObject.color = new Color(255, 255, 255, 100);
+
         yield return new WaitForSeconds(3f);
 
         _consumableObjectAnime.SetBool("isSearching", false);

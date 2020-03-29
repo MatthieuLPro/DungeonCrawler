@@ -12,7 +12,7 @@ public class UseConsumable : MonoBehaviour
     private ConsumableEffect _effect = null;
 
     void Start() {
-        _effect = new ConsumableEffect();
+        _effect = new ConsumableEffect(transform.parent.transform.parent.Find("ConsumableList").transform);
         _consumablePlayerUI    = transform.parent.transform.parent.Find("UI").Find("Consumable").GetComponent<ConsumableUI>();
         _playerTransform        = transform.parent.transform;
         _playerAnimator        = transform.parent.GetComponent<Animator>();
