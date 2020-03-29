@@ -29,6 +29,8 @@ public class EnemyTest : MonoBehaviour, IEnemy, IKillable, IDamageable
     private bool _attackTypeMagic = false;
     [SerializeField]
     private bool _attackTypePhysic = false;
+    [SerializeField]
+    private bool _destroyOnTouch = false;
 
     private void Start()
     {
@@ -72,7 +74,11 @@ public class EnemyTest : MonoBehaviour, IEnemy, IKillable, IDamageable
         get { return _attackTypePhysic; }
     }
     public bool AttackTypeMagic {
-        get { return _attackTypeMagic;}
+        get { return _attackTypeMagic; }
+    }
+
+    public bool DestroyOnTouch {
+        get { return _destroyOnTouch; }
     }
 
     /* ************************************************ */

@@ -21,6 +21,7 @@ public class ConsumableEffect : MonoBehaviour
     void _EffectConsumable(string effect) {
         GameObject consumablePrefab = _InstantiateObject(effect);
         _SetPrefabParent(consumablePrefab);
+        _SetPrefabMvtDirection(effect, consumablePrefab);
     }
 
     /* ************************************************ */
@@ -28,7 +29,7 @@ public class ConsumableEffect : MonoBehaviour
     /* ************************************************ */
     // Generate object depending of settings
     private GameObject _InstantiateObject(string consumableName){
-        return (Instantiate(_GetResource(consumableName), PlayerPosition + _GetPositionOffset(), Quaternion.identity));
+        return (Instantiate(_GetResource(consumableName), PlayerPosition + _GetPositionOffset(consumableName), Quaternion.identity));
     }
 
     // Generate prefab model from resource
@@ -46,40 +47,64 @@ public class ConsumableEffect : MonoBehaviour
         return resource;
     }
 
-    Vector2 _GetPositionOffset() {
+    Vector2 _GetPositionOffset(string consumableName) {
         Vector2 positionOffset = Vector2.zero;
+        float offset = 1f;
 
         switch(PlayerDirection) {
             case "up":
-                positionOffset = new Vector2(0, -0.5f);
+                positionOffset = new Vector2(0, -1 * offset);
                 break;
             case "up-right":
-                positionOffset = new Vector2(-0.5f, -0.5f);
+                positionOffset = new Vector2(-1 * offset, -1 * offset);
                 break;
             case "right":
-                positionOffset = new Vector2(-0.5f, 0);
+                positionOffset = new Vector2(-1 * offset, 0);
                 break;
             case "down-right":
-                positionOffset = new Vector2(-0.5f, 0.5f);
+                positionOffset = new Vector2(-1 * offset, offset);
                 break;
             case "down":
-                positionOffset = new Vector2(0, 0.5f);
+                positionOffset = new Vector2(0, offset);
                 break;
             case "down-left":
-                positionOffset = new Vector2(0.5f, 0.5f);
+                positionOffset = new Vector2(offset, offset);
                 break;
             case "left":
-                positionOffset = new Vector2(0.5f, 0);
+                positionOffset = new Vector2(offset, 0);
                 break;
             default:
-                positionOffset = new Vector2(0.5f, 0.5f);
+                positionOffset = new Vector2(offset, -1 * offset);
                 break;
         }
-        return positionOffset;
+        return _SetThrowDirection(consumableName, positionOffset);
     }
 
     void _SetPrefabParent(GameObject instancePrefab) {
         instancePrefab.transform.SetParent(ConsumableList);
+    }
+
+    void _SetPrefabMvtDirection(string consumableName, GameObject instancePrefab) {
+        Vector2 direction = _GetPositionOffset(consumableName);
+        switch (consumableName) {
+            case "green_shell":
+                instancePrefab.transform.Find("Movement").Find("Direction").GetComponent<DeterminateSingleDirections>().DirectionX = direction.x;
+                instancePrefab.transform.Find("Movement").Find("Direction").GetComponent<DeterminateSingleDirections>().DirectionY = direction.y;
+                break;
+            default:
+                break;
+        }
+    }
+
+    Vector2 _SetThrowDirection(string consumableName, Vector2 positionOffset) {
+        switch (consumableName) {
+            case "green_shell":
+                return (positionOffset * -1.5f);
+                break;
+            default:
+                return positionOffset;
+                break;
+        }
     }
 
     public Vector2 PlayerPosition {

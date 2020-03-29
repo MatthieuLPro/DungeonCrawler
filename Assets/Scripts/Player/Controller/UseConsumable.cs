@@ -50,23 +50,23 @@ public class UseConsumable : MonoBehaviour
         string playerDirection  = "down";
         float directionX        = _playerAnimator.GetFloat("DirectionX");
         float directionY        = _playerAnimator.GetFloat("DirectionY"); 
-        if (directionX >= 0.7f)
+        if (directionX >= 0.6f)
         {
-            if (directionY >= 0.7f)
+            if (directionY >= 0.6f)
                 playerDirection = "up-right";
-            else if (directionY <= -0.7f)
+            else if (directionY <= -0.6f)
                 playerDirection = "down-right";
             else
                 playerDirection = "right";
-        } else if (directionX <= -0.7f) {
-            if (directionY >= 0.7f)
+        } else if (directionX <= -0.6f) {
+            if (directionY >= 0.6f)
                 playerDirection = "up-left";
-            else if (directionY <= -0.7f)
+            else if (directionY <= -0.6f)
                 playerDirection = "down-left";
             else
                 playerDirection = "left";
         } else {
-            if (directionY >= 0.7f)
+            if (directionY >= 0.6f)
                 playerDirection = "up";
             else
                 playerDirection = "down";

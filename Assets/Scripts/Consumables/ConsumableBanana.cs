@@ -4,15 +4,14 @@ using UnityEngine;
 
 public class ConsumableBanana : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
+    private float _thrust = 8f;
+    private float _knockBackTime = .5f;
+
+    public float Thrust {
+        get { return _thrust; }
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+    public float KnockBackTime {
+        get { return _knockBackTime; }
     }
 }

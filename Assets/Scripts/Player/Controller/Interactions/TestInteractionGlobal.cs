@@ -50,12 +50,21 @@ public class TestInteractionGlobal : MonoBehaviour
         if (other.CompareTag("Enemy"))
         {
             InteractionWithEnemy(other.gameObject);
+            if (other.gameObject.transform.gameObject.GetComponent<EnemyTest>().DestroyOnTouch)
+                Destroy(other.gameObject);
             return;
         }
 
-        if (other.CompareTag("PlayerAttack") || other.gameObject.name == "ConsumableBanana")
+        if (other.CompareTag("PlayerAttack"))
         {
             InteractionWithPlayer(other.gameObject.transform.gameObject);
+            return;
+        }
+
+        if (other.CompareTag("PlayerPush"))
+        {
+            InteractionWithObject(other.gameObject.transform.gameObject);
+            Destroy(other.gameObject);
             return;
         }
     }
@@ -82,6 +91,16 @@ public class TestInteractionGlobal : MonoBehaviour
 
         //_ApplyDamageFromEnemy(enemy.GetComponent<EnemyTest>(), _parent.transform.parent.GetComponent<Player>());
         StartCoroutine(_KnockBackTimePlayerCo(player));
+        StartCoroutine(_InvincibleTimeCo());
+    }
+
+    /* Tag: PlayerPush */
+    private void InteractionWithObject(GameObject pushObject)
+    {
+        if (_isKnock || _isInvincible)
+            return;
+
+        StartCoroutine(_KnockBackTimeObjectCo(pushObject));
         StartCoroutine(_InvincibleTimeCo());
     }
     
@@ -201,6 +220,22 @@ public class TestInteractionGlobal : MonoBehaviour
         _ApplyThrustOnPlayer(directionKnock * playerAttack.Thrust);
         _CallHurt();
         yield return new WaitForSeconds(playerAttack.KnockBackTime);
+        _BlockMovement(false);
+    }
+
+    private IEnumerator _KnockBackTimeObjectCo(GameObject pushObject)
+    {
+        // Get Direction of knockback
+        Vector2 directionKnock          = CalculateKnockBackDirection(pushObject.transform.position);
+        ConsumableBanana bananaAttack   = pushObject.GetComponent<ConsumableBanana>();
+        
+        KnockToggleParam(true);
+        _BlockMovement(true);
+        
+        // Application de la nouvelle force
+        _ApplyThrustOnPlayer(directionKnock * bananaAttack.Thrust);
+        _CallHurt();
+        yield return new WaitForSeconds(bananaAttack.KnockBackTime);
         _BlockMovement(false);
     }
 

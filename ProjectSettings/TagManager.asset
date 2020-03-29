@@ -28,6 +28,7 @@ TagManager:
   - PlayerInteractionFront
   - ConsumableAudio
   - OpenObjectAudio
+  - PlayerPush
   layers:
   - Default
   - TransparentFX
