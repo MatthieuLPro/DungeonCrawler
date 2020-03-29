@@ -52,7 +52,7 @@ public class CameraController : MonoBehaviour
     private void _InitializeCameraProperties()
     {
         int playerIndex = gameObject.transform.parent.gameObject.GetComponent<Player>().GetPlayerIndex();
-        int playersNumber = GameObject.Find("GameParameters").GetComponent<GameParameters>().GetPlayersNumber();
+        int playersNumber = transform.root.Find("GameParameters").GetComponent<GameParameters>().GetPlayersNumber();
 
         Rect cameraRect = new Rect();
 

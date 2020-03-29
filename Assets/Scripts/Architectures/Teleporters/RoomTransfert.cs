@@ -29,7 +29,7 @@ public class RoomTransfert : MonoBehaviour
     /* Main functions */
     /* ************************************************ */
     private void Awake(){
-        _nextRoomInformation = transform.root.Find("Level_" + NextRoomLevel).Find("Room_" + NextRoomCoord).GetComponent<RoomInformation>();
+        _nextRoomInformation = transform.root.Find("Rooms").Find("Level_" + NextRoomLevel).Find("Room_" + NextRoomCoord).GetComponent<RoomInformation>();
     }
 
     private void OnTriggerEnter2D(Collider2D other)
