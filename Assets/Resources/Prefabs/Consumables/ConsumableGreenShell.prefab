@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7815813290344826870}
   - component: {fileID: 6027488039665881539}
   m_Layer: 25
-  m_Name: ConsumableBanana
+  m_Name: ConsumableGreenShell
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -71,7 +71,7 @@ SpriteRenderer:
   m_SortingLayerID: 187983035
   m_SortingLayer: -6
   m_SortingOrder: -1
-  m_Sprite: {fileID: 5162854583143371849, guid: 1ecd32c1f9d9ed6c78bfdc760aaf46de,
+  m_Sprite: {fileID: 8686087330786592251, guid: 1ecd32c1f9d9ed6c78bfdc760aaf46de,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

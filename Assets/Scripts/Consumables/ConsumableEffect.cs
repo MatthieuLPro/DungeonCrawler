@@ -4,54 +4,28 @@ using UnityEngine;
 
 public class ConsumableEffect : MonoBehaviour
 {
-    private Vector3 _playerPosition = Vector3.zero;
+    private Vector2 _playerPosition = Vector2.zero;
     private string _playerDirection = "";
     public ConsumableEffect(){}
 
-    public void LaunchEffect(string effect, Vector3 playerPosition, string playerDirection) {
+    public void LaunchEffect(string effect, Vector2 playerPosition, string playerDirection) {
         PlayerPosition = playerPosition;
         PlayerDirection = playerDirection;
 
-        switch(effect) {
-            case "banana":
-                _EffectBanana();
-                break;
-            case "green_shell":
-                _EffectGreenShell();
-                break;
-            default:
-                break;
-        }
+        _EffectConsumable(effect);
     }
 
-    void _EffectBanana() {
-        Debug.Log("Banana !");
-        _InstantiateObject("banana");
-    }
-
-    void _EffectGreenShell() {
-        Debug.Log("Green Shell !");
+    void _EffectConsumable(string effect) {
+        GameObject consumablePrefab = _InstantiateObject(effect);
+        _SetPrefabParent(consumablePrefab);
     }
 
     /* ************************************************ */
     /* Create functions */
     /* ************************************************ */
     // Generate object depending of settings
-    private GameObject _InstantiateObject(string consumableName)
-    {
-        GameObject newPrefab   = _GetResource(consumableName);
-        Vector3 positionOffset = Vector3.zero;
-
-        if (PlayerDirection == "up")
-            positionOffset = new Vector3(0, 0.5f, 0);
-        else if (PlayerDirection == "right")
-            positionOffset = new Vector3(-0.5f, 0, 0);
-        else if (PlayerDirection == "down")
-            positionOffset = new Vector3(0, -0.5f, 0);
-        else 
-            positionOffset = new Vector3(0.5f, 0, 0);
-
-        return (Instantiate(newPrefab, PlayerPosition, Quaternion.identity));
+    private GameObject _InstantiateObject(string consumableName){
+        return (Instantiate(_GetResource(consumableName), PlayerPosition + _GetPositionOffset(), Quaternion.identity));
     }
 
     // Generate prefab model from resource
@@ -67,6 +41,42 @@ public class ConsumableEffect : MonoBehaviour
                 break;
         }
         return resource;
+    }
+
+    Vector2 _GetPositionOffset() {
+        Vector2 positionOffset = Vector2.zero;
+
+        switch(PlayerDirection) {
+            case "up":
+                positionOffset = new Vector2(0, -0.5f);
+                break;
+            case "up-right":
+                positionOffset = new Vector2(-0.5f, -0.5f);
+                break;
+            case "right":
+                positionOffset = new Vector2(-0.5f, 0);
+                break;
+            case "down-right":
+                positionOffset = new Vector2(-0.5f, 0.5f);
+                break;
+            case "down":
+                positionOffset = new Vector2(0, 0.5f);
+                break;
+            case "down-left":
+                positionOffset = new Vector2(0.5f, 0.5f);
+                break;
+            case "left":
+                positionOffset = new Vector2(0.5f, 0);
+                break;
+            default:
+                positionOffset = new Vector2(0.5f, 0.5f);
+                break;
+        }
+        return positionOffset;
+    }
+
+    void _SetPrefabParent(GameObject instancePrefab) {
+        return; //instancePrefab.transform.SetParent()
     }
 
     public Vector2 PlayerPosition {
