@@ -18,6 +18,12 @@ EditorBuildSettings:
     path: Assets/Debug/test_scenes/PlayerCreation.unity
     guid: cef15beaf2cbe58f79b0e4e78d450408
   - enabled: 1
-    path: Assets/Debug/test_scenes/MovementTest.unity
+    path: Assets/Debug/test_scenes/MovementCollisionTest.unity
     guid: 9e01f99a04f8e404e885645ace800879
+  - enabled: 1
+    path: Assets/Debug/test_scenes/MovementFloorTest.unity
+    guid: 833db59414913bdf89a419f0c520b29e
+  - enabled: 1
+    path: Assets/Debug/test_scenes/MovementPureTest.unity
+    guid: c079456eb32bb4a178fb33f9b8ebe095
   m_configObjects: {}
