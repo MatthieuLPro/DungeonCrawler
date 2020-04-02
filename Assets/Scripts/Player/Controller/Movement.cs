@@ -174,4 +174,12 @@ public class Movement : MonoBehaviour
         _anime.SetBool("Moving", true);
         currentState = TestObjectState.walk;
     }
+
+    /* ************************************************ */
+    /* Getter & Setter */
+    /* ************************************************ */
+    public float MaxSpeed {
+        get { return maxSpeed; }
+        set { maxSpeed = value; }
+    }
 }
