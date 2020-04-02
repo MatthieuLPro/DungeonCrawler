@@ -55,6 +55,7 @@ MonoBehaviour:
   _knockBackTime: 0.25
   _attackTypeMagic: 0
   _attackTypePhysic: 1
+  _destroyOnTouch: 0
 --- !u!212 &6315227563945330984
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -69,6 +70,7 @@ SpriteRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -90,9 +92,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -1148429261
-  m_SortingLayer: -8
-  m_SortingOrder: 0
+  m_SortingLayerID: 187983035
+  m_SortingLayer: -6
+  m_SortingOrder: -1
   m_Sprite: {fileID: 21300000, guid: c09f85cb6f015cc4ea71ecdea1c1a9a1, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

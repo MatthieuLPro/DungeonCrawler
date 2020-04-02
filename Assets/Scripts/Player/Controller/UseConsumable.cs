@@ -4,18 +4,18 @@ using UnityEngine;
 
 public class UseConsumable : MonoBehaviour
 {
-    private string _consumable = "";
-    private ConsumableUI _consumablePlayerUI = null;
-    private Transform _playerTransform = null;
-    private Animator _playerAnimator = null;
+    private string _consumable                  = "";
+    private ConsumableUI _consumablePlayerUI    = null;
+    private Transform _playerTransform          = null;
+    private Animator _playerAnimator            = null;
 
-    private ConsumableEffect _effect = null;
+    private ConsumableEffect _effect            = null;
 
     void Start() {
-        _effect = new ConsumableEffect(transform.parent.transform.parent.Find("ConsumableList").transform);
-        _consumablePlayerUI    = transform.parent.transform.parent.Find("UI").Find("Consumable").GetComponent<ConsumableUI>();
+        _effect                 = new ConsumableEffect(transform.parent.transform.parent.Find("ConsumableList").transform);
+        _consumablePlayerUI     = transform.parent.transform.parent.Find("UI").Find("Consumable").GetComponent<ConsumableUI>();
         _playerTransform        = transform.parent.transform;
-        _playerAnimator        = transform.parent.GetComponent<Animator>();
+        _playerAnimator         = transform.parent.GetComponent<Animator>();
     }
 
     // Update is called once per frame
