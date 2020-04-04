@@ -30,37 +30,13 @@ public class Attack : MonoBehaviour
     void FixedUpdate()
     {
         // Action Button
-        if (_player_name == "Player_1")
-        {
-            if(InputManagerPlayer1.BButton()) {
-                ActionsList();
-            }
-        }
-        else if (_player_name == "Player_2")
-        {
-            if(InputManagerPlayer2.BButton()) {
-                ActionsList();
-            }
-        }
-        else if (_player_name == "Player_3")
-        {
-            if(InputManagerPlayer3.BButton()) {
-                ActionsList();
-            }
-        }
-        else
-        {
-            if(InputManagerPlayer4.BButton()) {
-                ActionsList();
-            }
-        }
     }
 
     /* ************************************************ */
     /* Functions */
     /* ************************************************ */
     /* Action functions */
-    private void ActionsList()
+    public void ActionsList()
     {
         if (_movement.currentState != TestObjectState.knock)
             StartCoroutine(MainAttack());

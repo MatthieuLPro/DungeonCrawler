@@ -1,28 +1,26 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class RaceInitialize : MonoBehaviour
 {
+
+    private PlayerInputManager _playerInputManager;
     private GameParameters _gameParameters;
 
-    [SerializeField]
-    public GameObject _playerPrefab;
+  
 
     void Start()
     {
         _gameParameters = gameObject.GetComponent<GameParameters>();
+        _playerInputManager = gameObject.GetComponent<PlayerInputManager>();
         _InitializePlayers();
     }
 
     private void _InitializePlayers() 
     {
-        int playersNumber = _gameParameters.PlayersNumber;
-        for (int playerIndex = 1; playerIndex <= playersNumber; playerIndex++) 
-        {
-            GameObject playerGameObject = Instantiate(_playerPrefab) as GameObject;
-            playerGameObject.GetComponent<Player>().SetPlayerIndex(playerIndex);
-        }
-            
+        int playersNumber = _gameParameters.GetPlayersNumber();
+        //_playerInputManager.fixedNumberOfSplitScreens = playersNumber;
     }
 }
