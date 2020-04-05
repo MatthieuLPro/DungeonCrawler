@@ -75,7 +75,7 @@ public class EnemyShoot : MonoBehaviour
     /* Instance bullets */
     /* ************************************************ */
     private GameObject GetAmmoType(){
-        GameObject bullet = Resources.Load("Prefabs/Enemis/Traps/TrapStatic_range_ammo") as GameObject;
+        GameObject bullet = Resources.Load("Prefabs/Enemis/Statics/TrapStatic_range_ammo") as GameObject;
 
         return bullet;
     }

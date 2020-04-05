@@ -5276,8 +5276,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _actualRoom: 00
   _actualLevel: 0
-  roomLimitsMax: {x: 18, y: 0}
-  roomLimitsMin: {x: -9, y: -6}
+  roomLimitsMax: {x: 0, y: 0}
+  roomLimitsMin: {x: 0, y: 0}
   playerNumber: 0
   _fogList: {fileID: 0}
   _unFogList: {fileID: 0}
@@ -24444,8 +24444,8 @@ MonoBehaviour:
   _enabledBottomScroll: 0
   _enabledRightScroll: 0
   _enabledLeftScroll: 0
-  minPosition: {x: -9, y: -6}
-  maxPosition: {x: 18, y: 0}
+  minPosition: {x: 0, y: 0}
+  maxPosition: {x: 0, y: 0}
   topLeftLimit: {x: 0, y: 0}
   topRightLimit: {x: 0, y: 0}
   botLeftLimit: {x: 0, y: 0}
@@ -29551,8 +29551,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _actualRoom: 00
   _actualLevel: 0
-  roomLimitsMax: {x: 18, y: 0}
-  roomLimitsMin: {x: -9, y: -6}
+  roomLimitsMax: {x: 0, y: 0}
+  roomLimitsMin: {x: 0, y: 0}
   playerNumber: 0
   _fogList: {fileID: 0}
   _unFogList: {fileID: 0}
@@ -29716,8 +29716,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _actualRoom: 00
   _actualLevel: 0
-  roomLimitsMax: {x: 18, y: 0}
-  roomLimitsMin: {x: -9, y: -6}
+  roomLimitsMax: {x: 0, y: 0}
+  roomLimitsMin: {x: 0, y: 0}
   playerNumber: 0
   _fogList: {fileID: 0}
   _unFogList: {fileID: 0}
@@ -34543,8 +34543,8 @@ MonoBehaviour:
   _enabledBottomScroll: 0
   _enabledRightScroll: 0
   _enabledLeftScroll: 0
-  minPosition: {x: -9, y: -6}
-  maxPosition: {x: 18, y: 0}
+  minPosition: {x: 0, y: 0}
+  maxPosition: {x: 0, y: 0}
   topLeftLimit: {x: 0, y: 0}
   topRightLimit: {x: 0, y: 0}
   botLeftLimit: {x: 0, y: 0}
@@ -39785,8 +39785,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _actualRoom: 00
   _actualLevel: 0
-  roomLimitsMax: {x: 18, y: 0}
-  roomLimitsMin: {x: -9, y: -6}
+  roomLimitsMax: {x: 0, y: 0}
+  roomLimitsMin: {x: 0, y: 0}
   playerNumber: 0
   _fogList: {fileID: 0}
   _unFogList: {fileID: 0}
@@ -44092,8 +44092,8 @@ MonoBehaviour:
   _enabledBottomScroll: 0
   _enabledRightScroll: 0
   _enabledLeftScroll: 0
-  minPosition: {x: -9, y: -6}
-  maxPosition: {x: 18, y: 0}
+  minPosition: {x: 0, y: 0}
+  maxPosition: {x: 0, y: 0}
   topLeftLimit: {x: 0, y: 0}
   topRightLimit: {x: 0, y: 0}
   botLeftLimit: {x: 0, y: 0}
@@ -71623,8 +71623,8 @@ MonoBehaviour:
   _enabledBottomScroll: 0
   _enabledRightScroll: 0
   _enabledLeftScroll: 0
-  minPosition: {x: -9, y: -6}
-  maxPosition: {x: 18, y: 0}
+  minPosition: {x: 0, y: 0}
+  maxPosition: {x: 0, y: 0}
   topLeftLimit: {x: 0, y: 0}
   topRightLimit: {x: 0, y: 0}
   botLeftLimit: {x: 0, y: 0}
