@@ -142,11 +142,9 @@ public class EnemyShoot : MonoBehaviour
     private void _SetHuntDirection(GameObject bullet){
         DeterminateSingleDirections direction = bullet.transform.GetChild(0).transform.GetChild(0).GetComponent<DeterminateSingleDirections>();
         Vector2 targetPosition                = Target.transform.position;
-
+ 
         direction.DirectionX = targetPosition.x - _parent.transform.position.x;
         direction.DirectionY = targetPosition.y - _parent.transform.position.y;
-
-        direction.GetDirection();
     }
 
     /* ************************************************ */

@@ -32,7 +32,7 @@ public class MovementSystems : MonoBehaviour
 
     protected void _UpdateMovement()
     {
-        _directionVariation = new Vector3(_npcGeneralDirection.PosVariation.x, _npcGeneralDirection.PosVariation.y, 0);
+        _directionVariation = new Vector3(_npcGeneralDirection.PosVariation.x, _npcGeneralDirection.PosVariation.y, 0).normalized;
         _npcGeneralAddForce.AddForceMovement(_directionVariation);
     }
 }
