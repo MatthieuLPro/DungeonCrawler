@@ -1,10 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.InteropServices;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class RaceInitialize : MonoBehaviour
 {
+    public GameObject characterPrefab;
 
     private PlayerInputManager _playerInputManager;
     private GameParameters _gameParameters;
@@ -21,6 +23,6 @@ public class RaceInitialize : MonoBehaviour
     private void _InitializePlayers() 
     {
         int playersNumber = _gameParameters.GetPlayersNumber();
-        //_playerInputManager.fixedNumberOfSplitScreens = playersNumber;
+        _playerInputManager.fixedNumberOfSplitScreens = playersNumber;
     }
 }
