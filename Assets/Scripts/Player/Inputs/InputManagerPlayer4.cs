@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class InputManagerPlayer4 : MonoBehaviour
 {
+    public static bool IsAxisInUse() 
+    {
+        return (MainHorizontal() != 0 || MainVertical() != 0);
+    }
+
     public static float MainHorizontal()
     {
         float r = 0.0f;
@@ -25,7 +30,7 @@ public class InputManagerPlayer4 : MonoBehaviour
 
     public static bool AButton()
     {
-        return Input.GetButtonDown("A_Button");
+        return Input.GetButtonDown("P4_Action");
     }
 
     // Action button
@@ -36,31 +41,31 @@ public class InputManagerPlayer4 : MonoBehaviour
 
     public static bool XButton()
     {
-        return Input.GetButtonDown("X_Button");
+        return Input.GetButtonDown("P4_Consumable");
     }
 
     public static bool YButton()
     {
-        return Input.GetButtonDown("Y_Button");
+        return true; //Input.GetButtonDown("Y_Button");
     }
 
     public static bool LButton()
     {
-        return Input.GetButtonDown("L_Button");
+        return true; // Input.GetButtonDown("L_Button");
     }
 
     public static bool RButton()
     {
-        return Input.GetButtonDown("R_Button");
+        return true; // Input.GetButtonDown("R_Button");
     }
 
     public static bool LTrigger()
     {
-        return (Input.GetAxisRaw("Triggers") == -1);
+        return true; // (Input.GetAxisRaw("Triggers") == -1);
     }
 
     public static bool RTrigger()
     {
-        return (Input.GetAxisRaw("Triggers") == 1);
+        return true; // (Input.GetAxisRaw("Triggers") == 1);
     }
 }

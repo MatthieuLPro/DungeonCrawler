@@ -47,26 +47,26 @@ public class InputManagerPlayer1 : MonoBehaviour
 
     public static bool YButton()
     {
-        return Input.GetButtonDown("P1_Equipement");
+        return true; // Input.GetButtonDown("P1_Equipement");
     }
 
     public static bool LButton()
     {
-        return Input.GetButtonDown("L_Button");
+        return true; // Input.GetButtonDown("L_Button");
     }
 
     public static bool RButton()
     {
-        return Input.GetButtonDown("R_Button");
+        return true; // Input.GetButtonDown("R_Button");
     }
 
     public static bool LTrigger()
     {
-        return (Input.GetAxisRaw("Triggers") == -1);
+        return true; // (Input.GetAxisRaw("Triggers") == -1);
     }
 
     public static bool RTrigger()
     {
-        return (Input.GetAxisRaw("Triggers") == 1);
+        return true; // (Input.GetAxisRaw("Triggers") == 1);
     }
 }

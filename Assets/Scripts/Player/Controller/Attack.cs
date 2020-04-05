@@ -32,23 +32,27 @@ public class Attack : MonoBehaviour
         // Action Button
         if (_player_name == "Player_1")
         {
-            if(InputManagerPlayer1.BButton())
+            if(InputManagerPlayer1.BButton()) {
                 ActionsList();
+            }
         }
         else if (_player_name == "Player_2")
         {
-            if(InputManagerPlayer2.BButton())
+            if(InputManagerPlayer2.BButton()) {
                 ActionsList();
+            }
         }
         else if (_player_name == "Player_3")
         {
-            if(InputManagerPlayer3.BButton())
+            if(InputManagerPlayer3.BButton()) {
                 ActionsList();
+            }
         }
         else
         {
-            if(InputManagerPlayer4.BButton())
+            if(InputManagerPlayer4.BButton()) {
                 ActionsList();
+            }
         }
     }
 
