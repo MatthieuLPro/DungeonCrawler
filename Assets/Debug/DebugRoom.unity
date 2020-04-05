@@ -179,8 +179,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   LevelsNameList:
-  - CameraTest
-  - PlayerCreation
   - MovementPureTest
   - MovementCollisionTest
   - MovementFloorTest

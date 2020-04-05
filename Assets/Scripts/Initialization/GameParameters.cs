@@ -32,18 +32,22 @@ public class GameParameters : MonoBehaviour
         GameObject go_rooms     = transform.root.Find("Rooms").Find("Level_0").gameObject;
         GameObject go_players   = transform.root.Find("Players").gameObject;
 
+        // Consumable
         if (ConsumablePresence == 0)
             m_initMethodGo = _DestroyGo;
         else
             m_initMethodGo = _SetActiveGo;
         _InitRoomRule(go_rooms.transform, new string[] {"Items", "Consumables"}, m_initMethodGo);
 
+        // Monster
         if (StaticMonsterPresence == 0)
             m_initMethodGo = _DestroyGo;
         else
             m_initMethodGo = _SetActiveGo;
         _InitRoomRule(go_rooms.transform, new string[] {"Enemies", "Monsters"}, m_initMethodGo);
 
+
+        // Player
         m_initMethodGo = _DestroyGo;
         _InitPlayerPresence(go_players.transform, m_initMethodGo);
 
@@ -94,7 +98,6 @@ public class GameParameters : MonoBehaviour
         else
             playerMvt.MaxSpeed = 3;
     }
-
 
     public bool InDungeon {
         get { return inDungeon; }
