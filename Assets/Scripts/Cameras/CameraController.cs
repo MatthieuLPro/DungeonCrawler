@@ -6,6 +6,9 @@ public class CameraController : MonoBehaviour
 {
     public GameObject trackingGameObject;
 
+    public int numberOfPlayer = 1;
+    public int playerIndex = 1;
+
     [SerializeField]
     private bool _enabledCameraScroll, _enabledTopScroll,
                  _enabledBottomScroll, _enabledRightScroll,
@@ -51,13 +54,13 @@ public class CameraController : MonoBehaviour
 
     private void _InitializeCameraProperties()
     {
-        int playerIndex = gameObject.transform.parent.gameObject.GetComponent<Player>().GetPlayerIndex();
-        int playersNumber = transform.root.Find("GameParameters").GetComponent<GameParameters>().PlayersNumber;
+        //int playerIndex = gameObject.transform.parent.gameObject.GetComponent<Player>().GetPlayerIndex();
+        //int playersNumber = transform.root.Find("GameParameters").GetComponent<GameParameters>().PlayersNumber;
 
         Rect cameraRect = new Rect();
 
         // Set Camera size
-        switch (playersNumber)
+        switch (numberOfPlayer)
         {
             case 1:
             default:
@@ -82,15 +85,15 @@ public class CameraController : MonoBehaviour
             case 1:
             default:
                 cameraRect.x = 0;
-                cameraRect.y = 0;
+                cameraRect.y = (numberOfPlayer == 1) ? 0 : 0.5f;
                 break;
             case 2:
-                cameraRect.x = (playersNumber == 2) ? 0 : 0.5f; 
-                cameraRect.y = (playersNumber == 2) ? 0.5f : 0;
+                cameraRect.x = (numberOfPlayer == 2) ? 0 : 0.5f; 
+                cameraRect.y = (numberOfPlayer == 2) ? 0 : 0.5f;
                 break;
             case 3:
                 cameraRect.x = 0;
-                cameraRect.y = 0.5f;
+                cameraRect.y = 0;
                 break;
             case 4:
                 cameraRect.x = 0.5f;
@@ -145,7 +148,7 @@ public class CameraController : MonoBehaviour
     }
 
     public void moveCameraToPosition(float _XPosition, float _YPosition)
-    {//
+    {
         Vector3 targetPosition = new Vector3(_XPosition, _YPosition, transform.position.z);
         transform.position = Vector3.Lerp(transform.position, targetPosition, smoothing * Time.deltaTime);
     }
@@ -160,7 +163,15 @@ public class CameraController : MonoBehaviour
     public void SetScreenDistance()
     {
         Vector3 newMaxPosition = _Camera.ScreenToWorldPoint(new Vector2(_Camera.pixelRect.width, _Camera.pixelRect.height));
-        _xScreenDistance = newMaxPosition.x;
-        _yScreenDistance = newMaxPosition.y;
+
+        //Can improve this => Need to find logic for x/yScreenDistance p2, 3, 4 ...
+        if (playerIndex == 1) {
+            _xScreenDistance = newMaxPosition.x;
+            _yScreenDistance = newMaxPosition.y;
+        } else {
+            CameraController camera = transform.parent.transform.parent.Find("Player_1").Find("Camera").GetComponent<CameraController>();
+            _xScreenDistance = camera._xScreenDistance;
+            _yScreenDistance = camera._yScreenDistance;
+        }
     }
 }
