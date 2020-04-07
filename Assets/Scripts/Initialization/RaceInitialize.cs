@@ -1,17 +1,19 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Runtime.InteropServices;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using Debug = UnityEngine.Debug;
+
 
 public class RaceInitialize : MonoBehaviour
 {
-    public GameObject characterPrefab;
+    [SerializeField] internal GameObject m_PlayerPrefabInstantiateZone;
+    [SerializeField] internal List<GameObject> m_PlayerGameObjectList = new List<GameObject>();
 
-    private PlayerInputManager _playerInputManager;
-    private GameParameters _gameParameters;
+    [NonSerialized] private PlayerInputManager _playerInputManager;
+    [NonSerialized] private GameParameters _gameParameters;
 
     void Start()
     {
