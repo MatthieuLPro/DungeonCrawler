@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using UnityEngine;
 
 public class Attack : MonoBehaviour
@@ -9,10 +10,13 @@ public class Attack : MonoBehaviour
     public float knockBackTime;
 
     /* Parent components */
+    [SerializeField]
     private GameObject              _parent;
     private string                  _player_name;
+    [SerializeField]
     private Movement                _movement;
     private TestInteractionFront    _interactionFront;
+    [SerializeField]
     private Animator                _anime;
 
     /* ************************************************ */

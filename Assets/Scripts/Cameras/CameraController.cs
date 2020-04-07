@@ -71,7 +71,6 @@ public class CameraController : MonoBehaviour
 
     public void moveCameraToPosition(float _XPosition, float _YPosition)
     {
-        Debug.Log("X: " + _XPosition + " Y: " + _YPosition);
         Vector3 targetPosition = new Vector3(_XPosition, _YPosition, transform.position.z);
         transform.position = Vector3.Lerp(transform.position, targetPosition, smoothing * Time.deltaTime);
     }

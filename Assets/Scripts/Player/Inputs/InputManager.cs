@@ -9,6 +9,7 @@ public class InputManager : MonoBehaviour
 {
     public GameObject movementGO;
     public GameObject attackGO;
+    public GameObject consumableGO;
 
     private void OnMove(InputValue value)
     {
@@ -17,25 +18,27 @@ public class InputManager : MonoBehaviour
         movement.SetPlayerDirection(newMovement);
     }
 
-    public void OnBButton()
+    public void OnAButton()
     {
         Attack attack = attackGO.GetComponent<Attack>();
         attack.ActionsList();
-
     }
-    
 
-    /*public void OnAButton()
+    public void OnYButton()
     {
-        Debug.Log("A");
+        UseConsumable useConsumable = consumableGO.GetComponent<UseConsumable>();
+        useConsumable.launchCurrentEffect();
     }
 
-    
 
-    public void OnXButton()
+    /*
+
+    public void OnYButton()
     {
         Debug.Log("X");
     }
+
+    
 
     public void OnYButton()
     {

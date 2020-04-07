@@ -1,8 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Runtime.InteropServices;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using Debug = UnityEngine.Debug;
 
 public class RaceInitialize : MonoBehaviour
 {
@@ -10,8 +12,6 @@ public class RaceInitialize : MonoBehaviour
 
     private PlayerInputManager _playerInputManager;
     private GameParameters _gameParameters;
-
-  
 
     void Start()
     {
@@ -23,6 +23,10 @@ public class RaceInitialize : MonoBehaviour
     private void _InitializePlayers() 
     {
         int playersNumber = _gameParameters.GetPlayersNumber();
-        _playerInputManager.fixedNumberOfSplitScreens = playersNumber;
+    }
+
+    private void OnPlayerJoined(PlayerInput input)
+    {
+        Debug.Log("On Player Joindes");
     }
 }
