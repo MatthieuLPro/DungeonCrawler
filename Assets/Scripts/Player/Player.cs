@@ -5,7 +5,8 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     [Header("Player parameters")]
-    public int playerIndex = 1;
+    [SerializeField]
+    private int _playerIndex = 1;
     public int healthInit = 5;
     public int manaInit = 70;
     public int keys = 0;
@@ -15,14 +16,9 @@ public class Player : MonoBehaviour
     /* ************************************************ */
     /* Getters & Setters */
     /* ************************************************ */
-    public int GetPlayerIndex() 
-    {
-        return playerIndex;
-    }
-
-    public void SetPlayerIndex(int index) 
-    {
-        playerIndex = index;
+    public int PlayerIndex {
+        get { return _playerIndex; }
+        set { _playerIndex = value; }
     }
 
     public void GetLife(int heal){

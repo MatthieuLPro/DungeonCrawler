@@ -6,11 +6,11 @@ using UnityEngine.UI;
 public class ConsumableUI : MonoBehaviour
 {
     private Vector3 _cameraSize;
-    private float _thickness;
     private RectTransform _resultRect;
     private Image _consumableObject = null;
     private Animator _consumableObjectAnime = null;
     private AudioManager _consumableObjectSound = null;
+    private float _thickness;
 
     void Start()
     {
@@ -18,6 +18,9 @@ public class ConsumableUI : MonoBehaviour
         string playerName       = transform.parent.transform.parent.name;
 
         _cameraSize             = new Vector3(cameraPixelRect.width, cameraPixelRect.height, 0);
+
+        int playerIndex = transform.parent.transform.parent.GetComponent<Player>().PlayerIndex;
+
         _resultRect             = GetComponent<RectTransform>();
         _thickness              = _resultRect.rect.height;
         _consumableObject       = transform.GetChild(0).GetComponent<Image>();
@@ -53,9 +56,23 @@ public class ConsumableUI : MonoBehaviour
     }
 
     void SetRectLocalPosition(float xDistance, float yDistance) {
-        _resultRect.localPosition = new Vector3((_cameraSize.x - _thickness) * xDistance,
-                                                (_cameraSize.y - _thickness) * yDistance,
-                                                _resultRect.localPosition.z);
+        int playersNumber = transform.root.Find("GameParameters").GetComponent<GameParameters>().PlayersNumber;
+        int playerIndex = transform.parent.transform.parent.GetComponent<Player>().PlayerIndex;
+
+        if (playersNumber == 1) {
+            _resultRect.localPosition = new Vector3((_cameraSize.x * 2 - _thickness) / 2 * xDistance,
+                                                    (_cameraSize.y * 2 - _thickness) / 2 * yDistance,
+                                                    _resultRect.localPosition.z);
+        } else if (playerIndex == 1) {
+            _resultRect.localPosition = new Vector3((_cameraSize.x - _thickness) / 2 * xDistance,
+                                                    (_cameraSize.y - _thickness) / 2 * yDistance,
+                                                    _resultRect.localPosition.z);
+        } else {
+            ConsumableUI consumableUi = transform.parent.transform.parent.transform.parent.Find("Player_1").Find("UI").Find("Consumable").GetComponent<ConsumableUI>();
+            _resultRect.localPosition = new Vector3(consumableUi.ResultRect.localPosition.x,
+                                                    consumableUi.ResultRect.localPosition.y,
+                                                    consumableUi.ResultRect.localPosition.z);
+        }
     }
 
     IEnumerator _SearchObjectCo(int consumable) {
@@ -77,5 +94,9 @@ public class ConsumableUI : MonoBehaviour
     void PlayAudio(string audioClip) {
         _consumableObjectSound.CallAudio(audioClip);
         _consumableObjectSound.PlayAudio();
+    }
+
+    public RectTransform ResultRect {
+        get { return _resultRect; }
     }
 }

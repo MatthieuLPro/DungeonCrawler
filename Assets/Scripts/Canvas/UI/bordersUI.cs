@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class bordersUI : MonoBehaviour
 {
-    public int NbOfPlayers = 1;
-    public int playerIndex = 1;
     private Vector3 _cameraSize;
 
     private float _thickness;
@@ -27,31 +25,27 @@ public class bordersUI : MonoBehaviour
 
         _thickness = _borderTop.rect.height;
 
-        Debug.Log("_cameraSize: " + _cameraSize);
-        Debug.Log("Screen width: " + Screen.width);
-        Debug.Log("Screen height: " + Screen.height);
-
         SetPositionBorders();
         SetSizeBorders();
+
+        Destroy(GetComponent<bordersUI>());
     }
 
     void SetPositionBorders()
     {
+        int playersNumber   = transform.root.Find("GameParameters").GetComponent<GameParameters>().PlayersNumber;
+        int playerIndex     = transform.parent.transform.parent.GetComponent<Player>().PlayerIndex;
+
         float xPosition     = _cameraSize.x - _thickness / 2;
         float yPosition     = _cameraSize.y - _thickness / 2;
         float zPosition     = _borderTop.localPosition.z;
 
-        if (NbOfPlayers == 1) {
-            xPosition = _cameraSize.x - _thickness / 2;
-            yPosition = _cameraSize.y - _thickness / 2;
-        } else if (NbOfPlayers == 2) {
-            if (playerIndex == 1) {
-                xPosition = _cameraSize.x - _thickness / 2;
-                yPosition = (_cameraSize.y - _thickness) / 2;
-            } else if (playerIndex == 2) {
-                xPosition = _cameraSize.x - _thickness / 2;
-                yPosition = (_cameraSize.y - _thickness) / 2;
-            }
+        if (playersNumber == 1) {
+            xPosition = (_cameraSize.x - _thickness) / 2;
+            yPosition = (_cameraSize.y - _thickness) / 2;
+        } else if (playersNumber == 2) {
+            xPosition = (_cameraSize.x - _thickness) / 2;
+            yPosition = (_cameraSize.y - _thickness) / 2;
         } else {
             xPosition = (_cameraSize.x - _thickness) / 2;
             yPosition = (_cameraSize.y - _thickness) / 2;
@@ -76,14 +70,15 @@ public class bordersUI : MonoBehaviour
 
     void SetSizeBorders()
     {
-        float xSize = _cameraSize.x * 2;
-        float ySize = _cameraSize.y * 2;
+        float xSize         = _cameraSize.x * 2;
+        float ySize         = _cameraSize.y * 2;
+        int playersNumber   = transform.root.Find("GameParameters").GetComponent<GameParameters>().PlayersNumber;
 
-        if (NbOfPlayers == 1) {
-            xSize = _cameraSize.x * 2 - _thickness / 2;
-            ySize = _cameraSize.y * 2 - _thickness / 2;
-        } else if (NbOfPlayers == 2) {
-            xSize = _cameraSize.x * 2 - _thickness / 2;
+        if (playersNumber == 1) {
+            xSize = _cameraSize.x - _thickness / 2;
+            ySize = _cameraSize.y - _thickness / 2;
+        } else if (playersNumber == 2) {
+            xSize = _cameraSize.x - _thickness / 2;
             ySize = _cameraSize.y - _thickness / 2;
         } else {
             xSize = _cameraSize.x - _thickness / 2;

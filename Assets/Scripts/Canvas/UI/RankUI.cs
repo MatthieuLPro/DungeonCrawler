@@ -10,10 +10,13 @@ public class RankUI : MonoBehaviour
 
     void Start()
     {
-        Camera camera       = transform.parent.transform.parent.Find("Camera").gameObject.GetComponent<Camera>();
-        string playerName   = transform.parent.transform.parent.name;
+        Rect cameraPixelRect    = transform.parent.transform.parent.Find("Camera").gameObject.GetComponent<Camera>().pixelRect;
+        string playerName       = transform.parent.transform.parent.name;
 
-        _cameraSize = new Vector3(camera.pixelRect.width, camera.pixelRect.height, 0);
+        _cameraSize = new Vector3(cameraPixelRect.width, cameraPixelRect.height, 0);
+
+        int playerIndex     = transform.parent.transform.parent.GetComponent<Player>().PlayerIndex;
+
         _resultRect = GetComponent<RectTransform>();
         _thickness  = _resultRect.rect.height;
 
@@ -27,7 +30,8 @@ public class RankUI : MonoBehaviour
     }
 
     float GetHorizontalSide(string player) {
-        if (player == "Player_1" || player == "Player_3")
+        int playersNumber = transform.root.Find("GameParameters").GetComponent<GameParameters>().PlayersNumber;
+        if (player == "Player_1" || player == "Player_3" || playersNumber == 2)
             return -1f;
         return 1f;
     }
@@ -40,8 +44,25 @@ public class RankUI : MonoBehaviour
     }
 
     void SetRectLocalPosition(float xDistance, float yDistance) {
-        _resultRect.localPosition = new Vector3((_cameraSize.x - _thickness) * xDistance,
-                                                (_cameraSize.y - _thickness) * yDistance,
-                                                _resultRect.localPosition.z);
+        int playerIndex     = transform.parent.transform.parent.GetComponent<Player>().PlayerIndex;
+
+        if (playerIndex == 1) {
+            _resultRect.localPosition = new Vector3((_cameraSize.x - _thickness) * xDistance,
+                                                    (_cameraSize.y - _thickness) * yDistance,
+                                                    _resultRect.localPosition.z);
+        } else {
+            RankUI rankUi = transform.parent.transform.parent.transform.parent.Find("Player_1").Find("UI").Find("Rank").GetComponent<RankUI>();
+            float xValue = rankUi.ResultRect.localPosition.x;
+            if (playerIndex == 2 || playerIndex == 4)
+                xValue *= -1;
+
+            _resultRect.localPosition = new Vector3(xValue,
+                                                    rankUi.ResultRect.localPosition.y,
+                                                    rankUi.ResultRect.localPosition.z);
+        }
+    }
+
+    public RectTransform ResultRect {
+        get { return _resultRect; }
     }
 }

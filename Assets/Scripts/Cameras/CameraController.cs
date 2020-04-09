@@ -6,9 +6,6 @@ public class CameraController : MonoBehaviour
 {
     public GameObject trackingGameObject;
 
-    public int numberOfPlayer = 1;
-    public int playerIndex = 1;
-
     [SerializeField]
     private bool _enabledCameraScroll, _enabledTopScroll,
                  _enabledBottomScroll, _enabledRightScroll,
@@ -54,13 +51,13 @@ public class CameraController : MonoBehaviour
 
     private void _InitializeCameraProperties()
     {
-        //int playerIndex = gameObject.transform.parent.gameObject.GetComponent<Player>().GetPlayerIndex();
-        //int playersNumber = transform.root.Find("GameParameters").GetComponent<GameParameters>().PlayersNumber;
+        int playersNumber   = transform.root.Find("GameParameters").GetComponent<GameParameters>().PlayersNumber;
+        int playerIndex     = transform.parent.GetComponent<Player>().PlayerIndex;
 
         Rect cameraRect = new Rect();
 
         // Set Camera size
-        switch (numberOfPlayer)
+        switch (playersNumber)
         {
             case 1:
             default:
@@ -85,11 +82,11 @@ public class CameraController : MonoBehaviour
             case 1:
             default:
                 cameraRect.x = 0;
-                cameraRect.y = (numberOfPlayer == 1) ? 0 : 0.5f;
+                cameraRect.y = (playersNumber == 1) ? 0 : 0.5f;
                 break;
             case 2:
-                cameraRect.x = (numberOfPlayer == 2) ? 0 : 0.5f; 
-                cameraRect.y = (numberOfPlayer == 2) ? 0 : 0.5f;
+                cameraRect.x = (playersNumber == 2) ? 0 : 0.5f; 
+                cameraRect.y = (playersNumber == 2) ? 0 : 0.5f;
                 break;
             case 3:
                 cameraRect.x = 0;
@@ -97,10 +94,9 @@ public class CameraController : MonoBehaviour
                 break;
             case 4:
                 cameraRect.x = 0.5f;
-                cameraRect.y = 0.5f;
+                cameraRect.y = 0;
                 break;
         }
-
         _Camera.rect = cameraRect;
     }
 
@@ -162,7 +158,8 @@ public class CameraController : MonoBehaviour
 
     public void SetScreenDistance()
     {
-        Vector3 newMaxPosition = _Camera.ScreenToWorldPoint(new Vector2(_Camera.pixelRect.width, _Camera.pixelRect.height));
+        Vector3 newMaxPosition  = _Camera.ScreenToWorldPoint(new Vector2(_Camera.pixelRect.width, _Camera.pixelRect.height));
+        int playerIndex         = transform.parent.GetComponent<Player>().PlayerIndex;
 
         //Can improve this => Need to find logic for x/yScreenDistance p2, 3, 4 ...
         if (playerIndex == 1) {

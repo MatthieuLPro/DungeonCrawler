@@ -21,7 +21,7 @@ public class RaceInitialize : MonoBehaviour
         for (int playerIndex = 1; playerIndex <= playersNumber; playerIndex++) 
         {
             GameObject playerGameObject = Instantiate(_playerPrefab) as GameObject;
-            playerGameObject.GetComponent<Player>().SetPlayerIndex(playerIndex);
+            playerGameObject.GetComponent<Player>().PlayerIndex = playerIndex;
         }
             
     }

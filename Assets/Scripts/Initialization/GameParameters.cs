@@ -5,6 +5,12 @@ using UnityEngine;
 
 public class GameParameters : MonoBehaviour
 {
+    public bool inDungeonTest = true;
+    public int playerNumberTest = 0;
+    public int playersSpeedTest = 0;
+    public int consumablePresenceTest = 0;
+    public int staticMonsterPresenceTest = 0;
+
     static public bool inDungeon            = false;
     static public int playersNumber         = 1;
     static public int playersSpeed          = 0;
@@ -15,6 +21,10 @@ public class GameParameters : MonoBehaviour
     public initDelegate m_initMethodGo;
 
     void Start() {
+        SetGameParameters(playerNumberTest,
+                          playersSpeedTest,
+                          consumablePresenceTest,
+                          staticMonsterPresenceTest);
         if (InDungeon) {
             SetDungeon();
         }
@@ -51,8 +61,11 @@ public class GameParameters : MonoBehaviour
         m_initMethodGo = _DestroyGo;
         _InitPlayerPresence(go_players.transform, m_initMethodGo);
 
+        m_initMethodGo = _SetActiveGo;
+        _InitPlayerRule(go_players.transform, m_initMethodGo);
+
         m_initMethodGo = _SetPlayerSpeed;
-        _InitPlayerRule(go_players.transform, new string[] {"Controller_", "Movement"}, m_initMethodGo);
+        _InitPlayerMovementRule(go_players.transform, new string[] {"Controller_", "Movement"}, m_initMethodGo);
     }
 
     // For the moment go_position.size == 2 ONLY
@@ -61,8 +74,10 @@ public class GameParameters : MonoBehaviour
     // Find a solution to facto initRoom/PLayer ?!
     void _InitRoomRule(Transform tr_rooms, string[] go_position, initDelegate initMethod) {
         int length = tr_rooms.childCount;
-        for(int i = 0; i < length; i++)
-            initMethod(tr_rooms.GetChild(i).Find(go_position[0]).Find(go_position[1]).gameObject);
+        for(int i = 0; i < length; i++) {
+            if (tr_rooms.GetChild(i).gameObject.active)
+                initMethod(tr_rooms.GetChild(i).Find(go_position[0]).Find(go_position[1]).gameObject);
+        }
     }
 
     void _InitPlayerPresence(Transform tr_players, initDelegate initMethod) {
@@ -75,7 +90,14 @@ public class GameParameters : MonoBehaviour
         }
     }
 
-    void _InitPlayerRule(Transform tr_players, string[] go_position, initDelegate initMethod) {
+    void _InitPlayerRule(Transform tr_players, initDelegate initMethod) {
+        int length = Math.Min(tr_players.childCount, 4);
+        for(int i = 0; i < length; i++) {
+            initMethod(tr_players.GetChild(i).gameObject);
+        }
+    }
+
+    void _InitPlayerMovementRule(Transform tr_players, string[] go_position, initDelegate initMethod) {
         int length = Math.Min(tr_players.childCount, 4);
         for(int i = 0; i < length; i++) {
             initMethod(tr_players.GetChild(i).Find(String.Concat(go_position[0], (i + 1).ToString())).Find(go_position[1]).gameObject);
