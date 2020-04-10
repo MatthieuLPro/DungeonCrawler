@@ -5,32 +5,15 @@ using UnityEngine.UI;
 
 public class ConsumableUI : MonoBehaviour
 {
-    private Vector3 _cameraSize;
-    private RectTransform _resultRect;
     private Image _consumableObject = null;
     private Animator _consumableObjectAnime = null;
     private AudioManager _consumableObjectSound = null;
-    private float _thickness;
 
     void Start()
     {
-        Rect cameraPixelRect    = transform.parent.transform.parent.Find("Camera").gameObject.GetComponent<Camera>().pixelRect;
-        string playerName       = transform.parent.transform.parent.name;
-
-        _cameraSize             = new Vector3(cameraPixelRect.width, cameraPixelRect.height, 0);
-
-        int playerIndex = transform.parent.transform.parent.GetComponent<Player>().PlayerIndex;
-
-        _resultRect             = GetComponent<RectTransform>();
-        _thickness              = _resultRect.rect.height;
         _consumableObject       = transform.GetChild(0).GetComponent<Image>();
         _consumableObjectAnime  = transform.GetChild(0).GetComponent<Animator>();
         _consumableObjectSound  = transform.GetChild(0).GetComponent<AudioManager>();
-
-        float xDistance = GetAdaptedDistance(true);
-        float yDistance = GetAdaptedDistance(false);
-
-        SetRectLocalPosition(xDistance, yDistance);
     }
 
     public bool ConsumableExist() {
@@ -45,34 +28,6 @@ public class ConsumableUI : MonoBehaviour
         _consumableObjectAnime.SetInteger("itemNb", 0);
         _consumableObject.sprite    = null;
         _consumableObject.color     = new Color(255, 255, 255, 0);
-    }
-
-    // Get HUD Position
-    float GetAdaptedDistance(bool isAxisX, float side = 0f) {
-        if (isAxisX) {
-            return 0f;
-        }
-        return 1 / 1.2f;
-    }
-
-    void SetRectLocalPosition(float xDistance, float yDistance) {
-        int playersNumber = transform.root.Find("GameParameters").GetComponent<GameParameters>().PlayersNumber;
-        int playerIndex = transform.parent.transform.parent.GetComponent<Player>().PlayerIndex;
-
-        if (playersNumber == 1) {
-            _resultRect.localPosition = new Vector3((_cameraSize.x * 2 - _thickness) / 2 * xDistance,
-                                                    (_cameraSize.y * 2 - _thickness) / 2 * yDistance,
-                                                    _resultRect.localPosition.z);
-        } else if (playerIndex == 1) {
-            _resultRect.localPosition = new Vector3((_cameraSize.x - _thickness) / 2 * xDistance,
-                                                    (_cameraSize.y - _thickness) / 2 * yDistance,
-                                                    _resultRect.localPosition.z);
-        } else {
-            ConsumableUI consumableUi = transform.parent.transform.parent.transform.parent.Find("Player_1").Find("UI").Find("Consumable").GetComponent<ConsumableUI>();
-            _resultRect.localPosition = new Vector3(consumableUi.ResultRect.localPosition.x,
-                                                    consumableUi.ResultRect.localPosition.y,
-                                                    consumableUi.ResultRect.localPosition.z);
-        }
     }
 
     IEnumerator _SearchObjectCo(int consumable) {
@@ -94,9 +49,5 @@ public class ConsumableUI : MonoBehaviour
     void PlayAudio(string audioClip) {
         _consumableObjectSound.CallAudio(audioClip);
         _consumableObjectSound.PlayAudio();
-    }
-
-    public RectTransform ResultRect {
-        get { return _resultRect; }
     }
 }

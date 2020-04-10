@@ -26,7 +26,7 @@ public class BigKeyIconUI : MonoBehaviour
         float xDistance = GetAdaptedDistance(true, side);
         float yDistance = GetAdaptedDistance(false, side);
 
-        SetRectLocalPosition(xDistance, yDistance);
+        //SetRectLocalPosition(xDistance, yDistance);
     }
 
     public void UpdateIcon(bool hasBigKey) {

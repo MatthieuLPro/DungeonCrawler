@@ -19,7 +19,8 @@ public class ManaUI : MonoBehaviour
 
     // Position data
     private Vector3 _cameraSize;
-    private float _thickness;
+    private float _width;
+    private float _height;
     private RectTransform _resultRect;
 
 
@@ -33,13 +34,14 @@ public class ManaUI : MonoBehaviour
 
         _cameraSize = new Vector3(camera.pixelRect.width, camera.pixelRect.height, 0);
         _resultRect = GetComponent<RectTransform>();
-        _thickness  = _resultRect.rect.height;
+        _height     = _resultRect.rect.height;
+        _width      = _resultRect.rect.width;
 
         float side      = GetHorizontalSide(player.name);
         float xDistance = GetAdaptedDistance(true, side);
         float yDistance = GetAdaptedDistance(false, side);
 
-        SetRectLocalPosition(xDistance, yDistance);
+        //SetRectLocalPosition(xDistance, yDistance);
     }
     
     // Get HUD Position
@@ -51,18 +53,35 @@ public class ManaUI : MonoBehaviour
 
     float GetAdaptedDistance(bool isAxisX, float side = 0f) {
         if (isAxisX) {
-            if (side == 1f)
-                return (1f / 4f) * side;
-            else
-                return (1f / 1.6f) * side;
+            return 0.9f * side;
         }
-        return 1 / 1.5f;
+        return 0.9f;
     }
 
     void SetRectLocalPosition(float xDistance, float yDistance) {
-        _resultRect.localPosition = new Vector3((_cameraSize.x - _thickness) * xDistance,
-                                                (_cameraSize.y - _thickness) * yDistance,
-                                                _resultRect.localPosition.z);
+        int playerIndex     = transform.parent.transform.parent.GetComponent<Player>().PlayerIndex;
+        int playersNumber   = transform.root.Find("GameParameters").GetComponent<GameParameters>().PlayersNumber;
+
+        if (playerIndex == 1) {
+            float xValue = _cameraSize.x;
+            float yValue = _cameraSize.y;
+            if (playersNumber > 1) {
+                xValue /= 2;
+                yValue /= 2;
+            }
+            _resultRect.localPosition = new Vector3((xValue - _width) * xDistance,
+                                                    (yValue - _height) * yDistance,
+                                                    _resultRect.localPosition.z);
+        } else {
+            ManaUI manaUi = transform.parent.transform.parent.transform.parent.Find("Player_1").Find("UI").Find("Manas").GetComponent<ManaUI>();
+            float xValue = manaUi.ResultRect.localPosition.x;
+            if (playerIndex == 2 || playerIndex == 4)
+                xValue *= -0.775f;
+
+            _resultRect.localPosition = new Vector3(xValue,
+                                                    manaUi.ResultRect.localPosition.y,
+                                                    manaUi.ResultRect.localPosition.z);
+        }
     }
 
     // Mana HUD
@@ -99,6 +118,10 @@ public class ManaUI : MonoBehaviour
         _manaBar.transform.localPosition = Vector3.zero;
         _manaBar.transform.localScale = new Vector3(1, 1, 1);
         _manaBar.GetComponent<RectTransform>().anchoredPosition = Vector2.zero;
-        _manaBar.GetComponent<RectTransform>().sizeDelta = new Vector2(45, manaValue);
+        _manaBar.GetComponent<RectTransform>().sizeDelta = new Vector2(8, manaValue);
+    }
+
+    public RectTransform ResultRect {
+        get { return _resultRect; }
     }
 }

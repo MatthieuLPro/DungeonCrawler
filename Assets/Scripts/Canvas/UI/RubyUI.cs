@@ -39,7 +39,7 @@ public class RubyUI : MonoBehaviour
         float xDistance = GetAdaptedDistance(true, side);
         float yDistance = GetAdaptedDistance(false, side);
 
-        SetRectLocalPosition(xDistance, yDistance);
+        //SetRectLocalPosition(xDistance, yDistance);
     }
 
     // Get HUD Position
@@ -50,20 +50,31 @@ public class RubyUI : MonoBehaviour
     }
 
     float GetAdaptedDistance(bool isAxisX, float side = 0f) {
-        if (isAxisX) {
-            //return (1f / 2.15f) * side;
-            if (side == 1f)
-                return (1f / 2.40f) * side;
-            else
-                return (1f / 2.15f) * side;
-        }
-        return 1 / 1.8f;
+        if (isAxisX)
+            return 0.38f * side;
+        return 0.33f;
     }
 
     void SetRectLocalPosition(float xDistance, float yDistance) {
-        _resultRect.localPosition = new Vector3((_cameraSize.x - _thickness) * xDistance,
-                                                (_cameraSize.y - _thickness) * yDistance,
-                                                _resultRect.localPosition.z);
+        int playerIndex     = transform.parent.transform.parent.transform.parent.GetComponent<Player>().PlayerIndex;
+        int playersNumber   = transform.root.Find("GameParameters").GetComponent<GameParameters>().PlayersNumber;
+
+        if (playerIndex == 1) {
+            float xValue = _cameraSize.x;
+            float yValue = _cameraSize.y;
+            _resultRect.localPosition = new Vector3((xValue - _thickness) * xDistance,
+                                                    (yValue - _thickness) * yDistance,
+                                                    _resultRect.localPosition.z);
+        } else {
+            RubyUI rubyTextUi = transform.parent.transform.parent.transform.parent.transform.parent.Find("Player_1").Find("UI").Find("Rubies").Find("RubyTextUI").GetComponent<RubyUI>();
+            float xValue = rubyTextUi.ResultRect.localPosition.x;
+            if (playerIndex == 2 || playerIndex == 4)
+                xValue *= -1.025f;
+
+            _resultRect.localPosition = new Vector3(xValue,
+                                                    rubyTextUi.ResultRect.localPosition.y,
+                                                    rubyTextUi.ResultRect.localPosition.z);
+        }
     }
 
     public void InitRubyUI()
@@ -104,5 +115,9 @@ public class RubyUI : MonoBehaviour
 
             }
         }
+    }
+
+    public RectTransform ResultRect {
+        get { return _resultRect; }
     }
 }

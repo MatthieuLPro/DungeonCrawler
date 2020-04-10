@@ -41,7 +41,7 @@ public class SmallKeyTextUI : MonoBehaviour
         float xDistance = GetAdaptedDistance(true, side);
         float yDistance = GetAdaptedDistance(false, side);
 
-        SetRectLocalPosition(xDistance, yDistance);
+        //SetRectLocalPosition(xDistance, yDistance);
     }
 
     // Get HUD Position
@@ -52,20 +52,31 @@ public class SmallKeyTextUI : MonoBehaviour
     }
 
     float GetAdaptedDistance(bool isAxisX, float side = 0f) {
-        if (isAxisX) {
-            //return (1f / 3.05f) * side;
-            if (side == 1f)
-                return (1f / 1.78f) * side;
-            else
-                return (1f / 3.05f) * side;
-        }
-        return 1 / 1.8f;
+        if (isAxisX)
+            return 0.28f * side;
+        return 0.7f;
     }
 
     void SetRectLocalPosition(float xDistance, float yDistance) {
-        _resultRect.localPosition = new Vector3((_cameraSize.x - _thickness) * xDistance,
-                                                (_cameraSize.y - _thickness) * yDistance,
-                                                _resultRect.localPosition.z);
+        int playerIndex     = transform.parent.transform.parent.transform.parent.GetComponent<Player>().PlayerIndex;
+        int playersNumber   = transform.root.Find("GameParameters").GetComponent<GameParameters>().PlayersNumber;
+
+        if (playerIndex == 1) {
+            float xValue = _cameraSize.x;
+            float yValue = _cameraSize.y;
+            _resultRect.localPosition = new Vector3((xValue - _thickness) * xDistance,
+                                                    (yValue - _thickness) * yDistance,
+                                                    _resultRect.localPosition.z);
+        } else {
+            SmallKeyTextUI smallKeyTextUi = transform.parent.transform.parent.transform.parent.transform.parent.Find("Player_1").Find("UI").Find("SmallKeys").Find("SmallKeyTextUI").GetComponent<SmallKeyTextUI>();
+            float xValue = smallKeyTextUi.ResultRect.localPosition.x;
+            if (playerIndex == 2 || playerIndex == 4)
+                xValue *= -1.025f;
+
+            _resultRect.localPosition = new Vector3(xValue,
+                                                    smallKeyTextUi.ResultRect.localPosition.y,
+                                                    smallKeyTextUi.ResultRect.localPosition.z);
+        }
     }
 
     public void InitSmallKeyUI()
@@ -97,5 +108,9 @@ public class SmallKeyTextUI : MonoBehaviour
             GetComponent<Text>().text = _smallKey.ToString("0");
             yield return new WaitForSeconds(0.07f);
         }
+    }
+
+    public RectTransform ResultRect {
+        get { return _resultRect; }
     }
 }

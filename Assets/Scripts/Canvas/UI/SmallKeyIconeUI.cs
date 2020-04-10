@@ -22,7 +22,7 @@ public class SmallKeyIconeUI : MonoBehaviour
         float xDistance = GetAdaptedDistance(true, side);
         float yDistance = GetAdaptedDistance(false, side);
 
-        SetRectLocalPosition(xDistance, yDistance);
+        //SetRectLocalPosition(xDistance, yDistance);
     }
 
     // Get HUD Position
@@ -33,19 +33,38 @@ public class SmallKeyIconeUI : MonoBehaviour
     }
 
     float GetAdaptedDistance(bool isAxisX, float side = 0f) {
-        if (isAxisX) {
-            //return (1f / 2.65f) * side;
-            if (side == 1f)
-                return (1f / 1.95f) * side;
-            else
-                return (1f / 2.65f) * side;
-        }
-        return 1 / 1.8f;
+        if (isAxisX)
+            return 0.725f * side;
+        return 0.7f;
     }
 
     void SetRectLocalPosition(float xDistance, float yDistance) {
-        _resultRect.localPosition = new Vector3((_cameraSize.x - _thickness) * xDistance,
-                                                (_cameraSize.y - _thickness) * yDistance,
-                                                _resultRect.localPosition.z);
+        int playerIndex     = transform.parent.transform.parent.transform.parent.GetComponent<Player>().PlayerIndex;
+        int playersNumber   = transform.root.Find("GameParameters").GetComponent<GameParameters>().PlayersNumber;
+
+        if (playerIndex == 1) {
+            float xValue = _cameraSize.x;
+            float yValue = _cameraSize.y;
+            if (playersNumber > 1) {
+                xValue /= 2;
+                yValue /= 2;
+            }
+            _resultRect.localPosition = new Vector3((xValue - _thickness) * xDistance,
+                                                    (yValue - _thickness) * yDistance,
+                                                    _resultRect.localPosition.z);
+        } else {
+            SmallKeyIconeUI smallKeysIconeUi = transform.parent.transform.parent.transform.parent.transform.parent.Find("Player_1").Find("UI").Find("SmallKeys").Find("SmallKeyUI").GetComponent<SmallKeyIconeUI>();
+            float xValue = smallKeysIconeUi.ResultRect.localPosition.x;
+            if (playerIndex == 2 || playerIndex == 4)
+                xValue *= -0.925f;
+
+            _resultRect.localPosition = new Vector3(xValue,
+                                                    smallKeysIconeUi.ResultRect.localPosition.y,
+                                                    smallKeysIconeUi.ResultRect.localPosition.z);
+        }
+    }
+
+    public RectTransform ResultRect {
+        get { return _resultRect; }
     }
 }
