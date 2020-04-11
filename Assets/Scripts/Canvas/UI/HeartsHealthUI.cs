@@ -22,78 +22,19 @@ public class HeartsHealthUI : MonoBehaviour
     private List<HeartImage> heartImageList;
     public HeartsHealthSystem heartsHealthSystem;
 
-    // Position data
-    private Vector3 _cameraSize;
-    private float _thickness;
-    private RectTransform _resultRect;
-
     private void Awake(){
         heartImageList = new List<HeartImage>();
     }
 
-    private void Start()
-    {
+    private void Start(){
         HeartsHealthSystem heartsHealthSystem = new HeartsHealthSystem(player.GetComponent<Player>().healthInit);
         SetHeartsHealthSystem(heartsHealthSystem);
-
-        // Set position
-        Camera camera = player.transform.Find("Camera").gameObject.GetComponent<Camera>();
-
-        _cameraSize = new Vector3(camera.pixelRect.width, camera.pixelRect.height, 0);
-        _resultRect = GetComponent<RectTransform>();
-        _thickness  = _resultRect.rect.height;
-
-        float side      = GetHorizontalSide(player.name);
-        float xDistance = GetAdaptedDistance(true, side);
-        float yDistance = GetAdaptedDistance(false, side);
-
-        //SetRectLocalPosition(xDistance, yDistance);
-    }
-
-    // Get HUD Position
-    float GetHorizontalSide(string player) {
-        if (player == "Player_1" || player == "Player_3")
-            return -1f;
-        return 1f;
-    }
-
-    float GetAdaptedDistance(bool isAxisX, float side = 0f) {
-        if (isAxisX) {
-            return 0.825f * side;
-        }
-        return 0.8f;
-    }
-
-    void SetRectLocalPosition(float xDistance, float yDistance) {
-        int playerIndex     = transform.parent.transform.parent.GetComponent<Player>().PlayerIndex;
-        int playersNumber   = transform.root.Find("GameParameters").GetComponent<GameParameters>().PlayersNumber;
-
-        if (playerIndex == 1) {
-            float xValue = _cameraSize.x;
-            float yValue = _cameraSize.y;
-            if (playersNumber > 1) {
-                xValue /= 2;
-                yValue /= 2;
-            }
-            _resultRect.localPosition = new Vector3((xValue - _thickness) * xDistance,
-                                                    (yValue - _thickness) * yDistance,
-                                                    _resultRect.localPosition.z);
-        } else {
-            HeartsHealthUI healthUi = transform.parent.transform.parent.transform.parent.Find("Player_1").Find("UI").Find("Hearts").GetComponent<HeartsHealthUI>();
-            float xValue = healthUi.ResultRect.localPosition.x;
-            if (playerIndex == 2 || playerIndex == 4)
-                xValue *= -0.925f;
-
-            _resultRect.localPosition = new Vector3(xValue,
-                                                    healthUi.ResultRect.localPosition.y,
-                                                    healthUi.ResultRect.localPosition.z);
-        }
     }
 
     public void SetHeartsHealthSystem(HeartsHealthSystem heartsHealthSystem)
     {
         List<HeartsHealthSystem.Heart> heartList = heartsHealthSystem.GetHeartList();
-        int heartOffset = 11;
+        int heartOffset = 42;
  
         this.heartsHealthSystem = heartsHealthSystem;
         heartsHealthSystemStatic = heartsHealthSystem;
@@ -124,7 +65,7 @@ public class HeartsHealthUI : MonoBehaviour
         heart.transform.localPosition = Vector3.zero;
         heart.transform.localScale = new Vector3(1, 1, 1);
         heart.GetComponent<RectTransform>().anchoredPosition = anchoredPosition;
-        heart.GetComponent<RectTransform>().sizeDelta = new Vector2(10, 10);
+        heart.GetComponent<RectTransform>().sizeDelta = new Vector2(32, 32);
     }
 
     private void RefreshHearts(object sender, System.EventArgs e)
@@ -138,10 +79,6 @@ public class HeartsHealthUI : MonoBehaviour
 
         if (heartsHealthSystem.HeartEmpty() == true)
             player.GetComponent<Player>().IsDead();
-    }
-
-    public RectTransform ResultRect {
-        get { return _resultRect; }
     }
 
     public class HeartImage

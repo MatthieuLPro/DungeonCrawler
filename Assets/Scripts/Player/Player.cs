@@ -8,7 +8,7 @@ public class Player : MonoBehaviour
     [SerializeField]
     private int _playerIndex = 1;
     public int healthInit = 5;
-    public int manaInit = 24;
+    public int manaInit = 116;
     public int keys = 0;
     public bool bigKey = false;
     public int strength = 1;
