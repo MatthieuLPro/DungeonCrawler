@@ -185,7 +185,7 @@
             "id": "f0d18716-e108-47a4-be63-fd6ee2a0fba1",
             "actions": [
                 {
-                    "name": "OnMove",
+                    "name": "Move",
                     "type": "Value",
                     "id": "31b30a6c-da7b-4a44-89a7-411f4fb720aa",
                     "expectedControlType": "Vector2",
@@ -199,6 +199,22 @@
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": ""
+                },
+                {
+                    "name": "AButton",
+                    "type": "Button",
+                    "id": "3da92b3f-f3c2-4129-b5d8-75cf343521f3",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "BButton",
+                    "type": "Button",
+                    "id": "ea40c471-44e2-4874-8af4-ccea5a7f3acf",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": ""
                 }
             ],
             "bindings": [
@@ -209,7 +225,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "OnMove",
+                    "action": "Move",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -221,6 +237,28 @@
                     "processors": "",
                     "groups": "",
                     "action": "Start",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "b1bc3cc0-fdf4-4164-8e47-6770a9938fd4",
+                    "path": "<Gamepad>/buttonSouth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "AButton",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "eabd703a-608a-4147-8c19-fc38e5480ddd",
+                    "path": "<Gamepad>/buttonEast",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "BButton",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
