@@ -25,8 +25,8 @@ public class RaceInitialize : MonoBehaviour
         int playersNumber = _gameParameters.PlayersNumber;
         for (int playerIndex = 1; playerIndex <= playersNumber; playerIndex++) 
         {
-            GameObject playerGameObject = Instantiate(_playerPrefab) as GameObject;
-            playerGameObject.GetComponent<Player>().PlayerIndex = playerIndex;
+            //GameObject playerGameObject = Instantiate(_playerPrefab) as GameObject;
+            //playerGameObject.GetComponent<Player>().PlayerIndex = playerIndex;
         }
             
         //int playersNumber = _gameParameters.GetPlayersNumber();
