@@ -12,10 +12,10 @@ public class GameParameters : MonoBehaviour
     public int staticMonsterPresenceTest = 0;
 
     static public bool inDungeon            = false;
-    static public int playersNumber         = 1;
-    static public int playersSpeed          = 0;
-    static public int consumablePresence    = 0;
-    static public int staticMonsterPresence = 0;
+    static public int playersNumber         = 3;
+    static public int playersSpeed          = 1;
+    static public int consumablePresence    = 1;
+    static public int staticMonsterPresence = 1;
 
     public delegate void initDelegate(GameObject go);
     public initDelegate m_initMethodGo;
@@ -28,6 +28,11 @@ public class GameParameters : MonoBehaviour
         if (InDungeon) {
             SetDungeon();
         }
+    }
+
+    public int GetPlayersNumber() 
+    {
+        return playersNumber;
     }
 
     public void SetGameParameters(int pNb, int pSp, int conP, int SMPr) {

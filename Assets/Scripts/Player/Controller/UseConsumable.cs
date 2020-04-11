@@ -21,9 +21,12 @@ public class UseConsumable : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (InputManagerPlayer1.XButton() && Consumable != "") {
+    }
+
+    public void launchCurrentEffect() 
+    {
+        if (Consumable != "")
             _LaunchEffect(Consumable);
-        }
     }
 
     public void SetConsumable(int consumableNb) {
@@ -40,7 +43,8 @@ public class UseConsumable : MonoBehaviour
         }
     }
 
-    void _LaunchEffect(string effect) {
+    void _LaunchEffect(string effect)
+    {
         _effect.LaunchEffect(effect, _GetPosition(), _GetDirection());
         Consumable = "";
         _consumablePlayerUI.RemoveConsumable();

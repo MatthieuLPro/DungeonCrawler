@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -79,32 +80,39 @@ public class Movement : MonoBehaviour
         if (blockMovement)
             return;
 
-        PlayerDirection();
+        //PlayerDirection();
         PlayerMovement();
     }
 
     /* ************************************************ */
     /* Movement functions */
     /* ************************************************ */
+    public void SetPlayerDirection(Vector2 inputDirection) 
+    {
+        Vector3 inputCurrentPosition = Vector3.zero;
+        inputDirection.x = (float)Math.Round(inputDirection.x);
+        inputDirection.y = (float)Math.Round(inputDirection.y);
+        inputCurrentPosition = new Vector3(inputDirection.x, inputDirection.y, 0);
+
+        _oldDirection = newDirection;
+        newDirection = inputCurrentPosition;
+
+        //newDirection.Normalize();
+    }
+
     /* Get Direction */
     private void PlayerDirection()
     {
-        Vector3 inputMainPosition = Vector3.zero;
+        /*Vector3 inputMainPosition = Vector3.zero;
         string parent_name = _parent.transform.parent.gameObject.name;
 
-        if (parent_name == "Player_1")
-            inputMainPosition = InputManagerPlayer1.MainJoystick();
-        else if (parent_name == "Player_2")
-            inputMainPosition = InputManagerPlayer2.MainJoystick();
-        else if (parent_name == "Player_3")
-            inputMainPosition = InputManagerPlayer3.MainJoystick();
-        else
-            inputMainPosition = InputManagerPlayer4.MainJoystick();
+        Vector2 movement = _inputManager.Movement;
+        inputMainPosition = new Vector3(movement.x, movement.y, 0);
 
         _oldDirection = newDirection;
         newDirection  = inputMainPosition;
 
-        newDirection.Normalize();
+        newDirection.Normalize();*/
     }
 
     /* Move or idle depend of vector newDirection */
@@ -125,6 +133,7 @@ public class Movement : MonoBehaviour
             Decceleration();
             AnimationIdle();
         }
+        //newDirection = Vector3.zero;
     }
 
     /* Movement acceleration */

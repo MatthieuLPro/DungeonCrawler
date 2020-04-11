@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using UnityEngine;
+using Debug = UnityEngine.Debug;
 
 public class CameraController : MonoBehaviour
 {
@@ -42,7 +44,7 @@ public class CameraController : MonoBehaviour
         _enabledCameraScroll    = true;
         _boxCollider2D          = gameObject.GetComponent<BoxCollider2D>();
         _Camera                 = gameObject.GetComponent<Camera>();
-        _roomPlayerInfo         = trackingGameObject.transform.parent.GetComponent<RoomPlayerInformation>();
+        _roomPlayerInfo         = transform.parent.GetComponent<RoomPlayerInformation>();
 
         SetScreenDistance();
         _InitializeCameraProperties();
@@ -98,6 +100,7 @@ public class CameraController : MonoBehaviour
                 break;
         }
         _Camera.rect = cameraRect;
+        moveCameraToPosition(0, 0);
     }
 
     void LateUpdate(){
@@ -116,31 +119,7 @@ public class CameraController : MonoBehaviour
         Vector2 maxLimit = Vector2.zero;
         Vector2 minLimit = Vector2.zero;
 
-        if (_forceUpdate || (_enabledCameraScroll))
-        {
-            if (minPosition.x == 0f)
-                minLimit.x = -1000f;
-            else
-                minLimit.x = minPosition.x + _xScreenDistance;
-
-            if (minPosition.y == 0f)
-                minLimit.y = -1000f;
-            else
-                minLimit.y = minPosition.y - _yScreenDistance;
-
-            if (maxPosition.x == 0f)
-                maxLimit.x = 1000f;
-            else
-                maxLimit.x = maxPosition.x - _xScreenDistance;
-
-            if (maxPosition.y == 0f)
-                maxLimit.y = 1000f;
-            else
-                maxLimit.y = maxPosition.y + _yScreenDistance;
-            xPosition = Mathf.Clamp(trackingGameObject.transform.position.x, minLimit.x, maxLimit.x);
-            yPosition = Mathf.Clamp(trackingGameObject.transform.position.y, minLimit.y, maxLimit.y);
-            moveCameraToPosition(xPosition, yPosition);
-        }  
+        moveCameraToPosition(trackingGameObject.transform.position.x, trackingGameObject.transform.position.y);
     }
 
     public void moveCameraToPosition(float _XPosition, float _YPosition)
@@ -151,9 +130,9 @@ public class CameraController : MonoBehaviour
 
     public void updateMinMaxLimits()
     {
-        Vector2[] newCameraLimits = _roomPlayerInfo.PlayerRoomLimits;
+        /*Vector2[] newCameraLimits = _roomPlayerInfo.PlayerRoomLimits;
         minPosition = newCameraLimits[0];
-        maxPosition = newCameraLimits[1];
+        maxPosition = newCameraLimits[1];*/
     }
 
     public void SetScreenDistance()
