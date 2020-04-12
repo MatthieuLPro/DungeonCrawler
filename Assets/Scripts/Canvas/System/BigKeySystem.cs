@@ -6,35 +6,26 @@ using UnityEngine;
 
 public class BigKeySystem : MonoBehaviour
 {
-    private bool _bigKey;
+    private bool _hasBigKey;
     public event EventHandler OnDecrease;
     public event EventHandler OnIncrease;
 
     public BigKeySystem(bool bigKeyInit){
-        _bigKey = bigKeyInit;
+        HasBigKey = bigKeyInit;
     }
 
-    public bool GetValue(){
-        return _bigKey;
+    public bool HasBigKey {
+        get => _hasBigKey;
+        set => _hasBigKey = value;
     }
 
-    public void AddBigKey()
-    {
-        _GetBigKey();
+    public void AddBigKey(){
+        HasBigKey = true;
         OnIncrease(this, EventArgs.Empty);
     }
 
-    public void RemoveBigKey()
-    {
-        _LooseBigKey();
+    public void RemoveBigKey(){
+        HasBigKey = false;
         OnDecrease(this, EventArgs.Empty);
-    }
-
-    private void _LooseBigKey(){
-        _bigKey = false;
-    }
-
-    private void _GetBigKey(){
-        _bigKey = true;
     }
 }

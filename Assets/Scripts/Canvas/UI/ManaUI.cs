@@ -28,7 +28,7 @@ public class ManaUI : MonoBehaviour
         if (_player == null)
             _player = transform.parent.transform.parent.transform.parent.gameObject;
         _manaBar    = new GameObject("manaBar", typeof(Image));
-        manaSystem = new ManaSystem(_player.GetComponent<Player>().manaInit);
+        manaSystem = new ManaSystem(_player.GetComponent<Player>().ManaInit);
         ManaDisplay();
 
         // Set position

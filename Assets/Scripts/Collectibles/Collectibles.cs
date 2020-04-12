@@ -7,18 +7,16 @@ abstract public class Collectibles : MonoBehaviour
     abstract public void OnTriggerEnter2D(Collider2D other);
 
     //=== Coroutine Destroy object ===    
-    protected IEnumerator GetObjectFindEffectCo()
-    {
+    protected IEnumerator GetObjectFindEffectCo(){
         _DisableObject();
         _PlayAudio();
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.75f);
         
         Destroy(gameObject);
     }
 
     //=== Disable object and play Audio ===  
-    private void _DisableObject()
-    {
+    private void _DisableObject(){
         GetComponent<BoxCollider2D>().enabled  = false;
         GetComponent<SpriteRenderer>().enabled = false;
     }

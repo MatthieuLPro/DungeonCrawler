@@ -11,48 +11,39 @@ public class SmallKeyTextUI : MonoBehaviour
     public SmallKeySystem smallKeySystem;
 
     private int _smallKey;
-    private AudioSource _audio = null;
-
-    [Header("Attached player")]
-    [SerializeField]
-    private Player _player;
 
     private void Start()
     {
-        _player = transform.parent.transform.parent.transform.parent.transform.parent.GetComponent<Player>();
-        smallKeySystem = new SmallKeySystem(_player.keys);
-        _audio = GetComponent<AudioSource>();
+        _smallKey      = transform.parent.transform.parent.transform.parent.transform.parent.GetComponent<Player>().Keys;
+        smallKeySystem = new SmallKeySystem(_smallKey);
         InitSmallKeyUI();
     }
 
     public void InitSmallKeyUI()
     {
-        _smallKey = _player.keys;
-        GetComponent<Text>().text = _smallKey.ToString("0");
-        smallKeySystemStatic = smallKeySystem;
+        _RefreshTextUI();
+        smallKeySystemStatic      = smallKeySystem;
 
-        smallKeySystem.OnDecrease += RefreshSmallKey;
-        smallKeySystem.OnIncrease += RefreshSmallKey;
+        smallKeySystem.OnDecrease += _RefreshSmallKey;
+        smallKeySystem.OnIncrease += _RefreshSmallKey;
     }
 
-    private void RefreshSmallKey(object sender, System.EventArgs e){
-        StartCoroutine(SmallKeyCo());
+    void _RefreshSmallKey(object sender, System.EventArgs e){
+        StartCoroutine(_SmallKeyCo());
     }
 
-    private IEnumerator SmallKeyCo()
+    IEnumerator _SmallKeyCo()
     {
         int systemValue = smallKeySystem.GetValue();
         if (_smallKey < systemValue)
-        {
             _smallKey++;
-            GetComponent<Text>().text = _smallKey.ToString("0");
-            yield return new WaitForSeconds(0.07f);
-        }
         else
-        {
             _smallKey--;
-            GetComponent<Text>().text = _smallKey.ToString("0");
-            yield return new WaitForSeconds(0.07f);
-        }
+        _RefreshTextUI();
+        yield return new WaitForSeconds(0.07f);
+    }
+
+    void _RefreshTextUI() {
+        GetComponent<Text>().text = _smallKey.ToString("0");
     }
 }

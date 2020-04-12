@@ -30,11 +30,11 @@ public class RoomVerification : MonoBehaviour
     /* ************************************************ */
     /* Player has at least 1 small key */
     public bool PlayerHasSmallKey(GameObject player){
-        return player.GetComponent<Player>().keys > 0;
+        return player.GetComponent<Player>().Keys > 0;
     }
     
     /* Player has big key */
     public bool PlayerHasBigKey(GameObject player){
-        return player.GetComponent<Player>().bigKey;
+        return player.GetComponent<Player>().BigKey;
     }
 }

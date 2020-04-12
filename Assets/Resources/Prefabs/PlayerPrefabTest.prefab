@@ -455,11 +455,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _playerIndex: 1
-  healthInit: 5
-  manaInit: 100
-  keys: 0
-  bigKey: 0
-  strength: 1
+  _healthInit: 5
+  _manaInit: 116
+  _strength: 1
+  _defense: 1
+  _speed: 1
+  _keys: 0
+  _bigKey: 0
 --- !u!114 &7900319093188475538
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1498,7 +1500,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   smallKeySystem: {fileID: 0}
-  _player: {fileID: 7900319093188475537}
 --- !u!1 &7900319093786562965
 GameObject:
   m_ObjectHideFlags: 0
@@ -2376,7 +2377,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 148cdaad6efa907beabb3f0e7b96ebfd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _resultPlayer: {fileID: 7900319093188475537}
+  _resultPlayer: {fileID: 0}
 --- !u!82 &7900319093996649455
 AudioSource:
   m_ObjectHideFlags: 0
@@ -2614,7 +2615,6 @@ GameObject:
   - component: {fileID: 7900319094263546586}
   - component: {fileID: 7900319094263546588}
   - component: {fileID: 7900319094263546589}
-  - component: {fileID: 7900319094263546591}
   m_Layer: 5
   m_Name: SmallKeyUI
   m_TagString: Untagged
@@ -2677,18 +2677,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &7900319094263546591
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7900319094263546587}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7a986224a53698fab948a7027b433063, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &7900319094264921198
 GameObject:
   m_ObjectHideFlags: 0
@@ -3207,7 +3195,6 @@ GameObject:
   - component: {fileID: 7900319094546218923}
   - component: {fileID: 7900319094546218925}
   - component: {fileID: 7900319094546218922}
-  - component: {fileID: 7900319094546218924}
   m_Layer: 5
   m_Name: RubyUI
   m_TagString: Untagged
@@ -3271,18 +3258,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &7900319094546218924
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7900319094546218920}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1f2b38b623c0fe2049a1c37d63a4ea00, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &7900319094560630146
 GameObject:
   m_ObjectHideFlags: 0
@@ -3407,7 +3382,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _manaBarSprite: {fileID: 21300000, guid: 5901e184c209ba641860ac21eba25e2e, type: 3}
-  player: {fileID: 7900319093188475537}
+  _player: {fileID: 0}
 --- !u!1 &7900319094816422146
 GameObject:
   m_ObjectHideFlags: 0
@@ -3595,7 +3570,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.11800001, y: 0.86359274}
   m_AnchorMax: {x: 0.16421139, y: 0.9072964}
-  m_AnchoredPosition: {x: -672.6874, y: 349.87732}
+  m_AnchoredPosition: {x: -672.68744, y: 349.87732}
   m_SizeDelta: {x: 11.104752, y: 8.727592}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &7900319094994134651
@@ -3807,7 +3782,6 @@ MonoBehaviour:
   heartSpriteFull: {fileID: 21300000, guid: 2a874c2df4111cbf2b020837585e6243, type: 3}
   heartSpriteMid: {fileID: 21300000, guid: bca86d5c750be6638938994434c40974, type: 3}
   heartSpriteEmpty: {fileID: 21300000, guid: 0611ab7daef0351b2a7f27f1d6242f5d, type: 3}
-  player: {fileID: 7900319093188475537}
 --- !u!1 &7900319095092815012
 GameObject:
   m_ObjectHideFlags: 0

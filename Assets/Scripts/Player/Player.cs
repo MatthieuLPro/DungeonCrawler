@@ -4,14 +4,27 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    [Header("Player parameters")]
+    [Header("Player System parameters")]
     [SerializeField]
     private int _playerIndex = 1;
-    public int healthInit = 5;
-    public int manaInit = 116;
-    public int keys = 0;
-    public bool bigKey = false;
-    public int strength = 1;
+
+    [Header("Player Characteristics parameters")]
+    [SerializeField]
+    private int _healthInit = 5;
+    [SerializeField]
+    private int _manaInit = 116;
+    [SerializeField]
+    private int _strength = 1;
+    [SerializeField]
+    private int _defense = 1;
+    [SerializeField]
+    private int _speed = 1;
+
+    [Header("Player Game parameters")]
+    [SerializeField]
+    private int _keys = 0;
+    [SerializeField]
+    private bool _bigKey = false;
 
     /* ************************************************ */
     /* Updata status */
@@ -33,27 +46,23 @@ public class Player : MonoBehaviour
         _UpdateUIMana(false, damage);
     }
 
-    public void GainSmallKey()
-    {
-        keys += 1;
+    public void GainSmallKey(){
+        Keys = 1;
         _UpdateUISmallKey(true);
     }
 
-    public void LooseSmallKey()
-    {
-        keys -= 1;
+    public void LooseSmallKey(){
+        Keys = -1;
         _UpdateUISmallKey(false);
     }
     
-    public void GainBigKey()
-    {
-        bigKey = true;
+    public void GainBigKey(){
+        BigKey = true;
         _UpdateUIBigKey(true);
     }
 
-    public void LooseBigKey()
-    {
-        bigKey = false;
+    public void LooseBigKey(){
+        BigKey = false;
         _UpdateUIBigKey(false);
     }
 
@@ -109,31 +118,52 @@ public class Player : MonoBehaviour
     /* ************************************************ */
     /* Predicates */
     /* ************************************************ */
-    public bool HasSmallKey()
-    {
-        if (keys <= 0) return (false);
-        return (true);
+    public bool HasSmallKey(){
+        return (Keys <= 0);
     }
 
-    public bool HasBigKey()
-    {
-        if (bigKey == false) return (false);
-        return (true);
+    public bool HasBigKey(){
+        return (BigKey);
     }
 
     /* ************************************************ */
     /* Getters */
     /* ************************************************ */
-    public int Strength{
-        get => strength;
-    }
-
-    public int HealthInit {
-        get => healthInit;
-    }
-
     public int PlayerIndex {
         get => _playerIndex;
         set => _playerIndex = value;
+    }
+
+    public int HealthInit {
+        get => _healthInit;
+    }
+
+    public int ManaInit {
+        get => _manaInit;
+    }
+
+    public int Keys {
+        get => _keys;
+        set => _keys += value;
+    }
+
+    public bool BigKey {
+        get => _bigKey;
+        set => _bigKey = value;
+    }
+
+    public int Strength{
+        get => _strength;
+        set => _strength = value;
+    }
+
+    public int Defense{
+        get => _defense;
+        set => _defense = value;
+    }
+
+    public int Speed{
+        get => _speed;
+        set => _speed = value;
     }
 }
