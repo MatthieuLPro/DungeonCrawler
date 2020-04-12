@@ -1,0 +1,1888 @@
+fileFormatVersion: 2
+guid: 7586f4c635e6fa572afa241758b0f17d
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 4061712665600213049
+    second: link_green_idle_0
+  - first:
+      213: 5872092608419681644
+    second: link_green_idle_1
+  - first:
+      213: 1462462156955789278
+    second: link_green_idle_3
+  - first:
+      213: 293575922539307304
+    second: link_green_attack_top_3
+  - first:
+      213: 3899722883014293105
+    second: link_green_attack_top_6
+  - first:
+      213: -7083469444382439927
+    second: link_green_attack_top_4
+  - first:
+      213: 5292624226123109724
+    second: link_green_attack_top_5
+  - first:
+      213: 3201180745429795851
+    second: link_green_attack_top_7
+  - first:
+      213: -3970392147755030087
+    second: link_green_attack_8
+  - first:
+      213: -1427508342873018925
+    second: link_green_attack_top_8
+  - first:
+      213: -5816160158877579324
+    second: link_green_attack_top_9
+  - first:
+      213: -6850472892763587782
+    second: link_green_attack_top_10
+  - first:
+      213: -3907516300010558385
+    second: link_green_attack_top_11
+  - first:
+      213: 5790905527625196847
+    second: link_green_attack_top_12
+  - first:
+      213: 8957645640558097175
+    second: link_green_attack_top_13
+  - first:
+      213: -3814347849719327200
+    second: link_green_attack_top_14
+  - first:
+      213: -7232364476690326763
+    second: link_green_attack_top_15
+  - first:
+      213: -8804063383592897516
+    second: link_green_attack_top_16
+  - first:
+      213: 1050159696215420873
+    second: link_green_attack_top_17
+  - first:
+      213: -5633351029349764889
+    second: link_green_attack_top_18
+  - first:
+      213: -7855006842093517719
+    second: link_green_attack_20
+  - first:
+      213: 2094147034338539882
+    second: link_green_attack_21
+  - first:
+      213: -3355376223609589682
+    second: link_green_attack_22
+  - first:
+      213: 1774935438403947273
+    second: link_green_attack_23
+  - first:
+      213: 1928626624774469838
+    second: link_green_attack_side_0
+  - first:
+      213: 8602557852750054864
+    second: link_green_attack_side_1
+  - first:
+      213: 689758172070485157
+    second: link_green_attack_side_2
+  - first:
+      213: -306629500711759141
+    second: link_green_attack_side_3
+  - first:
+      213: -1003283787504024723
+    second: link_green_attack_side_4
+  - first:
+      213: -513695221125328349
+    second: link_green_attack_side_5
+  - first:
+      213: 4646599028964653560
+    second: link_green_attack_side_7
+  - first:
+      213: 3613771313801504400
+    second: link_green_attack_side_8
+  - first:
+      213: 1126127263829478098
+    second: link_green_attack_side_9
+  - first:
+      213: 1300173869270329243
+    second: link_green_attack_side_10
+  - first:
+      213: -8409679299532974402
+    second: link_green_attack_side_11
+  - first:
+      213: 5986601954756204962
+    second: link_green_attack_side_12
+  - first:
+      213: -5632886491530744289
+    second: link_green_attack_side_13
+  - first:
+      213: -3987646736012406436
+    second: link_green_attack_side_14
+  - first:
+      213: -7479881371849630002
+    second: link_green_attack_38
+  - first:
+      213: 2104700754635423787
+    second: link_green_attack_39
+  - first:
+      213: -8532745414224216173
+    second: link_green_attack_40
+  - first:
+      213: -2475597398074080044
+    second: link_green_attack_side_15
+  - first:
+      213: 5796525665818070016
+    second: link_green_attack_42
+  - first:
+      213: -1402777073189768821
+    second: link_green_attack_43
+  - first:
+      213: -896975367942672082
+    second: link_green_attack_side_16
+  - first:
+      213: 1857481342237404715
+    second: link_green_attack_side_17
+  - first:
+      213: -7341234107419173707
+    second: link_green_attack_side_18
+  - first:
+      213: -2335179480700882868
+    second: link_green_attack_47
+  - first:
+      213: -944780689634579518
+    second: link_green_attack_48
+  - first:
+      213: 4828368578835273823
+    second: link_green_attack_49
+  - first:
+      213: -9065140344724615400
+    second: link_green_attack_50
+  - first:
+      213: -3974369876337240214
+    second: link_green_attack_51
+  - first:
+      213: -2898332007033387990
+    second: link_green_attack_52
+  - first:
+      213: 3302954183170276631
+    second: link_green_attack_53
+  - first:
+      213: 4590121221777189090
+    second: link_green_attack_54
+  - first:
+      213: 6255596444600277523
+    second: link_green_attack_side_6
+  - first:
+      213: 1242277818366782575
+    second: link_green_attack_56
+  - first:
+      213: -8730403400291157408
+    second: link_green_attack_57
+  - first:
+      213: -6539365386123594382
+    second: link_green_attack_58
+  - first:
+      213: 6526514284619205555
+    second: link_green_attack_59
+  - first:
+      213: 556845202833004323
+    second: link_green_attack_60
+  - first:
+      213: -2357342207184536733
+    second: link_green_attack_61
+  - first:
+      213: -6097119468666433483
+    second: link_green_attack_62
+  - first:
+      213: 4348082433321186401
+    second: link_green_attack_63
+  - first:
+      213: 404199338747679888
+    second: link_green_attack_64
+  - first:
+      213: -6127485528310960300
+    second: link_green_attack_65
+  - first:
+      213: 6697620491974781378
+    second: link_green_attack_66
+  - first:
+      213: -937294607825029686
+    second: link_green_attack_67
+  - first:
+      213: 1289582432519516330
+    second: link_green_attack_68
+  - first:
+      213: 7343411018598140444
+    second: link_green_attack_69
+  - first:
+      213: -5368238410149330767
+    second: link_green_attack_70
+  - first:
+      213: 5927127211282832233
+    second: link_green_attack_71
+  - first:
+      213: 5210992780451614292
+    second: link_green_attack_bot_0
+  - first:
+      213: 3621841473699865653
+    second: link_green_attack_bot_1
+  - first:
+      213: 7954747634564683552
+    second: link_green_attack_bot_2
+  - first:
+      213: -414306510336456158
+    second: link_green_attack_bot_3
+  - first:
+      213: -2467808407101374514
+    second: link_green_attack_bot_4
+  - first:
+      213: 4600575738704632130
+    second: link_green_attack_bot_5
+  - first:
+      213: -5745513251640284033
+    second: link_green_attack_bot_6
+  - first:
+      213: -4657527253616485359
+    second: link_green_attack_bot_7
+  - first:
+      213: 3540075809293402127
+    second: link_green_attack_bot_8
+  - first:
+      213: -3220983030855111951
+    second: link_green_attack_bot_9
+  - first:
+      213: 3287052669166074359
+    second: link_green_attack_bot_10
+  - first:
+      213: 18455624122495442
+    second: link_green_attack_bot_11
+  - first:
+      213: -8848699832637713848
+    second: link_green_attack_bot_12
+  - first:
+      213: 3790568165690289749
+    second: link_green_attack_bot_13
+  - first:
+      213: -8757400749019924656
+    second: link_green_attack_bot_14
+  - first:
+      213: -6110663967368300651
+    second: link_green_attack_bot_15
+  - first:
+      213: 1668425629203984453
+    second: link_green_attack_bot_16
+  - first:
+      213: 2421175173097967647
+    second: link_green_attack_bot_17
+  - first:
+      213: 4124163205737384601
+    second: link_green_attack_bot_18
+  - first:
+      213: -2089419668685306548
+    second: link_green_attack_91
+  - first:
+      213: 4291568080571390931
+    second: link_green_attack_92
+  - first:
+      213: 4164963503430726282
+    second: link_green_attack_93
+  - first:
+      213: -1048342027052804277
+    second: link_green_attack_94
+  - first:
+      213: -2901932336051993125
+    second: link_green_attack_95
+  - first:
+      213: -6900649798065516093
+    second: link_green_attack_96
+  - first:
+      213: 2114474537900594655
+    second: link_green_attack_97
+  - first:
+      213: 309024936098891170
+    second: link_green_attack_98
+  - first:
+      213: -4836264016306550247
+    second: link_green_attack_99
+  - first:
+      213: -658772253246912298
+    second: link_green_attack_100
+  - first:
+      213: -537429613703582044
+    second: link_green_attack_101
+  - first:
+      213: 1858336203502276210
+    second: link_green_attack_102
+  - first:
+      213: -3510628417482521470
+    second: link_green_attack_103
+  - first:
+      213: -2461872070215633876
+    second: link_green_attack_104
+  - first:
+      213: -3636256101181885767
+    second: link_green_attack_105
+  - first:
+      213: 1760860153963843834
+    second: link_green_attack_106
+  - first:
+      213: -159303030393720471
+    second: link_green_attack_107
+  - first:
+      213: -8718918829806755825
+    second: link_green_attack_108
+  - first:
+      213: 398552083321143594
+    second: link_green_attack_109
+  - first:
+      213: -1443516219061561702
+    second: link_green_attack_110
+  - first:
+      213: 4697912459248207809
+    second: link_green_attack_111
+  - first:
+      213: -2977181393639143843
+    second: link_green_attack_112
+  - first:
+      213: 2165179618478954849
+    second: link_green_attack_113
+  - first:
+      213: -5647944807580745048
+    second: link_green_attack_114
+  - first:
+      213: 7856894602170914151
+    second: link_green_attack_115
+  - first:
+      213: -2742427691382924835
+    second: link_green_attack_116
+  - first:
+      213: -4200119117051656321
+    second: link_green_attack_117
+  - first:
+      213: -3598965108219199107
+    second: link_green_attack_118
+  - first:
+      213: -1332637470938107729
+    second: link_green_attack_119
+  - first:
+      213: -269451198600179808
+    second: link_green_attack_top_0
+  - first:
+      213: -2782017720082122367
+    second: link_green_attack_top_1
+  - first:
+      213: 8332174009179706779
+    second: link_green_attack_top_2
+  - first:
+      213: -2775965798922924358
+    second: link_green_attack_side_0
+  - first:
+      213: -2360894188370010694
+    second: link_green_attack_side_1
+  - first:
+      213: -2245229572712217323
+    second: link_green_attack_side_2
+  - first:
+      213: -1307755725722855210
+    second: link_green_attack_side_3
+  - first:
+      213: 6194885844655817253
+    second: link_green_attack_side_4
+  - first:
+      213: -1491992366527879639
+    second: link_green_attack_side_5
+  - first:
+      213: 1865969146504206801
+    second: link_green_attack_side_7
+  - first:
+      213: -3717054178936621104
+    second: link_green_attack_side_8
+  - first:
+      213: -139286865599222178
+    second: link_green_attack_side_9
+  - first:
+      213: 2963526279533835978
+    second: link_green_attack_side_10
+  - first:
+      213: 5018192335770618688
+    second: link_green_attack_side_11
+  - first:
+      213: 6457243228503690509
+    second: link_green_attack_side_12
+  - first:
+      213: 1190022424790308327
+    second: link_green_attack_side_13
+  - first:
+      213: -7027220046561350187
+    second: link_green_attack_side_14
+  - first:
+      213: 7772994932533447307
+    second: link_green_attack_38
+  - first:
+      213: -7382237242285801548
+    second: link_green_attack_39
+  - first:
+      213: 7987461384350131269
+    second: link_green_attack_40
+  - first:
+      213: 6364550641822887667
+    second: link_green_attack_side_15
+  - first:
+      213: 358604208793953836
+    second: link_green_attack_42
+  - first:
+      213: 748442152297258072
+    second: link_green_attack_43
+  - first:
+      213: 5661801694819812981
+    second: link_green_attack_side_16
+  - first:
+      213: 2755420714261138842
+    second: link_green_attack_side_17
+  - first:
+      213: 5779616054939161170
+    second: link_green_attack_side_18
+  - first:
+      213: 5751311860108809251
+    second: link_green_attack_47
+  - first:
+      213: 1003084691395850785
+    second: link_green_attack_48
+  - first:
+      213: 5719192915795334292
+    second: link_green_attack_49
+  - first:
+      213: 2990542061098302856
+    second: link_green_attack_50
+  - first:
+      213: 8543425984618559345
+    second: link_green_attack_51
+  - first:
+      213: 8602768877373201014
+    second: link_green_attack_52
+  - first:
+      213: 3789270862329514268
+    second: link_green_attack_53
+  - first:
+      213: 352503493849349312
+    second: link_green_attack_54
+  - first:
+      213: 5292726217287124099
+    second: link_green_attack_side_6
+  - first:
+      213: 496867307289959944
+    second: link_green_attack_56
+  - first:
+      213: -8696132802150163192
+    second: link_green_attack_57
+  - first:
+      213: 4096543826005291139
+    second: link_green_attack_58
+  - first:
+      213: 3482364470509995065
+    second: link_green_attack_59
+  - first:
+      213: 6306554191380975967
+    second: link_green_attack_60
+  - first:
+      213: -2211857556089757625
+    second: link_green_attack_61
+  - first:
+      213: 3298592591811550202
+    second: link_green_attack_62
+  - first:
+      213: -647146320395430627
+    second: link_green_attack_63
+  - first:
+      213: 9167281180748179360
+    second: link_green_attack_64
+  - first:
+      213: -8040064293275589337
+    second: link_green_attack_65
+  - first:
+      213: -3936935712830565736
+    second: link_green_attack_66
+  - first:
+      213: -7970641941459324634
+    second: link_green_attack_67
+  - first:
+      213: -196154564303666151
+    second: link_green_attack_68
+  - first:
+      213: -5964902037744855968
+    second: link_green_attack_69
+  - first:
+      213: -4625119838616239001
+    second: link_green_attack_70
+  - first:
+      213: 3941361832904640512
+    second: link_green_attack_71
+  - first:
+      213: 7903679079744466575
+    second: link_green_attack_bot_0
+  - first:
+      213: 4561316058760008195
+    second: link_green_attack_bot_1
+  - first:
+      213: -4641336102717060453
+    second: link_green_attack_bot_2
+  - first:
+      213: -284264789414946369
+    second: link_green_attack_bot_3
+  - first:
+      213: -429858697113079851
+    second: link_green_attack_bot_4
+  - first:
+      213: 8921285095307788494
+    second: link_green_attack_bot_5
+  - first:
+      213: 7075170226690173104
+    second: link_green_attack_bot_6
+  - first:
+      213: -7997135689350342044
+    second: link_green_attack_bot_7
+  - first:
+      213: 4446094656388690506
+    second: link_green_attack_bot_8
+  - first:
+      213: -7024280843685358835
+    second: link_green_attack_bot_9
+  - first:
+      213: 844489585715930975
+    second: link_green_attack_bot_10
+  - first:
+      213: 1698804714657278648
+    second: link_green_attack_bot_11
+  - first:
+      213: 456581628845445977
+    second: link_green_attack_bot_12
+  - first:
+      213: 1574730972566537889
+    second: link_green_attack_bot_13
+  - first:
+      213: -2962339914130015917
+    second: link_green_attack_bot_14
+  - first:
+      213: 816319224055839960
+    second: link_green_attack_bot_15
+  - first:
+      213: -6496620329337456224
+    second: link_green_attack_bot_16
+  - first:
+      213: -937185932571175853
+    second: link_green_attack_bot_17
+  - first:
+      213: 8591728798914104672
+    second: link_green_attack_bot_18
+  - first:
+      213: 7318292277636988928
+    second: link_green_attack_91
+  - first:
+      213: 9093942539265709975
+    second: link_green_attack_92
+  - first:
+      213: -4414975298054194384
+    second: link_green_attack_93
+  - first:
+      213: 9068713235718500454
+    second: link_green_attack_94
+  - first:
+      213: 6388542915662314745
+    second: link_green_attack_95
+  - first:
+      213: 4061712665600213049
+    second: link_green_attack_0
+  externalObjects: {}
+  serializedVersion: 10
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 16
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: link_green_attack_top_3
+      rect:
+        serializedVersion: 2
+        x: 115
+        y: 112
+        width: 33
+        height: 37
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 82120910fbdf21400800000000000000
+      internalID: 293575922539307304
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: link_green_attack_top_6
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 111
+        width: 33
+        height: 37
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 176778cec499e1630800000000000000
+      internalID: 3899722883014293105
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: link_green_attack_top_4
+      rect:
+        serializedVersion: 2
+        x: 151
+        y: 112
+        width: 33
+        height: 37
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9064046f11672bd90800000000000000
+      internalID: -7083469444382439927
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: link_green_attack_top_5
+      rect:
+        serializedVersion: 2
+        x: 189
+        y: 111
+        width: 33
+        height: 37
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c55d1bf21bd237940800000000000000
+      internalID: 5292624226123109724
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: link_green_attack_top_7
+      rect:
+        serializedVersion: 2
+        x: 262
+        y: 111
+        width: 33
+        height: 37
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b04c9296de0ec6c20800000000000000
+      internalID: 3201180745429795851
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: link_green_attack_top_8
+      rect:
+        serializedVersion: 2
+        x: 301
+        y: 111
+        width: 33
+        height: 37
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3dda525b9b8703ce0800000000000000
+      internalID: -1427508342873018925
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: link_green_attack_top_9
+      rect:
+        serializedVersion: 2
+        x: 338
+        y: 111
+        width: 33
+        height: 37
+      alignment: 9
+      pivot: {x: 0.60537165, y: 0.47314864}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4c7825d9629d84fa0800000000000000
+      internalID: -5816160158877579324
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: link_green_attack_top_10
+      rect:
+        serializedVersion: 2
+        x: 376
+        y: 111
+        width: 33
+        height: 37
+      alignment: 9
+      pivot: {x: 0.7257977, y: 0.4686733}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a3b326b033b3ee0a0800000000000000
+      internalID: -6850472892763587782
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: link_green_attack_top_11
+      rect:
+        serializedVersion: 2
+        x: 426
+        y: 105
+        width: 33
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f4c62d7c0a6b5c9c0800000000000000
+      internalID: -3907516300010558385
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: link_green_attack_top_12
+      rect:
+        serializedVersion: 2
+        x: 468
+        y: 111
+        width: 33
+        height: 24
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f2522f555ed6d5050800000000000000
+      internalID: 5790905527625196847
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: link_green_attack_top_13
+      rect:
+        serializedVersion: 2
+        x: 516
+        y: 111
+        width: 33
+        height: 26
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 713ba4d1043ff4c70800000000000000
+      internalID: 8957645640558097175
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: link_green_attack_top_14
+      rect:
+        serializedVersion: 2
+        x: 562
+        y: 111
+        width: 33
+        height: 35
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 02654b707d6b01bc0800000000000000
+      internalID: -3814347849719327200
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: link_green_attack_top_15
+      rect:
+        serializedVersion: 2
+        x: 613
+        y: 111
+        width: 33
+        height: 38
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 51b18b0c3da71ab90800000000000000
+      internalID: -7232364476690326763
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: link_green_attack_top_16
+      rect:
+        serializedVersion: 2
+        x: 658
+        y: 111
+        width: 33
+        height: 35
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 414fbe0affea1d580800000000000000
+      internalID: -8804063383592897516
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: link_green_attack_top_17
+      rect:
+        serializedVersion: 2
+        x: 695
+        y: 111
+        width: 33
+        height: 27
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9cf2a520eaae29e00800000000000000
+      internalID: 1050159696215420873
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: link_green_attack_top_18
+      rect:
+        serializedVersion: 2
+        x: 735
+        y: 111
+        width: 32
+        height: 24
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7e0b688e51152d1b0800000000000000
+      internalID: -5633351029349764889
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: link_green_attack_top_0
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 112
+        width: 33
+        height: 37
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0af022fff87b24cf0800000000000000
+      internalID: -269451198600179808
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: link_green_attack_top_1
+      rect:
+        serializedVersion: 2
+        x: 38
+        y: 112
+        width: 33
+        height: 37
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 189b9a39f994469d0800000000000000
+      internalID: -2782017720082122367
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: link_green_attack_top_2
+      rect:
+        serializedVersion: 2
+        x: 79
+        y: 112
+        width: 33
+        height: 37
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b9516e79d14d1a370800000000000000
+      internalID: 8332174009179706779
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: link_green_attack_side_0
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 65
+        width: 31
+        height: 22
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: abec09640d9c979d0800000000000000
+      internalID: -2775965798922924358
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: link_green_attack_side_1
+      rect:
+        serializedVersion: 2
+        x: 35
+        y: 65
+        width: 35
+        height: 20
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: abddbe58e3b6c3fd0800000000000000
+      internalID: -2360894188370010694
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: link_green_attack_side_2
+      rect:
+        serializedVersion: 2
+        x: 79
+        y: 65
+        width: 27
+        height: 23
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 515494f699757d0e0800000000000000
+      internalID: -2245229572712217323
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: link_green_attack_side_3
+      rect:
+        serializedVersion: 2
+        x: 116
+        y: 65
+        width: 27
+        height: 23
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6d85e43a81be9dde0800000000000000
+      internalID: -1307755725722855210
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: link_green_attack_side_4
+      rect:
+        serializedVersion: 2
+        x: 159
+        y: 65
+        width: 19
+        height: 26
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5224ec29ad7a8f550800000000000000
+      internalID: 6194885844655817253
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: link_green_attack_side_5
+      rect:
+        serializedVersion: 2
+        x: 191
+        y: 65
+        width: 26
+        height: 23
+      alignment: 9
+      pivot: {x: 0.6271738, y: 0.5753041}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 926e289f8d06b4be0800000000000000
+      internalID: -1491992366527879639
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: link_green_attack_side_7
+      rect:
+        serializedVersion: 2
+        x: 258
+        y: 65
+        width: 34
+        height: 22
+      alignment: 9
+      pivot: {x: 0.6389295, y: 0.60735494}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1d9d83b6d0145e910800000000000000
+      internalID: 1865969146504206801
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: link_green_attack_side_8
+      rect:
+        serializedVersion: 2
+        x: 299
+        y: 64
+        width: 30
+        height: 23
+      alignment: 9
+      pivot: {x: 0.6889435, y: 0.623224}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0d7f9950bee5a6cc0800000000000000
+      internalID: -3717054178936621104
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: link_green_attack_side_9
+      rect:
+        serializedVersion: 2
+        x: 346
+        y: 58
+        width: 23
+        height: 30
+      alignment: 9
+      pivot: {x: 0.6232247, y: 0.7099368}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e5ea41e6557211ef0800000000000000
+      internalID: -139286865599222178
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: link_green_attack_side_10
+      rect:
+        serializedVersion: 2
+        x: 392
+        y: 57
+        width: 17
+        height: 31
+      alignment: 9
+      pivot: {x: 0.51852596, y: 0.72348124}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ac63626237f802920800000000000000
+      internalID: 2963526279533835978
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: link_green_attack_side_11
+      rect:
+        serializedVersion: 2
+        x: 437
+        y: 60
+        width: 26
+        height: 29
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 04b0234875334a540800000000000000
+      internalID: 5018192335770618688
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: link_green_attack_side_12
+      rect:
+        serializedVersion: 2
+        x: 483
+        y: 57
+        width: 17
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d0d424f118cbc9950800000000000000
+      internalID: 6457243228503690509
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: link_green_attack_side_13
+      rect:
+        serializedVersion: 2
+        x: 522
+        y: 58
+        width: 23
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7e51060271fc38010800000000000000
+      internalID: 1190022424790308327
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: link_green_attack_side_14
+      rect:
+        serializedVersion: 2
+        x: 560
+        y: 57
+        width: 34
+        height: 29
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5dde436799c4a7e90800000000000000
+      internalID: -7027220046561350187
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: link_green_attack_side_15
+      rect:
+        serializedVersion: 2
+        x: 608
+        y: 65
+        width: 35
+        height: 21
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3fe66d0861d635850800000000000000
+      internalID: 6364550641822887667
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: link_green_attack_side_16
+      rect:
+        serializedVersion: 2
+        x: 652
+        y: 65
+        width: 33
+        height: 21
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5768078d4a2c29e40800000000000000
+      internalID: 5661801694819812981
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: link_green_attack_side_17
+      rect:
+        serializedVersion: 2
+        x: 695
+        y: 65
+        width: 27
+        height: 23
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a9dc9407a883d3620800000000000000
+      internalID: 2755420714261138842
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: link_green_attack_side_18
+      rect:
+        serializedVersion: 2
+        x: 744
+        y: 65
+        width: 18
+        height: 27
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2521bc42e22553050800000000000000
+      internalID: 5779616054939161170
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: link_green_attack_side_6
+      rect:
+        serializedVersion: 2
+        x: 222
+        y: 65
+        width: 33
+        height: 23
+      alignment: 9
+      pivot: {x: 0.6574531, y: 0.60953254}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 384cbcad37a837940800000000000000
+      internalID: 5292726217287124099
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: link_green_attack_bot_0
+      rect:
+        serializedVersion: 2
+        x: 12
+        y: 7
+        width: 18
+        height: 35
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f8eeade5f328fad60800000000000000
+      internalID: 7903679079744466575
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: link_green_attack_bot_1
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 2
+        width: 18
+        height: 41
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 302dcaed9cc0d4f30800000000000000
+      internalID: 4561316058760008195
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: link_green_attack_bot_2
+      rect:
+        serializedVersion: 2
+        x: 88
+        y: 8
+        width: 18
+        height: 33
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b9a8a5ac769a69fb0800000000000000
+      internalID: -4641336102717060453
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: link_green_attack_bot_3
+      rect:
+        serializedVersion: 2
+        x: 125
+        y: 9
+        width: 18
+        height: 33
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fb955cc1ea61e0cf0800000000000000
+      internalID: -284264789414946369
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: link_green_attack_bot_4
+      rect:
+        serializedVersion: 2
+        x: 153
+        y: 18
+        width: 26
+        height: 25
+      alignment: 9
+      pivot: {x: 0.28361863, y: 0.6176329}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5df66fedac5d80af0800000000000000
+      internalID: -429858697113079851
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: link_green_attack_bot_5
+      rect:
+        serializedVersion: 2
+        x: 195
+        y: 13
+        width: 22
+        height: 31
+      alignment: 9
+      pivot: {x: 0.15709756, y: 0.7268518}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ec0cec5f685cecb70800000000000000
+      internalID: 8921285095307788494
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: link_green_attack_bot_6
+      rect:
+        serializedVersion: 2
+        x: 232
+        y: 8
+        width: 19
+        height: 38
+      alignment: 9
+      pivot: {x: 0.08276688, y: 0.69852257}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0b8a947d5dd003260800000000000000
+      internalID: 7075170226690173104
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: link_green_attack_bot_7
+      rect:
+        serializedVersion: 2
+        x: 271
+        y: 5
+        width: 18
+        height: 41
+      alignment: 9
+      pivot: {x: 0.03827752, y: 0.6902335}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 46a9caf0677740190800000000000000
+      internalID: -7997135689350342044
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: link_green_attack_bot_8
+      rect:
+        serializedVersion: 2
+        x: 310
+        y: 7
+        width: 23
+        height: 37
+      alignment: 9
+      pivot: {x: 0.027467147, y: 0.71771073}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a427fc79883b3bd30800000000000000
+      internalID: 4446094656388690506
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: link_green_attack_bot_9
+      rect:
+        serializedVersion: 2
+        x: 349
+        y: 10
+        width: 29
+        height: 31
+      alignment: 9
+      pivot: {x: 0.017371869, y: 0.6609963}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d039d85f9cdb48e90800000000000000
+      internalID: -7024280843685358835
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: link_green_attack_bot_10
+      rect:
+        serializedVersion: 2
+        x: 389
+        y: 17
+        width: 32
+        height: 24
+      alignment: 9
+      pivot: {x: 0.018541336, y: 0.5542485}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f576d1dcdca38bb00800000000000000
+      internalID: 844489585715930975
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: link_green_attack_bot_11
+      rect:
+        serializedVersion: 2
+        x: 435
+        y: 17
+        width: 29
+        height: 29
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8bae7e723ed539710800000000000000
+      internalID: 1698804714657278648
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: link_green_attack_bot_12
+      rect:
+        serializedVersion: 2
+        x: 482
+        y: 17
+        width: 33
+        height: 25
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9535d46829a165600800000000000000
+      internalID: 456581628845445977
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: link_green_attack_bot_13
+      rect:
+        serializedVersion: 2
+        x: 527
+        y: 14
+        width: 29
+        height: 27
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1a642ace9719ad510800000000000000
+      internalID: 1574730972566537889
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: link_green_attack_bot_14
+      rect:
+        serializedVersion: 2
+        x: 572
+        y: 4
+        width: 29
+        height: 39
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 359b1521b87a3e6d0800000000000000
+      internalID: -2962339914130015917
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: link_green_attack_bot_15
+      rect:
+        serializedVersion: 2
+        x: 624
+        y: 2
+        width: 18
+        height: 42
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8dcbb2d5206245b00800000000000000
+      internalID: 816319224055839960
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: link_green_attack_bot_16
+      rect:
+        serializedVersion: 2
+        x: 667
+        y: 3
+        width: 18
+        height: 40
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0a972452b3e57d5a0800000000000000
+      internalID: -6496620329337456224
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: link_green_attack_bot_17
+      rect:
+        serializedVersion: 2
+        x: 701
+        y: 8
+        width: 22
+        height: 31
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3541a981c527ef2f0800000000000000
+      internalID: -937185932571175853
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: link_green_attack_bot_18
+      rect:
+        serializedVersion: 2
+        x: 735
+        y: 16
+        width: 26
+        height: 24
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 06dc4c952d3fb3770800000000000000
+      internalID: 8591728798914104672
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

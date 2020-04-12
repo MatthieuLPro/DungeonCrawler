@@ -55,13 +55,11 @@ public class OpenObject : MonoBehaviour
             _info.GetComponent<SpriteRenderer>().sprite = (Sprite)sprites[1];
 
         _info.active = false;
-
     }
 
     void OnTriggerEnter2D(Collider2D other) {
-        if (other.CompareTag("PlayerInteractionFront")) {
+        if (other.CompareTag("PlayerInteractionFront"))
             ShowOpenInfo();
-        }
     }
 
     void OnTriggerExit2D(Collider2D other) {
@@ -69,14 +67,17 @@ public class OpenObject : MonoBehaviour
     }
 
     public void TryToOpen(GameObject opener) {
-        if (!_CanOpenObject(opener)) { 
+        Player player = opener.GetComponent<Player>();
+        if (!_CanOpenObject(player)) { 
             _PlayAudioClip();
             return;
         }
         if (OpenMethod == 3)
             _UpdateAudioClip("openBig");
-        else
+        else {
+            player.LooseSmallKey();
             _UpdateAudioClip("openSmall");
+        }
         _PlayAudioClip();
         _ChangeSpriteToOpen();
         _OpenTheObject(opener);
@@ -92,20 +93,18 @@ public class OpenObject : MonoBehaviour
             _info.active = false;
     }
 
-    bool _CanOpenObject(GameObject opener) {
-        Player player = opener.GetComponent<Player>();
-        if (OpenMethod == 3  && !player.HasBigKey())
-            return false;
-        else if (OpenMethod == 2  && !player.HasSmallKey())
-            return false;
+    bool _CanOpenObject(Player player) {
+        if (OpenMethod == 3)
+            return player.HasBigKey();
+        else if (OpenMethod == 2)
+            return player.HasSmallKey();
         
         Destroy(_info);
         return true;
     }
 
     void _OpenTheObject(GameObject opener){
-        foreach(BoxCollider2D box in GetComponents<BoxCollider2D>())
-        {
+        foreach(BoxCollider2D box in GetComponents<BoxCollider2D>()){
             if (box.isTrigger == true)
                 Destroy(box);
         }
@@ -122,8 +121,8 @@ public class OpenObject : MonoBehaviour
     {
         GameObject myPrefab;
 
-        myPrefab        = Resources.Load("Prefabs/Collectible/Loot") as GameObject;
-        LootObject     = Instantiate(myPrefab, GetComponent<Transform>().position + new Vector3(0, 0.5f, 0), Quaternion.identity);
+        myPrefab   = Resources.Load("Prefabs/Collectible/Loot") as GameObject;
+        LootObject = Instantiate(myPrefab, GetComponent<Transform>().position + new Vector3(0, 0.5f, 0), Quaternion.identity);
         LootObject.GetComponent<SpriteRenderer>().sprite = _GenerateLootSprite();
     }
 

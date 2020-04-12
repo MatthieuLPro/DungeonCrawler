@@ -1716,6 +1716,7 @@ MonoBehaviour:
   movementGO: {fileID: 7900319094264921198}
   attackGO: {fileID: 7900319093444501804}
   consumableGO: {fileID: 7900319095092815012}
+  ActionGO: {fileID: 7900319094101031612}
 --- !u!1 &7900319093837907358
 GameObject:
   m_ObjectHideFlags: 0
@@ -3570,7 +3571,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.11800001, y: 0.86359274}
   m_AnchorMax: {x: 0.16421139, y: 0.9072964}
-  m_AnchoredPosition: {x: -672.68744, y: 349.87732}
+  m_AnchoredPosition: {x: -672.6875, y: 349.87732}
   m_SizeDelta: {x: 11.104752, y: 8.727592}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &7900319094994134651

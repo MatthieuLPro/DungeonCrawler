@@ -20,4 +20,12 @@ public class Action : MonoBehaviour
             objectOpen.GetComponent<OpenObject>().TryToOpen(_player);
         }*/         
     }
+
+    public void ActionsList()
+    {
+        if (_front.ObjectOpen){
+            GameObject objectOpen = _front.ObjectOpen;
+            objectOpen.GetComponent<OpenObject>().TryToOpen(_player);
+        }
+    }
 }

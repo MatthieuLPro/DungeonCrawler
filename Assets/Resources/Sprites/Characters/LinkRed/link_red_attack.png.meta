@@ -1,0 +1,640 @@
+fileFormatVersion: 2
+guid: 791482e010a907fe2a56b3579b11a7bb
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 388472894764694000
+    second: link_red_attack_top_0
+  - first:
+      213: -3119207498520370218
+    second: link_red_attack_top_1
+  - first:
+      213: 5197682404378391179
+    second: link_red_attack_top_2
+  - first:
+      213: -5743772486208838042
+    second: link_red_attack_top_3
+  - first:
+      213: 1697423941251596795
+    second: link_red_attack_top_4
+  - first:
+      213: -451997271195929740
+    second: link_red_attack_top_5
+  - first:
+      213: 601208458949110958
+    second: link_red_attack_top_6
+  - first:
+      213: -1106562778487486800
+    second: link_red_attack_7
+  - first:
+      213: 5873732577729780255
+    second: link_red_attack_side_0
+  - first:
+      213: -4003988070438340832
+    second: link_red_attack_side_1
+  - first:
+      213: -8628290632406490613
+    second: link_red_attack_side_2
+  - first:
+      213: 8934805287322810864
+    second: link_red_attack_side_3
+  - first:
+      213: -3091727229158375544
+    second: link_red_attack_side_4
+  - first:
+      213: -6481398798536698272
+    second: link_red_attack_side_5
+  - first:
+      213: -4909530045479720233
+    second: link_red_attack_side_6
+  - first:
+      213: 2369816083878011244
+    second: link_red_attack_15
+  - first:
+      213: 3853696856036431465
+    second: link_red_attack_16
+  - first:
+      213: 1028530997209795227
+    second: link_red_attack_17
+  - first:
+      213: -2189539689327371691
+    second: link_red_attack_18
+  - first:
+      213: -9115311264654932935
+    second: link_red_attack_19
+  - first:
+      213: -435453953824536501
+    second: link_red_attack_20
+  - first:
+      213: -1716098911973286330
+    second: link_red_attack_21
+  - first:
+      213: 4734658556578846837
+    second: link_red_attack_22
+  - first:
+      213: 1574318123262048724
+    second: link_red_attack_23
+  - first:
+      213: -6347763050942584286
+    second: link_red_attack_bot_0
+  - first:
+      213: 3753654287304812167
+    second: link_red_attack_bot_1
+  - first:
+      213: 7607029020612048631
+    second: link_red_attack_bot_2
+  - first:
+      213: -4808364102391134664
+    second: link_red_attack_bot_3
+  - first:
+      213: 4691917213169605550
+    second: link_red_attack_bot_4
+  - first:
+      213: 1220203300644224771
+    second: link_red_attack_29
+  - first:
+      213: 3798040129509550559
+    second: link_red_attack_bot_5
+  - first:
+      213: 5306646730617410643
+    second: link_red_attack_bot_6
+  externalObjects: {}
+  serializedVersion: 10
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 16
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: link_red_attack_top_0
+      rect:
+        serializedVersion: 2
+        x: 10
+        y: 109
+        width: 25
+        height: 24
+      alignment: 9
+      pivot: {x: 0.7016493, y: 0.6050256}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0f931512a02246500800000000000000
+      internalID: 388472894764694000
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: link_red_attack_top_1
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 108
+        width: 23
+        height: 25
+      alignment: 9
+      pivot: {x: 0.76683277, y: 0.62712675}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6d365fd6e4956b4d0800000000000000
+      internalID: -3119207498520370218
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: link_red_attack_top_2
+      rect:
+        serializedVersion: 2
+        x: 83
+        y: 108
+        width: 22
+        height: 32
+      alignment: 9
+      pivot: {x: 0.7946951, y: 0.48540115}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b82b548bb90e12840800000000000000
+      internalID: 5197682404378391179
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: link_red_attack_top_3
+      rect:
+        serializedVersion: 2
+        x: 121
+        y: 108
+        width: 18
+        height: 36
+      alignment: 9
+      pivot: {x: 0.96272194, y: 0.43302706}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6662cd80b550a40b0800000000000000
+      internalID: -5743772486208838042
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: link_red_attack_top_4
+      rect:
+        serializedVersion: 2
+        x: 156
+        y: 108
+        width: 22
+        height: 32
+      alignment: 9
+      pivot: {x: 0.96800786, y: 0.47945166}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bf18b8bc4167e8710800000000000000
+      internalID: 1697423941251596795
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: link_red_attack_top_5
+      rect:
+        serializedVersion: 2
+        x: 190
+        y: 108
+        width: 29
+        height: 25
+      alignment: 9
+      pivot: {x: 0.9837168, y: 0.57890624}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 473bbea60ee2ab9f0800000000000000
+      internalID: -451997271195929740
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: link_red_attack_top_6
+      rect:
+        serializedVersion: 2
+        x: 228
+        y: 108
+        width: 33
+        height: 24
+      alignment: 9
+      pivot: {x: 0.98486143, y: 0.6004591}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eac2f9778ebe75800800000000000000
+      internalID: 601208458949110958
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: link_red_attack_side_0
+      rect:
+        serializedVersion: 2
+        x: 11
+        y: 62
+        width: 19
+        height: 26
+      alignment: 9
+      pivot: {x: 0.60583466, y: 0.5541385}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f1a1939b8a0b38150800000000000000
+      internalID: 5873732577729780255
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: link_red_attack_side_1
+      rect:
+        serializedVersion: 2
+        x: 43
+        y: 62
+        width: 26
+        height: 23
+      alignment: 9
+      pivot: {x: 0.71655434, y: 0.6267717}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 027fe90601afe68c0800000000000000
+      internalID: -4003988070438340832
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: link_red_attack_side_2
+      rect:
+        serializedVersion: 2
+        x: 74
+        y: 62
+        width: 33
+        height: 23
+      alignment: 9
+      pivot: {x: 0.74678755, y: 0.63114333}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b02a49c6267224880800000000000000
+      internalID: -8628290632406490613
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: link_red_attack_side_3
+      rect:
+        serializedVersion: 2
+        x: 110
+        y: 62
+        width: 34
+        height: 22
+      alignment: 9
+      pivot: {x: 0.72474355, y: 0.60968363}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0f97828f11ecefb70800000000000000
+      internalID: 8934805287322810864
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: link_red_attack_side_4
+      rect:
+        serializedVersion: 2
+        x: 151
+        y: 61
+        width: 30
+        height: 23
+      alignment: 9
+      pivot: {x: 0.78487194, y: 0.6267717}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 88fbc9b377af715d0800000000000000
+      internalID: -3091727229158375544
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: link_red_attack_side_5
+      rect:
+        serializedVersion: 2
+        x: 198
+        y: 55
+        width: 23
+        height: 30
+      alignment: 9
+      pivot: {x: 0.75791466, y: 0.721195}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0669395f1227d06a0800000000000000
+      internalID: -6481398798536698272
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: link_red_attack_side_6
+      rect:
+        serializedVersion: 2
+        x: 244
+        y: 54
+        width: 17
+        height: 31
+      alignment: 9
+      pivot: {x: 0.68334246, y: 0.72703284}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7dae2197f68dddbb0800000000000000
+      internalID: -4909530045479720233
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: link_red_attack_bot_0
+      rect:
+        serializedVersion: 2
+        x: 5
+        y: 15
+        width: 26
+        height: 25
+      alignment: 9
+      pivot: {x: 0.28731257, y: 0.6166301}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 22aa736132738e7a0800000000000000
+      internalID: -6347763050942584286
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: link_red_attack_bot_1
+      rect:
+        serializedVersion: 2
+        x: 47
+        y: 10
+        width: 22
+        height: 31
+      alignment: 9
+      pivot: {x: 0.1526692, y: 0.72703284}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 786ec64cfa8a71430800000000000000
+      internalID: 3753654287304812167
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: link_red_attack_bot_2
+      rect:
+        serializedVersion: 2
+        x: 84
+        y: 5
+        width: 19
+        height: 38
+      alignment: 9
+      pivot: {x: 0.081951745, y: 0.69050264}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7f63ba92798919960800000000000000
+      internalID: 7607029020612048631
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: link_red_attack_bot_3
+      rect:
+        serializedVersion: 2
+        x: 123
+        y: 2
+        width: 18
+        height: 41
+      alignment: 9
+      pivot: {x: 0.030798594, y: 0.6888247}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8368c3e1352454db0800000000000000
+      internalID: -4808364102391134664
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: link_red_attack_bot_4
+      rect:
+        serializedVersion: 2
+        x: 162
+        y: 4
+        width: 23
+        height: 37
+      alignment: 9
+      pivot: {x: 0.02351313, y: 0.714673}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eabd386b8d90d1140800000000000000
+      internalID: 4691917213169605550
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: link_red_attack_bot_5
+      rect:
+        serializedVersion: 2
+        x: 201
+        y: 7
+        width: 29
+        height: 31
+      alignment: 9
+      pivot: {x: 0.0180864, y: 0.66540945}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fd9681aff5955b430800000000000000
+      internalID: 3798040129509550559
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: link_red_attack_bot_6
+      rect:
+        serializedVersion: 2
+        x: 241
+        y: 14
+        width: 32
+        height: 24
+      alignment: 9
+      pivot: {x: 0.019277573, y: 0.57540727}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 35450fee51ff4a940800000000000000
+      internalID: 5306646730617410643
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

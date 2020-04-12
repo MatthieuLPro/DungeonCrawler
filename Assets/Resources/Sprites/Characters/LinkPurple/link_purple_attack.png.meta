@@ -1,0 +1,640 @@
+fileFormatVersion: 2
+guid: 1576080591a86218085afe8675942207
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 4394220475539762768
+    second: link_purple_attack_top_0
+  - first:
+      213: 3233748786294884223
+    second: link_purple_attack_top_1
+  - first:
+      213: -1279252604819788816
+    second: link_purple_attack_top_2
+  - first:
+      213: -1590192035649527645
+    second: link_purple_attack_top_3
+  - first:
+      213: -3410763709450770736
+    second: link_purple_attack_top_4
+  - first:
+      213: -6389652916917652777
+    second: link_purple_attack_top_5
+  - first:
+      213: 3001543465691617999
+    second: link_purple_attack_top_6
+  - first:
+      213: 481051702541615015
+    second: link_purple_attack_7
+  - first:
+      213: -1891575869729473595
+    second: link_purple_attack_side_0
+  - first:
+      213: 3045333155339291161
+    second: link_purple_attack_side_1
+  - first:
+      213: 4374738353378979058
+    second: link_purple_attack_side_2
+  - first:
+      213: 3218128780230484343
+    second: link_purple_attack_side_3
+  - first:
+      213: 8236490414031902913
+    second: link_purple_attack_side_4
+  - first:
+      213: 2707313334939890218
+    second: link_purple_attack_side_5
+  - first:
+      213: 2866805839423219261
+    second: link_purple_attack_side_6
+  - first:
+      213: 4953287288259154649
+    second: link_purple_attack_15
+  - first:
+      213: -5082875299961683520
+    second: link_purple_attack_16
+  - first:
+      213: -2221204200506460201
+    second: link_purple_attack_17
+  - first:
+      213: 745980248862546669
+    second: link_purple_attack_18
+  - first:
+      213: -2361028378932440333
+    second: link_purple_attack_19
+  - first:
+      213: -5235483609435455710
+    second: link_purple_attack_20
+  - first:
+      213: -5191525413886503843
+    second: link_purple_attack_21
+  - first:
+      213: -1227040163809880473
+    second: link_purple_attack_22
+  - first:
+      213: 2101316922850148618
+    second: link_purple_attack_23
+  - first:
+      213: 6808827021363932955
+    second: link_purple_attack_down_0
+  - first:
+      213: 1368489249750638371
+    second: link_purple_attack_down_1
+  - first:
+      213: -422452104716808459
+    second: link_purple_attack_down_2
+  - first:
+      213: -3610711567707560264
+    second: link_purple_attack_down_3
+  - first:
+      213: 2500507297967922215
+    second: link_purple_attack_down_4
+  - first:
+      213: -8830279444063317852
+    second: link_purple_attack_down_5
+  - first:
+      213: -5816579636417479921
+    second: link_purple_attack_30
+  - first:
+      213: 1006199332219306748
+    second: link_purple_attack_down_6
+  externalObjects: {}
+  serializedVersion: 10
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 16
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: link_purple_attack_top_0
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 112
+        width: 25
+        height: 24
+      alignment: 9
+      pivot: {x: 0.6977668, y: 0.58956844}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 05eab4dad386bfc30800000000000000
+      internalID: 4394220475539762768
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: link_purple_attack_top_1
+      rect:
+        serializedVersion: 2
+        x: 47
+        y: 111
+        width: 22
+        height: 25
+      alignment: 9
+      pivot: {x: 0.7540484, y: 0.6203799}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f7705f3536590ec20800000000000000
+      internalID: 3233748786294884223
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: link_purple_attack_top_2
+      rect:
+        serializedVersion: 2
+        x: 81
+        y: 111
+        width: 22
+        height: 32
+      alignment: 9
+      pivot: {x: 0.7980184, y: 0.48992348}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0fb29bf988e2f3ee0800000000000000
+      internalID: -1279252604819788816
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: link_purple_attack_top_3
+      rect:
+        serializedVersion: 2
+        x: 119
+        y: 111
+        width: 18
+        height: 36
+      alignment: 9
+      pivot: {x: 0.9538133, y: 0.4223741}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3a0647ec4c08ee9e0800000000000000
+      internalID: -1590192035649527645
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: link_purple_attack_top_4
+      rect:
+        serializedVersion: 2
+        x: 154
+        y: 111
+        width: 22
+        height: 32
+      alignment: 9
+      pivot: {x: 0.9641273, y: 0.48320603}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0d6a46d2a788aa0d0800000000000000
+      internalID: -3410763709450770736
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: link_purple_attack_top_5
+      rect:
+        serializedVersion: 2
+        x: 188
+        y: 111
+        width: 29
+        height: 25
+      alignment: 9
+      pivot: {x: 0.9781094, y: 0.5816864}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7d2b511a6846357a0800000000000000
+      internalID: -6389652916917652777
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: link_purple_attack_top_6
+      rect:
+        serializedVersion: 2
+        x: 226
+        y: 111
+        width: 33
+        height: 24
+      alignment: 9
+      pivot: {x: 0.9787838, y: 0.6030035}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fca917211ef97a920800000000000000
+      internalID: 3001543465691617999
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: link_purple_attack_side_0
+      rect:
+        serializedVersion: 2
+        x: 9
+        y: 65
+        width: 19
+        height: 26
+      alignment: 9
+      pivot: {x: 0.613139, y: 0.55374086}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5cbf21bb4c5cfb5e0800000000000000
+      internalID: -1891575869729473595
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: link_purple_attack_side_1
+      rect:
+        serializedVersion: 2
+        x: 41
+        y: 65
+        width: 26
+        height: 23
+      alignment: 9
+      pivot: {x: 0.7025622, y: 0.6121548}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 91ac7b2be52334a20800000000000000
+      internalID: 3045333155339291161
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: link_purple_attack_side_2
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 65
+        width: 33
+        height: 23
+      alignment: 9
+      pivot: {x: 0.73776317, y: 0.63084775}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2fc6e62aa5136bc30800000000000000
+      internalID: 4374738353378979058
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: link_purple_attack_side_3
+      rect:
+        serializedVersion: 2
+        x: 108
+        y: 65
+        width: 34
+        height: 22
+      alignment: 9
+      pivot: {x: 0.7181253, y: 0.597711}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7716913431719ac20800000000000000
+      internalID: 3218128780230484343
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: link_purple_attack_side_4
+      rect:
+        serializedVersion: 2
+        x: 149
+        y: 64
+        width: 30
+        height: 23
+      alignment: 9
+      pivot: {x: 0.77587074, y: 0.61682826}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1c8184c8464ed4270800000000000000
+      internalID: 8236490414031902913
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: link_purple_attack_side_5
+      rect:
+        serializedVersion: 2
+        x: 196
+        y: 58
+        width: 23
+        height: 30
+      alignment: 9
+      pivot: {x: 0.7616955, y: 0.71854657}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a2235c8522f429520800000000000000
+      internalID: 2707313334939890218
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: link_purple_attack_side_6
+      rect:
+        serializedVersion: 2
+        x: 242
+        y: 57
+        width: 17
+        height: 31
+      alignment: 9
+      pivot: {x: 0.6770298, y: 0.7114969}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d3626d2d8b0f8c720800000000000000
+      internalID: 2866805839423219261
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: link_purple_attack_down_0
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 18
+        width: 26
+        height: 25
+      alignment: 9
+      pivot: {x: 0.28917006, y: 0.60748184}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b1f6a79e910dd7e50800000000000000
+      internalID: 6808827021363932955
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: link_purple_attack_down_1
+      rect:
+        serializedVersion: 2
+        x: 45
+        y: 13
+        width: 22
+        height: 31
+      alignment: 9
+      pivot: {x: 0.14824086, y: 0.70802945}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 32fd35ad8b9ddf210800000000000000
+      internalID: 1368489249750638371
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: link_purple_attack_down_2
+      rect:
+        serializedVersion: 2
+        x: 82
+        y: 8
+        width: 19
+        height: 38
+      alignment: 9
+      pivot: {x: 0.08704296, y: 0.67819375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5fe0dbb8c06232af0800000000000000
+      internalID: -422452104716808459
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: link_purple_attack_down_3
+      rect:
+        serializedVersion: 2
+        x: 121
+        y: 5
+        width: 18
+        height: 41
+      alignment: 9
+      pivot: {x: 0.046187505, y: 0.69923484}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8b6a564a5fc24edc0800000000000000
+      internalID: -3610711567707560264
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: link_purple_attack_down_4
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 7
+        width: 23
+        height: 37
+      alignment: 9
+      pivot: {x: 0.02801381, y: 0.7062491}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 72c56a5a32693b220800000000000000
+      internalID: 2500507297967922215
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: link_purple_attack_down_5
+      rect:
+        serializedVersion: 2
+        x: 199
+        y: 10
+        width: 29
+        height: 31
+      alignment: 9
+      pivot: {x: 0.021890575, y: 0.6560222}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4a01c2561ab847580800000000000000
+      internalID: -8830279444063317852
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: link_purple_attack_down_6
+      rect:
+        serializedVersion: 2
+        x: 239
+        y: 17
+        width: 32
+        height: 24
+      alignment: 9
+      pivot: {x: 0.016331196, y: 0.5492625}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cf2ca2a26fcb6fd00800000000000000
+      internalID: 1006199332219306748
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

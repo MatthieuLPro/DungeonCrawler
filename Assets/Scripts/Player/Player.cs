@@ -119,7 +119,7 @@ public class Player : MonoBehaviour
     /* Predicates */
     /* ************************************************ */
     public bool HasSmallKey(){
-        return (Keys <= 0);
+        return (Keys > 0);
     }
 
     public bool HasBigKey(){
