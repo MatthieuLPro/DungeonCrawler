@@ -35,7 +35,7 @@ AnimatorStateTransition:
   m_PrefabAsset: {fileID: 0}
   m_Name: 
   m_Conditions:
-  - m_ConditionMode: 2
+  - m_ConditionMode: 1
     m_ConditionEvent: Attacking
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
@@ -211,10 +211,10 @@ AnimatorState:
   m_TimeParameterActive: 0
   m_Motion: {fileID: 1969747203816165966}
   m_Tag: 
-  m_SpeedParameter: 
+  m_SpeedParameter: DirectionX
   m_MirrorParameter: 
-  m_CycleOffsetParameter: 
-  m_TimeParameter: 
+  m_CycleOffsetParameter: DirectionX
+  m_TimeParameter: DirectionX
 --- !u!206 &-5630941115972669805
 BlendTree:
   m_ObjectHideFlags: 1
@@ -324,7 +324,7 @@ BlendTree:
   m_Name: Blend Tree
   m_Childs:
   - serializedVersion: 2
-    m_Motion: {fileID: 7400000, guid: 80ba00dc4dc89bbbda7a83067bdbfb09, type: 2}
+    m_Motion: {fileID: 7400000, guid: 7259f20226967aaa4b2e3d9f407d5511, type: 2}
     m_Threshold: 0
     m_Position: {x: 1, y: 0}
     m_TimeScale: 1
@@ -332,7 +332,7 @@ BlendTree:
     m_DirectBlendParameter: DirectionX
     m_Mirror: 0
   - serializedVersion: 2
-    m_Motion: {fileID: 7400000, guid: 7259f20226967aaa4b2e3d9f407d5511, type: 2}
+    m_Motion: {fileID: 7400000, guid: 80ba00dc4dc89bbbda7a83067bdbfb09, type: 2}
     m_Threshold: 0.33333334
     m_Position: {x: -1, y: 0}
     m_TimeScale: 1
@@ -397,7 +397,7 @@ AnimatorStateTransition:
   m_TransitionDuration: 0.25
   m_TransitionOffset: 0
   m_ExitTime: 0.75
-  m_HasExitTime: 1
+  m_HasExitTime: 0
   m_HasFixedDuration: 1
   m_InterruptionSource: 0
   m_OrderedInterruption: 1
@@ -523,7 +523,7 @@ BlendTree:
   m_Name: Blend Tree
   m_Childs:
   - serializedVersion: 2
-    m_Motion: {fileID: 7400000, guid: b44963399a20e02fda68635d916605e0, type: 2}
+    m_Motion: {fileID: 7400000, guid: 018f382e677f8f0d78b560c5e2949d7a, type: 2}
     m_Threshold: 0
     m_Position: {x: 1, y: 0}
     m_TimeScale: 1
@@ -531,7 +531,7 @@ BlendTree:
     m_DirectBlendParameter: DirectionX
     m_Mirror: 0
   - serializedVersion: 2
-    m_Motion: {fileID: 7400000, guid: 018f382e677f8f0d78b560c5e2949d7a, type: 2}
+    m_Motion: {fileID: 7400000, guid: b44963399a20e02fda68635d916605e0, type: 2}
     m_Threshold: 0.33333334
     m_Position: {x: -1, y: 0}
     m_TimeScale: 1
@@ -608,7 +608,7 @@ AnimatorStateTransition:
   m_TransitionDuration: 0.25
   m_TransitionOffset: 0
   m_ExitTime: 0.75
-  m_HasExitTime: 1
+  m_HasExitTime: 0
   m_HasFixedDuration: 1
   m_InterruptionSource: 0
   m_OrderedInterruption: 1
