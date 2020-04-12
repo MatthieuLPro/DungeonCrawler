@@ -1,0 +1,535 @@
+fileFormatVersion: 2
+guid: 5e692a8f9811652d2b65b9fc0898ce75
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 4349501758246128999
+    second: link_blue_mvt_top_1
+  - first:
+      213: -9180639947910016511
+    second: link_blue_mvt_top_2
+  - first:
+      213: 1687039429080928295
+    second: link_blue_mvt_top_3
+  - first:
+      213: 4648753781838347067
+    second: link_blue_mvt_top_4
+  - first:
+      213: -2772345888221303270
+    second: link_blue_mvt_top_5
+  - first:
+      213: 5106493184597058015
+    second: link_blue_mvt_top_6
+  - first:
+      213: -4480062175310895535
+    second: link_blue_mvt_side_1
+  - first:
+      213: 3540591588035309547
+    second: link_blue_mvt_side_2
+  - first:
+      213: 3161267649124812062
+    second: link_blue_mvt_side_3
+  - first:
+      213: 7892086581978845051
+    second: link_blue_mvt_side_4
+  - first:
+      213: 5955684044208617752
+    second: link_blue_mvt_side_5
+  - first:
+      213: 1011187815015448578
+    second: link_blue_mvt_side_6
+  - first:
+      213: 3386868721458374741
+    second: link_blue_mvt_bot_1
+  - first:
+      213: 510526158659376797
+    second: link_blue_mvt_bot_2
+  - first:
+      213: -8965299029162063291
+    second: link_blue_mvt_bot_3
+  - first:
+      213: -1065559606485872500
+    second: link_blue_mvt_bot_4
+  - first:
+      213: 8028366882448852256
+    second: link_blue_mvt_bot_5
+  - first:
+      213: -7919191768483964887
+    second: link_blue_mvt_bot_6
+  externalObjects: {}
+  serializedVersion: 10
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 16
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 8192
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 8192
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: link_blue_mvt_top_1
+      rect:
+        serializedVersion: 2
+        x: 9
+        y: 406
+        width: 18
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 76d8232fdc88c5c30800000000000000
+      internalID: 4349501758246128999
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: link_blue_mvt_top_2
+      rect:
+        serializedVersion: 2
+        x: 40
+        y: 406
+        width: 18
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1021016cb90d79080800000000000000
+      internalID: -9180639947910016511
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: link_blue_mvt_top_3
+      rect:
+        serializedVersion: 2
+        x: 73
+        y: 406
+        width: 18
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 72052742c61996710800000000000000
+      internalID: 1687039429080928295
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: link_blue_mvt_top_4
+      rect:
+        serializedVersion: 2
+        x: 105
+        y: 406
+        width: 18
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b3b7ab63fe0b38040800000000000000
+      internalID: 4648753781838347067
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: link_blue_mvt_top_5
+      rect:
+        serializedVersion: 2
+        x: 137
+        y: 406
+        width: 18
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a1eed0a6a16a689d0800000000000000
+      internalID: -2772345888221303270
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: link_blue_mvt_top_6
+      rect:
+        serializedVersion: 2
+        x: 173
+        y: 406
+        width: 18
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fd16cdbfe78edd640800000000000000
+      internalID: 5106493184597058015
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: link_blue_mvt_side_1
+      rect:
+        serializedVersion: 2
+        x: 7
+        y: 378
+        width: 19
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1562eec103f93d1c0800000000000000
+      internalID: -4480062175310895535
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: link_blue_mvt_side_2
+      rect:
+        serializedVersion: 2
+        x: 38
+        y: 378
+        width: 23
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: befa49b5a45b22130800000000000000
+      internalID: 3540591588035309547
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: link_blue_mvt_side_3
+      rect:
+        serializedVersion: 2
+        x: 70
+        y: 378
+        width: 24
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e15c4028d241fdb20800000000000000
+      internalID: 3161267649124812062
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: link_blue_mvt_side_4
+      rect:
+        serializedVersion: 2
+        x: 104
+        y: 378
+        width: 19
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b7fc977aee2568d60800000000000000
+      internalID: 7892086581978845051
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: link_blue_mvt_side_5
+      rect:
+        serializedVersion: 2
+        x: 133
+        y: 378
+        width: 23
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 81934896517d6a250800000000000000
+      internalID: 5955684044208617752
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: link_blue_mvt_side_6
+      rect:
+        serializedVersion: 2
+        x: 172
+        y: 378
+        width: 23
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2000333d5f5780e00800000000000000
+      internalID: 1011187815015448578
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: link_blue_mvt_bot_1
+      rect:
+        serializedVersion: 2
+        x: 7
+        y: 343
+        width: 18
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 55868636823900f20800000000000000
+      internalID: 3386868721458374741
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: link_blue_mvt_bot_2
+      rect:
+        serializedVersion: 2
+        x: 40
+        y: 346
+        width: 18
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d96df6f16d0c51700800000000000000
+      internalID: 510526158659376797
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: link_blue_mvt_bot_3
+      rect:
+        serializedVersion: 2
+        x: 68
+        y: 346
+        width: 18
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 54a04ad780cd49380800000000000000
+      internalID: -8965299029162063291
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: link_blue_mvt_bot_4
+      rect:
+        serializedVersion: 2
+        x: 102
+        y: 342
+        width: 18
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c809768fe2f5631f0800000000000000
+      internalID: -1065559606485872500
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: link_blue_mvt_bot_5
+      rect:
+        serializedVersion: 2
+        x: 134
+        y: 344
+        width: 18
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 025cfdab42d7a6f60800000000000000
+      internalID: 8028366882448852256
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: link_blue_mvt_bot_6
+      rect:
+        serializedVersion: 2
+        x: 171
+        y: 344
+        width: 18
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 928d0535b01691290800000000000000
+      internalID: -7919191768483964887
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

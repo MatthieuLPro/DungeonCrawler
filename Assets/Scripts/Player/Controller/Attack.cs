@@ -102,6 +102,6 @@ public class Attack : MonoBehaviour
     }
 
     public int GetStrength(){
-        return _parent.transform.parent.GetComponent<Player>().GetStrength();
+        return _parent.transform.parent.GetComponent<Player>().Strength;
     }
 }

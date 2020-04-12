@@ -13,10 +13,11 @@ public class Action : MonoBehaviour
     }
 
     void Update() {
-       if (InputManagerPlayer1.AButton() && _front.ObjectOpen)
+        // => Now unique inputManager
+       /*if (InputManagerPlayer1.AButton() && _front.ObjectOpen)
         {
             GameObject objectOpen = _front.ObjectOpen;
             objectOpen.GetComponent<OpenObject>().TryToOpen(_player);
-        }         
+        }*/         
     }
 }

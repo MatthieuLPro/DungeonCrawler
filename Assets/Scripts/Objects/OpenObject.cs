@@ -201,10 +201,10 @@ public class OpenObject : MonoBehaviour
                 resultPlayer.GetRuby(300);
                 break;
             case 100:
-                player.GetSmallKey();
+                player.GainSmallKey();
                 break;
             case 101:
-                player.GetBigKey();
+                player.GainBigKey();
                 break;
             default:
                 resultPlayer.GetRuby(1);
@@ -214,18 +214,18 @@ public class OpenObject : MonoBehaviour
 
     // Getter & Setter
     public int Loot {
-        get { return _loot; }
-        set { _loot = value; }
+        get => _loot;
+        set => _loot = value;
     }
 
     public GameObject LootObject {
-        get { return _lootObject; }
-        set { _lootObject = value; }
+        get => _lootObject;
+        set => _lootObject = value;
     }
 
     public int OpenMethod {
-        get { return _openMethod; }
-        set { _openMethod = value; }
+        get => _openMethod;
+        set => _openMethod = value;
     }
 
     /* ************************************************ */

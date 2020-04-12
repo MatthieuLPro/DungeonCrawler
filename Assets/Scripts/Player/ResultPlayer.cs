@@ -14,7 +14,7 @@ public class ResultPlayer : MonoBehaviour
     }
 
     public void GetRuby(int rubyAmount){
-        transform.Find("UI").Find("Rubies").Find("RubyTextUI").GetComponent<RubyUI>().rubySystem.ChangeRuby(rubyAmount);
+        transform.Find("UI").Find("TopLeft").Find("Rubies").Find("RubyTextUI").GetComponent<RubyUI>().rubySystem.ChangeRuby(rubyAmount);
         _scoreDungeon.UpdateScore(this, rubyAmount);
     }
 

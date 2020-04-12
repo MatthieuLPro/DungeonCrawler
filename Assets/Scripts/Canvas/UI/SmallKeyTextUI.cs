@@ -15,18 +15,19 @@ public class SmallKeyTextUI : MonoBehaviour
 
     [Header("Attached player")]
     [SerializeField]
-    public GameObject _player;
+    private Player _player;
 
     private void Start()
     {
-        smallKeySystem = new SmallKeySystem(_player.GetComponent<Player>().keys);
+        _player = transform.parent.transform.parent.transform.parent.transform.parent.GetComponent<Player>();
+        smallKeySystem = new SmallKeySystem(_player.keys);
         _audio = GetComponent<AudioSource>();
         InitSmallKeyUI();
     }
 
     public void InitSmallKeyUI()
     {
-        _smallKey = _player.GetComponent<Player>().keys;
+        _smallKey = _player.keys;
         GetComponent<Text>().text = _smallKey.ToString("0");
         smallKeySystemStatic = smallKeySystem;
 

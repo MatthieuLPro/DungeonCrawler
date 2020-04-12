@@ -33,7 +33,7 @@ public class MenuState : MonoBehaviour
     void Update()
     {
         // Check Players input
-        bool IsAxisIsUse = InputManagerPlayer1.IsAxisInUse();
+        /*bool IsAxisIsUse = InputManagerPlayer1.IsAxisInUse();
 
         if (InputManagerPlayer1.MainVertical() > 0)
         {
@@ -52,14 +52,14 @@ public class MenuState : MonoBehaviour
             }
         }
         else
-            _CurrentIsAxisInUseState = false;
+            _CurrentIsAxisInUseState = false;*/
 
-        if (InputManagerPlayer1.XButton())
-            ActivateFocusInput();
+        //if (InputManagerPlayer1.XButton())
+        //    ActivateFocusInput();
 
 
-        if (InputManagerPlayer1.BButton())
-            Manager.SelectPreviousMenu();
+        //if (InputManagerPlayer1.BButton())
+        //    Manager.SelectPreviousMenu();
     }
 
     // Public Functions

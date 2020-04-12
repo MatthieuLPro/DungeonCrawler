@@ -12,7 +12,7 @@ abstract public class Hearts : Collectibles
         if (!other.CompareTag("Player"))
             return;
 
-        other.transform.parent.GetComponent<Player>().GetLife(value);
+        other.transform.parent.GetComponent<Player>().GainLife(value);
         StartCoroutine(GetObjectFindEffectCo());
     }
 }

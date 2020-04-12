@@ -46,6 +46,8 @@ public class CameraController : MonoBehaviour
         _Camera                 = gameObject.GetComponent<Camera>();
         _roomPlayerInfo         = transform.parent.GetComponent<RoomPlayerInformation>();
 
+        trackingGameObject = transform.parent.gameObject;
+
         SetScreenDistance();
         _InitializeCameraProperties();
         _UpdateCameraPosition(true);
@@ -54,11 +56,11 @@ public class CameraController : MonoBehaviour
     private void _InitializeCameraProperties()
     {
         int playersNumber   = transform.root.Find("GameParameters").GetComponent<GameParameters>().PlayersNumber;
-        int playerIndex     = transform.parent.GetComponent<Player>().PlayerIndex;
+        int playerIndex     = trackingGameObject.GetComponent<Player>().PlayerIndex;
 
         Rect cameraRect = new Rect();
 
-        // Set Camera size
+        // Set camera window size
         switch (playersNumber)
         {
             case 1:
@@ -77,8 +79,7 @@ public class CameraController : MonoBehaviour
                 break;
         }
 
-        // Set Position size
-
+        // Set camera window position
         switch (playerIndex)
         {
             case 1:
@@ -130,9 +131,9 @@ public class CameraController : MonoBehaviour
 
     public void updateMinMaxLimits()
     {
-        /*Vector2[] newCameraLimits = _roomPlayerInfo.PlayerRoomLimits;
+        Vector2[] newCameraLimits = _roomPlayerInfo.PlayerRoomLimits;
         minPosition = newCameraLimits[0];
-        maxPosition = newCameraLimits[1];*/
+        maxPosition = newCameraLimits[1];
     }
 
     public void SetScreenDistance()

@@ -23,14 +23,15 @@ public class HoldThrowObject : MonoBehaviour
             return;
         }
 
-        if (InputManagerPlayer1.YButton() || InputManagerPlayer1.BButton())
+        // => Now unique inputManager
+        /*if (InputManagerPlayer1.YButton() || InputManagerPlayer1.BButton())
         {
             _direction = new Vector3(_anime.GetFloat("DirectionX"), _anime.GetFloat("DirectionY"), 0);
             _direction.Normalize();
             StartCoroutine(ThrowItem());
         }
         else if (transform.position != _carrier.transform.position + new Vector3(0, 0.1f, 0))
-            transform.position = _carrier.transform.position + new Vector3(0, 0.1f, 0);
+            transform.position = _carrier.transform.position + new Vector3(0, 0.1f, 0);*/
     }
 
     private IEnumerator ThrowItem()

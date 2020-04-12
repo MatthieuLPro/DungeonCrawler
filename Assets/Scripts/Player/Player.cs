@@ -17,11 +17,11 @@ public class Player : MonoBehaviour
     /* Getters & Setters */
     /* ************************************************ */
     public int PlayerIndex {
-        get { return _playerIndex; }
-        set { _playerIndex = value; }
+        get => _playerIndex;
+        set => _playerIndex = value;
     }
 
-    public void GetLife(int heal){
+    public void GainLife(int heal){
         _UpdateUIHeart(true, heal);
     }
 
@@ -29,7 +29,7 @@ public class Player : MonoBehaviour
         _UpdateUIHeart(false, damage);
     }
 
-    public void GetMana(int heal){
+    public void GainMana(int heal){
         _UpdateUIMana(true, heal);
     }
 
@@ -37,7 +37,7 @@ public class Player : MonoBehaviour
         _UpdateUIMana(false, damage);
     }
 
-    public void GetSmallKey()
+    public void GainSmallKey()
     {
         keys += 1;
         _UpdateUISmallKey(true);
@@ -49,7 +49,7 @@ public class Player : MonoBehaviour
         _UpdateUISmallKey(false);
     }
     
-    public void GetBigKey()
+    public void GainBigKey()
     {
         bigKey = true;
         _UpdateUIBigKey(true);
@@ -65,7 +65,7 @@ public class Player : MonoBehaviour
     /* Update player State */
     /* ************************************************ */
     public void IsDead(){
-        Destroy(GetComponent<PlayerController>());
+        Destroy(gameObject);
     }
 
     /* ************************************************ */
@@ -105,9 +105,9 @@ public class Player : MonoBehaviour
 
     private Transform _GetUIGO(string UIName, string fileName = ""){
         if (fileName != "")
-            return transform.Find("UI").transform.Find(fileName).transform.Find(UIName);
+            return transform.Find("UI").Find("TopLeft").transform.Find(fileName).transform.Find(UIName);
         else
-            return transform.Find("UI").transform.Find(UIName);
+            return transform.Find("UI").Find("TopLeft").transform.Find(UIName);
     }
 
     /* ************************************************ */
@@ -128,7 +128,11 @@ public class Player : MonoBehaviour
     /* ************************************************ */
     /* Getters */
     /* ************************************************ */
-    public int GetStrength(){
-        return strength;
+    public int Strength{
+        get => strength;
+    }
+
+    public int HealthInit {
+        get => healthInit;
     }
 }

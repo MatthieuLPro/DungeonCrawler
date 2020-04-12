@@ -9,7 +9,7 @@ public class BigKeys : Collectibles
         if (!other.CompareTag("Player"))
             return;
         
-        other.transform.parent.GetComponent<Player>().GetBigKey();
+        other.transform.parent.GetComponent<Player>().GainBigKey();
         StartCoroutine(GetObjectFindEffectCo());
     }
 }

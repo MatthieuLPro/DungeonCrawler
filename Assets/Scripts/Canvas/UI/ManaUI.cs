@@ -15,7 +15,7 @@ public class ManaUI : MonoBehaviour
 
     [Header("Attached player")]
     [SerializeField]
-    private GameObject player = null;
+    private GameObject _player = null;
 
     // Position data
     private Vector3 _cameraSize;
@@ -25,19 +25,21 @@ public class ManaUI : MonoBehaviour
 
 
     private void Start(){
+        if (_player == null)
+            _player = transform.parent.transform.parent.transform.parent.gameObject;
         _manaBar    = new GameObject("manaBar", typeof(Image));
-        manaSystem = new ManaSystem(player.GetComponent<Player>().manaInit);
+        manaSystem = new ManaSystem(_player.GetComponent<Player>().manaInit);
         ManaDisplay();
 
         // Set position
-        Camera camera = player.transform.Find("Camera").gameObject.GetComponent<Camera>();
+        Camera camera = _player.transform.Find("Camera").gameObject.GetComponent<Camera>();
 
         _cameraSize = new Vector3(camera.pixelRect.width, camera.pixelRect.height, 0);
         _resultRect = GetComponent<RectTransform>();
         _height     = _resultRect.rect.height;
         _width      = _resultRect.rect.width;
 
-        float side      = GetHorizontalSide(player.name);
+        float side      = GetHorizontalSide(_player.name);
         float xDistance = GetAdaptedDistance(true, side);
         float yDistance = GetAdaptedDistance(false, side);
 
@@ -59,7 +61,7 @@ public class ManaUI : MonoBehaviour
     }
 
     void SetRectLocalPosition(float xDistance, float yDistance) {
-        int playerIndex     = transform.parent.transform.parent.GetComponent<Player>().PlayerIndex;
+        int playerIndex     = _player.GetComponent<Player>().PlayerIndex;
         int playersNumber   = transform.root.Find("GameParameters").GetComponent<GameParameters>().PlayersNumber;
 
         if (playerIndex == 1) {

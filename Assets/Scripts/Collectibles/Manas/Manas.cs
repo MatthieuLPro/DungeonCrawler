@@ -12,7 +12,7 @@ abstract public class Manas : Collectibles
         if (!other.CompareTag("Player"))
             return;
 
-        other.transform.parent.GetComponent<Player>().GetMana(value);
+        other.transform.parent.GetComponent<Player>().GainMana(value);
         StartCoroutine(GetObjectFindEffectCo());
     }
 }

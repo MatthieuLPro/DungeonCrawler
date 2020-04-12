@@ -47,6 +47,9 @@ public class GameParameters : MonoBehaviour
         GameObject go_rooms     = transform.root.Find("Rooms").Find("Level_0").gameObject;
         GameObject go_players   = transform.root.Find("Players").gameObject;
 
+        Debug.Log("go_rooms: " + go_rooms);
+        Debug.Log("go_players: " + go_players);
+
         // Consumable
         if (ConsumablePresence == 0)
             m_initMethodGo = _DestroyGo;
@@ -115,6 +118,10 @@ public class GameParameters : MonoBehaviour
     void _DestroyGo(GameObject goToDestroy) {
         Destroy(goToDestroy);
     }
+
+    //void _CreatePrefab(GameObject prefab) {
+    //    Instantiate(prefab, Vector3.zero, Quaternion.identity);
+    //}
 
     void _SetPlayerSpeed(GameObject goMovement) {
         Movement playerMvt = goMovement.GetComponent<Movement>();

@@ -49,7 +49,7 @@ public class UserMonsterInteraction : MonoBehaviour, IUserMonsterInteraction
         if (!_alwaysInvincible)
         {
             ConsequenceDamage csqObject = new ConsequenceDamage();
-            csqObject.DamageOnObject(_parent.GetComponent<Enemy>(), opponent.transform.parent.GetComponent<Action>().GetStrength());
+            csqObject.DamageOnObject(_parent.GetComponent<Enemy>(), opponent.transform.parent.GetComponent<Action>().Strength);
             csqObject.CallInvincibleTime(gameObject, _parent.GetComponent<SpriteRenderer>(), _invincibleTime);
         }
     }*/

@@ -15,9 +15,7 @@ public class HeartsHealthUI : MonoBehaviour
     [SerializeField]
     private Sprite heartSpriteEmpty = null;
 
-    [Header("Attached player")]
-    [SerializeField]
-    private GameObject player = null;
+    private Player _player = null;
 
     private List<HeartImage> heartImageList;
     public HeartsHealthSystem heartsHealthSystem;
@@ -27,7 +25,8 @@ public class HeartsHealthUI : MonoBehaviour
     }
 
     private void Start(){
-        HeartsHealthSystem heartsHealthSystem = new HeartsHealthSystem(player.GetComponent<Player>().healthInit);
+        _player = transform.parent.transform.parent.transform.parent.GetComponent<Player>();
+        HeartsHealthSystem heartsHealthSystem = new HeartsHealthSystem(_player.HealthInit);
         SetHeartsHealthSystem(heartsHealthSystem);
     }
 
@@ -78,7 +77,7 @@ public class HeartsHealthUI : MonoBehaviour
         }
 
         if (heartsHealthSystem.HeartEmpty() == true)
-            player.GetComponent<Player>().IsDead();
+            _player.IsDead();
     }
 
     public class HeartImage

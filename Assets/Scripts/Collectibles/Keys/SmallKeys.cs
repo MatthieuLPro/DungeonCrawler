@@ -9,7 +9,7 @@ public class SmallKeys : Collectibles
         if (!other.CompareTag("Player"))
             return;
         
-        other.transform.parent.GetComponent<Player>().GetSmallKey();
+        other.transform.parent.GetComponent<Player>().GainSmallKey();
         StartCoroutine(GetObjectFindEffectCo());
     }
 }

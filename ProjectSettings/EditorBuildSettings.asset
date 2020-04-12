@@ -26,4 +26,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Debug/test_scenes/MovementPureTest.unity
     guid: c079456eb32bb4a178fb33f9b8ebe095
-  m_configObjects: {}
+  m_configObjects:
+    com.unity.input.settings: {fileID: 11400000, guid: 33892e4c56b185e64af074caf3caabba,
+      type: 2}
