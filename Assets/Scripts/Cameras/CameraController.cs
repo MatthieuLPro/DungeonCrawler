@@ -46,7 +46,9 @@ public class CameraController : MonoBehaviour
         _Camera                 = gameObject.GetComponent<Camera>();
         _roomPlayerInfo         = transform.parent.GetComponent<RoomPlayerInformation>();
 
-        trackingGameObject = transform.parent.gameObject;
+        string playerIndex = transform.parent.GetComponent<Player>().PlayerIndex.ToString();
+
+        trackingGameObject = transform.parent.Find(string.Concat("Controller_", playerIndex.Substring(playerIndex.Length - 1))).gameObject;
 
         SetScreenDistance();
         _InitializeCameraProperties();
@@ -56,7 +58,7 @@ public class CameraController : MonoBehaviour
     private void _InitializeCameraProperties()
     {
         int playersNumber   = transform.root.Find("GameParameters").GetComponent<GameParameters>().PlayersNumber;
-        int playerIndex     = trackingGameObject.GetComponent<Player>().PlayerIndex;
+        int playerIndex     = transform.parent.GetComponent<Player>().PlayerIndex;
 
         Rect cameraRect = new Rect();
 
@@ -119,7 +121,6 @@ public class CameraController : MonoBehaviour
 
         Vector2 maxLimit = Vector2.zero;
         Vector2 minLimit = Vector2.zero;
-
         moveCameraToPosition(trackingGameObject.transform.position.x, trackingGameObject.transform.position.y);
     }
 

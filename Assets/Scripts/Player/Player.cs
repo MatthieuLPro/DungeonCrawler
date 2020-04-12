@@ -14,12 +14,8 @@ public class Player : MonoBehaviour
     public int strength = 1;
 
     /* ************************************************ */
-    /* Getters & Setters */
+    /* Updata status */
     /* ************************************************ */
-    public int PlayerIndex {
-        get => _playerIndex;
-        set => _playerIndex = value;
-    }
 
     public void GainLife(int heal){
         _UpdateUIHeart(true, heal);
@@ -134,5 +130,10 @@ public class Player : MonoBehaviour
 
     public int HealthInit {
         get => healthInit;
+    }
+
+    public int PlayerIndex {
+        get => _playerIndex;
+        set => _playerIndex = value;
     }
 }
