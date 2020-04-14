@@ -11,6 +11,9 @@ TextureImporter:
   - first:
       213: 1688171042913181217
     second: link_green_idle_2
+  - first:
+      213: 7036658095362890684
+    second: link_green_idle_3
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -102,8 +105,8 @@ TextureImporter:
         y: 99
         width: 18
         height: 23
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 9
+      pivot: {x: 0.44892973, y: 0.32014433}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -119,12 +122,12 @@ TextureImporter:
       name: link_green_idle_1
       rect:
         serializedVersion: 2
-        x: 1
-        y: 52
+        x: 2
+        y: 72
         width: 19
         height: 23
       alignment: 9
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0.33923802, y: 0.28488955}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -144,8 +147,8 @@ TextureImporter:
         y: 3
         width: 18
         height: 26
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 9
+      pivot: {x: 0.570222, y: 0.28344187}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -153,6 +156,27 @@ TextureImporter:
       bones: []
       spriteID: 12ed0f48e969d6710800000000000000
       internalID: 1688171042913181217
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: link_green_idle_3
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 39
+        width: 19
+        height: 23
+      alignment: 9
+      pivot: {x: 0.65646017, y: 0.28546008}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cbb5bf3814b37a160800000000000000
+      internalID: 7036658095362890684
       vertices: []
       indices: 
       edges: []
