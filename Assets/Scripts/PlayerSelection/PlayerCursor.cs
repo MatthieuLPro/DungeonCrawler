@@ -9,11 +9,14 @@ using Debug = UnityEngine.Debug;
 
 public class PlayerCursor : MonoBehaviour
 {
-    [SerializeField] internal GameObject m_PlayerCursorGameObject;
-    [SerializeField] internal GameObject m_PlayerPanelGameObject;
     [SerializeField] internal float m_CursorSpeed;
     [SerializeField] internal Fighter m_SelectedFighter;
+
     [SerializeField] internal bool m_IsReady;
+
+    [SerializeField] internal GameObject m_PlayerCursorGameObject;
+    [SerializeField] internal GameObject m_PlayerPanelGameObject;
+    [SerializeField] internal GameObject m_SceneManagerGameObject;
 
     [NonSerialized] private Vector2 i_Movement;
     [NonSerialized] private GameObject i_HoverGameObject;
@@ -25,7 +28,6 @@ public class PlayerCursor : MonoBehaviour
 
     void Update() 
     {
-
         MoveCursor();
     }
 
@@ -46,19 +48,63 @@ public class PlayerCursor : MonoBehaviour
     // Select Fighter
     private void OnAButton(InputValue value)
     {
-        if (gameObject.active) 
+        if (gameObject.active && i_HoverGameObject != null) 
         {
-            if (!m_IsReady)
+            // Behavior in Player Selection panel mode
+            PlayerSelectionManager playerSelectionManager = m_SceneManagerGameObject.GetComponent<PlayerSelectionManager>();
+            if (playerSelectionManager.CurrentSelectionModePanel == enumSelectionModePanel.playerSelectionPanel) 
             {
-                if (i_HoverGameObject != null && i_HoverGameObject.name == "Fighter")
-                    IsReady = true;
+                // On Click Fighter Prefab
+                PlayerPanel playerPanel = GetPlayerPanel();
+                    
+                if (!playerPanel.Ready && i_HoverGameObject.name == "Fighter")
+                {
+                    Fighter fighter = i_HoverGameObject.GetComponent<Fighter>();
+                    playerPanel.SetFighterName(fighter.FighterName);
+                    playerPanel.Ready = true;
+                }
+
+                // On click Ready Button
+                if (i_HoverGameObject.name == "ReadyInput" && playerPanel.Ready) 
+                {
+                    GameObject playerSelectionPanelGameObject = playerSelectionManager.PlayerSelectionPanelGameObject;
+                    PlayerSelectionPanelManager playerSelectionPanelManager = playerSelectionPanelGameObject.GetComponent<PlayerSelectionPanelManager>();
+                    playerSelectionPanelManager.OnReadyButton();
+                }
+            }
+            else if(playerSelectionManager.CurrentSelectionModePanel == enumSelectionModePanel.gameModePanel)
+            {
+                // On click Back Button
+                if (i_HoverGameObject.name == "BackInput") 
+                {
+                    GameObject gameModeSelectionPanelGameObject = playerSelectionManager.GameSelectionPanelGameObject;
+                    GameModePanelManager gameModePanelManager = gameModeSelectionPanelGameObject.GetComponent<GameModePanelManager>();
+                    gameModePanelManager.OnBackButton();
+                }
+
+                // On click Start Button
+                if (i_HoverGameObject.name == "StartRaceInput")
+                {
+                    GameObject gameModeSelectionPanelGameObject = playerSelectionManager.GameSelectionPanelGameObject;
+                    GameModePanelManager gameModePanelManager = gameModeSelectionPanelGameObject.GetComponent<GameModePanelManager>();
+                    gameModePanelManager.OnStartButton();
+                }
+
+                // On click Option Button
+                if(i_HoverGameObject.tag == "OptionButton") 
+                {
+                    PlayerSelectionButton optionButton = i_HoverGameObject.GetComponent<PlayerSelectionButton>();
+                    optionButton.OnClickButton();
+                    Debug.Log("Click UI BUtton");
+                }
             }
 
-            if (i_HoverGameObject != null && i_HoverGameObject.name == "ReadyInput")
-            {
-                GameObject playerManagerGameObject = GameObject.Find("PlayerManager");
-                PlayerSelectionManager playerSelectionManager = playerManagerGameObject.GetComponent<PlayerSelectionManager>();
-                playerSelectionManager.CheckPlayerSelectionPanelReady();
+
+            /**/
+
+            /**/
+
+            /*  playerSelectionManager.CheckPlayerSelectionPanelReady();
             }
 
             if (i_HoverGameObject != null && i_HoverGameObject.name == "BackInput") 
@@ -72,12 +118,15 @@ public class PlayerCursor : MonoBehaviour
             { 
                 PlayerSelectionButton playerSelectionButton = i_HoverGameObject.GetComponent<PlayerSelectionButton>();
                 playerSelectionButton.OnClickButton();
+            }*/
 
+            /*if (i_HoverGameObject != null && i_HoverGameObject.name == "StartRaceInput")
+            {
+                GameObject gameModeSelectionGameObject = i_HoverGameObject.Find("GameModeSelectionPanel");
 
-            }
-            
+            }*/
         }
-        
+
     }
 
     // Cancel previous action
@@ -85,10 +134,18 @@ public class PlayerCursor : MonoBehaviour
     {
         if (gameObject.active) 
         {
-            if (m_IsReady)
-            {
-                IsReady = false;
+            // Behavior in Player Selection panel mode
+            PlayerSelectionManager playerSelectionManager = m_SceneManagerGameObject.GetComponent<PlayerSelectionManager>();
 
+            if (playerSelectionManager.CurrentSelectionModePanel == enumSelectionModePanel.playerSelectionPanel) 
+            {
+                if (GetPlayerPanel().Ready)
+                    GetPlayerPanel().Ready = false;
+            }
+
+            if (playerSelectionManager.CurrentSelectionModePanel == enumSelectionModePanel.gameModePanel)
+            {
+                playerSelectionManager.ShowPlayerSelectionPanel();
             }
         }
         
@@ -112,6 +169,12 @@ public class PlayerCursor : MonoBehaviour
         set => m_PlayerPanelGameObject = value;
     }
 
+    public GameObject SceneManagerGameObject
+    {
+        get => m_SceneManagerGameObject;
+        set => m_SceneManagerGameObject = value;
+    }
+
     public bool IsReady
     {
         get => m_IsReady;
@@ -126,7 +189,7 @@ public class PlayerCursor : MonoBehaviour
             else
             {
                 m_SelectedFighter = null;
-                SetSelectedFighterName("");
+                GetPlayerPanel().SetFighterName("");
             }
 
 
@@ -147,44 +210,40 @@ public class PlayerCursor : MonoBehaviour
         indexTextMesh.text = index.ToString();
     }
 
-    public void SetSelectedFighterName(string fighterName) 
-    {
-        GameObject selectionPanelGameObject = m_PlayerPanelGameObject.transform.Find("SelectionPanel").gameObject;
-        GameObject selectedFighterPanelGameObject = selectionPanelGameObject.transform.Find("FighterSelectedPanel").gameObject;
-        GameObject selectedFighterNameGameObject = selectedFighterPanelGameObject.transform.Find("FighterName").gameObject;
-        TextMesh figherNameTextMesh = selectedFighterNameGameObject.GetComponent<TextMesh>();
-        figherNameTextMesh.text = fighterName;
-    }
-
-    public void ShowPressStartPanel(bool show) 
-    {
-        if (m_PlayerPanelGameObject != null) 
-        {
-            GameObject selectionPanelGameObject = m_PlayerPanelGameObject.transform.Find("SelectionPanel").gameObject;
-            selectionPanelGameObject.transform.Find("PressStartLabel").gameObject.SetActive(show);
-            selectionPanelGameObject.transform.Find("FighterSelectedPanel").gameObject.SetActive(!show);
-        }
-    }
-
     private void OnTriggerEnter2D(Collider2D collider)
     {
         GameObject colliderGameObject = collider.gameObject;
-        if (colliderGameObject.name == "Fighter" && !m_IsReady) 
+        PlayerSelectionManager playerSelectionManager = m_SceneManagerGameObject.GetComponent<PlayerSelectionManager>();
+        if (playerSelectionManager.CurrentSelectionModePanel == enumSelectionModePanel.playerSelectionPanel) 
         {
-            Fighter fighter = colliderGameObject.GetComponent<Fighter>();
-            SetSelectedFighterName(fighter.FighterName);
+            PlayerPanel playerPanel = m_PlayerPanelGameObject.GetComponent<PlayerPanel>();
+            if (colliderGameObject.name == "Fighter" && !GetPlayerPanel().Ready)
+            {
+                Fighter fighter = colliderGameObject.GetComponent<Fighter>();
+                GetPlayerPanel().SetFighterName(fighter.FighterName);
+            }
         }
+        
         i_HoverGameObject = colliderGameObject;
     }
 
     private void OnTriggerExit2D(Collider2D collider)
     {
         GameObject colliderGameObject = collider.gameObject;
-        if (colliderGameObject.name == "Fighter" && !m_IsReady)
+        PlayerSelectionManager playerSelectionManager = m_SceneManagerGameObject.GetComponent<PlayerSelectionManager>();
+        if (playerSelectionManager.CurrentSelectionModePanel == enumSelectionModePanel.playerSelectionPanel) 
         {
-            Fighter fighter = colliderGameObject.GetComponent<Fighter>();
-            SetSelectedFighterName(""); 
+            if (colliderGameObject.name == "Fighter" && !GetPlayerPanel().Ready)
+            {
+                GetPlayerPanel().SetFighterName("");
+            }
         }
+            
         i_HoverGameObject = null;
+    }
+
+    public PlayerPanel GetPlayerPanel() 
+    {
+        return m_PlayerPanelGameObject.GetComponent<PlayerPanel>();
     }
 }

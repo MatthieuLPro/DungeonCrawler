@@ -29,6 +29,7 @@ TagManager:
   - ConsumableAudio
   - OpenObjectAudio
   - PlayerPush
+  - OptionButton
   layers:
   - Default
   - TransparentFX

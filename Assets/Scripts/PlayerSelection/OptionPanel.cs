@@ -15,11 +15,17 @@ public class OptionPanel : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if (m_PlayerSelectButtonGameObjectList.Count > 0) 
+        if (m_SelectedPlayerSelectButtonGameObject != null)
         {
             GameObject defaultSelectedButton = m_PlayerSelectButtonGameObjectList[0];
             SelectButton(defaultSelectedButton);
         }
+    }
+
+    public GameObject SelectedPlayerSelectButtonGameObject 
+    {
+        get => m_SelectedPlayerSelectButtonGameObject;
+        set => m_SelectedPlayerSelectButtonGameObject = value;
     }
 
     public void SelectButton(GameObject playerSelectButtonGameObject) 
@@ -27,16 +33,20 @@ public class OptionPanel : MonoBehaviour
         PlayerSelectionButton playerSelectionButton = playerSelectButtonGameObject.GetComponent<PlayerSelectionButton>();
         if (m_SelectedPlayerSelectButtonGameObject != null)
             DeselectButton(m_SelectedPlayerSelectButtonGameObject);
-        playerSelectionButton.SelectButton(true);
+        playerSelectionButton.Select(true);
         m_SelectedPlayerSelectButtonGameObject = playerSelectButtonGameObject;
     }
 
     public void DeselectButton(GameObject playerSelectButtonGameObject) 
     {
         PlayerSelectionButton playerSelectionButton = playerSelectButtonGameObject.GetComponent<PlayerSelectionButton>();
-        playerSelectionButton.SelectButton(false);
+        playerSelectionButton.Select(false);
         m_SelectedPlayerSelectButtonGameObject = null;
     }
 
-
+    public PlayerSelectionButton GetSelectedButton() 
+    {
+        PlayerSelectionButton playerSelectionButton = m_SelectedPlayerSelectButtonGameObject.GetComponent<PlayerSelectionButton>();
+        return playerSelectionButton;
+    }
 }

@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 1866440742719303014}
   m_Layer: 0
   m_Name: InputPrefab
-  m_TagString: UIButton
+  m_TagString: OptionButton
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -90,7 +90,7 @@ TextMesh:
   m_TabSize: 4
   m_FontSize: 0
   m_FontStyle: 0
-  m_RichText: 1
+  m_RichText: 0
   m_Font: {fileID: 12800000, guid: 8b014c605c514bd40839022ec595a086, type: 3}
   m_Color:
     serializedVersion: 2
@@ -136,3 +136,6 @@ MonoBehaviour:
   m_ButtonTextMesh: {fileID: 1866440742719303019}
   m_IdleColor: {r: 1, g: 1, b: 1, a: 1}
   m_SelectedColor: {r: 0.009745443, g: 0.58696115, b: 0.6886792, a: 1}
+  m_IsSelected: 0
+  m_Value: 
+  m_OptionPanelGameObject: {fileID: 0}
