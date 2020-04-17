@@ -11,10 +11,11 @@ public class PlayersInfo : MonoBehaviour
    
     void Start()
     {
-        _playersInformation = new RoomPlayerInformation[4] { transform.GetChild(0).GetComponent<RoomPlayerInformation>(),
+        /*_playersInformation = new RoomPlayerInformation[4] { transform.GetChild(0).GetComponent<RoomPlayerInformation>(),
                                                              transform.GetChild(1).GetComponent<RoomPlayerInformation>(),
                                                              transform.GetChild(2).GetComponent<RoomPlayerInformation>(),
-                                                             transform.GetChild(3).GetComponent<RoomPlayerInformation>() };
+                                                             transform.GetChild(3).GetComponent<RoomPlayerInformation>() };*/
+        // Setting player info depending of room etc.
     }
 
     public bool isInRoom(string roomId)

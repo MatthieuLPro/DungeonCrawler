@@ -415,7 +415,7 @@ GameObject:
   - component: {fileID: 7900319093188475538}
   - component: {fileID: 7900319093188475541}
   m_Layer: 25
-  m_Name: PlayerPrefabTest
+  m_Name: Player_
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3765,7 +3765,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.05247886, y: 0.938}
   m_AnchorMax: {x: 0.06052114, y: 0.952}
-  m_AnchoredPosition: {x: -808.6701, y: 405.51443}
+  m_AnchoredPosition: {x: -808.67004, y: 405.51443}
   m_SizeDelta: {x: 15.636997, y: 12.72628}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &7900319095057491100

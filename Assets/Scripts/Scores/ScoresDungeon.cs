@@ -29,12 +29,33 @@ public class ScoresDungeon : MonoBehaviour
 
     public int nb_players;
 
-    void Start()
+    public void StartAfterPlayers()
     {
-        _resultPlayer1 = transform.parent.Find("Player_1").GetComponent<ResultPlayer>();
-        _resultPlayer2 = transform.parent.Find("Player_2").GetComponent<ResultPlayer>();
-        _resultPlayer3 = transform.parent.Find("Player_3").GetComponent<ResultPlayer>();
-        _resultPlayer4 = transform.parent.Find("Player_4").GetComponent<ResultPlayer>();
+        GameObject player1  = transform.parent.Find("Player_1").gameObject;
+
+        _resultPlayer1      = player1.GetComponent<ResultPlayer>();
+        player1Text         = player1.transform.Find("UI").Find("Rank").GetComponent<Text>();
+
+        if (transform.parent.Find("Player_2") != null) {
+            GameObject player2  = transform.parent.Find("Player_2").gameObject;
+            _resultPlayer2 = player2.GetComponent<ResultPlayer>();
+            player2Text    = player2.transform.Find("UI").Find("Rank").GetComponent<Text>();
+        } else
+            _resultPlayer2 = null;
+            
+        if (transform.parent.Find("Player_3") != null) {
+            GameObject player3  = transform.parent.Find("Player_3").gameObject;
+            _resultPlayer3 = player3.GetComponent<ResultPlayer>();
+            player3Text         = player3.transform.Find("UI").Find("Rank").GetComponent<Text>();
+        } else
+            _resultPlayer3 = null;
+
+        if (transform.parent.Find("Player_4") != null) {
+            GameObject player4  = transform.parent.Find("Player_4").gameObject;
+            _resultPlayer4 = player4.GetComponent<ResultPlayer>();
+            player4Text         = player4.transform.Find("UI").Find("Rank").GetComponent<Text>();
+        } else
+            _resultPlayer4 = null;
 
         _rankText = new string[4] {"4th", "3rd", "2nd", "1st"};
 

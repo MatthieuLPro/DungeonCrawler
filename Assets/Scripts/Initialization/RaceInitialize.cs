@@ -29,7 +29,7 @@ public class RaceInitialize : MonoBehaviour
             //playerGameObject.GetComponent<Player>().PlayerIndex = playerIndex;
         }
             
-        //int playersNumber = _gameParameters.GetPlayersNumber();
+        //int playersNumber = _gameParameters.PlayersNumber;
     }
 
     private void OnPlayerJoined(PlayerInput input){
