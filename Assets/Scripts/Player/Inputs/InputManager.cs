@@ -7,21 +7,28 @@ using UnityEngine.InputSystem;
 
 public class InputManager : MonoBehaviour
 {
+    public PlayerProfile playerProfile = null;
     public GameObject movementGO;
     public GameObject attackGO;
     public GameObject consumableGO;
     public GameObject ActionGO;
 
+    void Awake() {
+        playerProfile = transform.parent.GetComponent<PlayerProfile>();
+    }
+
     private void OnMove(InputValue value)
     {
         Movement movement = movementGO.GetComponent<Movement>();
         Vector2 newMovement = value.Get<Vector2>();
+        playerProfile.NbStep = 1;
         movement.SetPlayerDirection(newMovement);
     }
 
     public void OnAButton()
     {
         Attack attack = attackGO.GetComponent<Attack>();
+        playerProfile.NbAttack = 1;
         attack.ActionsList();
     }
 
