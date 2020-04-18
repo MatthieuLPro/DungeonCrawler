@@ -2,15 +2,18 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class GameParameters : MonoBehaviour
 {
+    // Var to test
     public bool inDungeonTest = true;
     public int playerNumberTest = 0;
     public int playersSpeedTest = 0;
     public int consumablePresenceTest = 0;
     public int staticMonsterPresenceTest = 0;
 
+    //
     static public bool inDungeon            = false;
     static public int playersNumber         = 3;
     static public int playersSpeed          = 1;
@@ -21,15 +24,16 @@ public class GameParameters : MonoBehaviour
     public initDelegate m_initMethodGo;
 
     void Awake() {
-        SetGameParameters(playerNumberTest,
-                          playersSpeedTest,
-                          consumablePresenceTest,
-                          staticMonsterPresenceTest);
+        //SetGameParameters(playerNumberTest,
+        //                  playersSpeedTest,
+        //                  consumablePresenceTest,
+        //                  staticMonsterPresenceTest);
         if (InDungeon) {
             SetDungeon();
         }
     }
 
+    // Method to test
     public void SetGameParameters(int pNb, int pSp, int conP, int SMPr) {
         PlayersNumber           = pNb;
         PlayersSpeed            = pSp;
@@ -41,9 +45,6 @@ public class GameParameters : MonoBehaviour
     public void SetDungeon() {
         GameObject go_rooms     = transform.root.Find("Rooms").Find("Level_0").gameObject;
         GameObject go_players   = transform.root.Find("Players").gameObject;
-
-        Debug.Log("go_rooms: " + go_rooms);
-        Debug.Log("go_players: " + go_players);
 
         // Consumable
         if (ConsumablePresence == 0)
@@ -86,7 +87,7 @@ public class GameParameters : MonoBehaviour
         }
     }
 
-    void _InitPlayerPresence(Transform tr_players, initDelegate initMethod) {
+    /*void _InitPlayerPresence(Transform tr_players, initDelegate initMethod) {
         if (PlayersNumber == 4)
             return;
 
@@ -94,7 +95,7 @@ public class GameParameters : MonoBehaviour
         for(int i = PlayersNumber; i < length; i++) {
             initMethod(tr_players.GetChild(i).gameObject);
         }
-    }
+    }*/
 
     void _InitPlayerRule(Transform tr_players, initDelegate initMethod) {
         int length = PlayersNumber;
@@ -119,12 +120,13 @@ public class GameParameters : MonoBehaviour
 
     // Only adapted for player prefab
     void _CreatePrefab(GameObject prefab) {
-        GameObject prefabCustom = Resources.Load("Prefabs/Players/Player_") as GameObject;
-        int playerIndex         = transform.root.transform.Find("Players").childCount - 1;
-        GameObject newPrefab    = Instantiate(prefabCustom, Vector3.zero, Quaternion.identity);
+        GameObject prefabCustom         = Resources.Load("Prefabs/Players/Player_") as GameObject;
+        int playerIndex                 = transform.root.transform.Find("Players").childCount - 1;
+        GameObject newPrefab            = Instantiate(prefabCustom, Vector3.zero, Quaternion.identity);
 
         newPrefab.GetComponent<Player>().PlayerIndex = playerIndex;
         newPrefab.transform.Find("Controller_").GetComponent<Animator>().runtimeAnimatorController = Resources.Load("Animations/Controller/Characters/PlayerLinkGreen") as RuntimeAnimatorController;
+        newPrefab.transform.Find("Controller_").GetComponent<PlayerInput>().actions = Resources.Load(String.Concat("PlayerInput/PlayerInputs_", playerIndex.ToString())) as InputActionAsset;
         newPrefab.transform.Find("Controller_").name             = String.Concat("Controller_", playerIndex.ToString());
         newPrefab.transform.SetParent(transform.root.Find("Players").transform);
         newPrefab.transform.SetSiblingIndex(playerIndex - 1);

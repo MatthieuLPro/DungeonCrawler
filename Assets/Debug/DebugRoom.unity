@@ -152,6 +152,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd914a2e80d02554ca95afe5f0dbf0ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inDungeonTest: 1
+  playerNumberTest: 0
+  playersSpeedTest: 0
+  consumablePresenceTest: 0
+  staticMonsterPresenceTest: 0
 --- !u!4 &1305946
 Transform:
   m_ObjectHideFlags: 0

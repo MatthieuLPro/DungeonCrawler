@@ -22,17 +22,18 @@ public class RaceInitialize : MonoBehaviour
 
     private void _InitializePlayers() 
     {
-        int playersNumber = _gameParameters.PlayersNumber;
-        for (int playerIndex = 1; playerIndex <= playersNumber; playerIndex++) 
-        {
+        // USE THIS METHOD FOR V2
+        //int playersNumber = _gameParameters.PlayersNumber;
+        //for (int playerIndex = 1; playerIndex <= playersNumber; playerIndex++) 
+        //{
             //GameObject playerGameObject = Instantiate(_playerPrefab) as GameObject;
             //playerGameObject.GetComponent<Player>().PlayerIndex = playerIndex;
-        }
+        //}
             
         //int playersNumber = _gameParameters.PlayersNumber;
     }
 
-    private void OnPlayerJoined(PlayerInput input){
+    /*private void OnPlayerJoined(PlayerInput input){
         Debug.Log("On Player Joindes");
-    }
+    }*/
 }
