@@ -23,15 +23,16 @@ public class GameParameters : MonoBehaviour
     public delegate void initDelegate(GameObject go);
     public initDelegate m_initMethodGo;
 
-    void Awake() {
+    // Uncomment to test without cutscene
+    //void Awake() {
         //SetGameParameters(playerNumberTest,
         //                  playersSpeedTest,
         //                  consumablePresenceTest,
         //                  staticMonsterPresenceTest);
-        if (InDungeon) {
-            SetDungeon();
-        }
-    }
+    //    if (InDungeon) {
+    //        SetDungeon();
+    //    }
+    //}
 
     // Method to test
     public void SetGameParameters(int pNb, int pSp, int conP, int SMPr) {
