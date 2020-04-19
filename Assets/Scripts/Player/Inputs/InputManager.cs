@@ -21,14 +21,16 @@ public class InputManager : MonoBehaviour
     {
         Movement movement = movementGO.GetComponent<Movement>();
         Vector2 newMovement = value.Get<Vector2>();
-        playerProfile.NbStep = 1;
+        if (playerProfile != null)
+            playerProfile.NbStep = 1;
         movement.SetPlayerDirection(newMovement);
     }
 
     public void OnAButton()
     {
         Attack attack = attackGO.GetComponent<Attack>();
-        playerProfile.NbAttack = 1;
+        if (playerProfile != null)
+            playerProfile.NbAttack = 1;
         attack.ActionsList();
     }
 
@@ -50,8 +52,6 @@ public class InputManager : MonoBehaviour
     {
         Debug.Log("X");
     }
-
-    
 
     public void OnYButton()
     {
