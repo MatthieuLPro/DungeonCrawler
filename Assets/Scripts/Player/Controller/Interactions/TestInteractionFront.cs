@@ -7,7 +7,6 @@ public class TestInteractionFront : MonoBehaviour
     /* Parent components */
     private GameObject      _parent;
     private Movement        _movement;
-    //private TestAction      _action;
     private Animator        _anime;
     private Rigidbody2D     _rb2d;
     private SpriteRenderer  _sprite;
@@ -28,7 +27,6 @@ public class TestInteractionFront : MonoBehaviour
         _parent         = transform.parent.transform.parent.gameObject;
 
         _movement       = _parent.transform.GetChild(0).GetComponent<Movement>();
-        //_action         = _parent.transform.Find("ActionTest").GetComponent<TestAction>();
         _anime          = _parent.GetComponent<Animator>();
         _rb2d           = _parent.GetComponent<Rigidbody2D>();
         _sprite         = _parent.GetComponent<SpriteRenderer>();
@@ -37,12 +35,6 @@ public class TestInteractionFront : MonoBehaviour
     }
 
     void OnTriggerEnter2D(Collider2D other) {
-        //if (other.CompareTag("ObjectCarry")) {
-        //    objectCarry = other.gameObject;
-        //    return;
-        //}
-        //objectCarry = null;
-
         if (other.CompareTag("ObjectOpen")) {
             StartCoroutine(_ObjectConnectionCo(other.gameObject));
             return;
@@ -54,28 +46,16 @@ public class TestInteractionFront : MonoBehaviour
         ObjectOpen = null;
     }
 
-    /* ************************************************ */
-    /* Functions */
-    /* ************************************************ */
-    /* Tag: Object Carry */
-    //public void InteractionWithObjectCarry()
-    //{
-    //    objectCarry.GetComponent<SpriteRenderer>().sprite = null;
-    //    objectCarry.GetComponent<CarryObjectManager>().GenerateCollectible();
-    //    objectCarry.GetComponent<CarryObjectManager>().CarryObject(_parent);
-    //    objectCarry = null;
-    //}
+    IEnumerator _ObjectConnectionCo(GameObject gameObject) {
+        yield return null;
+        ObjectOpen = gameObject;
+    }
 
     /* ************************************************ */
     /* Getter & Setter */
     /* ************************************************ */
     public GameObject ObjectOpen {
-        get { return _objectOpen; }
-        set { _objectOpen = value; }
-    }
-
-    IEnumerator _ObjectConnectionCo(GameObject gameObject) {
-        yield return null;
-        ObjectOpen = gameObject;
+        get => _objectOpen;
+        set => _objectOpen = value;
     }
 }
