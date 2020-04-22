@@ -1,5 +1,5 @@
 {
-    "name": "PlayerInputs",
+    "name": "PlayerInputs_1",
     "maps": [
         {
             "name": "Gameplay",
@@ -160,7 +160,7 @@
                     "name": "",
                     "id": "b98e0d14-6acb-4326-b5cf-7ac940ab9268",
                     "path": "<Gamepad>/rightShoulder",
-                    "interactions": "",
+                    "interactions": "Tap,SlowTap",
                     "processors": "",
                     "groups": "",
                     "action": "RightButton",

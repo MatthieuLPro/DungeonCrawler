@@ -8,7 +8,7 @@ public class TestInteractionGlobal : MonoBehaviour
     [SerializeField]
     private bool _isInvincible;
     [SerializeField]
-    private float invincibleTime = 5;
+    private float _invincibleTime = 5;
 
     /* Parent components */
     private GameObject      _parent;
@@ -35,7 +35,7 @@ public class TestInteractionGlobal : MonoBehaviour
         _sprite         = _parent.GetComponent<SpriteRenderer>();
 
         _collider       = GetComponent<BoxCollider2D>();
-        _isKnock        = false;
+        IsKnock        = false;
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -75,7 +75,7 @@ public class TestInteractionGlobal : MonoBehaviour
     /* Tag: Enemy */
     private void InteractionWithEnemy(GameObject enemy)
     {
-        if (_isKnock || _isInvincible)
+        if (IsKnock || IsInvincible)
             return;
 
         _ApplyDamageFromEnemy(enemy.GetComponent<EnemyTest>(), _parent.transform.parent.GetComponent<Player>());
@@ -86,7 +86,7 @@ public class TestInteractionGlobal : MonoBehaviour
     /* Tag: PlayerAttack */
     private void InteractionWithPlayer(GameObject player)
     {
-        if (_isKnock || _isInvincible)
+        if (IsKnock || IsInvincible)
             return;
 
         //_ApplyDamageFromEnemy(enemy.GetComponent<EnemyTest>(), _parent.transform.parent.GetComponent<Player>());
@@ -97,7 +97,7 @@ public class TestInteractionGlobal : MonoBehaviour
     /* Tag: PlayerPush */
     private void InteractionWithObject(GameObject pushObject)
     {
-        if (_isKnock || _isInvincible)
+        if (IsKnock || IsInvincible)
             return;
 
         StartCoroutine(_KnockBackTimeObjectCo(pushObject));
@@ -133,7 +133,7 @@ public class TestInteractionGlobal : MonoBehaviour
     /* Setters & toggle functions */
     /* ************************************************ */
     private void _SetPlayerIsKnock(bool value){
-        _isKnock = value;
+        IsKnock = value;
     }
 
     private void _SetVelocityToZero(){
@@ -143,7 +143,7 @@ public class TestInteractionGlobal : MonoBehaviour
     //If enemy is invincible, then collider is disabled
     private void _SetPlayerInvincible(bool value)
     {
-        _isInvincible     = value;
+        IsInvincible      = value;
         _collider.enabled = !value;
     }
 
@@ -244,7 +244,7 @@ public class TestInteractionGlobal : MonoBehaviour
         float time         = .0f;
         Color regularColor = _sprite.color;
 
-        while(time < invincibleTime)
+        while(time < InvincibleTime)
         {
             _sprite.color = new Color(1f,1f,1f,0f);
             yield return new WaitForSeconds(0.02f);
@@ -278,5 +278,25 @@ public class TestInteractionGlobal : MonoBehaviour
     private void _CallHurt(){
         _parent.transform.parent.Find("Audio").GetComponent<AudioManager>().CallAudio("hurt");
         _parent.transform.parent.Find("Audio").GetComponent<AudioManager>().PlayAudio();
+    }
+
+
+    /* ************************************************ */
+    /* Getter & Setter */
+    /* ************************************************ */
+
+    public bool IsInvincible {
+        get => _isInvincible;
+        set => _isInvincible = value;
+    }
+
+    public float InvincibleTime {
+        get => _invincibleTime;
+        set => _invincibleTime = value;
+    }
+
+    public bool IsKnock {
+        get => _isKnock;
+        set => _isKnock = value;
     }
 }

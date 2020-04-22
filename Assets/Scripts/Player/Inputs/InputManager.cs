@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using System.Collections.Specialized;
-using System.Diagnostics;
+//using System.Diagnostics;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -12,6 +12,8 @@ public class InputManager : MonoBehaviour
     public GameObject attackGO;
     public GameObject consumableGO;
     public GameObject ActionGO;
+
+    public GameObject SpecialGO;
 
     void Awake() {
         playerProfile = transform.parent.GetComponent<PlayerProfile>();
@@ -46,6 +48,43 @@ public class InputManager : MonoBehaviour
         useConsumable.launchCurrentEffect();
     }
 
+    public void OnRightButton()
+    {
+        Special special = SpecialGO.GetComponent<Special>();
+        //special.SpecialsList();
+
+        var specialAction = new InputAction("special");
+        specialAction.AddBinding("<Gamepad>/rightShoulder")
+            // Tap fires, slow tap charges. Both act on release.
+            .WithInteractions("tap;slowTap");
+
+        //specialAction.started += special.SpecialsList();
+
+        //specialAction.performed += special.SpecialsList();
+
+        //specialAction.canceled += special.SpecialsList();
+
+        specialAction.started += ctx =>
+        {
+            Debug.Log("Is started");
+            //special.SpecialsList();
+        };
+
+        specialAction.performed += ctx =>
+        {
+            Debug.Log("Is performed");
+
+        };
+        
+        specialAction.canceled += ctx =>
+        {
+            Debug.Log("Is canceld");
+            //special.SpecialsList();
+        };
+
+
+    }
+
     /*
 
     public void OnYButton()
@@ -76,5 +115,11 @@ public class InputManager : MonoBehaviour
     private void OnRightTrigger()
     {
         Debug.Log("RightTrigger");
-    }*/
+    }
+    
+    private void OnRightTrigger()
+    {
+        UnityEngine.Debug.Log("RightTrigger");
+    }
+    */
 }

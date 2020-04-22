@@ -26,8 +26,45 @@ public class Player : MonoBehaviour
     [SerializeField]
     private bool _bigKey = false;
 
+    // Loosing stamina on the time
+    public bool _isLoosingStamina = false;
+    public bool _isLoosingStaminaCoIsOn = false;
+    public float _loosingStaminaSpeed = 1f;
+    public int _loosingStaminaDamage = 1;
+
+    // Loosing health on the time
+    public bool _isLoosingLife = false;
+    public bool _isLoosingLifeCoIsOn = false;
+    public float _loosingLifeSpeed = 1f;
+    public int _loosingLifeDamage = 1;
+
     /* ************************************************ */
-    /* Updata status */
+    /* Test Stamina */
+    /* ************************************************ */
+
+    void Update() {
+        if (!_isLoosingStaminaCoIsOn && _isLoosingStamina)
+            StartCoroutine(_IsLoosingStaminaCo());
+        if (!_isLoosingLifeCoIsOn && _isLoosingLife)
+            StartCoroutine(_IsLoosingLifeCo());
+    }
+
+    private IEnumerator _IsLoosingStaminaCo() {
+        _isLoosingStaminaCoIsOn = true;
+        yield return new WaitForSeconds(_loosingStaminaSpeed);
+        LooseMana(_loosingStaminaDamage);
+        _isLoosingStaminaCoIsOn = false;
+    }
+
+    private IEnumerator _IsLoosingLifeCo() {
+        _isLoosingLifeCoIsOn = true;
+        yield return new WaitForSeconds(_loosingLifeSpeed);
+        LooseLife(_loosingLifeDamage);
+        _isLoosingLifeCoIsOn = false;
+    }
+
+    /* ************************************************ */
+    /* Update status */
     /* ************************************************ */
 
     public void GainLife(int heal){
