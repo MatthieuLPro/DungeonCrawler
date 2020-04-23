@@ -18,6 +18,10 @@ public class ManaSystem
         return _mana.GetValue();
     }
 
+    public int GetManaMax(){
+        return _mana.GetMaxValue();
+    }
+
     public void ChangeMana(int point)
     {
         int upOrDown = 0;
@@ -43,8 +47,7 @@ public class ManaSystem
     private bool DecreaseMana()
     {
         _mana.DecreaseByOne();
-        if(_mana.GetValue() <= 0)
-        {
+        if(_mana.ValueIsOffLimitDown()){
             _mana.SetValue(0);
             return true;
         }
@@ -54,9 +57,9 @@ public class ManaSystem
     private bool IncreaseMana()
     {
         _mana.IncreaseByOne();
-        if(_mana.GetValue() >= 70)
-        {
-            _mana.SetValue(70);
+        if(_mana.ValueIsOffLimitUp()){
+            int maxValue = _mana.GetMaxValue();
+            _mana.SetValue(maxValue);
             return true;
         }
         return false;
@@ -65,17 +68,27 @@ public class ManaSystem
     public class Mana
     {
         private int _value;
+        private int _maxValue;
 
         public Mana(int value){
-            this._value = value;
+            this._maxValue  = value;
+            this._value     = value;
         }
 
         public int GetValue(){
             return this._value;
         }
 
+        public int GetMaxValue(){
+            return this._maxValue;
+        }
+
         public void SetValue(int value){
             this._value = value;
+        }
+
+        public void SetMaxValue(int value) {
+            this._maxValue = value;
         }
 
         public void DecreaseByOne(){
@@ -84,6 +97,18 @@ public class ManaSystem
 
         public void IncreaseByOne(){
             this._value++;
+        }
+
+        public bool ValueIsOffLimitDown() {
+            if (this._value <= 0)
+                return true;
+            return false;
+        }
+
+        public bool ValueIsOffLimitUp() {
+            if (this._value >= this._maxValue)
+                return true;
+            return false;
         }
     }
 }

@@ -7,12 +7,14 @@ public class Player : MonoBehaviour
     [Header("Player System parameters")]
     [SerializeField]
     private int _playerIndex = 1;
+    [SerializeField]
+    private string _characterType = "LinkGreen";
 
     [Header("Player Characteristics parameters")]
     [SerializeField]
     private int _healthInit = 5;
     [SerializeField]
-    private int _manaInit = 116;
+    private int _manaInit = 100;
     [SerializeField]
     private int _strength = 1;
     [SerializeField]
@@ -27,33 +29,49 @@ public class Player : MonoBehaviour
     private bool _bigKey = false;
 
     // Loosing stamina on the time
-    public bool _isLoosingStamina = false;
-    public bool _isLoosingStaminaCoIsOn = false;
-    public float _loosingStaminaSpeed = 1f;
-    public int _loosingStaminaDamage = 1;
+    private bool _isLoosingStamina = false;
+    private bool _staminaCoIsOn = false;
+    private float _gainingStaminaSpeed = 0.05f;
+    private float _loosingStaminaSpeed = 0.05f;
+    private int _gainingStaminaDamage = 1;
+    private int _loosingStaminaDamage = 1;
 
     // Loosing health on the time
-    public bool _isLoosingLife = false;
-    public bool _isLoosingLifeCoIsOn = false;
-    public float _loosingLifeSpeed = 1f;
-    public int _loosingLifeDamage = 1;
+    private bool _isLoosingLife = false;
+    private bool _isLoosingLifeCoIsOn = false;
+    private float _loosingLifeSpeed = 1f;
+    private int _loosingLifeDamage = 1;
 
     /* ************************************************ */
     /* Test Stamina */
     /* ************************************************ */
 
     void Update() {
-        if (!_isLoosingStaminaCoIsOn && _isLoosingStamina)
-            StartCoroutine(_IsLoosingStaminaCo());
-        if (!_isLoosingLifeCoIsOn && _isLoosingLife)
-            StartCoroutine(_IsLoosingLifeCo());
+        if (!StaminaCoIsOn) {
+            if (IsLoosingStamina)
+                StartCoroutine(_IsLoosingStaminaCo());
+            else if(!IsLoosingStamina)
+                StartCoroutine(_IsGainingStaminaCo());
+        }
+        
+        //if (!_isLoosingLifeCoIsOn && _isLoosingLife)
+        //    StartCoroutine(_IsLoosingLifeCo());
     }
 
     private IEnumerator _IsLoosingStaminaCo() {
-        _isLoosingStaminaCoIsOn = true;
-        yield return new WaitForSeconds(_loosingStaminaSpeed);
-        LooseMana(_loosingStaminaDamage);
-        _isLoosingStaminaCoIsOn = false;
+        StaminaCoIsOn = true;
+        yield return new WaitForSeconds(LoosingStaminaSpeed);
+
+        LooseMana(LoosingStaminaDamage);
+        StaminaCoIsOn = false;
+    }
+
+    private IEnumerator _IsGainingStaminaCo() {
+        StaminaCoIsOn = true;
+        yield return new WaitForSeconds(GainingStaminaSpeed);
+
+        GainMana(GainingStaminaDamage);
+        StaminaCoIsOn = false;
     }
 
     private IEnumerator _IsLoosingLifeCo() {
@@ -166,27 +184,25 @@ public class Player : MonoBehaviour
     /* ************************************************ */
     /* Getters */
     /* ************************************************ */
+
+    // Player system
     public int PlayerIndex {
         get => _playerIndex;
         set => _playerIndex = value;
     }
 
+    public string CharacterType {
+        get => _characterType;
+        set => _characterType = value;
+    }
+
+    // Player caracteristics
     public int HealthInit {
         get => _healthInit;
     }
 
     public int ManaInit {
         get => _manaInit;
-    }
-
-    public int Keys {
-        get => _keys;
-        set => _keys += value;
-    }
-
-    public bool BigKey {
-        get => _bigKey;
-        set => _bigKey = value;
     }
 
     public int Strength{
@@ -202,5 +218,51 @@ public class Player : MonoBehaviour
     public int Speed{
         get => _speed;
         set => _speed = value;
+    }
+
+    // Player items
+    public int Keys {
+        get => _keys;
+        set => _keys += value;
+    }
+
+    public bool BigKey {
+        get => _bigKey;
+        set => _bigKey = value;
+    }
+
+    // Player stamina
+    public bool IsLoosingStamina {
+        get => _isLoosingStamina;
+        set => _isLoosingStamina = value;
+    }
+
+    public bool StaminaCoIsOn {
+        get => _staminaCoIsOn;
+        set => _staminaCoIsOn = value;
+    }
+
+    public float LoosingStaminaSpeed {
+        get => _loosingStaminaSpeed;
+        set => _loosingStaminaSpeed = value;
+    }
+
+    public float GainingStaminaSpeed {
+        get => _gainingStaminaSpeed;
+        set => _gainingStaminaSpeed = value;
+    }
+
+    public int LoosingStaminaDamage {
+        get => _loosingStaminaDamage;
+        set => _loosingStaminaDamage = value;
+    }
+
+    public int GainingStaminaDamage {
+        get => _gainingStaminaDamage;
+        set => _gainingStaminaDamage = value;
+    }
+
+    public int Stamina {
+        get => _GetUIGO("Manas").GetComponent<ManaUI>().manaSystem.GetMana();
     }
 }

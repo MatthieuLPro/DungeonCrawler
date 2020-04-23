@@ -63,7 +63,7 @@ public class Movement : MonoBehaviour
         _anime  = _parent.GetComponent<Animator>();
         _rb2d   = _parent.GetComponent<Rigidbody2D>();
 
-        maxSpeedTemp     = maxSpeed;
+        MaxSpeedTemp     = MaxSpeed;
         accelerationTemp = acceleration;
 
         /* Decceleration in [0,1] */
@@ -145,8 +145,8 @@ public class Movement : MonoBehaviour
                 _rb2d.velocity = Vector2.zero;
         }
 
-        if(_rb2d.velocity.magnitude > maxSpeedTemp)
-            _rb2d.velocity = _rb2d.velocity.normalized * maxSpeedTemp;
+        if(_rb2d.velocity.magnitude > MaxSpeedTemp)
+            _rb2d.velocity = _rb2d.velocity.normalized * MaxSpeedTemp;
         else
             _rb2d.AddForce(newDirection * accelerationTemp + otherForce, ForceMode2D.Impulse);
     }
@@ -188,7 +188,12 @@ public class Movement : MonoBehaviour
     /* Getter & Setter */
     /* ************************************************ */
     public float MaxSpeed {
-        get { return maxSpeed; }
-        set { maxSpeed = value; }
+        get => maxSpeed;
+        set => maxSpeed = value;
+    }
+
+    public float MaxSpeedTemp {
+        get => maxSpeedTemp;
+        set => maxSpeedTemp = value;
     }
 }
