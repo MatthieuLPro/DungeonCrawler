@@ -7,7 +7,8 @@ public enum TestObjectState {
     idle,
     walk,
     knock,
-    attack
+    attack,
+    special
 }
 
 public class Movement : MonoBehaviour
@@ -50,7 +51,9 @@ public class Movement : MonoBehaviour
     public bool iceFloor;
 
     /* Other */
-    public bool blockMovement;
+    private bool _movementIsBlock;
+
+    private bool _isDashing;
 
     /* ************************************************ */
     /* Main functions */
@@ -73,14 +76,13 @@ public class Movement : MonoBehaviour
             decceleration = 0;
 
         deccelerationTemp = decceleration;
+        IsDashing = false;
     }
 
     void FixedUpdate()
     {
-        if (blockMovement)
+        if (MovementIsBlock)
             return;
-
-        //PlayerDirection();
         PlayerMovement();
     }
 
@@ -90,29 +92,12 @@ public class Movement : MonoBehaviour
     public void SetPlayerDirection(Vector2 inputDirection) 
     {
         Vector3 inputCurrentPosition = Vector3.zero;
-        inputDirection.x = (float)Math.Round(inputDirection.x);
-        inputDirection.y = (float)Math.Round(inputDirection.y);
-        inputCurrentPosition = new Vector3(inputDirection.x, inputDirection.y, 0);
 
-        _oldDirection = newDirection;
-        newDirection = inputCurrentPosition;
-
-        //newDirection.Normalize();
-    }
-
-    /* Get Direction */
-    private void PlayerDirection()
-    {
-        /*Vector3 inputMainPosition = Vector3.zero;
-        string parent_name = _parent.transform.parent.gameObject.name;
-
-        Vector2 movement = _inputManager.Movement;
-        inputMainPosition = new Vector3(movement.x, movement.y, 0);
-
-        _oldDirection = newDirection;
-        newDirection  = inputMainPosition;
-
-        newDirection.Normalize();*/
+        inputDirection.x        = (float)Math.Round(inputDirection.x);
+        inputDirection.y        = (float)Math.Round(inputDirection.y);
+        inputCurrentPosition    = new Vector3(inputDirection.x, inputDirection.y, 0);
+        _oldDirection           = newDirection;
+        newDirection            = inputCurrentPosition;
     }
 
     /* Move or idle depend of vector newDirection */
@@ -133,7 +118,6 @@ public class Movement : MonoBehaviour
             Decceleration();
             AnimationIdle();
         }
-        //newDirection = Vector3.zero;
     }
 
     /* Movement acceleration */
@@ -162,7 +146,6 @@ public class Movement : MonoBehaviour
             if ( _rb2d.velocity.x >= -deccelerationTemp && _rb2d.velocity.x <= deccelerationTemp && _rb2d.velocity.y >= -deccelerationTemp && _rb2d.velocity.y <= deccelerationTemp)
                 _rb2d.velocity = Vector2.zero;
         }
-
         _rb2d.velocity = _rb2d.velocity * deccelerationTemp;
     }
     
@@ -195,5 +178,20 @@ public class Movement : MonoBehaviour
     public float MaxSpeedTemp {
         get => maxSpeedTemp;
         set => maxSpeedTemp = value;
+    }
+
+    public bool MovementIsBlock {
+        get => _movementIsBlock;
+        set => _movementIsBlock = value;
+    }
+
+    public bool IsDashing {
+        get => _isDashing;
+        set => _isDashing = value;
+    }
+
+    public Rigidbody2D Rb2d {
+        get => _rb2d;
+        set => _rb2d = value;
     }
 }

@@ -25,6 +25,8 @@ public class InputManager : MonoBehaviour
         Vector2 newMovement = value.Get<Vector2>();
         if (playerProfile != null)
             playerProfile.NbStep = 1;
+        if (movement.IsDashing)
+            return;
         movement.SetPlayerDirection(newMovement);
     }
 

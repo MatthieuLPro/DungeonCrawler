@@ -166,10 +166,10 @@ public class OpenObject : MonoBehaviour
 
     IEnumerator _LootAnimationCo(GameObject opener)
     {
-        opener.transform.GetChild(0).Find("Movement").GetComponent<Movement>().blockMovement = true;
+        opener.transform.GetChild(0).Find("Movement").GetComponent<Movement>().MovementIsBlock = true;
         yield return new WaitForSeconds(1f);
 
-        opener.transform.GetChild(0).Find("Movement").GetComponent<Movement>().blockMovement = false;
+        opener.transform.GetChild(0).Find("Movement").GetComponent<Movement>().MovementIsBlock = false;
         Destroy(LootObject);
         _GetReward(opener);
     }

@@ -73,7 +73,7 @@ public class Attack : MonoBehaviour
     {
         _anime.SetBool("Attacking", true);
 
-        _movement.blockMovement = true;
+        _movement.MovementIsBlock = true;
 
         _parent.GetComponent<Rigidbody2D>().velocity = Vector3.zero;
         _parent.transform.parent.Find("Audio").GetComponent<AudioManager>().CallAudio("attack");
@@ -85,7 +85,7 @@ public class Attack : MonoBehaviour
 
         yield return new WaitForSeconds(_anime.GetCurrentAnimatorClipInfo(0)[0].clip.length - .3f);
 
-        _movement.blockMovement = false;
+        _movement.MovementIsBlock = false;
     }
 
     /* ************************************************ */

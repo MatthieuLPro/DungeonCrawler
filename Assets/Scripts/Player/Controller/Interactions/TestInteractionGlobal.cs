@@ -119,7 +119,10 @@ public class TestInteractionGlobal : MonoBehaviour
     {
         _SetPlayerIsKnock(value);
         _SetVelocityToZero();
-        _SetPlayerInvincible(value);
+        if (_anime.GetBool("Specialing") && _parent.transform.parent.GetComponent<Player>().CharacterType == "LinkPurple")
+            return;
+        
+        SetPlayerInvincible(value);
     }
 
     private void _BlockMovement(bool value)
@@ -141,7 +144,7 @@ public class TestInteractionGlobal : MonoBehaviour
     }
 
     //If enemy is invincible, then collider is disabled
-    private void _SetPlayerInvincible(bool value)
+    public void SetPlayerInvincible(bool value)
     {
         IsInvincible      = value;
         _collider.enabled = !value;
@@ -156,7 +159,7 @@ public class TestInteractionGlobal : MonoBehaviour
     }
 
     private void _SetBlockPlayerMovement(bool value){
-        _movement.blockMovement = value;
+        _movement.MovementIsBlock = value;
     }
 
     /* ************************************************ */
